@@ -1,0 +1,54 @@
+{
+  "kind": "preflight_not_execution_manifest",
+  "model": "gemma-4-31b-it",
+  "expected_runs": 80,
+  "vocabulary_protocol": "order_neutral_v1",
+  "source_sha256": {
+    "experiment/taubench_retail/__init__.py": "6716572cf494ea98d4b0163e52be1be4a1bde21b0e0bdb8aaa02c8616e9d35e9",
+    "experiment/taubench_retail/audit.py": "5c68085f9156d55504ffe8292332f5bbd7cb4701a5de093f9b7557c301a3c92a",
+    "experiment/taubench_retail/config.py": "cb5104f3cabf73ca95f81239f0dfa6efae7140453515b168192766f4bd01efa0",
+    "experiment/taubench_retail/contracts.py": "71bb9d09715346f33db36696298b21210a0f1df877bd453c45931e0eff1aaba1",
+    "experiment/taubench_retail/dsl.py": "c78c2b52488a1f1dbf9f8d131208ee7cff463cf4c1a4ed9d84472a19480971bf",
+    "experiment/taubench_retail/enumeration.py": "1acec6fa5593e5c9821c04e45fd0ba492647b150f518164b03bcc0b9089143de",
+    "experiment/taubench_retail/env.py": "f2b3c290b8517d1c88e35125d2ebeedb5d31e95e40ef6d9f229ab9b402acaf60",
+    "experiment/taubench_retail/fixtures.py": "3e0b2c61f745982bb1199b7694e2d7b98735391e4da55c8bb51b38faf6dec80d",
+    "experiment/taubench_retail/ground_truth.py": "c8d2bcc783fe7b7a15425d216a2423080b876af0a8466ded5b3a45772fb0d237",
+    "experiment/taubench_retail/model_runner.py": "643f41ddc6a35ddaf9ab1e7c1319b2f648f07017ae4441f4e8093aebd375aee6",
+    "experiment/taubench_retail/prompts.py": "19cb76fb339b878c9491dfe83452225d1af0d8ef901da6421d5868a1b8b3d0d7",
+    "experiment/taubench_retail/runner.py": "db3215e70c31ffc48e2717105e543c02b875cde530c8bc210db397ef4aac1970",
+    "experiment/taubench_retail/state.py": "b0bc2b440bccc6fba2ac3de2de328d5cc3c08ff8f929edcdfa8a271a158bfc8e",
+    "experiment/taubench_retail/vendor/tau_bench/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiment/taubench_retail/vendor/tau_bench/envs/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiment/taubench_retail/vendor/tau_bench/envs/retail/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiment/taubench_retail/vendor/tau_bench/envs/retail/tools/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiment/taubench_retail/vendor/tau_bench/envs/retail/tools/cancel_pending_order.py": "c33151a896b62ac87ed1bcbcbd62dabcd47c8c1eaf47bbb5e2f15f8b6283b19d",
+    "experiment/taubench_retail/vendor/tau_bench/envs/retail/tools/exchange_delivered_order_items.py": "d547d44b28e97513d4a15714d4bd2bbca13f76827bfe06b71e1b51a742f44489",
+    "experiment/taubench_retail/vendor/tau_bench/envs/retail/tools/modify_pending_order_payment.py": "6c2d4c329fae0d66d50bd48cb6ae9520167137f8b20d3385fa407aa5b03d2fe5",
+    "experiment/taubench_retail/vendor/tau_bench/envs/retail/tools/return_delivered_order_items.py": "7d92e8962c17e5fa9c8e3240d21e31fc1adf5e68100c92bb0f67e0a67ea5b7bf",
+    "experiment/taubench_retail/vendor/tau_bench/envs/tool.py": "0a158be298092fc64862ae8843f35f57cfba139aa02c2ee8fbe87b1e4a1de0fc",
+    "experiment/configs/taubench_retail_w2neutral_gemma4_s20.json": "70e3a44b657a4a5305eee840ff529a8150d3a846f7069f6ed0f91a1deb203baa",
+    "experiment/configs/taubench_retail_w2del.json": "65e95ff698d519db86f15c788c1fcc699a8a911f3adad9a9c97635be41a59137",
+    "experiment/modeling/runner.py": "2a108b68343a731bfe4ab8d314b81f2fd9204df4f765697f8bf45d04253bd31e",
+    "experiment/modeling/client.py": "9ab2dd1f987c0fcb6f18e81a346df47ae6dadd20744d52d59cb54e81554fae4e",
+    "experiment/modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+    "experiment/tests/test_taubench_order_neutral.py": "339fb9ae081a3d4193b6bf7d4ab8ac6f9d32d4208531786c855473ea43dfd927"
+  },
+  "initial_prompt_sha256": {
+    "system": "c70c0696d42604c5f5b41508c9504c81a0b5fced4a93d760f16a8fca47abab3a",
+    "user": "2bd1f821cead1048e6402389eda41d4e96c551f94644fb2da9946179a665de47"
+  },
+  "protocol_sha256": {
+    "direct": "b0d59b6d321d4e17f94dfe7ebf8daabbc534aedb95b1f17b1bf6a65a13ea28aa",
+    "sampled_cegis_fixed": "c5026461642a98fe801f4f4078f4aec4f759fa0d46b1f931584ef108ab7206e5",
+    "active_cegis": "a0f39a1b0084f0994c1b1fbfcdc3e519e46f812ac86b1180cab620464acef804",
+    "active_cegis_no_coverage": "1b8124e56f667414cf6aac414014c96f2c0a83a932924f559a0740ace2eeec6e"
+  },
+  "enumeration": {
+    "states": 4500,
+    "transitions": 40102,
+    "truncated": false,
+    "max_depth": 20,
+    "max_states": 5000,
+    "deepest_level": 10
+  }
+}

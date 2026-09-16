@@ -1,0 +1,23 @@
+{
+  "description": "Small sandbox used by the unit tests: single stock unit per item so that insufficient-stock situations appear at shallow depth.",
+  "seed": 7,
+  "items": [
+    "book",
+    "pen"
+  ],
+  "max_stock": 1,
+  "cart_capacity": 2,
+  "valid_payment_methods": [
+    "card",
+    "voucher"
+  ],
+  "rejected_payment_methods": [
+    "expired_card"
+  ],
+  "valid_addresses": [
+    "home"
+  ],
+  "rejected_addresses": [
+    "po_box"
+  ]
+}

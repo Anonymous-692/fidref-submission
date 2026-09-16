@@ -1,0 +1,26 @@
+{
+  "description": "Defaults for experiment/model_runner.py. The endpoint is the locally served vLLM instance from experiment/serving; --output has no default and must always be given explicitly.",
+  "sandbox_config": "experiment/configs/default.json",
+  "base_url": "http://127.0.0.1:8000/v1",
+  "model": "qwen2.5-14b-instruct",
+  "methods": [
+    "direct",
+    "self_refine",
+    "random_probe",
+    "counterexample_guided"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "temperature": 0.2,
+  "top_p": 0.95,
+  "max_tokens": 1024,
+  "state_budget": 24,
+  "query_budget": 4,
+  "token_budget": 16000,
+  "max_depth": 20,
+  "max_states": 6000,
+  "timeout": 120.0
+}

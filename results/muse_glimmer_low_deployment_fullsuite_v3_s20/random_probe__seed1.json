@@ -1,0 +1,1613 @@
+{
+  "schema_version": 2,
+  "run": "random_probe__seed1",
+  "created_at": "2026-09-08T18:35:42.394255+00:00",
+  "method": "random_probe",
+  "model": "muse-glimmer-30b",
+  "endpoint": "[endpoint-redacted]",
+  "seed": 1,
+  "decoding": {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "max_tokens": 2048,
+    "seed": 1
+  },
+  "budgets": {
+    "state_budget": 48,
+    "query_budget": 4,
+    "token_budget": 16000
+  },
+  "sandbox": {
+    "domain": "deployment",
+    "config_path": "experiment/configs/deployment_default.json",
+    "config": {
+      "seed": 20260902,
+      "resource_types": [
+        "cpu",
+        "ram"
+      ],
+      "max_quota": 2,
+      "max_allocation_limit": 2,
+      "valid_regions": [
+        "europe-west",
+        "us-central"
+      ],
+      "rejected_regions": [
+        "unsupported-edge"
+      ],
+      "valid_cluster_tiers": [
+        "premium",
+        "standard"
+      ],
+      "rejected_cluster_tiers": [
+        "deprecated-v0"
+      ]
+    },
+    "max_depth": 20,
+    "max_states": 15000,
+    "enumeration": {
+      "states": 11712,
+      "transitions": 128968,
+      "truncated": false,
+      "max_depth": 20,
+      "max_states": 15000,
+      "deepest_level": 20
+    },
+    "evaluation_states": 11712,
+    "oracle_contract": "ground_truth.deploy_service"
+  },
+  "serving": {
+    "model": "muse-glimmer-30b",
+    "endpoint": "[endpoint-redacted]",
+    "vllm_version": "0.28.0",
+    "structured_output_style": "response_format",
+    "max_model_len": 8192,
+    "request_concurrency": 1
+  },
+  "hashes": {
+    "sandbox_config_sha256": "ba537bd3b8a6db88bb06323862b785dd37577e4d68a31f574fa81abbea3b7b25",
+    "decoding_sha256": "beec4bf52eebf7bb716ea452eca22708b2ba2a3cc78dd28379f5255839eada6a",
+    "budgets_sha256": "a226cbdc29a384e2524cd88ae62f8c02d60cef8c0e3140c1c81a5d96041126f2",
+    "protocol_sha256": "6598de201667e012959a78bd4656f394780b347209569a241f1c351459fefa6f"
+  },
+  "interactions": [
+    {
+      "index": 0,
+      "role": "propose",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert formal verification engineer specializing in cloud deployment contracts.\nYour task is to write declarative contracts in JSON for the `deploy_service` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `active_deployment` (multiset)\n- `active_size` (number)\n- `allocated_resources` (multiset)\n- `allocation_size` (number)\n- `authenticated` (bool)\n- `available_quota` (multiset)\n- `cluster_tier` (option)\n- `deployment_status` (text)\n- `quota_size` (number)\n- `target_region` (option)\n\nDeployment status values: 'idle', 'deployed', 'stopped', 'rolledback'\nConfiguration sets: 'region_options', 'resource_types', 'tier_options', 'rejected_regions', 'rejected_cluster_tiers', 'valid_regions', 'valid_cluster_tiers'\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — a resource multiset has no units.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set.\n- `covers`: {\"op\": \"covers\", \"available\": t, \"required\": t} — multiset covers.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, null, or multiset.\n- `difference`: {\"op\": \"difference\", \"left\": t, \"right\": t} — multiset difference.\n- `union`: {\"op\": \"union\", \"left\": t, \"right\": t} — multiset sum.\n- `get`: {\"op\": \"get\", \"multiset\": t, \"resource\": \"<resource>\"} — resource count.\n- `total`: {\"op\": \"total\", \"multiset\": t} — total units in a multiset.\n\nRules (violating any of these makes the answer unparseable):\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is thrown away.\n- There is NO numeric arithmetic in this grammar. `add`, `sub`, `plus`, `minus`, `sum`, `mul` and `div` over numbers are forbidden. `add` is tolerated only as a spelling of `union` when BOTH operands are multisets; prefer `union` and never write `add` over numbers.\n- `total` and `get` take a multiset. `allocation_size`, `quota_size` and `active_size` are ALREADY numbers, so never wrap them in `total` or `get` — compare them directly with eq/ne/lt/le/gt/ge.\n- Derived variable totals (`allocation_size`, `quota_size`, `active_size`) are numbers. Do NOT write arithmetic on them. Express state transitions directly on the underlying multisets (`allocated_resources`, `available_quota`, `active_deployment`) using `difference` or `union`.\n- `union` and `difference` take two multisets and return a multiset; they may not be applied to numbers, strings or booleans.\n- `unchanged` is valid only inside the postcondition, and only over the state variable names listed above.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- Comparisons must join two terms of the same kind: number with number, multiset with multiset, text/option with text/option. Wrap literal values in term objects like `{\"const\": \"deployed\"}` or `{\"const\": 0}`, never raw scalar values.\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact so it is never truncated.\n\nCommon valid postcondition structural patterns:\n- State assignment: compare a variable's after-state to a constant:\n    {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}}\n- Multiset transfer: set an after-state multiset equal to a before-state multiset:\n    {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n- Multiset difference: set after-state multiset equal to difference between two before-state multisets:\n    {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}}\n- Empty multiset: assert that an after-state multiset has no units:\n    {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"after\"}}\n- Frame conditions: specify which variables remain unchanged:\n    {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}\n\nThe object below is a COMPLETE, VALID example of the required JSON shape. It exists only to show the syntax: it is deliberately incomplete and is NOT the correct contract for `deploy_service`. Copy its structure, not its clauses.\n\n```json\n{\n  \"skill\": \"deploy_service\",\n  \"notes\": \"JSON envelope demonstration only - not a candidate contract\",\n  \"precondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  },\n  \"postcondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  }\n}\n```"
+        },
+        {
+          "role": "user",
+          "content": "Based on the following execution observations of `deploy_service`:\n\nObservation 1:\n  Before: auth=n alloc=- quota=cpux1,ramx1 region=europe-west tier=deprecated-v0 status=rolledback\n  Result: REFUSED: not authenticated\nObservation 2:\n  Before: auth=n alloc=- quota=cpux1,ramx1 region=europe-west tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 3:\n  Before: auth=n alloc=cpux1,ramx1 quota=- region=- tier=- status=deployed\n  Result: REFUSED: not authenticated\nObservation 4:\n  Before: auth=y alloc=cpux1 quota=cpux1 region=europe-west tier=deprecated-v0 status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 5:\n  Before: auth=n alloc=- quota=cpux1 region=- tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 6:\n  Before: auth=y alloc=cpux1 quota=cpux1,ramx1 region=us-central tier=- status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 7:\n  Before: auth=n alloc=ramx1 quota=cpux1,ramx1 region=- tier=- status=idle\n  Result: REFUSED: not authenticated\nObservation 8:\n  Before: auth=y alloc=cpux2 quota=- region=unsupported-edge tier=standard status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 9:\n  Before: auth=n alloc=cpux2 quota=- region=- tier=- status=stopped\n  Result: REFUSED: not authenticated\nObservation 10:\n  Before: auth=n alloc=ramx2 quota=cpux2 region=unsupported-edge tier=deprecated-v0 status=rolledback\n  Result: REFUSED: not authenticated\nObservation 11:\n  Before: auth=y alloc=ramx1 quota=- region=europe-west tier=premium status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 12:\n  Before: auth=n alloc=cpux2 quota=cpux1,ramx1 region=us-central tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 13:\n  Before: auth=y alloc=ramx2 quota=cpux2,ramx2 region=europe-west tier=premium status=idle\n  Result: ACCEPTED\n  After:  auth=y alloc=- quota=cpux2 region=europe-west tier=premium status=deployed\nObservation 14:\n  Before: auth=n alloc=- quota=cpux2 region=europe-west tier=standard status=deployed\n  Result: REFUSED: not authenticated\nObservation 15:\n  Before: auth=n alloc=ramx1 quota=cpux2 region=europe-west tier=deprecated-v0 status=stopped\n  Result: REFUSED: not authenticated\nObservation 16:\n  Before: auth=y alloc=- quota=cpux1 region=- tier=premium status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 17:\n  Before: auth=y alloc=- quota=ramx2 region=- tier=standard status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 18:\n  Before: auth=n alloc=cpux2 quota=cpux1 region=europe-west tier=standard status=deployed\n  Result: REFUSED: not authenticated\nObservation 19:\n  Before: auth=n alloc=cpux1 quota=ramx2 region=- tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 20:\n  Before: auth=n alloc=cpux2 quota=ramx2 region=- tier=deprecated-v0 status=rolledback\n  Result: REFUSED: not authenticated\nObservation 21:\n  Before: auth=n alloc=ramx1 quota=ramx2 region=europe-west tier=- status=stopped\n  Result: REFUSED: not authenticated\nObservation 22:\n  Before: auth=y alloc=- quota=cpux1,ramx1 region=unsupported-edge tier=- status=idle\n  Result: REFUSED: no resources allocated for deployment\nObservation 23:\n  Before: auth=y alloc=cpux2 quota=ramx1 region=- tier=standard status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 24:\n  Before: auth=y alloc=cpux2 quota=ramx1 region=unsupported-edge tier=premium status=rolledback\n  Result: REFUSED: a deployment is already rolledback\nObservation 25:\n  Before: auth=y alloc=cpux1,ramx1 quota=- region=unsupported-edge tier=premium status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 26:\n  Before: auth=n alloc=- quota=cpux2 region=us-central tier=- status=stopped\n  Result: REFUSED: not authenticated\nObservation 27:\n  Before: auth=n alloc=ramx2 quota=cpux2,ramx2 region=us-central tier=deprecated-v0 status=rolledback\n  Result: REFUSED: not authenticated\nObservation 28:\n  Before: auth=n alloc=ramx1 quota=cpux1,ramx1 region=europe-west tier=- status=deployed\n  Result: REFUSED: not authenticated\nObservation 29:\n  Before: auth=n alloc=ramx2 quota=cpux1,ramx1 region=unsupported-edge tier=standard status=deployed\n  Result: REFUSED: not authenticated\nObservation 30:\n  Before: auth=n alloc=- quota=ramx1 region=- tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 31:\n  Before: auth=y alloc=- quota=cpux1,ramx1 region=europe-west tier=deprecated-v0 status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 32:\n  Before: auth=n alloc=ramx2 quota=- region=us-central tier=deprecated-v0 status=deployed\n  Result: REFUSED: not authenticated\nObservation 33:\n  Before: auth=y alloc=cpux1 quota=cpux2 region=europe-west tier=standard status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 34:\n  Before: auth=y alloc=cpux1 quota=ramx1 region=europe-west tier=deprecated-v0 status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 35:\n  Before: auth=y alloc=- quota=ramx1 region=us-central tier=standard status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 36:\n  Before: auth=n alloc=cpux1 quota=cpux1 region=- tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 37:\n  Before: auth=y alloc=ramx2 quota=ramx1 region=unsupported-edge tier=standard status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 38:\n  Before: auth=y alloc=ramx2 quota=cpux2 region=us-central tier=deprecated-v0 status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 39:\n  Before: auth=y alloc=ramx2 quota=cpux2,ramx1 region=- tier=standard status=idle\n  Result: REFUSED: target region is missing or unserviceable\nObservation 40:\n  Before: auth=y alloc=ramx2 quota=cpux2 region=europe-west tier=premium status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 41:\n  Before: auth=n alloc=cpux2 quota=cpux1 region=europe-west tier=standard status=deployed\n  Result: REFUSED: not authenticated\nObservation 42:\n  Before: auth=y alloc=cpux1 quota=ramx1 region=us-central tier=standard status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 43:\n  Before: auth=y alloc=ramx2 quota=cpux1,ramx2 region=us-central tier=standard status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 44:\n  Before: auth=n alloc=cpux2 quota=ramx1 region=- tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 45:\n  Before: auth=y alloc=ramx1 quota=cpux1,ramx2 region=europe-west tier=- status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 46:\n  Before: auth=n alloc=ramx1 quota=- region=europe-west tier=- status=deployed\n  Result: REFUSED: not authenticated\nObservation 47:\n  Before: auth=y alloc=cpux1,ramx1 quota=cpux1 region=europe-west tier=standard status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 48:\n  Before: auth=n alloc=- quota=ramx2 region=europe-west tier=deprecated-v0 status=deployed\n  Result: REFUSED: not authenticated\n\nSynthesize the complete declarative JSON contract for `deploy_service`."
+        }
+      ],
+      "prompt_sha256": "12e29afec1bf612941b0156e0c9c2214019b6bf01e59c54d602070f81e57e7d3",
+      "response_sha256": "23bde306965583158645cb1a8d0168727015c9c91bd334dd10c63386d65771d0",
+      "request": {
+        "model": "muse-glimmer-30b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are an expert formal verification engineer specializing in cloud deployment contracts.\nYour task is to write declarative contracts in JSON for the `deploy_service` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `active_deployment` (multiset)\n- `active_size` (number)\n- `allocated_resources` (multiset)\n- `allocation_size` (number)\n- `authenticated` (bool)\n- `available_quota` (multiset)\n- `cluster_tier` (option)\n- `deployment_status` (text)\n- `quota_size` (number)\n- `target_region` (option)\n\nDeployment status values: 'idle', 'deployed', 'stopped', 'rolledback'\nConfiguration sets: 'region_options', 'resource_types', 'tier_options', 'rejected_regions', 'rejected_cluster_tiers', 'valid_regions', 'valid_cluster_tiers'\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — a resource multiset has no units.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set.\n- `covers`: {\"op\": \"covers\", \"available\": t, \"required\": t} — multiset covers.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, null, or multiset.\n- `difference`: {\"op\": \"difference\", \"left\": t, \"right\": t} — multiset difference.\n- `union`: {\"op\": \"union\", \"left\": t, \"right\": t} — multiset sum.\n- `get`: {\"op\": \"get\", \"multiset\": t, \"resource\": \"<resource>\"} — resource count.\n- `total`: {\"op\": \"total\", \"multiset\": t} — total units in a multiset.\n\nRules (violating any of these makes the answer unparseable):\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is thrown away.\n- There is NO numeric arithmetic in this grammar. `add`, `sub`, `plus`, `minus`, `sum`, `mul` and `div` over numbers are forbidden. `add` is tolerated only as a spelling of `union` when BOTH operands are multisets; prefer `union` and never write `add` over numbers.\n- `total` and `get` take a multiset. `allocation_size`, `quota_size` and `active_size` are ALREADY numbers, so never wrap them in `total` or `get` — compare them directly with eq/ne/lt/le/gt/ge.\n- Derived variable totals (`allocation_size`, `quota_size`, `active_size`) are numbers. Do NOT write arithmetic on them. Express state transitions directly on the underlying multisets (`allocated_resources`, `available_quota`, `active_deployment`) using `difference` or `union`.\n- `union` and `difference` take two multisets and return a multiset; they may not be applied to numbers, strings or booleans.\n- `unchanged` is valid only inside the postcondition, and only over the state variable names listed above.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- Comparisons must join two terms of the same kind: number with number, multiset with multiset, text/option with text/option. Wrap literal values in term objects like `{\"const\": \"deployed\"}` or `{\"const\": 0}`, never raw scalar values.\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact so it is never truncated.\n\nCommon valid postcondition structural patterns:\n- State assignment: compare a variable's after-state to a constant:\n    {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}}\n- Multiset transfer: set an after-state multiset equal to a before-state multiset:\n    {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n- Multiset difference: set after-state multiset equal to difference between two before-state multisets:\n    {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}}\n- Empty multiset: assert that an after-state multiset has no units:\n    {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"after\"}}\n- Frame conditions: specify which variables remain unchanged:\n    {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}\n\nThe object below is a COMPLETE, VALID example of the required JSON shape. It exists only to show the syntax: it is deliberately incomplete and is NOT the correct contract for `deploy_service`. Copy its structure, not its clauses.\n\n```json\n{\n  \"skill\": \"deploy_service\",\n  \"notes\": \"JSON envelope demonstration only - not a candidate contract\",\n  \"precondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  },\n  \"postcondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  }\n}\n```"
+          },
+          {
+            "role": "user",
+            "content": "Based on the following execution observations of `deploy_service`:\n\nObservation 1:\n  Before: auth=n alloc=- quota=cpux1,ramx1 region=europe-west tier=deprecated-v0 status=rolledback\n  Result: REFUSED: not authenticated\nObservation 2:\n  Before: auth=n alloc=- quota=cpux1,ramx1 region=europe-west tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 3:\n  Before: auth=n alloc=cpux1,ramx1 quota=- region=- tier=- status=deployed\n  Result: REFUSED: not authenticated\nObservation 4:\n  Before: auth=y alloc=cpux1 quota=cpux1 region=europe-west tier=deprecated-v0 status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 5:\n  Before: auth=n alloc=- quota=cpux1 region=- tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 6:\n  Before: auth=y alloc=cpux1 quota=cpux1,ramx1 region=us-central tier=- status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 7:\n  Before: auth=n alloc=ramx1 quota=cpux1,ramx1 region=- tier=- status=idle\n  Result: REFUSED: not authenticated\nObservation 8:\n  Before: auth=y alloc=cpux2 quota=- region=unsupported-edge tier=standard status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 9:\n  Before: auth=n alloc=cpux2 quota=- region=- tier=- status=stopped\n  Result: REFUSED: not authenticated\nObservation 10:\n  Before: auth=n alloc=ramx2 quota=cpux2 region=unsupported-edge tier=deprecated-v0 status=rolledback\n  Result: REFUSED: not authenticated\nObservation 11:\n  Before: auth=y alloc=ramx1 quota=- region=europe-west tier=premium status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 12:\n  Before: auth=n alloc=cpux2 quota=cpux1,ramx1 region=us-central tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 13:\n  Before: auth=y alloc=ramx2 quota=cpux2,ramx2 region=europe-west tier=premium status=idle\n  Result: ACCEPTED\n  After:  auth=y alloc=- quota=cpux2 region=europe-west tier=premium status=deployed\nObservation 14:\n  Before: auth=n alloc=- quota=cpux2 region=europe-west tier=standard status=deployed\n  Result: REFUSED: not authenticated\nObservation 15:\n  Before: auth=n alloc=ramx1 quota=cpux2 region=europe-west tier=deprecated-v0 status=stopped\n  Result: REFUSED: not authenticated\nObservation 16:\n  Before: auth=y alloc=- quota=cpux1 region=- tier=premium status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 17:\n  Before: auth=y alloc=- quota=ramx2 region=- tier=standard status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 18:\n  Before: auth=n alloc=cpux2 quota=cpux1 region=europe-west tier=standard status=deployed\n  Result: REFUSED: not authenticated\nObservation 19:\n  Before: auth=n alloc=cpux1 quota=ramx2 region=- tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 20:\n  Before: auth=n alloc=cpux2 quota=ramx2 region=- tier=deprecated-v0 status=rolledback\n  Result: REFUSED: not authenticated\nObservation 21:\n  Before: auth=n alloc=ramx1 quota=ramx2 region=europe-west tier=- status=stopped\n  Result: REFUSED: not authenticated\nObservation 22:\n  Before: auth=y alloc=- quota=cpux1,ramx1 region=unsupported-edge tier=- status=idle\n  Result: REFUSED: no resources allocated for deployment\nObservation 23:\n  Before: auth=y alloc=cpux2 quota=ramx1 region=- tier=standard status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 24:\n  Before: auth=y alloc=cpux2 quota=ramx1 region=unsupported-edge tier=premium status=rolledback\n  Result: REFUSED: a deployment is already rolledback\nObservation 25:\n  Before: auth=y alloc=cpux1,ramx1 quota=- region=unsupported-edge tier=premium status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 26:\n  Before: auth=n alloc=- quota=cpux2 region=us-central tier=- status=stopped\n  Result: REFUSED: not authenticated\nObservation 27:\n  Before: auth=n alloc=ramx2 quota=cpux2,ramx2 region=us-central tier=deprecated-v0 status=rolledback\n  Result: REFUSED: not authenticated\nObservation 28:\n  Before: auth=n alloc=ramx1 quota=cpux1,ramx1 region=europe-west tier=- status=deployed\n  Result: REFUSED: not authenticated\nObservation 29:\n  Before: auth=n alloc=ramx2 quota=cpux1,ramx1 region=unsupported-edge tier=standard status=deployed\n  Result: REFUSED: not authenticated\nObservation 30:\n  Before: auth=n alloc=- quota=ramx1 region=- tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 31:\n  Before: auth=y alloc=- quota=cpux1,ramx1 region=europe-west tier=deprecated-v0 status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 32:\n  Before: auth=n alloc=ramx2 quota=- region=us-central tier=deprecated-v0 status=deployed\n  Result: REFUSED: not authenticated\nObservation 33:\n  Before: auth=y alloc=cpux1 quota=cpux2 region=europe-west tier=standard status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 34:\n  Before: auth=y alloc=cpux1 quota=ramx1 region=europe-west tier=deprecated-v0 status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 35:\n  Before: auth=y alloc=- quota=ramx1 region=us-central tier=standard status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 36:\n  Before: auth=n alloc=cpux1 quota=cpux1 region=- tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 37:\n  Before: auth=y alloc=ramx2 quota=ramx1 region=unsupported-edge tier=standard status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 38:\n  Before: auth=y alloc=ramx2 quota=cpux2 region=us-central tier=deprecated-v0 status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 39:\n  Before: auth=y alloc=ramx2 quota=cpux2,ramx1 region=- tier=standard status=idle\n  Result: REFUSED: target region is missing or unserviceable\nObservation 40:\n  Before: auth=y alloc=ramx2 quota=cpux2 region=europe-west tier=premium status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 41:\n  Before: auth=n alloc=cpux2 quota=cpux1 region=europe-west tier=standard status=deployed\n  Result: REFUSED: not authenticated\nObservation 42:\n  Before: auth=y alloc=cpux1 quota=ramx1 region=us-central tier=standard status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 43:\n  Before: auth=y alloc=ramx2 quota=cpux1,ramx2 region=us-central tier=standard status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 44:\n  Before: auth=n alloc=cpux2 quota=ramx1 region=- tier=premium status=stopped\n  Result: REFUSED: not authenticated\nObservation 45:\n  Before: auth=y alloc=ramx1 quota=cpux1,ramx2 region=europe-west tier=- status=stopped\n  Result: REFUSED: a deployment is already stopped\nObservation 46:\n  Before: auth=n alloc=ramx1 quota=- region=europe-west tier=- status=deployed\n  Result: REFUSED: not authenticated\nObservation 47:\n  Before: auth=y alloc=cpux1,ramx1 quota=cpux1 region=europe-west tier=standard status=deployed\n  Result: REFUSED: a deployment is already deployed\nObservation 48:\n  Before: auth=n alloc=- quota=ramx2 region=europe-west tier=deprecated-v0 status=deployed\n  Result: REFUSED: not authenticated\n\nSynthesize the complete declarative JSON contract for `deploy_service`."
+          }
+        ],
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "max_tokens": 2048,
+        "stream": false,
+        "seed": 1,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "skill": {
+                  "type": "string",
+                  "enum": [
+                    "deploy_service"
+                  ]
+                },
+                "name": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "precondition": {
+                  "type": "object"
+                },
+                "postcondition": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "precondition",
+                "postcondition"
+              ],
+              "additionalProperties": false
+            },
+            "strict": true
+          }
+        }
+      },
+      "response_text": "```json\n{\n  \"skill\": \"deploy_service\",\n  \"notes\": \"Contract synthesized from observations\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"authenticated\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"deployment_status\",\n          \"when\": \"before\"\n        },\n        \"right\": {\n          \"const\": \"idle\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_empty\",\n          \"arg\": {\n            \"var\": \"allocated_resources\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"covers\",\n        \"available\": {\n          \"var\": \"available_quota\",\n          \"when\": \"before\"\n        },\n        \"required\": {\n          \"var\": \"allocated_resources\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_null\",\n          \"arg\": {\n            \"var\": \"target_region\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"target_region\",\n          \"when\": \"before\"\n        },\n        \"set\": \"valid_regions\"\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"deployment_status\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"const\": \"deployed\"\n        }\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\n          \"var\": \"allocated_resources\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"available_quota\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"op\": \"difference\",\n          \"left\": {\n            \"var\": \"available_quota\",\n            \"when\": \"before\"\n          },\n          \"right\": {\n            \"var\": \"allocated_resources\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"active_deployment\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"var\": \"allocated_resources\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"authenticated\",\n          \"target_region\",\n          \"cluster_tier\"\n        ]\n      }\n    ]\n  }\n}\n```",
+      "raw_response": {
+        "id": "chatcmpl-930f50dd958961e5",
+        "object": "chat.completion",
+        "created": 1788892466,
+        "model": "muse-glimmer-30b",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "```json\n{\n  \"skill\": \"deploy_service\",\n  \"notes\": \"Contract synthesized from observations\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"authenticated\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"deployment_status\",\n          \"when\": \"before\"\n        },\n        \"right\": {\n          \"const\": \"idle\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_empty\",\n          \"arg\": {\n            \"var\": \"allocated_resources\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"covers\",\n        \"available\": {\n          \"var\": \"available_quota\",\n          \"when\": \"before\"\n        },\n        \"required\": {\n          \"var\": \"allocated_resources\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_null\",\n          \"arg\": {\n            \"var\": \"target_region\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"target_region\",\n          \"when\": \"before\"\n        },\n        \"set\": \"valid_regions\"\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"deployment_status\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"const\": \"deployed\"\n        }\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\n          \"var\": \"allocated_resources\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"available_quota\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"op\": \"difference\",\n          \"left\": {\n            \"var\": \"available_quota\",\n            \"when\": \"before\"\n          },\n          \"right\": {\n            \"var\": \"allocated_resources\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"active_deployment\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"var\": \"allocated_resources\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"authenticated\",\n          \"target_region\",\n          \"cluster_tier\"\n        ]\n      }\n    ]\n  }\n}\n```",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": "Based on observations.\n\nWe need precondition and postcondition.\n\nFrom observations:\nRefused not authenticated when auth=n regardless of others. So precondition requires auth=y.\n\nRefused a deployment is already deployed when status=deployed? Observations 4,6,8,16,23,31,35,37,40,47. All status=deployed, auth=y. Also alloc maybe present. So need status != deployed.\n\nRefused a deployment is already stopped when status=stopped? Observations 11,17,25,33,34,38,42,43,45. Yes status=stopped.\n\nRefused a deployment is already rolledback when status=rolledback? Observation 24. status=rolledback.\n\nSo allowed status? Observation 13 accepted: status=idle. So idle is allowed.\n\nAlso need allocation non-empty? Observation 22: auth=y alloc=- quota=... region=unsupported-edge tier=- status=idle => REFUSED: no resources allocated for deployment. So need allocated_resources not empty.\n\nAlso need target region? Observation 39: auth=y alloc=ramx2 quota=cpux2 region=- tier=standard status=idle => REFUSED: target region is missing or unserviceable. So region must be present and serviceable? Region options? Valid regions? Observations with region=unsupported-edge: observation 8 auth=y alloc=cpux2 quota=- region=unsupported-edge tier=standard status=deployed => refused already deployed. Not test region. Observation 22 region=unsupported-edge status=idle refused no resources. Observation 24 region=unsupported-edge status=rolledback refused already rolledback. Observation 25 region=unsupported-edge status=stopped refused already stopped. So unsupported-edge not tested for acceptance.\n\nObservation 13 region=europe-west accepted. So region must be in valid_regions? Also maybe not null.\n\nAlso tier? Observations with tier=deprecated-v0: observation 4 status deployed refused. 1 not auth. 10 not auth. 31 refused deployed. 48 not auth. So tier deprecated maybe allowed? No evidence of refusal due to tier. Could be rejected_cluster_tiers? Observation 4 tier=deprecated-v0 but refused due to deployed. Not conclusive.\n\nMaybe need tier not null? Observation 22 tier=- (null) refused no resources. Observation 39 tier=standard region missing. Observation 13 tier=premium.\n\nMaybe need cluster_tier in valid_cluster_tiers? Could be required non-null? Let's see observations where tier is null and auth=y and status idle and alloc non-empty and region present. Any? Observation 45: auth=y alloc=ramx1 quota=... region=europe-west tier=- status=stopped => refused stopped. Not test.\n\nObservation 39 region missing.\n\nMaybe tier is optional? Could be not required.\n\nAlso need resources allocated covered by quota? Observation 13: alloc=ramx2 quota=cpux2,ramx2. So allocated is subset of quota? ramx2 is in quota yes. After: alloc=- quota=cpux2. So quota decreased by allocated amount. So need covers: available_quota covers allocated_resources.\n\nAlso need region in valid_regions? Maybe unsupported-edge is rejected. Need region not in rejected_regions.\n\nAlso need tier not in rejected_cluster_tiers? deprecated-v0 maybe rejected? Not sure.\n\nFrom observations, accepted only once. So constraints: auth=y, status=idle, allocated_resources non-empty, region present? region=europe-west. Could be region in valid_regions. Also allocated_resources subset of available_quota? covers.\n\nAlso after: allocated_resources becomes empty, active_deployment becomes allocated_resources before? Let's see observation 13: before alloc=ramx2, after alloc=-. active_deployment? Not given but likely active_deployment becomes ramx2? Wait active_deployment variable. Might be set to allocated_resources. Also available_quota after = cpux2 (before cpux2,ramx2 minus ramx2). So quota decreased.\n\nAlso deployment_status after = deployed.\n\nAlso active_size? Might be total of active_deployment.\n\nAlso allocation_size becomes 0.\n\nAlso authenticated unchanged, target_region unchanged, cluster_tier unchanged.\n\nWe need postcondition: if precondition holds, then after state changes.\n\nPrecondition likely conjunction:\nauth true\nstatus = idle? Or status != deployed/stopped/rolledback. Since only idle accepted. Could be status = idle.\n\nallocated_resources not empty\navailable_quota covers allocated_resources\ntarget_region is not null and in valid_regions? region present and not rejected.\n\nMaybe also cluster_tier? Could be optional.\n\nLet's assume precondition:\nis_true authenticated\neq deployment_status before = \"idle\"\nis_empty? not empty allocated_resources -> not is_empty\ncovers available_quota before allocated_resources before\nis_null target_region? not null\nin_set target_region valid_regions? maybe.\n\nAlso need region not in rejected_regions.\n\nSimplify: use is_null target_region false, and in_set target_region valid_regions.\n\nPostcondition:\ndeployment_status after = \"deployed\"\nallocated_resources after = empty\navailable_quota after = difference available_quota before allocated_resources before\nactive_deployment after = allocated_resources before\nactive_size? maybe unchanged? Could be derived.\n\nAlso unchanged authenticated, target_region, cluster_tier.\n\nAlso allocation_size after =0? Could be derived from allocated_resources empty.\n\nLet's craft JSON.\n\nPrecondition op and:\nis_true authenticated before\neq deployment_status before \"idle\"\nnot is_empty allocated_resources before\ncovers available_quota before allocated_resources before\nnot is_null target_region before\nin_set target_region before valid_regions\n\nMaybe also tier valid? Could skip.\n\nPostcondition op and:\neq deployment_status after \"deployed\"\nis_empty allocated_resources after\neq available_quota after difference...\neq active_deployment after allocated_resources before\nunchanged vars [authenticated, target_region, cluster_tier]\n\nAlso allocation_size? Might be derived.\n\nLet's output."
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": 200008,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.28.0-e15acfcc",
+        "usage": {
+          "prompt_tokens": 3606,
+          "total_tokens": 5445,
+          "completion_tokens": 1839,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "usage": {
+        "prompt_tokens": 3606,
+        "completion_tokens": 1839,
+        "total_tokens": 5445
+      },
+      "latency_s": 75.69478368293494,
+      "finish_reason": "stop",
+      "error": null,
+      "prompt_tokens": 3606,
+      "requested_max_tokens": 2048,
+      "effective_max_tokens": 2048,
+      "clamp_reason": "none",
+      "context_window": 8192,
+      "safety_margin": 256
+    }
+  ],
+  "rounds": [
+    {
+      "round": 0,
+      "role": "probe",
+      "states_probed": 48,
+      "accepted": 1,
+      "observations": [
+        {
+          "before": "auth=n alloc=- quota=cpux1,ramx1 region=europe-west tier=deprecated-v0 status=rolledback",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "deprecated-v0",
+            "deployment_status": "rolledback",
+            "active_deployment": {}
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=- quota=cpux1,ramx1 region=europe-west tier=premium status=stopped",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "premium",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "cpu": 1,
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=cpux1,ramx1 quota=- region=- tier=- status=deployed",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "available_quota": {},
+            "target_region": null,
+            "cluster_tier": null,
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "cpu": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=cpux1 quota=cpux1 region=europe-west tier=deprecated-v0 status=deployed",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "cpu": 1
+            },
+            "available_quota": {
+              "cpu": 1
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "deprecated-v0",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "ram": 2
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already deployed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=- quota=cpux1 region=- tier=premium status=stopped",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 1
+            },
+            "target_region": null,
+            "cluster_tier": "premium",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "cpu": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=cpux1 quota=cpux1,ramx1 region=us-central tier=- status=deployed",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "cpu": 1
+            },
+            "available_quota": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "target_region": "us-central",
+            "cluster_tier": null,
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "cpu": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already deployed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=ramx1 quota=cpux1,ramx1 region=- tier=- status=idle",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "ram": 1
+            },
+            "available_quota": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "target_region": null,
+            "cluster_tier": null,
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=cpux2 quota=- region=unsupported-edge tier=standard status=deployed",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "cpu": 2
+            },
+            "available_quota": {},
+            "target_region": "unsupported-edge",
+            "cluster_tier": "standard",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "ram": 2
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already deployed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=cpux2 quota=- region=- tier=- status=stopped",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "cpu": 2
+            },
+            "available_quota": {},
+            "target_region": null,
+            "cluster_tier": null,
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "ram": 2
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=ramx2 quota=cpux2 region=unsupported-edge tier=deprecated-v0 status=rolledback",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "ram": 2
+            },
+            "available_quota": {
+              "cpu": 2
+            },
+            "target_region": "unsupported-edge",
+            "cluster_tier": "deprecated-v0",
+            "deployment_status": "rolledback",
+            "active_deployment": {}
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=ramx1 quota=- region=europe-west tier=premium status=stopped",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "ram": 1
+            },
+            "available_quota": {},
+            "target_region": "europe-west",
+            "cluster_tier": "premium",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "cpu": 1,
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already stopped",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=cpux2 quota=cpux1,ramx1 region=us-central tier=premium status=stopped",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "cpu": 2
+            },
+            "available_quota": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "target_region": "us-central",
+            "cluster_tier": "premium",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=ramx2 quota=cpux2,ramx2 region=europe-west tier=premium status=idle",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "ram": 2
+            },
+            "available_quota": {
+              "cpu": 2,
+              "ram": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "premium",
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "ok": true,
+          "error": null,
+          "after": "auth=y alloc=- quota=cpux2 region=europe-west tier=premium status=deployed",
+          "after_fields": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "premium",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "ram": 2
+            }
+          }
+        },
+        {
+          "before": "auth=n alloc=- quota=cpux2 region=europe-west tier=standard status=deployed",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "standard",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=ramx1 quota=cpux2 region=europe-west tier=deprecated-v0 status=stopped",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "ram": 1
+            },
+            "available_quota": {
+              "cpu": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "deprecated-v0",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=- quota=cpux1 region=- tier=premium status=deployed",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 1
+            },
+            "target_region": null,
+            "cluster_tier": "premium",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already deployed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=- quota=ramx2 region=- tier=standard status=stopped",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "ram": 2
+            },
+            "target_region": null,
+            "cluster_tier": "standard",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "cpu": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already stopped",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=cpux2 quota=cpux1 region=europe-west tier=standard status=deployed",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "cpu": 2
+            },
+            "available_quota": {
+              "cpu": 1
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "standard",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "cpu": 1,
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=cpux1 quota=ramx2 region=- tier=premium status=stopped",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "cpu": 1
+            },
+            "available_quota": {
+              "ram": 2
+            },
+            "target_region": null,
+            "cluster_tier": "premium",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "cpu": 2
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=cpux2 quota=ramx2 region=- tier=deprecated-v0 status=rolledback",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "cpu": 2
+            },
+            "available_quota": {
+              "ram": 2
+            },
+            "target_region": null,
+            "cluster_tier": "deprecated-v0",
+            "deployment_status": "rolledback",
+            "active_deployment": {}
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=ramx1 quota=ramx2 region=europe-west tier=- status=stopped",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "ram": 1
+            },
+            "available_quota": {
+              "ram": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": null,
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "cpu": 2
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=- quota=cpux1,ramx1 region=unsupported-edge tier=- status=idle",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "target_region": "unsupported-edge",
+            "cluster_tier": null,
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "ok": false,
+          "error": "no resources allocated for deployment",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=cpux2 quota=ramx1 region=- tier=standard status=deployed",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "cpu": 2
+            },
+            "available_quota": {
+              "ram": 1
+            },
+            "target_region": null,
+            "cluster_tier": "standard",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already deployed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=cpux2 quota=ramx1 region=unsupported-edge tier=premium status=rolledback",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "cpu": 2
+            },
+            "available_quota": {
+              "ram": 1
+            },
+            "target_region": "unsupported-edge",
+            "cluster_tier": "premium",
+            "deployment_status": "rolledback",
+            "active_deployment": {}
+          },
+          "ok": false,
+          "error": "a deployment is already rolledback",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=cpux1,ramx1 quota=- region=unsupported-edge tier=premium status=stopped",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "available_quota": {},
+            "target_region": "unsupported-edge",
+            "cluster_tier": "premium",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "cpu": 1,
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already stopped",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=- quota=cpux2 region=us-central tier=- status=stopped",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 2
+            },
+            "target_region": "us-central",
+            "cluster_tier": null,
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "ram": 2
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=ramx2 quota=cpux2,ramx2 region=us-central tier=deprecated-v0 status=rolledback",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "ram": 2
+            },
+            "available_quota": {
+              "cpu": 2,
+              "ram": 2
+            },
+            "target_region": "us-central",
+            "cluster_tier": "deprecated-v0",
+            "deployment_status": "rolledback",
+            "active_deployment": {}
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=ramx1 quota=cpux1,ramx1 region=europe-west tier=- status=deployed",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "ram": 1
+            },
+            "available_quota": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "target_region": "europe-west",
+            "cluster_tier": null,
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "cpu": 1,
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=ramx2 quota=cpux1,ramx1 region=unsupported-edge tier=standard status=deployed",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "ram": 2
+            },
+            "available_quota": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "target_region": "unsupported-edge",
+            "cluster_tier": "standard",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "cpu": 1,
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=- quota=ramx1 region=- tier=premium status=stopped",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {},
+            "available_quota": {
+              "ram": 1
+            },
+            "target_region": null,
+            "cluster_tier": "premium",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "cpu": 2
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=- quota=cpux1,ramx1 region=europe-west tier=deprecated-v0 status=deployed",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "deprecated-v0",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already deployed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=ramx2 quota=- region=us-central tier=deprecated-v0 status=deployed",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "ram": 2
+            },
+            "available_quota": {},
+            "target_region": "us-central",
+            "cluster_tier": "deprecated-v0",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "cpu": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=cpux1 quota=cpux2 region=europe-west tier=standard status=stopped",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "cpu": 1
+            },
+            "available_quota": {
+              "cpu": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "standard",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "ram": 2
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already stopped",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=cpux1 quota=ramx1 region=europe-west tier=deprecated-v0 status=stopped",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "cpu": 1
+            },
+            "available_quota": {
+              "ram": 1
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "deprecated-v0",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "cpu": 1,
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already stopped",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=- quota=ramx1 region=us-central tier=standard status=deployed",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "ram": 1
+            },
+            "target_region": "us-central",
+            "cluster_tier": "standard",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already deployed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=cpux1 quota=cpux1 region=- tier=premium status=stopped",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "cpu": 1
+            },
+            "available_quota": {
+              "cpu": 1
+            },
+            "target_region": null,
+            "cluster_tier": "premium",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=ramx2 quota=ramx1 region=unsupported-edge tier=standard status=deployed",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "ram": 2
+            },
+            "available_quota": {
+              "ram": 1
+            },
+            "target_region": "unsupported-edge",
+            "cluster_tier": "standard",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "cpu": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already deployed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=ramx2 quota=cpux2 region=us-central tier=deprecated-v0 status=stopped",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "ram": 2
+            },
+            "available_quota": {
+              "cpu": 2
+            },
+            "target_region": "us-central",
+            "cluster_tier": "deprecated-v0",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already stopped",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=ramx2 quota=cpux2,ramx1 region=- tier=standard status=idle",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "ram": 2
+            },
+            "available_quota": {
+              "cpu": 2,
+              "ram": 1
+            },
+            "target_region": null,
+            "cluster_tier": "standard",
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "ok": false,
+          "error": "target region is missing or unserviceable",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=ramx2 quota=cpux2 region=europe-west tier=premium status=deployed",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "ram": 2
+            },
+            "available_quota": {
+              "cpu": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "premium",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "ram": 2
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already deployed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=cpux2 quota=cpux1 region=europe-west tier=standard status=deployed",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "cpu": 2
+            },
+            "available_quota": {
+              "cpu": 1
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "standard",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "cpu": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=cpux1 quota=ramx1 region=us-central tier=standard status=stopped",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "cpu": 1
+            },
+            "available_quota": {
+              "ram": 1
+            },
+            "target_region": "us-central",
+            "cluster_tier": "standard",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "cpu": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already stopped",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=ramx2 quota=cpux1,ramx2 region=us-central tier=standard status=stopped",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "ram": 2
+            },
+            "available_quota": {
+              "cpu": 1,
+              "ram": 2
+            },
+            "target_region": "us-central",
+            "cluster_tier": "standard",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "cpu": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already stopped",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=cpux2 quota=ramx1 region=- tier=premium status=stopped",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "cpu": 2
+            },
+            "available_quota": {
+              "ram": 1
+            },
+            "target_region": null,
+            "cluster_tier": "premium",
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "cpu": 1,
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=ramx1 quota=cpux1,ramx2 region=europe-west tier=- status=stopped",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "ram": 1
+            },
+            "available_quota": {
+              "cpu": 1,
+              "ram": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": null,
+            "deployment_status": "stopped",
+            "active_deployment": {
+              "cpu": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already stopped",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=ramx1 quota=- region=europe-west tier=- status=deployed",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {
+              "ram": 1
+            },
+            "available_quota": {},
+            "target_region": "europe-west",
+            "cluster_tier": null,
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "cpu": 1,
+              "ram": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=y alloc=cpux1,ramx1 quota=cpux1 region=europe-west tier=standard status=deployed",
+          "before_fields": {
+            "authenticated": true,
+            "allocated_resources": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "available_quota": {
+              "cpu": 1
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "standard",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "cpu": 1
+            }
+          },
+          "ok": false,
+          "error": "a deployment is already deployed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "auth=n alloc=- quota=ramx2 region=europe-west tier=deprecated-v0 status=deployed",
+          "before_fields": {
+            "authenticated": false,
+            "allocated_resources": {},
+            "available_quota": {
+              "ram": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "deprecated-v0",
+            "deployment_status": "deployed",
+            "active_deployment": {
+              "cpu": 1
+            }
+          },
+          "ok": false,
+          "error": "not authenticated",
+          "after": null,
+          "after_fields": null
+        }
+      ]
+    }
+  ],
+  "contract": {
+    "status": "parsed",
+    "source": "{\"notes\": \"Contract synthesized from observations\", \"postcondition\": {\"args\": [{\"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"const\": \"deployed\"}}, {\"arg\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"op\": \"is_empty\"}, {\"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"op\": \"difference\", \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}}, {\"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}, {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}], \"op\": \"and\"}, \"precondition\": {\"args\": [{\"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}, \"op\": \"is_true\"}, {\"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"op\": \"eq\", \"right\": {\"const\": \"idle\"}}, {\"arg\": {\"arg\": {\"var\": \"allocated_resources\", \"when\": \"before\"}, \"op\": \"is_empty\"}, \"op\": \"not\"}, {\"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"op\": \"covers\", \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}, {\"arg\": {\"arg\": {\"var\": \"target_region\", \"when\": \"before\"}, \"op\": \"is_null\"}, \"op\": \"not\"}, {\"op\": \"in_set\", \"set\": \"valid_regions\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}}], \"op\": \"and\"}, \"skill\": \"deploy_service\"}",
+    "spec": {
+      "skill": "deploy_service",
+      "notes": "Contract synthesized from observations",
+      "precondition": {
+        "op": "and",
+        "args": [
+          {
+            "op": "is_true",
+            "arg": {
+              "var": "authenticated",
+              "when": "before"
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "var": "deployment_status",
+              "when": "before"
+            },
+            "right": {
+              "const": "idle"
+            }
+          },
+          {
+            "op": "not",
+            "arg": {
+              "op": "is_empty",
+              "arg": {
+                "var": "allocated_resources",
+                "when": "before"
+              }
+            }
+          },
+          {
+            "op": "covers",
+            "available": {
+              "var": "available_quota",
+              "when": "before"
+            },
+            "required": {
+              "var": "allocated_resources",
+              "when": "before"
+            }
+          },
+          {
+            "op": "not",
+            "arg": {
+              "op": "is_null",
+              "arg": {
+                "var": "target_region",
+                "when": "before"
+              }
+            }
+          },
+          {
+            "op": "in_set",
+            "value": {
+              "var": "target_region",
+              "when": "before"
+            },
+            "set": "valid_regions"
+          }
+        ]
+      },
+      "postcondition": {
+        "op": "and",
+        "args": [
+          {
+            "op": "eq",
+            "left": {
+              "var": "deployment_status",
+              "when": "after"
+            },
+            "right": {
+              "const": "deployed"
+            }
+          },
+          {
+            "op": "is_empty",
+            "arg": {
+              "var": "allocated_resources",
+              "when": "after"
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "var": "available_quota",
+              "when": "after"
+            },
+            "right": {
+              "op": "difference",
+              "left": {
+                "var": "available_quota",
+                "when": "before"
+              },
+              "right": {
+                "var": "allocated_resources",
+                "when": "before"
+              }
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "var": "active_deployment",
+              "when": "after"
+            },
+            "right": {
+              "var": "allocated_resources",
+              "when": "before"
+            }
+          },
+          {
+            "op": "unchanged",
+            "vars": [
+              "authenticated",
+              "target_region",
+              "cluster_tier"
+            ]
+          }
+        ]
+      }
+    },
+    "node_count": 32,
+    "error": null,
+    "interaction_index": 0
+  },
+  "usage": {
+    "prompt_tokens": 3606,
+    "completion_tokens": 1839,
+    "total_tokens": 5445,
+    "calls": 1
+  },
+  "latency": {
+    "total_s": 75.69478368293494,
+    "per_call_s": [
+      75.69478368293494
+    ]
+  },
+  "spend": {
+    "model_calls": 1,
+    "states_observed": 48,
+    "oracle_feedback_queries": 0,
+    "sampled_feedback_queries": 0,
+    "sampled_states_checked": 0,
+    "remaining_calls": 3,
+    "remaining_tokens": 10555,
+    "remaining_states": 0,
+    "parse_failures": 0
+  },
+  "evaluation": {
+    "metrics": {
+      "contract": "model.random_probe",
+      "states_checked": 11712,
+      "successes": 88,
+      "failures": 11624,
+      "false_accepts": 88,
+      "false_rejects": 0,
+      "postcondition_violations": 0,
+      "symptoms": [
+        "false_accept"
+      ],
+      "exact": false,
+      "sound": false,
+      "complete": true
+    },
+    "counterexamples": [
+      {
+        "symptom": "false_accept",
+        "state": "auth=y alloc=cpux1 quota=cpux2,ramx2 region=europe-west tier=- status=idle",
+        "state_fields": {
+          "authenticated": true,
+          "allocated_resources": {
+            "cpu": 1
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": null,
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "before_state": {
+          "authenticated": true,
+          "allocated_resources": {
+            "cpu": 1
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": null,
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract admits the state but the sandbox refused: cluster tier is missing or not supported"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "auth=y alloc=cpux1 quota=cpux2,ramx2 region=us-central tier=- status=idle",
+        "state_fields": {
+          "authenticated": true,
+          "allocated_resources": {
+            "cpu": 1
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "us-central",
+          "cluster_tier": null,
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "before_state": {
+          "authenticated": true,
+          "allocated_resources": {
+            "cpu": 1
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "us-central",
+          "cluster_tier": null,
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract admits the state but the sandbox refused: cluster tier is missing or not supported"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "auth=y alloc=ramx1 quota=cpux2,ramx2 region=europe-west tier=- status=idle",
+        "state_fields": {
+          "authenticated": true,
+          "allocated_resources": {
+            "ram": 1
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": null,
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "before_state": {
+          "authenticated": true,
+          "allocated_resources": {
+            "ram": 1
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": null,
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract admits the state but the sandbox refused: cluster tier is missing or not supported"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "auth=y alloc=ramx1 quota=cpux2,ramx2 region=us-central tier=- status=idle",
+        "state_fields": {
+          "authenticated": true,
+          "allocated_resources": {
+            "ram": 1
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "us-central",
+          "cluster_tier": null,
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "before_state": {
+          "authenticated": true,
+          "allocated_resources": {
+            "ram": 1
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "us-central",
+          "cluster_tier": null,
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract admits the state but the sandbox refused: cluster tier is missing or not supported"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "auth=y alloc=cpux2 quota=cpux2,ramx2 region=europe-west tier=- status=idle",
+        "state_fields": {
+          "authenticated": true,
+          "allocated_resources": {
+            "cpu": 2
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": null,
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "before_state": {
+          "authenticated": true,
+          "allocated_resources": {
+            "cpu": 2
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": null,
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract admits the state but the sandbox refused: cluster tier is missing or not supported"
+      }
+    ],
+    "exact": false,
+    "truncated": false,
+    "deepest_level": 20,
+    "state_count": 11712
+  },
+  "outcome": "inexact",
+  "stopped_because": "method_complete"
+}

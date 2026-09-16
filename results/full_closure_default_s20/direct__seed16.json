@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "run": "direct__seed16",
+  "created_at": "2026-09-01T05:59:42.668277+00:00",
+  "method": "direct",
+  "model": "qwen2.5-14b-instruct",
+  "endpoint": "[endpoint-redacted]",
+  "seed": 16,
+  "decoding": {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "max_tokens": 1024,
+    "seed": 16
+  },
+  "budgets": {
+    "state_budget": 24,
+    "query_budget": 4,
+    "token_budget": 16000
+  },
+  "sandbox": {
+    "config_path": "experiment/configs/default.json",
+    "config": {
+      "seed": 20260901,
+      "items": [
+        "book",
+        "pen"
+      ],
+      "max_stock": 2,
+      "cart_capacity": 2,
+      "valid_payment_methods": [
+        "card",
+        "voucher"
+      ],
+      "rejected_payment_methods": [
+        "expired_card"
+      ],
+      "valid_addresses": [
+        "home"
+      ],
+      "rejected_addresses": [
+        "po_box"
+      ]
+    },
+    "max_depth": 20,
+    "max_states": 6000,
+    "enumeration": {
+      "states": 4752,
+      "transitions": 47470,
+      "truncated": false,
+      "max_depth": 20,
+      "max_states": 6000,
+      "deepest_level": 17
+    },
+    "evaluation_states": 4752,
+    "oracle_contract": "ground_truth.place_order"
+  },
+  "serving": {
+    "model": "qwen2.5-14b-instruct",
+    "endpoint": "[endpoint-redacted]",
+    "vllm_version": "0.8.5.post1",
+    "max_model_len": 8192,
+    "tensor_parallel_size": 4,
+    "dtype": "half",
+    "gpu_ids": "0,1,2,3",
+    "profile": "experiment/serving/profiles/v100-4x14b.env",
+    "max_num_seqs": 16,
+    "max_num_batched_tokens": 8192,
+    "swap_space_gib": 4
+  },
+  "hashes": {
+    "sandbox_config_sha256": "bd4d1c15682916b4814e4bb5b6ab8a4263a61cf84625f0e61f4f8c08dbe4feb9",
+    "decoding_sha256": "11683a73d39a3eed1bac4dfb500bf12398e32b432106082aac27dd574a393f7f",
+    "budgets_sha256": "fa643ea5135deb2fb7af2c96c008213bbc8e1f3320886ebb8e2a9d76d61ab0da"
+  },
+  "interactions": [
+    {
+      "index": 0,
+      "role": "propose",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You specify the behaviour of one skill in a small storefront simulator.\nYou answer with a single JSON object in the contract DSL described below,\nand with nothing else.\n\nA contract is a JSON object with these keys:\n  \"skill\"          the skill being specified; must be \"place_order\".\n  \"precondition\"   a formula over the state BEFORE the action.\n  \"postcondition\"  a formula over the states BEFORE and AFTER the action.\n  \"name\", \"notes\"  optional free text (ignored by the scorer).\n\nTerms (values):\n  {\"var\": \"<state var>\", \"when\": \"before\"|\"after\"} — a state variable. \"when\" defaults to \"before\" and may only be \"after\" in a postcondition.\n  {\"const\": true|1|\"text\"|null} — a literal boolean, integer, string, or null.\n  {\"multiset\": {\"<item>\": <count>, ...}} — a literal item multiset.\n  {\"op\": \"count\", \"of\": t, \"item\": \"<item>\"} — units of one item in a multiset.\n  {\"op\": \"total\", \"of\": t} — total units in a multiset.\n  {\"op\": \"difference\", \"left\": t, \"right\": t} — the first multiset minus the second; has no value if any line would go negative.\n\nFormulas (truth values):\n  {\"op\": \"const\", \"value\": true} — a literal truth value.\n  {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n  {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n  {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n  {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n  {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n  {\"op\": \"is_empty\", \"arg\": t} — an item multiset has no units.\n  {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n  {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n  {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n  {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n  {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n  {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n  {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — a text/optional term is a member of a configured set; an unset value is never a member.\n  {\"op\": \"covers\", \"available\": t, \"required\": t} — the first multiset holds at least every quantity of the second.\n  {\"op\": \"unchanged\", \"vars\": [\"<state var>\", ...]} — every listed variable has the same value before and after (postcondition only).\n\nState variables and their kinds:\n  cart (multiset), cart_size (number), logged_in (bool), order_items (multiset), order_size (number), order_status (text), payment_method (option), shipping_address (option), stock (multiset)\n  order_status is one of: none, placed, confirmed, cancelled\n\nConfigured sets usable with in_set:\n  address_options, items, payment_options, rejected_addresses, rejected_payment_methods, valid_addresses, valid_payment_methods\n\nRules:\n  - Output the JSON object only. No prose, no code fences, no Python.\n  - Use only the operators listed above; anything else is rejected.\n  - A precondition may not read \"after\" variables, and only a postcondition may use unchanged.\n  - At most 200 nodes and 12 levels of nesting.\n\nShape of a well-formed answer:\n{\n  \"skill\": \"place_order\",\n  \"notes\": \"Example only — the clauses below are illustrative, not correct.\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"logged_in\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_empty\",\n          \"arg\": {\n            \"var\": \"cart\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"payment_method\"\n        },\n        \"set\": \"valid_payment_methods\"\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"logged_in\"\n        ]\n      }\n    ]\n  }\n}"
+        },
+        {
+          "role": "user",
+          "content": "Sandbox description (agent-facing):\n  items: ['book', 'pen']\n  cart capacity: 2 units in total\n  opening stock per item: at most 2 units\n  selectable payment methods: ['card', 'expired_card', 'voucher']\n    of these, the store accepts: ['card', 'voucher']\n  selectable addresses: ['home', 'po_box']\n    of these, the store ships to: ['home']\n\nThe shopper can log in and out, add or remove cart items, clear the cart,\nset or clear a payment method, set or clear a shipping address, and place,\nconfirm, cancel, or clear a single order. Selecting a payment method or an\naddress always succeeds, even for options the store does not accept.\n\nThere is one order slot per shopper, so order_status tracks that slot and\norder_items holds what is in it.\n\nTask: write a contract for the place_order action.\nThe precondition must hold exactly where the simulator accepts place_order, and the postcondition must describe exactly how the state changes when it is accepted there.\nReply with the JSON contract object and nothing else."
+        }
+      ],
+      "prompt_sha256": "6838fd987b4b9c3086235b40c5329e263732cd121205e28f91cf0beb02e43f37",
+      "response_sha256": "07a4b962df43e54f6b167a162e01ca16b8925c4be6e2df2abc5f98f36a256ad0",
+      "request": {
+        "model": "qwen2.5-14b-instruct",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You specify the behaviour of one skill in a small storefront simulator.\nYou answer with a single JSON object in the contract DSL described below,\nand with nothing else.\n\nA contract is a JSON object with these keys:\n  \"skill\"          the skill being specified; must be \"place_order\".\n  \"precondition\"   a formula over the state BEFORE the action.\n  \"postcondition\"  a formula over the states BEFORE and AFTER the action.\n  \"name\", \"notes\"  optional free text (ignored by the scorer).\n\nTerms (values):\n  {\"var\": \"<state var>\", \"when\": \"before\"|\"after\"} — a state variable. \"when\" defaults to \"before\" and may only be \"after\" in a postcondition.\n  {\"const\": true|1|\"text\"|null} — a literal boolean, integer, string, or null.\n  {\"multiset\": {\"<item>\": <count>, ...}} — a literal item multiset.\n  {\"op\": \"count\", \"of\": t, \"item\": \"<item>\"} — units of one item in a multiset.\n  {\"op\": \"total\", \"of\": t} — total units in a multiset.\n  {\"op\": \"difference\", \"left\": t, \"right\": t} — the first multiset minus the second; has no value if any line would go negative.\n\nFormulas (truth values):\n  {\"op\": \"const\", \"value\": true} — a literal truth value.\n  {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n  {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n  {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n  {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n  {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n  {\"op\": \"is_empty\", \"arg\": t} — an item multiset has no units.\n  {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n  {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n  {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n  {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n  {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n  {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n  {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — a text/optional term is a member of a configured set; an unset value is never a member.\n  {\"op\": \"covers\", \"available\": t, \"required\": t} — the first multiset holds at least every quantity of the second.\n  {\"op\": \"unchanged\", \"vars\": [\"<state var>\", ...]} — every listed variable has the same value before and after (postcondition only).\n\nState variables and their kinds:\n  cart (multiset), cart_size (number), logged_in (bool), order_items (multiset), order_size (number), order_status (text), payment_method (option), shipping_address (option), stock (multiset)\n  order_status is one of: none, placed, confirmed, cancelled\n\nConfigured sets usable with in_set:\n  address_options, items, payment_options, rejected_addresses, rejected_payment_methods, valid_addresses, valid_payment_methods\n\nRules:\n  - Output the JSON object only. No prose, no code fences, no Python.\n  - Use only the operators listed above; anything else is rejected.\n  - A precondition may not read \"after\" variables, and only a postcondition may use unchanged.\n  - At most 200 nodes and 12 levels of nesting.\n\nShape of a well-formed answer:\n{\n  \"skill\": \"place_order\",\n  \"notes\": \"Example only — the clauses below are illustrative, not correct.\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"logged_in\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_empty\",\n          \"arg\": {\n            \"var\": \"cart\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"payment_method\"\n        },\n        \"set\": \"valid_payment_methods\"\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"logged_in\"\n        ]\n      }\n    ]\n  }\n}"
+          },
+          {
+            "role": "user",
+            "content": "Sandbox description (agent-facing):\n  items: ['book', 'pen']\n  cart capacity: 2 units in total\n  opening stock per item: at most 2 units\n  selectable payment methods: ['card', 'expired_card', 'voucher']\n    of these, the store accepts: ['card', 'voucher']\n  selectable addresses: ['home', 'po_box']\n    of these, the store ships to: ['home']\n\nThe shopper can log in and out, add or remove cart items, clear the cart,\nset or clear a payment method, set or clear a shipping address, and place,\nconfirm, cancel, or clear a single order. Selecting a payment method or an\naddress always succeeds, even for options the store does not accept.\n\nThere is one order slot per shopper, so order_status tracks that slot and\norder_items holds what is in it.\n\nTask: write a contract for the place_order action.\nThe precondition must hold exactly where the simulator accepts place_order, and the postcondition must describe exactly how the state changes when it is accepted there.\nReply with the JSON contract object and nothing else."
+          }
+        ],
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "max_tokens": 1024,
+        "stream": false,
+        "seed": 16
+      },
+      "response_text": "{\n  \"skill\": \"place_order\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"logged_in\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_empty\",\n          \"arg\": {\n            \"var\": \"cart\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"payment_method\"\n        },\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\n          \"var\": \"shipping_address\"\n        }\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_items\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"logged_in\",\n          \"payment_method\"\n        ]\n      }\n    ]\n  }\n}",
+      "raw_response": {
+        "id": "chatcmpl-8c000cdf9459435a9ed43bdbe289c86e",
+        "object": "chat.completion",
+        "created": 1788242365,
+        "model": "qwen2.5-14b-instruct",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "reasoning_content": null,
+              "content": "{\n  \"skill\": \"place_order\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"logged_in\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_empty\",\n          \"arg\": {\n            \"var\": \"cart\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"payment_method\"\n        },\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\n          \"var\": \"shipping_address\"\n        }\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_items\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"logged_in\",\n          \"payment_method\"\n        ]\n      }\n    ]\n  }\n}",
+              "tool_calls": []
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 1394,
+          "total_tokens": 1742,
+          "completion_tokens": 348,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null
+      },
+      "usage": {
+        "prompt_tokens": 1394,
+        "completion_tokens": 348,
+        "total_tokens": 1742
+      },
+      "latency_s": 17.3152916142717,
+      "finish_reason": "stop",
+      "error": null
+    }
+  ],
+  "rounds": [],
+  "contract": {
+    "status": "parsed",
+    "source": "{\n  \"postcondition\": {\n    \"args\": [\n      {\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        },\n        \"op\": \"is_empty\"\n      },\n      {\n        \"left\": {\n          \"var\": \"order_items\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"logged_in\",\n          \"payment_method\"\n        ]\n      }\n    ],\n    \"op\": \"and\"\n  },\n  \"precondition\": {\n    \"args\": [\n      {\n        \"arg\": {\n          \"var\": \"logged_in\"\n        },\n        \"op\": \"is_true\"\n      },\n      {\n        \"arg\": {\n          \"arg\": {\n            \"var\": \"cart\"\n          },\n          \"op\": \"is_empty\"\n        },\n        \"op\": \"not\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"set\": \"valid_payment_methods\",\n        \"value\": {\n          \"var\": \"payment_method\"\n        }\n      },\n      {\n        \"arg\": {\n          \"var\": \"shipping_address\"\n        },\n        \"op\": \"is_null\"\n      }\n    ],\n    \"op\": \"and\"\n  },\n  \"skill\": \"place_order\"\n}",
+    "spec": {
+      "skill": "place_order",
+      "precondition": {
+        "op": "and",
+        "args": [
+          {
+            "op": "is_true",
+            "arg": {
+              "var": "logged_in"
+            }
+          },
+          {
+            "op": "not",
+            "arg": {
+              "op": "is_empty",
+              "arg": {
+                "var": "cart"
+              }
+            }
+          },
+          {
+            "op": "in_set",
+            "value": {
+              "var": "payment_method"
+            },
+            "set": "valid_payment_methods"
+          },
+          {
+            "op": "is_null",
+            "arg": {
+              "var": "shipping_address"
+            }
+          }
+        ]
+      },
+      "postcondition": {
+        "op": "and",
+        "args": [
+          {
+            "op": "eq",
+            "left": {
+              "var": "order_status",
+              "when": "after"
+            },
+            "right": {
+              "const": "placed"
+            }
+          },
+          {
+            "op": "is_empty",
+            "arg": {
+              "var": "cart",
+              "when": "after"
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "var": "order_items",
+              "when": "after"
+            },
+            "right": {
+              "var": "cart",
+              "when": "before"
+            }
+          },
+          {
+            "op": "unchanged",
+            "vars": [
+              "logged_in",
+              "payment_method"
+            ]
+          }
+        ]
+      }
+    },
+    "node_count": 20,
+    "error": null,
+    "interaction_index": 0
+  },
+  "usage": {
+    "prompt_tokens": 1394,
+    "completion_tokens": 348,
+    "total_tokens": 1742,
+    "calls": 1
+  },
+  "latency": {
+    "total_s": 17.3152916142717,
+    "per_call_s": [
+      17.3152916142717
+    ]
+  },
+  "spend": {
+    "model_calls": 1,
+    "states_observed": 0,
+    "oracle_feedback_queries": 0,
+    "remaining_calls": 3,
+    "remaining_tokens": 14258,
+    "remaining_states": 24,
+    "parse_failures": 0
+  },
+  "evaluation": {
+    "metrics": {
+      "contract": "model.direct",
+      "states_checked": 4752,
+      "successes": 22,
+      "failures": 4730,
+      "false_accepts": 330,
+      "false_rejects": 22,
+      "postcondition_violations": 0,
+      "symptoms": [
+        "false_accept",
+        "false_reject"
+      ],
+      "exact": false,
+      "sound": false,
+      "complete": false
+    },
+    "counterexamples": [
+      {
+        "symptom": "false_accept",
+        "state": "login=y cart=bookx1 stock=bookx2,penx1 pay=card addr=- order=none",
+        "state_fields": {
+          "logged_in": true,
+          "cart": {
+            "book": 1
+          },
+          "stock": {
+            "book": 2,
+            "pen": 1
+          },
+          "payment_method": "card",
+          "shipping_address": null,
+          "order_status": "none",
+          "order_items": {}
+        },
+        "detail": "contract admits the state but the sandbox refused: shipping address is missing or not serviceable"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "login=y cart=bookx1 stock=bookx2,penx1 pay=voucher addr=- order=none",
+        "state_fields": {
+          "logged_in": true,
+          "cart": {
+            "book": 1
+          },
+          "stock": {
+            "book": 2,
+            "pen": 1
+          },
+          "payment_method": "voucher",
+          "shipping_address": null,
+          "order_status": "none",
+          "order_items": {}
+        },
+        "detail": "contract admits the state but the sandbox refused: shipping address is missing or not serviceable"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "login=y cart=penx1 stock=bookx2,penx1 pay=card addr=- order=none",
+        "state_fields": {
+          "logged_in": true,
+          "cart": {
+            "pen": 1
+          },
+          "stock": {
+            "book": 2,
+            "pen": 1
+          },
+          "payment_method": "card",
+          "shipping_address": null,
+          "order_status": "none",
+          "order_items": {}
+        },
+        "detail": "contract admits the state but the sandbox refused: shipping address is missing or not serviceable"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "login=y cart=penx1 stock=bookx2,penx1 pay=voucher addr=- order=none",
+        "state_fields": {
+          "logged_in": true,
+          "cart": {
+            "pen": 1
+          },
+          "stock": {
+            "book": 2,
+            "pen": 1
+          },
+          "payment_method": "voucher",
+          "shipping_address": null,
+          "order_status": "none",
+          "order_items": {}
+        },
+        "detail": "contract admits the state but the sandbox refused: shipping address is missing or not serviceable"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "login=y cart=bookx2 stock=bookx2,penx1 pay=card addr=- order=none",
+        "state_fields": {
+          "logged_in": true,
+          "cart": {
+            "book": 2
+          },
+          "stock": {
+            "book": 2,
+            "pen": 1
+          },
+          "payment_method": "card",
+          "shipping_address": null,
+          "order_status": "none",
+          "order_items": {}
+        },
+        "detail": "contract admits the state but the sandbox refused: shipping address is missing or not serviceable"
+      }
+    ],
+    "exact": false,
+    "truncated": false,
+    "deepest_level": 17,
+    "state_count": 4752
+  },
+  "outcome": "inexact",
+  "stopped_because": "method_complete"
+}

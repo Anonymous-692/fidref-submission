@@ -1,0 +1,26 @@
+{
+  "description": "G2 D3: one valid and two rejected values for region and tier gates.",
+  "domain": "deployment",
+  "fixture_id": "D3_gate_asymmetry",
+  "seed": 20260902,
+  "resource_types": [
+    "cpu",
+    "ram"
+  ],
+  "max_quota": 2,
+  "max_allocation_limit": 2,
+  "valid_regions": [
+    "us-central"
+  ],
+  "rejected_regions": [
+    "unsupported-edge",
+    "legacy-edge"
+  ],
+  "valid_cluster_tiers": [
+    "standard"
+  ],
+  "rejected_cluster_tiers": [
+    "deprecated-v0",
+    "legacy-v0"
+  ]
+}

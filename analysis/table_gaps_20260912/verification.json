@@ -1,0 +1,96 @@
+{
+  "scope": "stored metrics and metadata, not environment replay",
+  "cells": [
+    {
+      "name": "muse_fixedpool",
+      "n": 20,
+      "exact": 0,
+      "outcomes": {
+        "inexact": 20
+      },
+      "stop_reasons": {
+        "sampled_oracle_satisfied": 19,
+        "query_budget_exhausted": 1
+      },
+      "parse_failures": 2,
+      "hashes": {
+        "sandbox_config_sha256": [
+          "1c3fb534d789eb7548e286379ecbf3408b9d5e1353b5181a08c723ed1b321f52"
+        ],
+        "budgets_sha256": [
+          "a226cbdc29a384e2524cd88ae62f8c02d60cef8c0e3140c1c81a5d96041126f2"
+        ],
+        "protocol_sha256": [
+          "99fbace50cd1aad5272cb40e8bb74bc09241d6a400879a9252cc00fa6e47224e"
+        ]
+      },
+      "files": {
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed0.json": "8c9f7000a5af229cee3166040033e8582fda511123d256254121c91abc8e247f",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed1.json": "453e1b60760a7e2060e773616212101c5a5aa309d1aafa67bbe4997a56cf5616",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed2.json": "8a7914e949d0cf382d06ad74dcdf4dd555e2a6edafc453f0727b50350ca00858",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed3.json": "1fa76beaa32f9b20dc6aae8cd5b6bfb9fca745323b98ee9284597c4605c4e7e4",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed4.json": "f08666b809d4fd4e4056732c6abd68caaecee6adb71ace256ee92c408c26ca4b",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed5.json": "9b07a6d96a618fa4dbd1a386912eb4df201f2925e600a204549dbc77eb6f129e",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed6.json": "617c641dc47128fda9308f0db1a68ad3420f21fa37d6ae2022c9c7f0f4bc4f5d",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed7.json": "2ae0393a3e6b228e085ebd455847a65d005736750115f02569b3e83b8a06a20d",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed8.json": "2974034c2231bef30f64dade19a4fda573f6df5b1404127c03cb10fa035452e8",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed9.json": "04dc615b4829bfe8580dfcdb06392931836d457a8faced29390da066a591ed40",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed10.json": "eb61e2e1210559031a61f9ceb43372b868ce3e3c6f75a766a3a7ab327b495e3a",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed11.json": "eb060a183e212ef00e96f8a64a332a70eb8c6fdc3b421166c0af74dbfbff7bcf",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed12.json": "5f95a9412213839c0643e4a7a5b0abfce79e09a4499e05799c0afd580bff254b",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed13.json": "b4bb2920b1670ff9d8122ba3792d8dc8c6bffdc290c0a4ae406d9d64f7a0a8a6",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed14.json": "85206b1a127c62c9cf1feb298c0132bf89e414a9ba4849b4d12030b29619297b",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed15.json": "a587c48ee825d5286145df977f127f9256f55f258356993b8bd5ee32ae7d512e",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed16.json": "ca0bdfb2bf19f20345ce22b4ced6a729773f32448bb65b871b12c0092db9acc7",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed17.json": "0b5cbffff5bd121a61411e7e634ffed36be903257fdf890b80b8ac07dc29b41f",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed18.json": "a808793a06a5c3f29ea5c7233d83479b9afba473f76c7ff89ae92fa9dea6a2f3",
+        "results/muse_retail_fixedpool_gap_20260912_s20/sampled_cegis_fixed__seed19.json": "f2fbb25a1203256879fcc9df4f88562d5d1d9bc6a7c780ceb358f700c620e916"
+      }
+    },
+    {
+      "name": "qwen14b_selfrefine",
+      "n": 20,
+      "exact": 0,
+      "outcomes": {
+        "inexact": 20
+      },
+      "stop_reasons": {
+        "method_complete": 20
+      },
+      "parse_failures": 0,
+      "hashes": {
+        "sandbox_config_sha256": [
+          "9514816ec8ac0ced93fbcda6e29a914b76c876ee75710967e37a2ad34ee571aa"
+        ],
+        "budgets_sha256": [
+          "a226cbdc29a384e2524cd88ae62f8c02d60cef8c0e3140c1c81a5d96041126f2"
+        ],
+        "protocol_sha256": [
+          "2397dc25a8d8ffe781916930b37b3cf28dae9b4c22fd9109d11ba049cb7a03e8"
+        ]
+      },
+      "files": {
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed0.json": "a83cb2bc7f5dca66162ef345164bfbd3d37a05d46ae9d11d201659198804db0b",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed1.json": "91eab599ae17a3f82e11504d242e3d7ab0f9a24f63b9bc6b7de329d486401a5b",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed2.json": "b366699a3f34120d7a2e71eb9d1567d98af2b92ee9c1cd8b7e1288645471a6d3",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed3.json": "11668a8dd0258a4e5235025916b6d71e03b025cab7f0d9f32804407a1803b5b0",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed4.json": "ac7817951c0e4b475b4e360cf15fee5ae079c1e80f990305d6ce4459063f2baf",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed5.json": "1c6f9ece124a1fd2050b5bb7a9edc95a0f510608620399f270adf1dfc4a9efc6",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed6.json": "3016c15c5c98c1984b34a980b10166a4cdff466173bc89823ea557b794c0e9ce",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed7.json": "4ba9d085269ba22a66569f5ad07a7ecaad485b3d1f2639f2670c57c103807ac7",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed8.json": "4caaaf9f61bcb7f7ff86d5c77376d1f29679c93ba27d19e6c49e1cf37273cb35",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed9.json": "23ba2484cb7dbc80cce9fe9cca1cea531af2f5315dad47d3adaf64b10742fe7d",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed10.json": "fb35c0666d8cb1e86f7956c810189c6cd2ee361b674a487f595cc50bd6f51964",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed11.json": "c8d1bb0fd8e0abfcd9765a9b8058eec58ecec84c099eda2aae2e448d114018e9",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed12.json": "14f98a42de1fbad77d070d5679f4f9fac684a4a294fe7168d0c1b2ade10c9114",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed13.json": "8431ed7c50967c88beb0f030ee9182fb87b6f2d44a5ebc6a9e41ec5099cf3799",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed14.json": "edcc398d5d84e835e13154713001d819b6b2b0bfdc78663f725d41b848b512dd",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed15.json": "b0d7f5053ef3d6929b5c4da31a13df3c0707f3b6ca7db9b5393926e5936b46e7",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed16.json": "88c2734a9fe285020a8c089cae003a27deadd3be7faff2705c1b80a72cc39293",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed17.json": "be7c5dad56830e10f508ac80dff2b18b1aecdb0c50c471ecfb7ffa64c3d73ab4",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed18.json": "5710dfaddebe49f773ccb510d2025bc67e13e7a8ce37f888a0351e23c060c609",
+        "results/qwen14b_calendar_selfrefine_gap_20260912_s20/self_refine__seed19.json": "c29a6e56bd748fb7bc7ecb3c57e2897b9eafea8c9312e048a071a57418d517b2"
+      }
+    }
+  ]
+}

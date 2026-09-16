@@ -1,0 +1,27 @@
+{
+  "description": "G2 D1: three resource types, quota two, allocation limit three.",
+  "domain": "deployment",
+  "fixture_id": "D1_resource_mix3",
+  "seed": 20260902,
+  "resource_types": [
+    "cpu",
+    "ram",
+    "gpu"
+  ],
+  "max_quota": 2,
+  "max_allocation_limit": 3,
+  "valid_regions": [
+    "us-central",
+    "europe-west"
+  ],
+  "rejected_regions": [
+    "unsupported-edge"
+  ],
+  "valid_cluster_tiers": [
+    "standard",
+    "premium"
+  ],
+  "rejected_cluster_tiers": [
+    "deprecated-v0"
+  ]
+}

@@ -1,0 +1,650 @@
+{
+  "schema_version": 2,
+  "run": "self_refine__seed2",
+  "created_at": "2026-09-09T01:47:46.052652+00:00",
+  "method": "self_refine",
+  "model": "qwen2.5-coder-32b-instruct",
+  "endpoint": "[endpoint-redacted]",
+  "seed": 2,
+  "decoding": {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "max_tokens": 2048,
+    "seed": 2
+  },
+  "budgets": {
+    "state_budget": 48,
+    "query_budget": 4,
+    "token_budget": 16000
+  },
+  "sandbox": {
+    "domain": "calendar",
+    "config_path": "experiment/configs/calendar_default.json",
+    "config": {
+      "attendees": [
+        "alice",
+        "bob"
+      ],
+      "max_attendees": 2,
+      "valid_slots": [
+        "morning",
+        "afternoon"
+      ],
+      "rejected_slots": [
+        "midnight"
+      ],
+      "valid_rooms": [
+        "room_alpha",
+        "room_beta"
+      ],
+      "rejected_rooms": [
+        "deprecated_room"
+      ],
+      "valid_types": [
+        "in_person",
+        "video_conf"
+      ],
+      "rejected_types": [
+        "unsupported_type"
+      ],
+      "room_capacities": {
+        "room_alpha": 2,
+        "room_beta": 1,
+        "deprecated_room": 2
+      },
+      "room_video_support": {
+        "room_alpha": true,
+        "room_beta": false,
+        "deprecated_room": true
+      },
+      "external_bookings": {
+        "alpha_morning_alice": {
+          "room": "room_alpha",
+          "slot": "morning",
+          "attendees": [
+            "alice"
+          ]
+        },
+        "beta_afternoon_bob": {
+          "room": "room_beta",
+          "slot": "afternoon",
+          "attendees": [
+            "bob"
+          ]
+        }
+      }
+    },
+    "max_depth": 20,
+    "max_states": 15000,
+    "enumeration": {
+      "states": 1676,
+      "transitions": 12376,
+      "truncated": false,
+      "max_depth": 20,
+      "max_states": 15000,
+      "deepest_level": 10
+    },
+    "evaluation_states": 1676,
+    "oracle_contract": "ground_truth.schedule_meeting"
+  },
+  "serving": {
+    "model": "qwen2.5-coder-32b-instruct",
+    "endpoint": "[endpoint-redacted]",
+    "vllm_version": "0.28.0",
+    "structured_output_style": "response_format",
+    "max_model_len": 8192
+  },
+  "hashes": {
+    "sandbox_config_sha256": "9514816ec8ac0ced93fbcda6e29a914b76c876ee75710967e37a2ad34ee571aa",
+    "decoding_sha256": "618648750566bc5f64b90a07c9f3bb93c4144edb62c373b5f0866563c226cd6d",
+    "budgets_sha256": "a226cbdc29a384e2524cd88ae62f8c02d60cef8c0e3140c1c81a5d96041126f2",
+    "protocol_sha256": "2397dc25a8d8ffe781916930b37b3cf28dae9b4c22fd9109d11ba049cb7a03e8"
+  },
+  "interactions": [
+    {
+      "index": 0,
+      "role": "direct",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert formal verification engineer specializing in calendar workspace scheduling contracts.\nYour task is to write declarative contracts in JSON for the `schedule_meeting` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `active_attendees` (attendees)\n- `active_room` (option)\n- `active_slot` (option)\n- `active_type` (option)\n- `authenticated` (bool)\n- `draft_attendees` (attendees)\n- `draft_attendees_count` (number)\n- `draft_room` (option)\n- `draft_slot` (option)\n- `draft_type` (option)\n- `external_attendees` (attendees)\n- `external_attendees_count` (number)\n- `external_room` (option)\n- `external_slot` (option)\n- `has_active_meeting` (bool)\n- `has_external_booking` (bool)\n\nConfiguration sets:\n- `attendees`\n- `valid_slots`\n- `rejected_slots`\n- `slot_options`\n- `valid_rooms`\n- `rejected_rooms`\n- `room_options`\n- `valid_types`\n- `rejected_types`\n- `type_options`\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an attendees list has no members.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set.\n- `overlaps`: {\"op\": \"overlaps\", \"left\": t, \"right\": t} — two attendee lists share at least one attendee.\n- `intersects`: {\"op\": \"intersects\", \"left\": t, \"right\": t} — alias for overlaps.\n- `contains`: {\"op\": \"contains\", \"container\": t, \"item\": t} — list contains item.\n- `capacity_sufficient`: {\"op\": \"capacity_sufficient\", \"attendees\": t, \"room\": t} — attendees count <= room capacity.\n- `room_supports_type`: {\"op\": \"room_supports_type\", \"room\": t, \"type\": t} — room supports meeting type (e.g. video_conf).\n- `no_room_conflict`: {\"op\": \"no_room_conflict\", \"slot\": t, \"room\": t} — draft slot & room do not conflict with external booking.\n- `no_attendee_conflict`: {\"op\": \"no_attendee_conflict\", \"slot\": t, \"attendees\": t} — draft slot & attendees do not conflict with external booking.\n- `scheduled_snapshot_matches`: {\"op\": \"scheduled_snapshot_matches\", \"active_room\": t, \"active_slot\": t, \"active_type\": t, \"active_attendees\": t, \"draft_room\": t, \"draft_slot\": t, \"draft_type\": t, \"draft_attendees\": t} — active meeting matches scheduled draft.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, boolean, null, or attendees list.\n- `count`: {\"op\": \"count\", \"arg\": t} — count of attendees in a list.\n- `room_capacity`: {\"op\": \"room_capacity\", \"room\": t} — look up capacity of room from config.\n- `room_supports_video`: {\"op\": \"room_supports_video\", \"room\": t} — check if room supports video from config.\n\nRules:\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is rejected.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- `unchanged` is valid only inside the postcondition, and only over known state variables.\n- Comparisons must join two terms of the same kind: number with number, option with option, attendees with attendees, bool with bool. Wrap literal values in term objects like {\"const\": \"morning\"} or {\"const\": 0}.\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact."
+        },
+        {
+          "role": "user",
+          "content": "Synthesize a declarative contract for `schedule_meeting` in the calendar workspace domain.\n\nTask configuration:\n- Valid slots: ['morning', 'afternoon']\n- Rejected slots: ['midnight']\n- Valid rooms: ['room_alpha', 'room_beta']\n- Rejected rooms: ['deprecated_room']\n- Valid types: ['in_person', 'video_conf']\n- Rejected types: ['unsupported_type']\n- Registered attendees: ['alice', 'bob']\n- Max attendees: 2\n\nThe contract must specify:\n1. `precondition`: when `schedule_meeting` is allowed to execute.\n2. `postcondition`: the relationship between the before-state and after-state upon execution.\n\nTypical postcondition patterns:\n- Snapshot assignment: assert that the scheduled active meeting matches the draft parameters:\n    {\"op\": \"scheduled_snapshot_matches\", \"active_room\": {\"var\": \"active_room\", \"when\": \"after\"}, \"active_slot\": {\"var\": \"active_slot\", \"when\": \"after\"}, \"active_type\": {\"var\": \"active_type\", \"when\": \"after\"}, \"active_attendees\": {\"var\": \"active_attendees\", \"when\": \"after\"}, \"draft_room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"draft_slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"draft_type\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"draft_attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}\n- Clearing draft fields: assert that draft parameters are cleared in after-state:\n    {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"after\"}}\n    {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"after\"}}\n    {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"after\"}}\n    {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"after\"}}\n- Frame conditions: specify which variables remain unchanged:\n    {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"external_booking\"]}\n\nExample JSON schema envelope:\n{\n  \"skill\": \"schedule_meeting\",\n  \"notes\": \"Demonstration schema envelope only - not a candidate contract\",\n  \"precondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  },\n  \"postcondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  }\n}\n\nOutput ONLY the JSON object:"
+        }
+      ],
+      "prompt_sha256": "66fa5eb86963d3609da1b5dfb285f49d198fb4fcfd332fcf1838966d9c325d2c",
+      "response_sha256": "7c173f78073fbe1fc97f3391d6d3682e48ba4f560ba02839b016af8b2bded480",
+      "request": {
+        "model": "qwen2.5-coder-32b-instruct",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are an expert formal verification engineer specializing in calendar workspace scheduling contracts.\nYour task is to write declarative contracts in JSON for the `schedule_meeting` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `active_attendees` (attendees)\n- `active_room` (option)\n- `active_slot` (option)\n- `active_type` (option)\n- `authenticated` (bool)\n- `draft_attendees` (attendees)\n- `draft_attendees_count` (number)\n- `draft_room` (option)\n- `draft_slot` (option)\n- `draft_type` (option)\n- `external_attendees` (attendees)\n- `external_attendees_count` (number)\n- `external_room` (option)\n- `external_slot` (option)\n- `has_active_meeting` (bool)\n- `has_external_booking` (bool)\n\nConfiguration sets:\n- `attendees`\n- `valid_slots`\n- `rejected_slots`\n- `slot_options`\n- `valid_rooms`\n- `rejected_rooms`\n- `room_options`\n- `valid_types`\n- `rejected_types`\n- `type_options`\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an attendees list has no members.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set.\n- `overlaps`: {\"op\": \"overlaps\", \"left\": t, \"right\": t} — two attendee lists share at least one attendee.\n- `intersects`: {\"op\": \"intersects\", \"left\": t, \"right\": t} — alias for overlaps.\n- `contains`: {\"op\": \"contains\", \"container\": t, \"item\": t} — list contains item.\n- `capacity_sufficient`: {\"op\": \"capacity_sufficient\", \"attendees\": t, \"room\": t} — attendees count <= room capacity.\n- `room_supports_type`: {\"op\": \"room_supports_type\", \"room\": t, \"type\": t} — room supports meeting type (e.g. video_conf).\n- `no_room_conflict`: {\"op\": \"no_room_conflict\", \"slot\": t, \"room\": t} — draft slot & room do not conflict with external booking.\n- `no_attendee_conflict`: {\"op\": \"no_attendee_conflict\", \"slot\": t, \"attendees\": t} — draft slot & attendees do not conflict with external booking.\n- `scheduled_snapshot_matches`: {\"op\": \"scheduled_snapshot_matches\", \"active_room\": t, \"active_slot\": t, \"active_type\": t, \"active_attendees\": t, \"draft_room\": t, \"draft_slot\": t, \"draft_type\": t, \"draft_attendees\": t} — active meeting matches scheduled draft.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, boolean, null, or attendees list.\n- `count`: {\"op\": \"count\", \"arg\": t} — count of attendees in a list.\n- `room_capacity`: {\"op\": \"room_capacity\", \"room\": t} — look up capacity of room from config.\n- `room_supports_video`: {\"op\": \"room_supports_video\", \"room\": t} — check if room supports video from config.\n\nRules:\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is rejected.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- `unchanged` is valid only inside the postcondition, and only over known state variables.\n- Comparisons must join two terms of the same kind: number with number, option with option, attendees with attendees, bool with bool. Wrap literal values in term objects like {\"const\": \"morning\"} or {\"const\": 0}.\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact."
+          },
+          {
+            "role": "user",
+            "content": "Synthesize a declarative contract for `schedule_meeting` in the calendar workspace domain.\n\nTask configuration:\n- Valid slots: ['morning', 'afternoon']\n- Rejected slots: ['midnight']\n- Valid rooms: ['room_alpha', 'room_beta']\n- Rejected rooms: ['deprecated_room']\n- Valid types: ['in_person', 'video_conf']\n- Rejected types: ['unsupported_type']\n- Registered attendees: ['alice', 'bob']\n- Max attendees: 2\n\nThe contract must specify:\n1. `precondition`: when `schedule_meeting` is allowed to execute.\n2. `postcondition`: the relationship between the before-state and after-state upon execution.\n\nTypical postcondition patterns:\n- Snapshot assignment: assert that the scheduled active meeting matches the draft parameters:\n    {\"op\": \"scheduled_snapshot_matches\", \"active_room\": {\"var\": \"active_room\", \"when\": \"after\"}, \"active_slot\": {\"var\": \"active_slot\", \"when\": \"after\"}, \"active_type\": {\"var\": \"active_type\", \"when\": \"after\"}, \"active_attendees\": {\"var\": \"active_attendees\", \"when\": \"after\"}, \"draft_room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"draft_slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"draft_type\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"draft_attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}\n- Clearing draft fields: assert that draft parameters are cleared in after-state:\n    {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"after\"}}\n    {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"after\"}}\n    {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"after\"}}\n    {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"after\"}}\n- Frame conditions: specify which variables remain unchanged:\n    {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"external_booking\"]}\n\nExample JSON schema envelope:\n{\n  \"skill\": \"schedule_meeting\",\n  \"notes\": \"Demonstration schema envelope only - not a candidate contract\",\n  \"precondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  },\n  \"postcondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  }\n}\n\nOutput ONLY the JSON object:"
+          }
+        ],
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "max_tokens": 2048,
+        "stream": false,
+        "seed": 2,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "title": "CalendarContract",
+              "type": "object",
+              "required": [
+                "skill",
+                "precondition",
+                "postcondition"
+              ],
+              "properties": {
+                "skill": {
+                  "type": "string",
+                  "const": "schedule_meeting"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "precondition": {
+                  "type": "object"
+                },
+                "postcondition": {
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false
+            },
+            "strict": true
+          }
+        }
+      },
+      "response_text": "{\n  \"skill\": \"schedule_meeting\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_slot\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_room\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_type\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_attendees\", \"when\": \"before\"}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}},\n      {\"op\": \"le\", \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}, \"right\": {\"const\": 2}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"valid_slots\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"rejected_slots\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"valid_rooms\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"rejected_rooms\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"valid_types\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"rejected_types\"}},\n      {\"op\": \"capacity_sufficient\", \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"room_supports_type\", \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"type\": {\"var\": \"draft_type\", \"when\": \"before\"}},\n      {\"op\": \"no_room_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"no_attendee_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"scheduled_snapshot_matches\", \"active_room\": {\"var\": \"active_room\", \"when\": \"after\"}, \"active_slot\": {\"var\": \"active_slot\", \"when\": \"after\"}, \"active_type\": {\"var\": \"active_type\", \"when\": \"after\"}, \"active_attendees\": {\"var\": \"active_attendees\", \"when\": \"after\"}, \"draft_room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"draft_slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"draft_type\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"draft_attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"after\"}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"external_attendees\", \"external_attendees_count\", \"external_room\", \"external_slot\", \"has_active_meeting\", \"has_external_booking\"]}\n    ]\n  }\n}",
+      "raw_response": {
+        "id": "chatcmpl-93c8bce93c385638",
+        "object": "chat.completion",
+        "created": 1788918364,
+        "model": "qwen2.5-coder-32b-instruct",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"skill\": \"schedule_meeting\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_slot\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_room\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_type\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_attendees\", \"when\": \"before\"}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}},\n      {\"op\": \"le\", \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}, \"right\": {\"const\": 2}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"valid_slots\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"rejected_slots\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"valid_rooms\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"rejected_rooms\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"valid_types\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"rejected_types\"}},\n      {\"op\": \"capacity_sufficient\", \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"room_supports_type\", \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"type\": {\"var\": \"draft_type\", \"when\": \"before\"}},\n      {\"op\": \"no_room_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"no_attendee_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"scheduled_snapshot_matches\", \"active_room\": {\"var\": \"active_room\", \"when\": \"after\"}, \"active_slot\": {\"var\": \"active_slot\", \"when\": \"after\"}, \"active_type\": {\"var\": \"active_type\", \"when\": \"after\"}, \"active_attendees\": {\"var\": \"active_attendees\", \"when\": \"after\"}, \"draft_room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"draft_slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"draft_type\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"draft_attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"after\"}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"external_attendees\", \"external_attendees_count\", \"external_room\", \"external_slot\", \"has_active_meeting\", \"has_external_booking\"]}\n    ]\n  }\n}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.28.0-321af71e",
+        "usage": {
+          "prompt_tokens": 1782,
+          "total_tokens": 2826,
+          "completion_tokens": 1044,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "usage": {
+        "prompt_tokens": 1782,
+        "completion_tokens": 1044,
+        "total_tokens": 2826
+      },
+      "latency_s": 50.83400068525225,
+      "finish_reason": "stop",
+      "error": null,
+      "prompt_tokens": 1782,
+      "requested_max_tokens": 2048,
+      "effective_max_tokens": 2048,
+      "clamp_reason": "none",
+      "context_window": 8192,
+      "safety_margin": 256
+    },
+    {
+      "index": 1,
+      "role": "self_refine",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert formal verification engineer specializing in calendar workspace scheduling contracts.\nYour task is to write declarative contracts in JSON for the `schedule_meeting` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `active_attendees` (attendees)\n- `active_room` (option)\n- `active_slot` (option)\n- `active_type` (option)\n- `authenticated` (bool)\n- `draft_attendees` (attendees)\n- `draft_attendees_count` (number)\n- `draft_room` (option)\n- `draft_slot` (option)\n- `draft_type` (option)\n- `external_attendees` (attendees)\n- `external_attendees_count` (number)\n- `external_room` (option)\n- `external_slot` (option)\n- `has_active_meeting` (bool)\n- `has_external_booking` (bool)\n\nConfiguration sets:\n- `attendees`\n- `valid_slots`\n- `rejected_slots`\n- `slot_options`\n- `valid_rooms`\n- `rejected_rooms`\n- `room_options`\n- `valid_types`\n- `rejected_types`\n- `type_options`\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an attendees list has no members.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set.\n- `overlaps`: {\"op\": \"overlaps\", \"left\": t, \"right\": t} — two attendee lists share at least one attendee.\n- `intersects`: {\"op\": \"intersects\", \"left\": t, \"right\": t} — alias for overlaps.\n- `contains`: {\"op\": \"contains\", \"container\": t, \"item\": t} — list contains item.\n- `capacity_sufficient`: {\"op\": \"capacity_sufficient\", \"attendees\": t, \"room\": t} — attendees count <= room capacity.\n- `room_supports_type`: {\"op\": \"room_supports_type\", \"room\": t, \"type\": t} — room supports meeting type (e.g. video_conf).\n- `no_room_conflict`: {\"op\": \"no_room_conflict\", \"slot\": t, \"room\": t} — draft slot & room do not conflict with external booking.\n- `no_attendee_conflict`: {\"op\": \"no_attendee_conflict\", \"slot\": t, \"attendees\": t} — draft slot & attendees do not conflict with external booking.\n- `scheduled_snapshot_matches`: {\"op\": \"scheduled_snapshot_matches\", \"active_room\": t, \"active_slot\": t, \"active_type\": t, \"active_attendees\": t, \"draft_room\": t, \"draft_slot\": t, \"draft_type\": t, \"draft_attendees\": t} — active meeting matches scheduled draft.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, boolean, null, or attendees list.\n- `count`: {\"op\": \"count\", \"arg\": t} — count of attendees in a list.\n- `room_capacity`: {\"op\": \"room_capacity\", \"room\": t} — look up capacity of room from config.\n- `room_supports_video`: {\"op\": \"room_supports_video\", \"room\": t} — check if room supports video from config.\n\nRules:\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is rejected.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- `unchanged` is valid only inside the postcondition, and only over known state variables.\n- Comparisons must join two terms of the same kind: number with number, option with option, attendees with attendees, bool with bool. Wrap literal values in term objects like {\"const\": \"morning\"} or {\"const\": 0}.\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact."
+        },
+        {
+          "role": "user",
+          "content": "Critique and refine the following valid `schedule_meeting` contract. Preserve correct clauses and output ONLY the complete revised JSON object:\n\n{\n  \"skill\": \"schedule_meeting\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_slot\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_room\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_type\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_attendees\", \"when\": \"before\"}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}},\n      {\"op\": \"le\", \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}, \"right\": {\"const\": 2}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"valid_slots\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"rejected_slots\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"valid_rooms\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"rejected_rooms\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"valid_types\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"rejected_types\"}},\n      {\"op\": \"capacity_sufficient\", \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"room_supports_type\", \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"type\": {\"var\": \"draft_type\", \"when\": \"before\"}},\n      {\"op\": \"no_room_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"no_attendee_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"scheduled_snapshot_matches\", \"active_room\": {\"var\": \"active_room\", \"when\": \"after\"}, \"active_slot\": {\"var\": \"active_slot\", \"when\": \"after\"}, \"active_type\": {\"var\": \"active_type\", \"when\": \"after\"}, \"active_attendees\": {\"var\": \"active_attendees\", \"when\": \"after\"}, \"draft_room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"draft_slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"draft_type\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"draft_attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"after\"}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"external_attendees\", \"external_attendees_count\", \"external_room\", \"external_slot\", \"has_active_meeting\", \"has_external_booking\"]}\n    ]\n  }\n}"
+        }
+      ],
+      "prompt_sha256": "a6e42659d63662f2d08f055cc0de7baf1cefdc7a0e9cad92c973c3af3d2e3dfc",
+      "response_sha256": "7c173f78073fbe1fc97f3391d6d3682e48ba4f560ba02839b016af8b2bded480",
+      "request": {
+        "model": "qwen2.5-coder-32b-instruct",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are an expert formal verification engineer specializing in calendar workspace scheduling contracts.\nYour task is to write declarative contracts in JSON for the `schedule_meeting` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `active_attendees` (attendees)\n- `active_room` (option)\n- `active_slot` (option)\n- `active_type` (option)\n- `authenticated` (bool)\n- `draft_attendees` (attendees)\n- `draft_attendees_count` (number)\n- `draft_room` (option)\n- `draft_slot` (option)\n- `draft_type` (option)\n- `external_attendees` (attendees)\n- `external_attendees_count` (number)\n- `external_room` (option)\n- `external_slot` (option)\n- `has_active_meeting` (bool)\n- `has_external_booking` (bool)\n\nConfiguration sets:\n- `attendees`\n- `valid_slots`\n- `rejected_slots`\n- `slot_options`\n- `valid_rooms`\n- `rejected_rooms`\n- `room_options`\n- `valid_types`\n- `rejected_types`\n- `type_options`\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an attendees list has no members.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set.\n- `overlaps`: {\"op\": \"overlaps\", \"left\": t, \"right\": t} — two attendee lists share at least one attendee.\n- `intersects`: {\"op\": \"intersects\", \"left\": t, \"right\": t} — alias for overlaps.\n- `contains`: {\"op\": \"contains\", \"container\": t, \"item\": t} — list contains item.\n- `capacity_sufficient`: {\"op\": \"capacity_sufficient\", \"attendees\": t, \"room\": t} — attendees count <= room capacity.\n- `room_supports_type`: {\"op\": \"room_supports_type\", \"room\": t, \"type\": t} — room supports meeting type (e.g. video_conf).\n- `no_room_conflict`: {\"op\": \"no_room_conflict\", \"slot\": t, \"room\": t} — draft slot & room do not conflict with external booking.\n- `no_attendee_conflict`: {\"op\": \"no_attendee_conflict\", \"slot\": t, \"attendees\": t} — draft slot & attendees do not conflict with external booking.\n- `scheduled_snapshot_matches`: {\"op\": \"scheduled_snapshot_matches\", \"active_room\": t, \"active_slot\": t, \"active_type\": t, \"active_attendees\": t, \"draft_room\": t, \"draft_slot\": t, \"draft_type\": t, \"draft_attendees\": t} — active meeting matches scheduled draft.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, boolean, null, or attendees list.\n- `count`: {\"op\": \"count\", \"arg\": t} — count of attendees in a list.\n- `room_capacity`: {\"op\": \"room_capacity\", \"room\": t} — look up capacity of room from config.\n- `room_supports_video`: {\"op\": \"room_supports_video\", \"room\": t} — check if room supports video from config.\n\nRules:\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is rejected.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- `unchanged` is valid only inside the postcondition, and only over known state variables.\n- Comparisons must join two terms of the same kind: number with number, option with option, attendees with attendees, bool with bool. Wrap literal values in term objects like {\"const\": \"morning\"} or {\"const\": 0}.\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact."
+          },
+          {
+            "role": "user",
+            "content": "Critique and refine the following valid `schedule_meeting` contract. Preserve correct clauses and output ONLY the complete revised JSON object:\n\n{\n  \"skill\": \"schedule_meeting\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_slot\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_room\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_type\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_attendees\", \"when\": \"before\"}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}},\n      {\"op\": \"le\", \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}, \"right\": {\"const\": 2}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"valid_slots\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"rejected_slots\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"valid_rooms\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"rejected_rooms\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"valid_types\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"rejected_types\"}},\n      {\"op\": \"capacity_sufficient\", \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"room_supports_type\", \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"type\": {\"var\": \"draft_type\", \"when\": \"before\"}},\n      {\"op\": \"no_room_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"no_attendee_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"scheduled_snapshot_matches\", \"active_room\": {\"var\": \"active_room\", \"when\": \"after\"}, \"active_slot\": {\"var\": \"active_slot\", \"when\": \"after\"}, \"active_type\": {\"var\": \"active_type\", \"when\": \"after\"}, \"active_attendees\": {\"var\": \"active_attendees\", \"when\": \"after\"}, \"draft_room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"draft_slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"draft_type\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"draft_attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"after\"}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"external_attendees\", \"external_attendees_count\", \"external_room\", \"external_slot\", \"has_active_meeting\", \"has_external_booking\"]}\n    ]\n  }\n}"
+          }
+        ],
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "max_tokens": 2048,
+        "stream": false,
+        "seed": 2,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "title": "CalendarContract",
+              "type": "object",
+              "required": [
+                "skill",
+                "precondition",
+                "postcondition"
+              ],
+              "properties": {
+                "skill": {
+                  "type": "string",
+                  "const": "schedule_meeting"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "precondition": {
+                  "type": "object"
+                },
+                "postcondition": {
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false
+            },
+            "strict": true
+          }
+        }
+      },
+      "response_text": "{\n  \"skill\": \"schedule_meeting\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_slot\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_room\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_type\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_attendees\", \"when\": \"before\"}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}},\n      {\"op\": \"le\", \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}, \"right\": {\"const\": 2}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"valid_slots\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"rejected_slots\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"valid_rooms\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"rejected_rooms\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"valid_types\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"rejected_types\"}},\n      {\"op\": \"capacity_sufficient\", \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"room_supports_type\", \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"type\": {\"var\": \"draft_type\", \"when\": \"before\"}},\n      {\"op\": \"no_room_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"no_attendee_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"scheduled_snapshot_matches\", \"active_room\": {\"var\": \"active_room\", \"when\": \"after\"}, \"active_slot\": {\"var\": \"active_slot\", \"when\": \"after\"}, \"active_type\": {\"var\": \"active_type\", \"when\": \"after\"}, \"active_attendees\": {\"var\": \"active_attendees\", \"when\": \"after\"}, \"draft_room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"draft_slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"draft_type\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"draft_attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"after\"}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"external_attendees\", \"external_attendees_count\", \"external_room\", \"external_slot\", \"has_active_meeting\", \"has_external_booking\"]}\n    ]\n  }\n}",
+      "raw_response": {
+        "id": "chatcmpl-b94cdfa09fb0aa84",
+        "object": "chat.completion",
+        "created": 1788918415,
+        "model": "qwen2.5-coder-32b-instruct",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"skill\": \"schedule_meeting\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_slot\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_room\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_type\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_attendees\", \"when\": \"before\"}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}},\n      {\"op\": \"le\", \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}, \"right\": {\"const\": 2}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"valid_slots\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"rejected_slots\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"valid_rooms\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"rejected_rooms\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"valid_types\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"rejected_types\"}},\n      {\"op\": \"capacity_sufficient\", \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"room_supports_type\", \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"type\": {\"var\": \"draft_type\", \"when\": \"before\"}},\n      {\"op\": \"no_room_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"no_attendee_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"scheduled_snapshot_matches\", \"active_room\": {\"var\": \"active_room\", \"when\": \"after\"}, \"active_slot\": {\"var\": \"active_slot\", \"when\": \"after\"}, \"active_type\": {\"var\": \"active_type\", \"when\": \"after\"}, \"active_attendees\": {\"var\": \"active_attendees\", \"when\": \"after\"}, \"draft_room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"draft_slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"draft_type\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"draft_attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"after\"}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"external_attendees\", \"external_attendees_count\", \"external_room\", \"external_slot\", \"has_active_meeting\", \"has_external_booking\"]}\n    ]\n  }\n}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.28.0-321af71e",
+        "usage": {
+          "prompt_tokens": 2313,
+          "total_tokens": 3357,
+          "completion_tokens": 1044,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "usage": {
+        "prompt_tokens": 2313,
+        "completion_tokens": 1044,
+        "total_tokens": 3357
+      },
+      "latency_s": 50.59839735087007,
+      "finish_reason": "stop",
+      "error": null,
+      "prompt_tokens": 2313,
+      "requested_max_tokens": 2048,
+      "effective_max_tokens": 2048,
+      "clamp_reason": "none",
+      "context_window": 8192,
+      "safety_margin": 256
+    }
+  ],
+  "rounds": [],
+  "contract": {
+    "status": "parsed",
+    "source": "{\n  \"skill\": \"schedule_meeting\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_slot\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_room\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"active_type\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_attendees\", \"when\": \"before\"}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"before\"}}},\n      {\"op\": \"not\", \"arg\": {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}},\n      {\"op\": \"le\", \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}, \"right\": {\"const\": 2}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"valid_slots\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"set\": \"rejected_slots\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"valid_rooms\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"set\": \"rejected_rooms\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"valid_types\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"set\": \"rejected_types\"}},\n      {\"op\": \"capacity_sufficient\", \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"room_supports_type\", \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"type\": {\"var\": \"draft_type\", \"when\": \"before\"}},\n      {\"op\": \"no_room_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"room\": {\"var\": \"draft_room\", \"when\": \"before\"}},\n      {\"op\": \"no_attendee_conflict\", \"slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"scheduled_snapshot_matches\", \"active_room\": {\"var\": \"active_room\", \"when\": \"after\"}, \"active_slot\": {\"var\": \"active_slot\", \"when\": \"after\"}, \"active_type\": {\"var\": \"active_type\", \"when\": \"after\"}, \"active_attendees\": {\"var\": \"active_attendees\", \"when\": \"after\"}, \"draft_room\": {\"var\": \"draft_room\", \"when\": \"before\"}, \"draft_slot\": {\"var\": \"draft_slot\", \"when\": \"before\"}, \"draft_type\": {\"var\": \"draft_type\", \"when\": \"before\"}, \"draft_attendees\": {\"var\": \"draft_attendees\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"draft_attendees\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_slot\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_room\", \"when\": \"after\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"draft_type\", \"when\": \"after\"}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"external_attendees\", \"external_attendees_count\", \"external_room\", \"external_slot\", \"has_active_meeting\", \"has_external_booking\"]}\n    ]\n  }\n}",
+    "spec": null,
+    "node_count": null,
+    "error": null,
+    "interaction_index": 1
+  },
+  "usage": {
+    "prompt_tokens": 4095,
+    "completion_tokens": 2088,
+    "total_tokens": 6183,
+    "calls": 2
+  },
+  "latency": {
+    "total_s": 101.43239803612232,
+    "per_call_s": [
+      50.83400068525225,
+      50.59839735087007
+    ]
+  },
+  "spend": {
+    "model_calls": 2,
+    "states_observed": 0,
+    "oracle_feedback_queries": 0,
+    "sampled_feedback_queries": 0,
+    "sampled_states_checked": 0,
+    "remaining_calls": 2,
+    "remaining_tokens": 9817,
+    "remaining_states": 48,
+    "parse_failures": 0
+  },
+  "evaluation": {
+    "metrics": {
+      "contract": "candidate_schedule_meeting",
+      "states_checked": 1676,
+      "successes": 35,
+      "failures": 35,
+      "false_accepts": 0,
+      "false_rejects": 0,
+      "postcondition_violations": 35,
+      "symptoms": [
+        "postcondition_violation"
+      ],
+      "exact": false,
+      "sound": false,
+      "complete": true
+    },
+    "counterexamples": [
+      {
+        "symptom": "postcondition_violation",
+        "state": "auth=True, draft_att=['alice'], draft_slot=afternoon, draft_room=room_alpha, draft_type=in_person, ext=none, active=none",
+        "state_fields": {
+          "authenticated": true,
+          "draft_attendees": [
+            "alice"
+          ],
+          "draft_slot": "afternoon",
+          "draft_room": "room_alpha",
+          "draft_type": "in_person",
+          "external_booking": null,
+          "active_meeting": null
+        },
+        "before_state": {
+          "authenticated": true,
+          "draft_attendees": [
+            "alice"
+          ],
+          "draft_slot": "afternoon",
+          "draft_room": "room_alpha",
+          "draft_type": "in_person",
+          "external_booking": null,
+          "active_meeting": null
+        },
+        "after_state": {
+          "authenticated": true,
+          "draft_attendees": [],
+          "draft_slot": null,
+          "draft_room": null,
+          "draft_type": null,
+          "external_booking": null,
+          "active_meeting": {
+            "room": "room_alpha",
+            "slot": "afternoon",
+            "meeting_type": "in_person",
+            "attendees": [
+              "alice"
+            ]
+          }
+        },
+        "action_succeeded": true,
+        "changed_fields": {
+          "active_meeting": {
+            "before": null,
+            "after": {
+              "room": "room_alpha",
+              "slot": "afternoon",
+              "meeting_type": "in_person",
+              "attendees": [
+                "alice"
+              ]
+            }
+          },
+          "draft_attendees": {
+            "before": [
+              "alice"
+            ],
+            "after": []
+          },
+          "draft_room": {
+            "before": "room_alpha",
+            "after": null
+          },
+          "draft_slot": {
+            "before": "afternoon",
+            "after": null
+          },
+          "draft_type": {
+            "before": "in_person",
+            "after": null
+          }
+        },
+        "unchanged_fields": [
+          "authenticated",
+          "external_booking"
+        ],
+        "detail": "observed after-state breaks the promised postcondition"
+      },
+      {
+        "symptom": "postcondition_violation",
+        "state": "auth=True, draft_att=['alice'], draft_slot=afternoon, draft_room=room_alpha, draft_type=video_conf, ext=none, active=none",
+        "state_fields": {
+          "authenticated": true,
+          "draft_attendees": [
+            "alice"
+          ],
+          "draft_slot": "afternoon",
+          "draft_room": "room_alpha",
+          "draft_type": "video_conf",
+          "external_booking": null,
+          "active_meeting": null
+        },
+        "before_state": {
+          "authenticated": true,
+          "draft_attendees": [
+            "alice"
+          ],
+          "draft_slot": "afternoon",
+          "draft_room": "room_alpha",
+          "draft_type": "video_conf",
+          "external_booking": null,
+          "active_meeting": null
+        },
+        "after_state": {
+          "authenticated": true,
+          "draft_attendees": [],
+          "draft_slot": null,
+          "draft_room": null,
+          "draft_type": null,
+          "external_booking": null,
+          "active_meeting": {
+            "room": "room_alpha",
+            "slot": "afternoon",
+            "meeting_type": "video_conf",
+            "attendees": [
+              "alice"
+            ]
+          }
+        },
+        "action_succeeded": true,
+        "changed_fields": {
+          "active_meeting": {
+            "before": null,
+            "after": {
+              "room": "room_alpha",
+              "slot": "afternoon",
+              "meeting_type": "video_conf",
+              "attendees": [
+                "alice"
+              ]
+            }
+          },
+          "draft_attendees": {
+            "before": [
+              "alice"
+            ],
+            "after": []
+          },
+          "draft_room": {
+            "before": "room_alpha",
+            "after": null
+          },
+          "draft_slot": {
+            "before": "afternoon",
+            "after": null
+          },
+          "draft_type": {
+            "before": "video_conf",
+            "after": null
+          }
+        },
+        "unchanged_fields": [
+          "authenticated",
+          "external_booking"
+        ],
+        "detail": "observed after-state breaks the promised postcondition"
+      },
+      {
+        "symptom": "postcondition_violation",
+        "state": "auth=True, draft_att=['alice'], draft_slot=afternoon, draft_room=room_beta, draft_type=in_person, ext=none, active=none",
+        "state_fields": {
+          "authenticated": true,
+          "draft_attendees": [
+            "alice"
+          ],
+          "draft_slot": "afternoon",
+          "draft_room": "room_beta",
+          "draft_type": "in_person",
+          "external_booking": null,
+          "active_meeting": null
+        },
+        "before_state": {
+          "authenticated": true,
+          "draft_attendees": [
+            "alice"
+          ],
+          "draft_slot": "afternoon",
+          "draft_room": "room_beta",
+          "draft_type": "in_person",
+          "external_booking": null,
+          "active_meeting": null
+        },
+        "after_state": {
+          "authenticated": true,
+          "draft_attendees": [],
+          "draft_slot": null,
+          "draft_room": null,
+          "draft_type": null,
+          "external_booking": null,
+          "active_meeting": {
+            "room": "room_beta",
+            "slot": "afternoon",
+            "meeting_type": "in_person",
+            "attendees": [
+              "alice"
+            ]
+          }
+        },
+        "action_succeeded": true,
+        "changed_fields": {
+          "active_meeting": {
+            "before": null,
+            "after": {
+              "room": "room_beta",
+              "slot": "afternoon",
+              "meeting_type": "in_person",
+              "attendees": [
+                "alice"
+              ]
+            }
+          },
+          "draft_attendees": {
+            "before": [
+              "alice"
+            ],
+            "after": []
+          },
+          "draft_room": {
+            "before": "room_beta",
+            "after": null
+          },
+          "draft_slot": {
+            "before": "afternoon",
+            "after": null
+          },
+          "draft_type": {
+            "before": "in_person",
+            "after": null
+          }
+        },
+        "unchanged_fields": [
+          "authenticated",
+          "external_booking"
+        ],
+        "detail": "observed after-state breaks the promised postcondition"
+      }
+    ],
+    "exact": false,
+    "truncated": false,
+    "deepest_level": 10,
+    "state_count": 1676
+  },
+  "outcome": "inexact",
+  "stopped_because": "method_complete"
+}

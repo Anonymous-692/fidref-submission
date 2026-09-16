@@ -1,0 +1,417 @@
+{
+  "method": "repair_free_pool",
+  "model": "qwen2.5-14b-instruct",
+  "endpoint": "[endpoint-redacted]",
+  "seed": 2,
+  "decoding": {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "max_tokens": 2048,
+    "seed": 2
+  },
+  "budgets": {
+    "state_budget": 48,
+    "query_budget": 4,
+    "token_budget": 16000
+  },
+  "sandbox": {
+    "domain": "deployment",
+    "config_path": null,
+    "config": {
+      "seed": 20260902,
+      "resource_types": [
+        "cpu",
+        "ram"
+      ],
+      "max_quota": 2,
+      "max_allocation_limit": 2,
+      "valid_regions": [
+        "europe-west",
+        "us-central"
+      ],
+      "rejected_regions": [
+        "unsupported-edge"
+      ],
+      "valid_cluster_tiers": [
+        "premium",
+        "standard"
+      ],
+      "rejected_cluster_tiers": [
+        "deprecated-v0"
+      ]
+    },
+    "max_depth": 20,
+    "max_states": 15000,
+    "enumeration": {
+      "states": 11712,
+      "transitions": 128968,
+      "truncated": false,
+      "max_depth": 20,
+      "max_states": 15000,
+      "deepest_level": 20
+    },
+    "evaluation_states": 11712,
+    "oracle_contract": "ground_truth.deploy_service"
+  },
+  "interactions": [],
+  "contract": {
+    "status": "parsed",
+    "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"op\": \"union\", \"left\": {\"var\": \"active_deployment\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocation_size\", \"when\": \"after\"}, \"right\": {\"const\": 0}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}\n    ]\n  }\n}",
+    "spec": null,
+    "node_count": null,
+    "error": null,
+    "interaction_index": null
+  },
+  "usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "calls": 1
+  },
+  "latency": {
+    "total_s": 0,
+    "per_call_s": []
+  },
+  "spend": {
+    "model_calls": 1,
+    "states_observed": 0,
+    "oracle_feedback_queries": 0,
+    "sampled_feedback_queries": 0,
+    "sampled_states_checked": 0,
+    "remaining_calls": 3,
+    "remaining_tokens": 16000,
+    "remaining_states": 48,
+    "parse_failures": 0
+  },
+  "outcome": "inexact",
+  "evaluation": {
+    "metrics": {
+      "contract": "model.deploy_service",
+      "states_checked": 11712,
+      "successes": 88,
+      "failures": 11624,
+      "false_accepts": 108,
+      "false_rejects": 52,
+      "postcondition_violations": 0,
+      "symptoms": [
+        "false_accept",
+        "false_reject"
+      ],
+      "exact": false,
+      "sound": false,
+      "complete": false
+    },
+    "counterexamples": [
+      {
+        "symptom": "false_accept",
+        "state": "auth=y alloc=- quota=ramx2 region=europe-west tier=premium status=idle",
+        "state_fields": {
+          "authenticated": true,
+          "allocated_resources": {},
+          "available_quota": {
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": "premium",
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "before_state": {
+          "authenticated": true,
+          "allocated_resources": {},
+          "available_quota": {
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": "premium",
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract admits the state but the sandbox refused: no resources allocated for deployment"
+      },
+      {
+        "symptom": "false_reject",
+        "state": "auth=y alloc=cpux1 quota=cpux2,ramx2 region=europe-west tier=premium status=idle",
+        "state_fields": {
+          "authenticated": true,
+          "allocated_resources": {
+            "cpu": 1
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": "premium",
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "before_state": {
+          "authenticated": true,
+          "allocated_resources": {
+            "cpu": 1
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": "premium",
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "after_state": {
+          "authenticated": true,
+          "allocated_resources": {},
+          "available_quota": {
+            "cpu": 1,
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": "premium",
+          "deployment_status": "deployed",
+          "active_deployment": {
+            "cpu": 1
+          }
+        },
+        "action_succeeded": true,
+        "changed_fields": {
+          "active_deployment": {
+            "before": {},
+            "after": {
+              "cpu": 1
+            }
+          },
+          "allocated_resources": {
+            "before": {
+              "cpu": 1
+            },
+            "after": {}
+          },
+          "available_quota": {
+            "before": {
+              "cpu": 2,
+              "ram": 2
+            },
+            "after": {
+              "cpu": 1,
+              "ram": 2
+            }
+          },
+          "deployment_status": {
+            "before": "idle",
+            "after": "deployed"
+          }
+        },
+        "unchanged_fields": [
+          "authenticated",
+          "cluster_tier",
+          "target_region"
+        ],
+        "detail": "contract rejects the state but the sandbox applied the action"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "auth=y alloc=- quota=ramx2 region=europe-west tier=standard status=idle",
+        "state_fields": {
+          "authenticated": true,
+          "allocated_resources": {},
+          "available_quota": {
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": "standard",
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "before_state": {
+          "authenticated": true,
+          "allocated_resources": {},
+          "available_quota": {
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": "standard",
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract admits the state but the sandbox refused: no resources allocated for deployment"
+      },
+      {
+        "symptom": "false_reject",
+        "state": "auth=y alloc=cpux1 quota=cpux2,ramx2 region=europe-west tier=standard status=idle",
+        "state_fields": {
+          "authenticated": true,
+          "allocated_resources": {
+            "cpu": 1
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": "standard",
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "before_state": {
+          "authenticated": true,
+          "allocated_resources": {
+            "cpu": 1
+          },
+          "available_quota": {
+            "cpu": 2,
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": "standard",
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "after_state": {
+          "authenticated": true,
+          "allocated_resources": {},
+          "available_quota": {
+            "cpu": 1,
+            "ram": 2
+          },
+          "target_region": "europe-west",
+          "cluster_tier": "standard",
+          "deployment_status": "deployed",
+          "active_deployment": {
+            "cpu": 1
+          }
+        },
+        "action_succeeded": true,
+        "changed_fields": {
+          "active_deployment": {
+            "before": {},
+            "after": {
+              "cpu": 1
+            }
+          },
+          "allocated_resources": {
+            "before": {
+              "cpu": 1
+            },
+            "after": {}
+          },
+          "available_quota": {
+            "before": {
+              "cpu": 2,
+              "ram": 2
+            },
+            "after": {
+              "cpu": 1,
+              "ram": 2
+            }
+          },
+          "deployment_status": {
+            "before": "idle",
+            "after": "deployed"
+          }
+        },
+        "unchanged_fields": [
+          "authenticated",
+          "cluster_tier",
+          "target_region"
+        ],
+        "detail": "contract rejects the state but the sandbox applied the action"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "auth=y alloc=- quota=ramx2 region=us-central tier=premium status=idle",
+        "state_fields": {
+          "authenticated": true,
+          "allocated_resources": {},
+          "available_quota": {
+            "ram": 2
+          },
+          "target_region": "us-central",
+          "cluster_tier": "premium",
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "before_state": {
+          "authenticated": true,
+          "allocated_resources": {},
+          "available_quota": {
+            "ram": 2
+          },
+          "target_region": "us-central",
+          "cluster_tier": "premium",
+          "deployment_status": "idle",
+          "active_deployment": {}
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract admits the state but the sandbox refused: no resources allocated for deployment"
+      }
+    ],
+    "truncated": false,
+    "deepest_level": 20,
+    "state_count": 11712
+  },
+  "rounds": [
+    {
+      "round": 0,
+      "role": "initial",
+      "condition": "repair_free_pool",
+      "observed": {
+        "states_checked": 48,
+        "false_accepts": 0,
+        "false_rejects": 0,
+        "postcondition_violations": 0,
+        "d_obs": 0
+      },
+      "cumulative_states": 48,
+      "incumbent_sha256": "0742252c2143cb9970c3c4004063ebc9919270b26b5f2e4e094e1f6933831e7d",
+      "adopted": true
+    }
+  ],
+  "stopped_because": "observed_pool_clean",
+  "created_at": "2026-09-07T08:11:41.711115+00:00",
+  "serving": {
+    "model": "qwen2.5-14b-instruct",
+    "endpoint": "[endpoint-redacted]"
+  },
+  "hashes": {
+    "sandbox_config_sha256": "ba537bd3b8a6db88bb06323862b785dd37577e4d68a31f574fa81abbea3b7b25",
+    "decoding_sha256": "618648750566bc5f64b90a07c9f3bb93c4144edb62c373b5f0866563c226cd6d",
+    "budgets_sha256": "a226cbdc29a384e2524cd88ae62f8c02d60cef8c0e3140c1c81a5d96041126f2",
+    "protocol_sha256": "292489adb4b4c8e51c8693cf79c3bd384523e6e28432f9ec6e1a4928a88902dc"
+  },
+  "schema_version": 2,
+  "repair_core": {
+    "condition": "repair_free_pool",
+    "adoption_rule": "always_replace",
+    "patch_cap": 3,
+    "insert_node_cap": 7,
+    "loop_model_calls": 1,
+    "states_observed_loop": 48,
+    "patches_proposed": 0,
+    "patches_adopted": 0,
+    "patches_rejected": 0,
+    "total_edits": 0,
+    "initial_contract_sha256": "0742252c2143cb9970c3c4004063ebc9919270b26b5f2e4e094e1f6933831e7d",
+    "initial_contract_replayed": true,
+    "initial_generation_usage": {
+      "prompt_tokens": 1724,
+      "completion_tokens": 573,
+      "total_tokens": 2297
+    },
+    "last_candidate_sha256": null,
+    "guided_schema_per_call": [],
+    "witness_search": null
+  }
+}

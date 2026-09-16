@@ -1,0 +1,26 @@
+{
+  "description": "S5: many addresses, scarce stock (condition-variety axis).",
+  "seed": 20260901,
+  "items": [
+    "book",
+    "pen"
+  ],
+  "max_stock": 1,
+  "cart_capacity": 2,
+  "valid_payment_methods": [
+    "card",
+    "voucher"
+  ],
+  "rejected_payment_methods": [
+    "expired_card"
+  ],
+  "valid_addresses": [
+    "home",
+    "office",
+    "locker"
+  ],
+  "rejected_addresses": [
+    "po_box",
+    "overseas"
+  ]
+}

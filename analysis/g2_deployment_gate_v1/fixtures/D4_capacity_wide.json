@@ -1,0 +1,29 @@
+{
+  "description": "G2 D4: three resources, quota three, allocation limit four, and three valid regions/tiers.",
+  "domain": "deployment",
+  "fixture_id": "D4_capacity_wide",
+  "seed": 20260902,
+  "resource_types": [
+    "cpu",
+    "ram",
+    "ssd"
+  ],
+  "max_quota": 3,
+  "max_allocation_limit": 4,
+  "valid_regions": [
+    "us-central",
+    "europe-west",
+    "asia-east"
+  ],
+  "rejected_regions": [
+    "unsupported-edge"
+  ],
+  "valid_cluster_tiers": [
+    "standard",
+    "premium",
+    "enterprise"
+  ],
+  "rejected_cluster_tiers": [
+    "deprecated-v0"
+  ]
+}

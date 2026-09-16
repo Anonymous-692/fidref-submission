@@ -1,0 +1,38 @@
+{
+  "valid_orders": [
+    "#W1",
+    "#W2"
+  ],
+  "rejected_orders": [
+    "#W99"
+  ],
+  "valid_items": [
+    "shoe_black_9",
+    "shirt_blue_m"
+  ],
+  "rejected_items": [
+    "shoe_red_9"
+  ],
+  "valid_new_items": [
+    "shoe_black_10",
+    "shoe_red_9",
+    "shirt_blue_l"
+  ],
+  "rejected_new_items": [
+    "shoe_blue_9"
+  ],
+  "valid_payment_methods": [
+    "gift_card_0",
+    "credit_card_0"
+  ],
+  "rejected_payment_methods": [
+    "invalid_pm"
+  ],
+  "max_items": 1,
+  "max_new_items": 1,
+  "max_depth": 20,
+  "max_states": 5000,
+  "deliverable_orders": [
+    "#W2"
+  ]
+}

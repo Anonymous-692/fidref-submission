@@ -1,0 +1,21 @@
+{
+  "description": "Small configuration for the cloud service deployment sandbox.",
+  "seed": 20260902,
+  "resource_types": [
+    "cpu"
+  ],
+  "max_quota": 1,
+  "max_allocation_limit": 1,
+  "valid_regions": [
+    "us-central"
+  ],
+  "rejected_regions": [
+    "unsupported-edge"
+  ],
+  "valid_cluster_tiers": [
+    "standard"
+  ],
+  "rejected_cluster_tiers": [
+    "deprecated-v0"
+  ]
+}

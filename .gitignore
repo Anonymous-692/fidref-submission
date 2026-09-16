@@ -1,0 +1,30 @@
+# Local execution products
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.cache/
+outputs/
+*.log
+*.pid
+
+# Local credentials and infrastructure
+.env
+.env.*
+*.key
+*.pem
+*.credentials
+credentials.json
+
+# Internal documents, manuscripts and weights
+*.md
+paper/
+models/
+*.safetensors
+*.gguf
+*.pt
+*.pth
+
+# Archives are generated outside this repository
+*.zip
+*.tar.gz

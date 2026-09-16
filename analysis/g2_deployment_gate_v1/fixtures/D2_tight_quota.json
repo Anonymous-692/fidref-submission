@@ -1,0 +1,26 @@
+{
+  "description": "G2 D2: per-resource quota one with allocation limit three.",
+  "domain": "deployment",
+  "fixture_id": "D2_tight_quota",
+  "seed": 20260902,
+  "resource_types": [
+    "cpu",
+    "ram"
+  ],
+  "max_quota": 1,
+  "max_allocation_limit": 3,
+  "valid_regions": [
+    "us-central",
+    "europe-west"
+  ],
+  "rejected_regions": [
+    "unsupported-edge"
+  ],
+  "valid_cluster_tiers": [
+    "standard",
+    "premium"
+  ],
+  "rejected_cluster_tiers": [
+    "deprecated-v0"
+  ]
+}

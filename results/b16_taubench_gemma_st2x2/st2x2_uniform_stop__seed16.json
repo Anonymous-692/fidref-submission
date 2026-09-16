@@ -1,0 +1,293 @@
+{
+  "method": "st2x2_uniform_stop",
+  "model": "gemma-4-31b-it",
+  "endpoint": "[endpoint-redacted]",
+  "seed": 16,
+  "decoding": {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "max_tokens": 2048,
+    "seed": 16
+  },
+  "budgets": {
+    "state_budget": 48,
+    "query_budget": 4,
+    "token_budget": 16000
+  },
+  "sandbox": {
+    "domain": "taubench_retail",
+    "config_path": "experiment/configs/taubench_retail_default.json",
+    "config": {
+      "valid_orders": [
+        "#W1",
+        "#W2"
+      ],
+      "rejected_orders": [
+        "#W99"
+      ],
+      "valid_items": [
+        "shoe_black_9",
+        "shirt_blue_m"
+      ],
+      "rejected_items": [
+        "shoe_red_9"
+      ],
+      "valid_new_items": [
+        "shoe_black_10",
+        "shoe_red_9",
+        "shirt_blue_l"
+      ],
+      "rejected_new_items": [
+        "shoe_blue_9"
+      ],
+      "valid_payment_methods": [
+        "gift_card_0",
+        "credit_card_0"
+      ],
+      "rejected_payment_methods": [
+        "invalid_pm"
+      ],
+      "max_items": 1,
+      "max_new_items": 1,
+      "max_depth": 20,
+      "max_states": 5000
+    },
+    "max_depth": 20,
+    "max_states": 5000,
+    "enumeration": {
+      "states": 1294,
+      "transitions": 8116,
+      "truncated": false,
+      "max_depth": 20,
+      "max_states": 5000,
+      "deepest_level": 6
+    },
+    "evaluation_states": 1294,
+    "oracle_contract": "ground_truth.exchange_delivered_order_items"
+  },
+  "interactions": [],
+  "contract": {
+    "status": "parsed",
+    "source": "{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"authenticated\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"order_id\",\n          \"when\": \"before\"\n        },\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"item_ids\",\n          \"when\": \"before\"\n        },\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"new_item_ids\",\n          \"when\": \"before\"\n        },\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"payment_method_id\",\n          \"when\": \"before\"\n        },\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\n          \"var\": \"item_ids\",\n          \"when\": \"before\"\n        },\n        \"order\": {\n          \"var\": \"order_id\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\n          \"var\": \"item_ids\",\n          \"when\": \"before\"\n        },\n        \"new_items\": {\n          \"var\": \"new_item_ids\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\n          \"var\": \"new_item_ids\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\n          \"var\": \"payment_method_id\",\n          \"when\": \"before\"\n        },\n        \"balance\": {\n          \"var\": \"gift_card_balance\",\n          \"when\": \"before\"\n        },\n        \"items\": {\n          \"var\": \"item_ids\",\n          \"when\": \"before\"\n        },\n        \"new_items\": {\n          \"var\": \"new_item_ids\",\n          \"when\": \"before\"\n        }\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\n          \"var\": \"order_id\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\n          \"var\": \"item_ids\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\n          \"var\": \"new_item_ids\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\n          \"var\": \"payment_method_id\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\"\n        ]\n      }\n    ]\n  }\n}",
+    "spec": null,
+    "node_count": null,
+    "error": null,
+    "interaction_index": null
+  },
+  "usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "calls": 1
+  },
+  "latency": {
+    "total_s": 0,
+    "per_call_s": []
+  },
+  "spend": {
+    "model_calls": 1,
+    "states_observed": 0,
+    "oracle_feedback_queries": 0,
+    "sampled_feedback_queries": 0,
+    "sampled_states_checked": 0,
+    "remaining_calls": 3,
+    "remaining_tokens": 16000,
+    "remaining_states": 48,
+    "parse_failures": 0
+  },
+  "outcome": "inexact",
+  "evaluation": {
+    "metrics": {
+      "contract": "candidate_exchange_delivered_order_items",
+      "states_checked": 1294,
+      "successes": 14,
+      "failures": 86,
+      "false_accepts": 86,
+      "false_rejects": 0,
+      "postcondition_violations": 0,
+      "symptoms": [
+        "false_accept"
+      ],
+      "exact": false,
+      "sound": false,
+      "complete": true
+    },
+    "counterexamples": [
+      {
+        "symptom": "false_accept",
+        "state": "w1=delivered, w2=pending, gc_bal=15.00, draft_order=#W2, draft_items=[], draft_new_items=[], draft_pm=credit_card_0",
+        "state_fields": {
+          "order_id": "#W2",
+          "item_ids": [],
+          "new_item_ids": [],
+          "payment_method_id": "credit_card_0",
+          "order_w1_status": "delivered",
+          "order_w1_exchange_items": [],
+          "order_w1_exchange_new_items": [],
+          "order_w1_exchange_payment_method_id": null,
+          "order_w1_exchange_price_difference": null,
+          "order_w1_return_items": [],
+          "order_w2_status": "pending",
+          "order_w2_cancel_reason": null,
+          "gift_card_balance": 15.0,
+          "authenticated": true
+        },
+        "before_state": {
+          "order_id": "#W2",
+          "item_ids": [],
+          "new_item_ids": [],
+          "payment_method_id": "credit_card_0",
+          "order_w1_status": "delivered",
+          "order_w1_exchange_items": [],
+          "order_w1_exchange_new_items": [],
+          "order_w1_exchange_payment_method_id": null,
+          "order_w1_exchange_price_difference": null,
+          "order_w1_return_items": [],
+          "order_w2_status": "pending",
+          "order_w2_cancel_reason": null,
+          "gift_card_balance": 15.0,
+          "authenticated": true
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "w1=delivered, w2=pending, gc_bal=15.00, draft_order=#W2, draft_items=[], draft_new_items=[], draft_pm=gift_card_0",
+        "state_fields": {
+          "order_id": "#W2",
+          "item_ids": [],
+          "new_item_ids": [],
+          "payment_method_id": "gift_card_0",
+          "order_w1_status": "delivered",
+          "order_w1_exchange_items": [],
+          "order_w1_exchange_new_items": [],
+          "order_w1_exchange_payment_method_id": null,
+          "order_w1_exchange_price_difference": null,
+          "order_w1_return_items": [],
+          "order_w2_status": "pending",
+          "order_w2_cancel_reason": null,
+          "gift_card_balance": 15.0,
+          "authenticated": true
+        },
+        "before_state": {
+          "order_id": "#W2",
+          "item_ids": [],
+          "new_item_ids": [],
+          "payment_method_id": "gift_card_0",
+          "order_w1_status": "delivered",
+          "order_w1_exchange_items": [],
+          "order_w1_exchange_new_items": [],
+          "order_w1_exchange_payment_method_id": null,
+          "order_w1_exchange_price_difference": null,
+          "order_w1_return_items": [],
+          "order_w2_status": "pending",
+          "order_w2_cancel_reason": null,
+          "gift_card_balance": 15.0,
+          "authenticated": true
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "w1=delivered, w2=pending, gc_bal=15.00, draft_order=#W1, draft_items=['shirt_blue_m'], draft_new_items=[], draft_pm=credit_card_0",
+        "state_fields": {
+          "order_id": "#W1",
+          "item_ids": [
+            "shirt_blue_m"
+          ],
+          "new_item_ids": [],
+          "payment_method_id": "credit_card_0",
+          "order_w1_status": "delivered",
+          "order_w1_exchange_items": [],
+          "order_w1_exchange_new_items": [],
+          "order_w1_exchange_payment_method_id": null,
+          "order_w1_exchange_price_difference": null,
+          "order_w1_return_items": [],
+          "order_w2_status": "pending",
+          "order_w2_cancel_reason": null,
+          "gift_card_balance": 15.0,
+          "authenticated": true
+        },
+        "before_state": {
+          "order_id": "#W1",
+          "item_ids": [
+            "shirt_blue_m"
+          ],
+          "new_item_ids": [],
+          "payment_method_id": "credit_card_0",
+          "order_w1_status": "delivered",
+          "order_w1_exchange_items": [],
+          "order_w1_exchange_new_items": [],
+          "order_w1_exchange_payment_method_id": null,
+          "order_w1_exchange_price_difference": null,
+          "order_w1_return_items": [],
+          "order_w2_status": "pending",
+          "order_w2_cancel_reason": null,
+          "gift_card_balance": 15.0,
+          "authenticated": true
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract accepted the state but sandbox rejected with: Error: the number of items to be exchanged should match"
+      }
+    ],
+    "truncated": false,
+    "deepest_level": 6,
+    "state_count": 1294
+  },
+  "rounds": [
+    {
+      "round": 0,
+      "audit": 0,
+      "selection": "global_uniform",
+      "termination": "stop_on_satisfied_batch",
+      "fresh_states": 16,
+      "cumulative_states": 16,
+      "reachable_predicted_accepts": 100,
+      "report": {
+        "states_checked": 16,
+        "false_accepts": 0,
+        "false_rejects": 0,
+        "postcondition_violations": 0,
+        "counterexample_count": 0
+      }
+    }
+  ],
+  "stopped_because": "sampled_oracle_satisfied",
+  "created_at": "2026-09-06T03:52:30.759900+00:00",
+  "serving": {
+    "model": "gemma-4-31b-it",
+    "endpoint": "[endpoint-redacted]"
+  },
+  "hashes": {
+    "sandbox_config_sha256": "1c3fb534d789eb7548e286379ecbf3408b9d5e1353b5181a08c723ed1b321f52",
+    "decoding_sha256": "b4e9875f102b4f4250fc01e6bee55e225db5d33b81e882741478597fbd847e3d",
+    "budgets_sha256": "a226cbdc29a384e2524cd88ae62f8c02d60cef8c0e3140c1c81a5d96041126f2",
+    "protocol_sha256": "05583831a7a16558ed20428bf3c104651b9d8cefe7550fb5fff3456e3e68af1d"
+  },
+  "schema_version": 2,
+  "st2x2": {
+    "selection": "global_uniform",
+    "termination": "stop_on_satisfied_batch",
+    "batch_size": 16,
+    "loop_model_calls": 1,
+    "states_observed_loop": 16,
+    "initial_contract_sha256": "24ace8044ff26d1dc48d3083a8fca63887326dfc6632930ccb5290610058937d",
+    "initial_contract_replayed": true,
+    "initial_generation_usage": {
+      "prompt_tokens": 1857,
+      "completion_tokens": 898,
+      "total_tokens": 2755
+    }
+  }
+}

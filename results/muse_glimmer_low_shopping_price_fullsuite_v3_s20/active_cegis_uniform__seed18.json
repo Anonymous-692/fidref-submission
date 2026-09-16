@@ -1,0 +1,2864 @@
+{
+  "schema_version": 2,
+  "run": "active_cegis_uniform__seed18",
+  "created_at": "2026-09-08T23:01:41.429480+00:00",
+  "method": "active_cegis_uniform",
+  "model": "muse-glimmer-30b",
+  "endpoint": "[endpoint-redacted]",
+  "seed": 18,
+  "decoding": {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "max_tokens": 2048,
+    "seed": 18
+  },
+  "budgets": {
+    "state_budget": 48,
+    "query_budget": 4,
+    "token_budget": 16000
+  },
+  "sandbox": {
+    "domain": "shopping_price",
+    "config_path": "experiment/configs/shopping_price_easy_v4.json",
+    "config": {
+      "items": [
+        "book",
+        "gift"
+      ],
+      "item_prices": {
+        "book": 2400,
+        "gift": 2500
+      },
+      "opening_stock": {
+        "book": 2,
+        "gift": 1
+      },
+      "cart_capacity": 2,
+      "payment_methods": [
+        "card"
+      ],
+      "accepted_payment_methods": [
+        "card"
+      ],
+      "addresses": [
+        "home"
+      ],
+      "serviceable_addresses": [
+        "home"
+      ],
+      "coupon_codes": [
+        "save500"
+      ],
+      "accepted_coupon_codes": [
+        "save500"
+      ],
+      "coupon_min_subtotal": 500,
+      "coupon_discount": 500,
+      "coupon_excluded_items": [],
+      "free_shipping_threshold": 4000,
+      "shipping_fee": 600,
+      "remote_shipping_surcharge": 0,
+      "initial_wallet_balance": 10000,
+      "card_limit": 10000,
+      "terminal_after_order": true,
+      "allow_post_order_cart_add": true,
+      "clear_checkout_selections_after_order": true
+    },
+    "max_depth": 20,
+    "max_states": 15000,
+    "enumeration": {
+      "states": 288,
+      "transitions": 1048,
+      "truncated": false,
+      "max_depth": 20,
+      "max_states": 15000,
+      "deepest_level": 11
+    },
+    "evaluation_states": 288,
+    "oracle_contract": "ground_truth.place_order"
+  },
+  "serving": {
+    "model": "muse-glimmer-30b",
+    "endpoint": "[endpoint-redacted]",
+    "vllm_version": "0.28.0",
+    "structured_output_style": "response_format",
+    "max_model_len": 8192
+  },
+  "hashes": {
+    "sandbox_config_sha256": "4d4a39e660cbb87e3c28c53f9c9d11f442b39ece965724501994c31a803bf080",
+    "decoding_sha256": "c8d1c2ddcafaf091732a4e6c0f5f9dec1ce715131a9cba31d265dccd3398823a",
+    "budgets_sha256": "a226cbdc29a384e2524cd88ae62f8c02d60cef8c0e3140c1c81a5d96041126f2",
+    "protocol_sha256": "46696b730be6565d5680b373505f5083cd045145b94962083f09c3646c2a1758"
+  },
+  "interactions": [
+    {
+      "index": 0,
+      "role": "propose",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a formal verification engineer.\nWrite one declarative JSON contract for the `place_order` operation.\nOutput JSON only, without markdown or explanatory prose.\nAll monetary values are integer cents.\n\nState variables:\n- `card_limit` (number)\n- `cart` (multiset)\n- `cart_size` (number)\n- `cart_subtotal` (number)\n- `checkout_total` (number)\n- `coupon_code` (option)\n- `logged_in` (bool)\n- `order_items` (multiset)\n- `order_payment_method` (option)\n- `order_size` (number)\n- `order_status` (text)\n- `order_total` (number)\n- `payment_method` (option)\n- `shipping_address` (option)\n- `stock` (multiset)\n- `wallet_balance` (number)\n\nPublic configuration sets:\n- `addresses`\n- `coupon_codes`\n- `items`\n- `payment_methods`\n\nTerm literals:\n- {\"var\": \"<state var>\", \"when\": \"before\"|\"after\"} — a state variable. \"when\" defaults to \"before\" and may only be \"after\" in a postcondition.\n- {\"const\": true|1|\"text\"|null} — a literal boolean, integer, string, or null.\n- {\"multiset\": {\"<item>\": <count>, ...}} — a literal item multiset.\n\nTerm operators:\n- `count`: {\"op\": \"count\", \"of\": t, \"item\": \"<item>\"} — units of one item in a multiset.\n- `total`: {\"op\": \"total\", \"of\": t} — total units in a multiset.\n- `difference`: {\"op\": \"difference\", \"left\": t, \"right\": t} — the first multiset minus the second; has no value if any line would go negative.\n- `subtract`: {\"op\": \"subtract\", \"left\": t, \"right\": t} — numeric subtraction.\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item multiset has no units.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — a text/optional term is a member of a configured set; an unset value is never a member.\n- `covers`: {\"op\": \"covers\", \"available\": t, \"required\": t} — the first multiset holds at least every quantity of the second.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"<state var>\", ...]} — every listed variable has the same value before and after (postcondition only).\n\nRules:\n- The precondition may read only before-state variables.\n- The postcondition may compare before and after variables.\n- `unchanged` is valid only in the postcondition.\n- Use only the listed operators and state variables.\n- Return exactly one complete JSON object."
+        },
+        {
+          "role": "user",
+          "content": "Synthesize the exact applicability and effect contract for `place_order`.\nThe storefront is deterministic, but not every policy boundary is stated explicitly.\nCounterexamples, when supplied later, are observations from the storefront.\n\nAgent-visible configuration:\n- Items and unit prices: {'book': 2400, 'gift': 2500}\n- Cart capacity: 2\n- Selectable payment methods: ['card']\n- Selectable addresses: ['home']\n- Selectable coupon codes: ['save500']\n- Initial wallet balance: 10000\n- Card limit: 10000\n\nThe state exposes `cart_subtotal` and `checkout_total` as storefront-computed values.\nSelecting a payment method, address, or coupon does not prove that checkout will accept it.\nA successful order records payment, populates the order slot, and may update checkout-related state.\nInfer the exact conditions and frame/effect relations.\n\nNeutral JSON envelope:\n{\n  \"skill\": \"place_order\",\n  \"notes\": \"schema envelope only; not a candidate contract\",\n  \"precondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  },\n  \"postcondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  }\n}\n\nOutput only the complete JSON contract:"
+        }
+      ],
+      "prompt_sha256": "6be5ba4ea5ff59fafaabcf08c3fa26a47755c5c5c216c639f92edf4c24a8ed42",
+      "response_sha256": "3f7e9d91fa17155c89d321c4dbc0c897bf01202a9611f350a071e013d55fbc50",
+      "request": {
+        "model": "muse-glimmer-30b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a formal verification engineer.\nWrite one declarative JSON contract for the `place_order` operation.\nOutput JSON only, without markdown or explanatory prose.\nAll monetary values are integer cents.\n\nState variables:\n- `card_limit` (number)\n- `cart` (multiset)\n- `cart_size` (number)\n- `cart_subtotal` (number)\n- `checkout_total` (number)\n- `coupon_code` (option)\n- `logged_in` (bool)\n- `order_items` (multiset)\n- `order_payment_method` (option)\n- `order_size` (number)\n- `order_status` (text)\n- `order_total` (number)\n- `payment_method` (option)\n- `shipping_address` (option)\n- `stock` (multiset)\n- `wallet_balance` (number)\n\nPublic configuration sets:\n- `addresses`\n- `coupon_codes`\n- `items`\n- `payment_methods`\n\nTerm literals:\n- {\"var\": \"<state var>\", \"when\": \"before\"|\"after\"} — a state variable. \"when\" defaults to \"before\" and may only be \"after\" in a postcondition.\n- {\"const\": true|1|\"text\"|null} — a literal boolean, integer, string, or null.\n- {\"multiset\": {\"<item>\": <count>, ...}} — a literal item multiset.\n\nTerm operators:\n- `count`: {\"op\": \"count\", \"of\": t, \"item\": \"<item>\"} — units of one item in a multiset.\n- `total`: {\"op\": \"total\", \"of\": t} — total units in a multiset.\n- `difference`: {\"op\": \"difference\", \"left\": t, \"right\": t} — the first multiset minus the second; has no value if any line would go negative.\n- `subtract`: {\"op\": \"subtract\", \"left\": t, \"right\": t} — numeric subtraction.\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item multiset has no units.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — a text/optional term is a member of a configured set; an unset value is never a member.\n- `covers`: {\"op\": \"covers\", \"available\": t, \"required\": t} — the first multiset holds at least every quantity of the second.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"<state var>\", ...]} — every listed variable has the same value before and after (postcondition only).\n\nRules:\n- The precondition may read only before-state variables.\n- The postcondition may compare before and after variables.\n- `unchanged` is valid only in the postcondition.\n- Use only the listed operators and state variables.\n- Return exactly one complete JSON object."
+          },
+          {
+            "role": "user",
+            "content": "Synthesize the exact applicability and effect contract for `place_order`.\nThe storefront is deterministic, but not every policy boundary is stated explicitly.\nCounterexamples, when supplied later, are observations from the storefront.\n\nAgent-visible configuration:\n- Items and unit prices: {'book': 2400, 'gift': 2500}\n- Cart capacity: 2\n- Selectable payment methods: ['card']\n- Selectable addresses: ['home']\n- Selectable coupon codes: ['save500']\n- Initial wallet balance: 10000\n- Card limit: 10000\n\nThe state exposes `cart_subtotal` and `checkout_total` as storefront-computed values.\nSelecting a payment method, address, or coupon does not prove that checkout will accept it.\nA successful order records payment, populates the order slot, and may update checkout-related state.\nInfer the exact conditions and frame/effect relations.\n\nNeutral JSON envelope:\n{\n  \"skill\": \"place_order\",\n  \"notes\": \"schema envelope only; not a candidate contract\",\n  \"precondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  },\n  \"postcondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  }\n}\n\nOutput only the complete JSON contract:"
+          }
+        ],
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "max_tokens": 2048,
+        "stream": false,
+        "seed": 18,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "skill": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "precondition": {
+                  "$ref": "#/$defs/formula"
+                },
+                "postcondition": {
+                  "$ref": "#/$defs/formula"
+                }
+              },
+              "required": [
+                "precondition",
+                "postcondition"
+              ],
+              "additionalProperties": false,
+              "$defs": {
+                "formula": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "const"
+                        },
+                        "value": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "and"
+                        },
+                        "args": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/$defs/formula"
+                          }
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "args"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "or"
+                        },
+                        "args": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/$defs/formula"
+                          }
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "args"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "not"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/formula"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "is_true"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "is_null"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "is_empty"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "eq"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "ne"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "lt"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "le"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "gt"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "ge"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "in_set"
+                        },
+                        "value": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "set": {
+                          "type": "string",
+                          "enum": [
+                            "addresses",
+                            "coupon_codes",
+                            "items",
+                            "payment_methods"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "value",
+                        "set"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "covers"
+                        },
+                        "available": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "required": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "available",
+                        "required"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "unchanged"
+                        },
+                        "vars": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "card_limit",
+                              "cart",
+                              "cart_size",
+                              "cart_subtotal",
+                              "checkout_total",
+                              "coupon_code",
+                              "logged_in",
+                              "order_items",
+                              "order_payment_method",
+                              "order_size",
+                              "order_status",
+                              "order_total",
+                              "payment_method",
+                              "shipping_address",
+                              "stock",
+                              "wallet_balance"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "vars"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "term": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "var": {
+                          "type": "string",
+                          "enum": [
+                            "card_limit",
+                            "cart",
+                            "cart_size",
+                            "cart_subtotal",
+                            "checkout_total",
+                            "coupon_code",
+                            "logged_in",
+                            "order_items",
+                            "order_payment_method",
+                            "order_size",
+                            "order_status",
+                            "order_total",
+                            "payment_method",
+                            "shipping_address",
+                            "stock",
+                            "wallet_balance"
+                          ]
+                        },
+                        "when": {
+                          "type": "string",
+                          "enum": [
+                            "before",
+                            "after"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "var"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "const": {
+                          "anyOf": [
+                            {
+                              "type": "boolean"
+                            },
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "const"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "multiset": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "required": [
+                        "multiset"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "count"
+                        },
+                        "of": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "item": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "of",
+                        "item"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "total"
+                        },
+                        "of": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "of"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "difference"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "subtract"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            },
+            "strict": true
+          }
+        }
+      },
+      "response_text": "{\"skill\":\"place_order\",\"precondition\":{\"op\":\"and\",\"args\":[{\"op\":\"is_true\",\"arg\":{\"var\":\"logged_in\",\"when\":\"before\"}},{\"op\":\"not\",\"arg\":{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"gt\",\"arg\":{\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":0}}},{\"op\":\"le\",\"arg\":{\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":2}}},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"shipping_address\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"arg\":{\"value\":{\"var\":\"shipping_address\",\"when\":\"before\"},\"set\":\"addresses\"}},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"payment_method\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"arg\":{\"value\":{\"var\":\"payment_method\",\"when\":\"before\"},\"set\":\"payment_methods\"}},{\"op\":\"or\",\"args\":[{\"op\":\"is_null\",\"arg\":{\"var\":\"coupon_code\",\"when\":\"before\"}},{\"op\":\"in_set\",\"arg\":{\"value\":{\"var\":\"coupon_code\",\"when\":\"before\"},\"set\":\"coupon_codes\"}}]},{\"op\":\"covers\",\"arg\":{\"available\":{\"var\":\"stock\",\"when\":\"before\"},\"required\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"ge\",\"arg\":{\"left\":{\"var\":\"card_limit\",\"when\":\"before\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}}},{\"op\":\"gt\",\"arg\":{\"left\":{\"var\":\"checkout_total\",\"when\":\"before\"},\"right\":{\"const\":0}}}]},\"postcondition\":{\"op\":\"and\",\"args\":[{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_items\",\"when\":\"after\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_size\",\"when\":\"after\"},\"right\":{\"var\":\"cart_size\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_total\",\"when\":\"after\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_payment_method\",\"when\":\"after\"},\"right\":{\"var\":\"payment_method\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_status\",\"when\":\"after\"},\"right\":{\"const\":\"placed\"}}},{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"after\"}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"cart_size\",\"when\":\"after\"},\"right\":{\"const\":0}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"cart_subtotal\",\"when\":\"after\"},\"right\":{\"const\":0}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"stock\",\"when\":\"after\"},\"right\":{\"op\":\"difference\",\"left\":{\"var\":\"stock\",\"when\":\"before\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}}}},{\"op\":\"unchanged\",\"vars\":[\"wallet_balance\",\"card_limit\",\"coupon_code\",\"shipping_address\",\"payment_method\",\"logged_in\"]},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"checkout_total\",\"when\":\"after\"},\"right\":{\"const\":0}}}]}}",
+      "raw_response": {
+        "id": "chatcmpl-b437a9fd04f3deb7",
+        "object": "chat.completion",
+        "created": 1788908349,
+        "model": "muse-glimmer-30b",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"skill\":\"place_order\",\"precondition\":{\"op\":\"and\",\"args\":[{\"op\":\"is_true\",\"arg\":{\"var\":\"logged_in\",\"when\":\"before\"}},{\"op\":\"not\",\"arg\":{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"gt\",\"arg\":{\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":0}}},{\"op\":\"le\",\"arg\":{\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":2}}},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"shipping_address\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"arg\":{\"value\":{\"var\":\"shipping_address\",\"when\":\"before\"},\"set\":\"addresses\"}},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"payment_method\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"arg\":{\"value\":{\"var\":\"payment_method\",\"when\":\"before\"},\"set\":\"payment_methods\"}},{\"op\":\"or\",\"args\":[{\"op\":\"is_null\",\"arg\":{\"var\":\"coupon_code\",\"when\":\"before\"}},{\"op\":\"in_set\",\"arg\":{\"value\":{\"var\":\"coupon_code\",\"when\":\"before\"},\"set\":\"coupon_codes\"}}]},{\"op\":\"covers\",\"arg\":{\"available\":{\"var\":\"stock\",\"when\":\"before\"},\"required\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"ge\",\"arg\":{\"left\":{\"var\":\"card_limit\",\"when\":\"before\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}}},{\"op\":\"gt\",\"arg\":{\"left\":{\"var\":\"checkout_total\",\"when\":\"before\"},\"right\":{\"const\":0}}}]},\"postcondition\":{\"op\":\"and\",\"args\":[{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_items\",\"when\":\"after\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_size\",\"when\":\"after\"},\"right\":{\"var\":\"cart_size\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_total\",\"when\":\"after\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_payment_method\",\"when\":\"after\"},\"right\":{\"var\":\"payment_method\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_status\",\"when\":\"after\"},\"right\":{\"const\":\"placed\"}}},{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"after\"}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"cart_size\",\"when\":\"after\"},\"right\":{\"const\":0}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"cart_subtotal\",\"when\":\"after\"},\"right\":{\"const\":0}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"stock\",\"when\":\"after\"},\"right\":{\"op\":\"difference\",\"left\":{\"var\":\"stock\",\"when\":\"before\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}}}},{\"op\":\"unchanged\",\"vars\":[\"wallet_balance\",\"card_limit\",\"coupon_code\",\"shipping_address\",\"payment_method\",\"logged_in\"]},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"checkout_total\",\"when\":\"after\"},\"right\":{\"const\":0}}}]}}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": "Synthesize exact applicability and effect contract for place_order.\n\nWe need precondition and postcondition.\n\nFrom config: items book 2400 gift 2500. Cart capacity 2. payment methods ['card']. addresses ['home']. coupon codes ['save500']. wallet 10000, card limit 10000.\n\nState variables listed.\n\nWe need infer conditions. Likely need logged_in true, cart not empty, cart_size <= capacity? cart_size maybe <=2. shipping_address set and in addresses. payment_method set and in payment_methods. coupon_code maybe optional and in coupon_codes or null.\n\nAlso need stock covers cart? Probably stock sufficient.\n\nCheckout_total? Might need checkout_total >0? Also card limit >= checkout_total if payment card.\n\nEffect: order_items = cart before? order_size = cart_size before? order_total = checkout_total before? order_payment_method = payment_method before? order_status = ? maybe \"placed\". cart cleared? cart empty after, cart_size 0, cart_subtotal 0. stock decreased by cart. wallet_balance unchanged? payment via card so wallet unchanged. card_limit? maybe unchanged.\n\nAlso checkout_total maybe reset? Might be unchanged? Could be set to 0.\n\nWe need plausible contract.\n\nPrecondition: logged_in true, cart not empty, cart_size <=2? Actually capacity 2, so cart_size >0 and <=2. shipping_address not null and in_set addresses. payment_method not null and in_set payment_methods. coupon_code is null or in_set coupon_codes. stock covers cart. checkout_total >0? Also if payment_method = card then card_limit >= checkout_total.\n\nAlso maybe cart_subtotal matches sum? Assume storefront computed.\n\nPostcondition: order_items = cart before, order_size = cart_size before, order_total = checkout_total before, order_payment_method = payment_method before, order_status = \"placed\"? maybe \"confirmed\". cart empty after, cart_size 0, cart_subtotal 0. stock = difference stock before - cart before. wallet_balance unchanged. card_limit unchanged? Might decrease? Card limit is limit not used amount. Probably unchanged.\n\nAlso unchanged variables: coupon_code? maybe unchanged. shipping_address unchanged? payment_method unchanged? Might be unchanged.\n\nLet's craft JSON.\n\nPrecondition op and with and.\n\nSimplify: logged_in true, not is_empty cart, shipping_address in_set addresses, payment_method in_set payment_methods, covers stock cart, card_limit >= checkout_total (since payment card). Also coupon_code is_null or in_set.\n\nPostcondition: and of eqs and unchanged.\n\nLet's produce JSON.\n\n"
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": 200008,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.28.0-e15acfcc",
+        "usage": {
+          "prompt_tokens": 1207,
+          "total_tokens": 2373,
+          "completion_tokens": 1166,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "usage": {
+        "prompt_tokens": 1207,
+        "completion_tokens": 1166,
+        "total_tokens": 2373
+      },
+      "latency_s": 45.7366803791374,
+      "finish_reason": "stop",
+      "error": null,
+      "prompt_tokens": 1207,
+      "requested_max_tokens": 2048,
+      "effective_max_tokens": 2048,
+      "clamp_reason": "none",
+      "context_window": 8192,
+      "safety_margin": 256
+    },
+    {
+      "index": 1,
+      "role": "propose_parse_repair",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a formal verification engineer.\nWrite one declarative JSON contract for the `place_order` operation.\nOutput JSON only, without markdown or explanatory prose.\nAll monetary values are integer cents.\n\nState variables:\n- `card_limit` (number)\n- `cart` (multiset)\n- `cart_size` (number)\n- `cart_subtotal` (number)\n- `checkout_total` (number)\n- `coupon_code` (option)\n- `logged_in` (bool)\n- `order_items` (multiset)\n- `order_payment_method` (option)\n- `order_size` (number)\n- `order_status` (text)\n- `order_total` (number)\n- `payment_method` (option)\n- `shipping_address` (option)\n- `stock` (multiset)\n- `wallet_balance` (number)\n\nPublic configuration sets:\n- `addresses`\n- `coupon_codes`\n- `items`\n- `payment_methods`\n\nTerm literals:\n- {\"var\": \"<state var>\", \"when\": \"before\"|\"after\"} — a state variable. \"when\" defaults to \"before\" and may only be \"after\" in a postcondition.\n- {\"const\": true|1|\"text\"|null} — a literal boolean, integer, string, or null.\n- {\"multiset\": {\"<item>\": <count>, ...}} — a literal item multiset.\n\nTerm operators:\n- `count`: {\"op\": \"count\", \"of\": t, \"item\": \"<item>\"} — units of one item in a multiset.\n- `total`: {\"op\": \"total\", \"of\": t} — total units in a multiset.\n- `difference`: {\"op\": \"difference\", \"left\": t, \"right\": t} — the first multiset minus the second; has no value if any line would go negative.\n- `subtract`: {\"op\": \"subtract\", \"left\": t, \"right\": t} — numeric subtraction.\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item multiset has no units.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — a text/optional term is a member of a configured set; an unset value is never a member.\n- `covers`: {\"op\": \"covers\", \"available\": t, \"required\": t} — the first multiset holds at least every quantity of the second.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"<state var>\", ...]} — every listed variable has the same value before and after (postcondition only).\n\nRules:\n- The precondition may read only before-state variables.\n- The postcondition may compare before and after variables.\n- `unchanged` is valid only in the postcondition.\n- Use only the listed operators and state variables.\n- Return exactly one complete JSON object."
+        },
+        {
+          "role": "user",
+          "content": "The previous response was not a valid contract.\nParser error: precondition.args[2]: unknown keys ['arg']; allowed keys are ['left', 'op', 'right']\nPrevious response:\n{\"skill\":\"place_order\",\"precondition\":{\"op\":\"and\",\"args\":[{\"op\":\"is_true\",\"arg\":{\"var\":\"logged_in\",\"when\":\"before\"}},{\"op\":\"not\",\"arg\":{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"gt\",\"arg\":{\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":0}}},{\"op\":\"le\",\"arg\":{\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":2}}},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"shipping_address\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"arg\":{\"value\":{\"var\":\"shipping_address\",\"when\":\"before\"},\"set\":\"addresses\"}},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"payment_method\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"arg\":{\"value\":{\"var\":\"payment_method\",\"when\":\"before\"},\"set\":\"payment_methods\"}},{\"op\":\"or\",\"args\":[{\"op\":\"is_null\",\"arg\":{\"var\":\"coupon_code\",\"when\":\"before\"}},{\"op\":\"in_set\",\"arg\":{\"value\":{\"var\":\"coupon_code\",\"when\":\"before\"},\"set\":\"coupon_codes\"}}]},{\"op\":\"covers\",\"arg\":{\"available\":{\"var\":\"stock\",\"when\":\"before\"},\"required\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"ge\",\"arg\":{\"left\":{\"var\":\"card_limit\",\"when\":\"before\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}}},{\"op\":\"gt\",\"arg\":{\"left\":{\"var\":\"checkout_total\",\"when\":\"before\"},\"right\":{\"const\":0}}}]},\"postcondition\":{\"op\":\"and\",\"args\":[{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_items\",\"when\":\"after\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_size\",\"when\":\"after\"},\"right\":{\"var\":\"cart_size\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_total\",\"when\":\"after\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_payment_method\",\"when\":\"after\"},\"right\":{\"var\":\"payment_method\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_status\",\"when\":\"after\"},\"right\":{\"const\":\"placed\"}}},{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"after\"}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"cart_size\",\"when\":\"after\"},\"right\":{\"const\":0}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"cart_subtotal\",\"when\":\"after\"},\"right\":{\"const\":0}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"stock\",\"when\":\"after\"},\"right\":{\"op\":\"difference\",\"left\":{\"var\":\"stock\",\"when\":\"before\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}}}},{\"op\":\"unchanged\",\"vars\":[\"wallet_balance\",\"card_limit\",\"coupon_code\",\"shipping_address\",\"payment_method\",\"logged_in\"]},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"checkout_total\",\"when\":\"after\"},\"right\":{\"const\":0}}}]}}\nRepair only the JSON or DSL error and output the complete JSON contract:"
+        }
+      ],
+      "prompt_sha256": "7e947d39019dfdb523e20d258456f968649ed433cca0f9e976f7cc118a72f255",
+      "response_sha256": "0a309491355d620622fe4214ed50c542c10227e4508b17399d11106f9be8ff88",
+      "request": {
+        "model": "muse-glimmer-30b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a formal verification engineer.\nWrite one declarative JSON contract for the `place_order` operation.\nOutput JSON only, without markdown or explanatory prose.\nAll monetary values are integer cents.\n\nState variables:\n- `card_limit` (number)\n- `cart` (multiset)\n- `cart_size` (number)\n- `cart_subtotal` (number)\n- `checkout_total` (number)\n- `coupon_code` (option)\n- `logged_in` (bool)\n- `order_items` (multiset)\n- `order_payment_method` (option)\n- `order_size` (number)\n- `order_status` (text)\n- `order_total` (number)\n- `payment_method` (option)\n- `shipping_address` (option)\n- `stock` (multiset)\n- `wallet_balance` (number)\n\nPublic configuration sets:\n- `addresses`\n- `coupon_codes`\n- `items`\n- `payment_methods`\n\nTerm literals:\n- {\"var\": \"<state var>\", \"when\": \"before\"|\"after\"} — a state variable. \"when\" defaults to \"before\" and may only be \"after\" in a postcondition.\n- {\"const\": true|1|\"text\"|null} — a literal boolean, integer, string, or null.\n- {\"multiset\": {\"<item>\": <count>, ...}} — a literal item multiset.\n\nTerm operators:\n- `count`: {\"op\": \"count\", \"of\": t, \"item\": \"<item>\"} — units of one item in a multiset.\n- `total`: {\"op\": \"total\", \"of\": t} — total units in a multiset.\n- `difference`: {\"op\": \"difference\", \"left\": t, \"right\": t} — the first multiset minus the second; has no value if any line would go negative.\n- `subtract`: {\"op\": \"subtract\", \"left\": t, \"right\": t} — numeric subtraction.\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item multiset has no units.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — a text/optional term is a member of a configured set; an unset value is never a member.\n- `covers`: {\"op\": \"covers\", \"available\": t, \"required\": t} — the first multiset holds at least every quantity of the second.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"<state var>\", ...]} — every listed variable has the same value before and after (postcondition only).\n\nRules:\n- The precondition may read only before-state variables.\n- The postcondition may compare before and after variables.\n- `unchanged` is valid only in the postcondition.\n- Use only the listed operators and state variables.\n- Return exactly one complete JSON object."
+          },
+          {
+            "role": "user",
+            "content": "The previous response was not a valid contract.\nParser error: precondition.args[2]: unknown keys ['arg']; allowed keys are ['left', 'op', 'right']\nPrevious response:\n{\"skill\":\"place_order\",\"precondition\":{\"op\":\"and\",\"args\":[{\"op\":\"is_true\",\"arg\":{\"var\":\"logged_in\",\"when\":\"before\"}},{\"op\":\"not\",\"arg\":{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"gt\",\"arg\":{\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":0}}},{\"op\":\"le\",\"arg\":{\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":2}}},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"shipping_address\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"arg\":{\"value\":{\"var\":\"shipping_address\",\"when\":\"before\"},\"set\":\"addresses\"}},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"payment_method\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"arg\":{\"value\":{\"var\":\"payment_method\",\"when\":\"before\"},\"set\":\"payment_methods\"}},{\"op\":\"or\",\"args\":[{\"op\":\"is_null\",\"arg\":{\"var\":\"coupon_code\",\"when\":\"before\"}},{\"op\":\"in_set\",\"arg\":{\"value\":{\"var\":\"coupon_code\",\"when\":\"before\"},\"set\":\"coupon_codes\"}}]},{\"op\":\"covers\",\"arg\":{\"available\":{\"var\":\"stock\",\"when\":\"before\"},\"required\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"ge\",\"arg\":{\"left\":{\"var\":\"card_limit\",\"when\":\"before\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}}},{\"op\":\"gt\",\"arg\":{\"left\":{\"var\":\"checkout_total\",\"when\":\"before\"},\"right\":{\"const\":0}}}]},\"postcondition\":{\"op\":\"and\",\"args\":[{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_items\",\"when\":\"after\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_size\",\"when\":\"after\"},\"right\":{\"var\":\"cart_size\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_total\",\"when\":\"after\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_payment_method\",\"when\":\"after\"},\"right\":{\"var\":\"payment_method\",\"when\":\"before\"}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"order_status\",\"when\":\"after\"},\"right\":{\"const\":\"placed\"}}},{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"after\"}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"cart_size\",\"when\":\"after\"},\"right\":{\"const\":0}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"cart_subtotal\",\"when\":\"after\"},\"right\":{\"const\":0}}},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"stock\",\"when\":\"after\"},\"right\":{\"op\":\"difference\",\"left\":{\"var\":\"stock\",\"when\":\"before\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}}}},{\"op\":\"unchanged\",\"vars\":[\"wallet_balance\",\"card_limit\",\"coupon_code\",\"shipping_address\",\"payment_method\",\"logged_in\"]},{\"op\":\"eq\",\"arg\":{\"left\":{\"var\":\"checkout_total\",\"when\":\"after\"},\"right\":{\"const\":0}}}]}}\nRepair only the JSON or DSL error and output the complete JSON contract:"
+          }
+        ],
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "max_tokens": 2048,
+        "stream": false,
+        "seed": 18,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "skill": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "precondition": {
+                  "$ref": "#/$defs/formula"
+                },
+                "postcondition": {
+                  "$ref": "#/$defs/formula"
+                }
+              },
+              "required": [
+                "precondition",
+                "postcondition"
+              ],
+              "additionalProperties": false,
+              "$defs": {
+                "formula": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "const"
+                        },
+                        "value": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "and"
+                        },
+                        "args": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/$defs/formula"
+                          }
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "args"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "or"
+                        },
+                        "args": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/$defs/formula"
+                          }
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "args"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "not"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/formula"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "is_true"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "is_null"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "is_empty"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "eq"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "ne"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "lt"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "le"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "gt"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "ge"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "in_set"
+                        },
+                        "value": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "set": {
+                          "type": "string",
+                          "enum": [
+                            "addresses",
+                            "coupon_codes",
+                            "items",
+                            "payment_methods"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "value",
+                        "set"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "covers"
+                        },
+                        "available": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "required": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "available",
+                        "required"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "unchanged"
+                        },
+                        "vars": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "card_limit",
+                              "cart",
+                              "cart_size",
+                              "cart_subtotal",
+                              "checkout_total",
+                              "coupon_code",
+                              "logged_in",
+                              "order_items",
+                              "order_payment_method",
+                              "order_size",
+                              "order_status",
+                              "order_total",
+                              "payment_method",
+                              "shipping_address",
+                              "stock",
+                              "wallet_balance"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "vars"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "term": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "var": {
+                          "type": "string",
+                          "enum": [
+                            "card_limit",
+                            "cart",
+                            "cart_size",
+                            "cart_subtotal",
+                            "checkout_total",
+                            "coupon_code",
+                            "logged_in",
+                            "order_items",
+                            "order_payment_method",
+                            "order_size",
+                            "order_status",
+                            "order_total",
+                            "payment_method",
+                            "shipping_address",
+                            "stock",
+                            "wallet_balance"
+                          ]
+                        },
+                        "when": {
+                          "type": "string",
+                          "enum": [
+                            "before",
+                            "after"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "var"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "const": {
+                          "anyOf": [
+                            {
+                              "type": "boolean"
+                            },
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "const"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "multiset": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "required": [
+                        "multiset"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "count"
+                        },
+                        "of": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "item": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "of",
+                        "item"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "total"
+                        },
+                        "of": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "of"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "difference"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "subtract"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            },
+            "strict": true
+          }
+        }
+      },
+      "response_text": "{\"skill\":\"place_order\",\"precondition\":{\"op\":\"and\",\"args\":[{\"op\":\"is_true\",\"arg\":{\"var\":\"logged_in\",\"when\":\"before\"}},{\"op\":\"not\",\"arg\":{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"gt\",\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":0}},{\"op\":\"le\",\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":2}},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"shipping_address\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"value\":{\"var\":\"shipping_address\",\"when\":\"before\"},\"set\":\"addresses\"},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"payment_method\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"value\":{\"var\":\"payment_method\",\"when\":\"before\"},\"set\":\"payment_methods\"},{\"op\":\"or\",\"args\":[{\"op\":\"is_null\",\"arg\":{\"var\":\"coupon_code\",\"when\":\"before\"}},{\"op\":\"in_set\",\"value\":{\"var\":\"coupon_code\",\"when\":\"before\"},\"set\":\"coupon_codes\"}]},{\"op\":\"covers\",\"available\":{\"var\":\"stock\",\"when\":\"before\"},\"required\":{\"var\":\"cart\",\"when\":\"before\"}},{\"op\":\"ge\",\"left\":{\"var\":\"card_limit\",\"when\":\"before\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}},{\"op\":\"gt\",\"left\":{\"var\":\"checkout_total\",\"when\":\"before\"},\"right\":{\"const\":0}}]},\"postcondition\":{\"op\":\"and\",\"args\":[{\"op\":\"eq\",\"left\":{\"var\":\"order_items\",\"when\":\"after\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_size\",\"when\":\"after\"},\"right\":{\"var\":\"cart_size\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_total\",\"when\":\"after\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_payment_method\",\"when\":\"after\"},\"right\":{\"var\":\"payment_method\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_status\",\"when\":\"after\"},\"right\":{\"const\":\"placed\"}},{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"after\"}},{\"op\":\"eq\",\"left\":{\"var\":\"cart_size\",\"when\":\"after\"},\"right\":{\"const\":0}},{\"op\":\"eq\",\"left\":{\"var\":\"cart_subtotal\",\"when\":\"after\"},\"right\":{\"const\":0}},{\"op\":\"eq\",\"left\":{\"var\":\"stock\",\"when\":\"after\"},\"right\":{\"op\":\"difference\",\"left\":{\"var\":\"stock\",\"when\":\"before\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"unchanged\",\"vars\":[\"wallet_balance\",\"card_limit\",\"coupon_code\",\"shipping_address\",\"payment_method\",\"logged_in\"]},{\"op\":\"eq\",\"left\":{\"var\":\"checkout_total\",\"when\":\"after\"},\"right\":{\"const\":0}}]}}",
+      "raw_response": {
+        "id": "chatcmpl-8bb08eaacf94839c",
+        "object": "chat.completion",
+        "created": 1788908395,
+        "model": "muse-glimmer-30b",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"skill\":\"place_order\",\"precondition\":{\"op\":\"and\",\"args\":[{\"op\":\"is_true\",\"arg\":{\"var\":\"logged_in\",\"when\":\"before\"}},{\"op\":\"not\",\"arg\":{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"gt\",\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":0}},{\"op\":\"le\",\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":2}},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"shipping_address\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"value\":{\"var\":\"shipping_address\",\"when\":\"before\"},\"set\":\"addresses\"},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"payment_method\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"value\":{\"var\":\"payment_method\",\"when\":\"before\"},\"set\":\"payment_methods\"},{\"op\":\"or\",\"args\":[{\"op\":\"is_null\",\"arg\":{\"var\":\"coupon_code\",\"when\":\"before\"}},{\"op\":\"in_set\",\"value\":{\"var\":\"coupon_code\",\"when\":\"before\"},\"set\":\"coupon_codes\"}]},{\"op\":\"covers\",\"available\":{\"var\":\"stock\",\"when\":\"before\"},\"required\":{\"var\":\"cart\",\"when\":\"before\"}},{\"op\":\"ge\",\"left\":{\"var\":\"card_limit\",\"when\":\"before\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}},{\"op\":\"gt\",\"left\":{\"var\":\"checkout_total\",\"when\":\"before\"},\"right\":{\"const\":0}}]},\"postcondition\":{\"op\":\"and\",\"args\":[{\"op\":\"eq\",\"left\":{\"var\":\"order_items\",\"when\":\"after\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_size\",\"when\":\"after\"},\"right\":{\"var\":\"cart_size\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_total\",\"when\":\"after\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_payment_method\",\"when\":\"after\"},\"right\":{\"var\":\"payment_method\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_status\",\"when\":\"after\"},\"right\":{\"const\":\"placed\"}},{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"after\"}},{\"op\":\"eq\",\"left\":{\"var\":\"cart_size\",\"when\":\"after\"},\"right\":{\"const\":0}},{\"op\":\"eq\",\"left\":{\"var\":\"cart_subtotal\",\"when\":\"after\"},\"right\":{\"const\":0}},{\"op\":\"eq\",\"left\":{\"var\":\"stock\",\"when\":\"after\"},\"right\":{\"op\":\"difference\",\"left\":{\"var\":\"stock\",\"when\":\"before\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"unchanged\",\"vars\":[\"wallet_balance\",\"card_limit\",\"coupon_code\",\"shipping_address\",\"payment_method\",\"logged_in\"]},{\"op\":\"eq\",\"left\":{\"var\":\"checkout_total\",\"when\":\"after\"},\"right\":{\"const\":0}}]}}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": "The previous response was not a valid contract.\nParser error: precondition.args[2]: unknown keys ['arg']; allowed keys are ['left', 'op', 'right']\nPrevious response: ... \nRepair only JSON or DSL error and output complete JSON contract.\n\nWe need fix operators: gt, le, ge etc expect left/right not arg. Also is_true arg is okay? is_true arg is term. That's fine. not arg is formula. is_empty arg is term. is_null arg is term. in_set expects value/set not arg. covers expects available/required not arg.\n\nAlso precondition args[2] is gt with arg. Need left/right.\n\nAlso precondition args[3] le with arg.\n\nAlso ge arg.\n\nAlso gt arg.\n\nPostcondition eq arg etc.\n\nNeed correct schema.\n\nLet's rewrite contract with proper operators.\n\nPrecondition and args:\n1 is_true logged_in\n2 not is_empty cart\n3 gt left cart_size right const 0\n4 le left cart_size right const 2\n5 not is_null shipping_address\n6 in_set value shipping_address set addresses\n7 not is_null payment_method\n8 in_set value payment_method set payment_methods\n9 or args: is_null coupon_code ; in_set value coupon_code set coupon_codes\n10 covers available stock required cart\n11 ge left card_limit right checkout_total\n12 gt left checkout_total right const 0\n\nPostcondition and args:\neq left order_items after right cart before\neq left order_size after right cart_size before\neq left order_total after right checkout_total before\neq left order_payment_method after right payment_method before\neq left order_status after right const \"placed\"\nis_empty cart after\neq left cart_size after right const 0\neq left cart_subtotal after right const 0\neq left stock after right difference left stock before right cart before\nunchanged vars [...]\neq left checkout_total after right const 0\n\nAlso need ensure unchanged vars list correct.\n\nOutput JSON only.\n\n"
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": 200008,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.28.0-e15acfcc",
+        "usage": {
+          "prompt_tokens": 1629,
+          "total_tokens": 2636,
+          "completion_tokens": 1007,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "usage": {
+        "prompt_tokens": 1629,
+        "completion_tokens": 1007,
+        "total_tokens": 2636
+      },
+      "latency_s": 39.52783093880862,
+      "finish_reason": "stop",
+      "error": null,
+      "prompt_tokens": 1629,
+      "requested_max_tokens": 2048,
+      "effective_max_tokens": 2048,
+      "clamp_reason": "none",
+      "context_window": 8192,
+      "safety_margin": 256
+    },
+    {
+      "index": 2,
+      "role": "revise",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a formal verification engineer.\nWrite one declarative JSON contract for the `place_order` operation.\nOutput JSON only, without markdown or explanatory prose.\nAll monetary values are integer cents.\n\nState variables:\n- `card_limit` (number)\n- `cart` (multiset)\n- `cart_size` (number)\n- `cart_subtotal` (number)\n- `checkout_total` (number)\n- `coupon_code` (option)\n- `logged_in` (bool)\n- `order_items` (multiset)\n- `order_payment_method` (option)\n- `order_size` (number)\n- `order_status` (text)\n- `order_total` (number)\n- `payment_method` (option)\n- `shipping_address` (option)\n- `stock` (multiset)\n- `wallet_balance` (number)\n\nPublic configuration sets:\n- `addresses`\n- `coupon_codes`\n- `items`\n- `payment_methods`\n\nTerm literals:\n- {\"var\": \"<state var>\", \"when\": \"before\"|\"after\"} — a state variable. \"when\" defaults to \"before\" and may only be \"after\" in a postcondition.\n- {\"const\": true|1|\"text\"|null} — a literal boolean, integer, string, or null.\n- {\"multiset\": {\"<item>\": <count>, ...}} — a literal item multiset.\n\nTerm operators:\n- `count`: {\"op\": \"count\", \"of\": t, \"item\": \"<item>\"} — units of one item in a multiset.\n- `total`: {\"op\": \"total\", \"of\": t} — total units in a multiset.\n- `difference`: {\"op\": \"difference\", \"left\": t, \"right\": t} — the first multiset minus the second; has no value if any line would go negative.\n- `subtract`: {\"op\": \"subtract\", \"left\": t, \"right\": t} — numeric subtraction.\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item multiset has no units.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — a text/optional term is a member of a configured set; an unset value is never a member.\n- `covers`: {\"op\": \"covers\", \"available\": t, \"required\": t} — the first multiset holds at least every quantity of the second.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"<state var>\", ...]} — every listed variable has the same value before and after (postcondition only).\n\nRules:\n- The precondition may read only before-state variables.\n- The postcondition may compare before and after variables.\n- `unchanged` is valid only in the postcondition.\n- Use only the listed operators and state variables.\n- Return exactly one complete JSON object."
+        },
+        {
+          "role": "user",
+          "content": "Refine this valid `place_order` contract using the observed transition fields.\n\nPrevious contract:\n{\n  \"postcondition\": {\n    \"args\": [\n      {\n        \"left\": {\n          \"var\": \"order_items\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_size\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"cart_size\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_total\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_payment_method\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"payment_method\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        },\n        \"op\": \"is_empty\"\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_size\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_subtotal\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"stock\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"left\": {\n            \"var\": \"stock\",\n            \"when\": \"before\"\n          },\n          \"op\": \"difference\",\n          \"right\": {\n            \"var\": \"cart\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"wallet_balance\",\n          \"card_limit\",\n          \"coupon_code\",\n          \"shipping_address\",\n          \"payment_method\",\n          \"logged_in\"\n        ]\n      },\n      {\n        \"left\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": 0\n        }\n      }\n    ],\n    \"op\": \"and\"\n  },\n  \"precondition\": {\n    \"args\": [\n      {\n        \"arg\": {\n          \"var\": \"logged_in\",\n          \"when\": \"before\"\n        },\n        \"op\": \"is_true\"\n      },\n      {\n        \"arg\": {\n          \"arg\": {\n            \"var\": \"cart\",\n            \"when\": \"before\"\n          },\n          \"op\": \"is_empty\"\n        },\n        \"op\": \"not\"\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_size\",\n          \"when\": \"before\"\n        },\n        \"op\": \"gt\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_size\",\n          \"when\": \"before\"\n        },\n        \"op\": \"le\",\n        \"right\": {\n          \"const\": 2\n        }\n      },\n      {\n        \"arg\": {\n          \"arg\": {\n            \"var\": \"shipping_address\",\n            \"when\": \"before\"\n          },\n          \"op\": \"is_null\"\n        },\n        \"op\": \"not\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"set\": \"addresses\",\n        \"value\": {\n          \"var\": \"shipping_address\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"arg\": {\n          \"arg\": {\n            \"var\": \"payment_method\",\n            \"when\": \"before\"\n          },\n          \"op\": \"is_null\"\n        },\n        \"op\": \"not\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"set\": \"payment_methods\",\n        \"value\": {\n          \"var\": \"payment_method\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"args\": [\n          {\n            \"arg\": {\n              \"var\": \"coupon_code\",\n              \"when\": \"before\"\n            },\n            \"op\": \"is_null\"\n          },\n          {\n            \"op\": \"in_set\",\n            \"set\": \"coupon_codes\",\n            \"value\": {\n              \"var\": \"coupon_code\",\n              \"when\": \"before\"\n            }\n          }\n        ],\n        \"op\": \"or\"\n      },\n      {\n        \"available\": {\n          \"var\": \"stock\",\n          \"when\": \"before\"\n        },\n        \"op\": \"covers\",\n        \"required\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"card_limit\",\n          \"when\": \"before\"\n        },\n        \"op\": \"ge\",\n        \"right\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"before\"\n        },\n        \"op\": \"gt\",\n        \"right\": {\n          \"const\": 0\n        }\n      }\n    ],\n    \"op\": \"and\"\n  },\n  \"skill\": \"place_order\"\n}\n\nRevise the previous contract using the checker evidence below.\nFalse accepts: 1\nFalse rejects: 0\nPostcondition violations: 1\nStates checked: 16\n\nCounterexample 1 (false_accept):\n- Detail: contract accepted the state but sandbox rejected with: episode ended after order placement\n- Before: {\"card_limit\": 10000, \"cart\": {\"gift\": 1}, \"cart_subtotal\": 2500, \"checkout_total\": 3100, \"coupon_code\": null, \"logged_in\": true, \"order_items\": {\"book\": 1}, \"order_payment_method\": \"card\", \"order_status\": \"placed\", \"order_total\": 3000, \"payment_method\": \"card\", \"shipping_address\": \"home\", \"stock\": {\"book\": 1, \"gift\": 1}, \"wallet_balance\": 10000}\n- After: null (sandbox rejected the action)\n- Changed fields: {}\n- Unchanged fields: []\n\nCounterexample 2 (postcondition_violation):\n- Detail: observed after-state breaks the promised postcondition\n- Before: {\"card_limit\": 10000, \"cart\": {\"gift\": 1}, \"cart_subtotal\": 2500, \"checkout_total\": 3100, \"coupon_code\": null, \"logged_in\": true, \"order_items\": {}, \"order_payment_method\": null, \"order_status\": \"none\", \"order_total\": 0, \"payment_method\": \"card\", \"shipping_address\": \"home\", \"stock\": {\"book\": 2, \"gift\": 1}, \"wallet_balance\": 10000}\n- After: {\"card_limit\": 10000, \"cart\": {}, \"cart_subtotal\": 0, \"checkout_total\": 0, \"coupon_code\": null, \"logged_in\": true, \"order_items\": {\"gift\": 1}, \"order_payment_method\": \"card\", \"order_status\": \"placed\", \"order_total\": 3100, \"payment_method\": null, \"shipping_address\": null, \"stock\": {\"book\": 2}, \"wallet_balance\": 10000}\n- Changed fields: {\"cart\": {\"after\": {}, \"before\": {\"gift\": 1}}, \"cart_subtotal\": {\"after\": 0, \"before\": 2500}, \"checkout_total\": {\"after\": 0, \"before\": 3100}, \"order_items\": {\"after\": {\"gift\": 1}, \"before\": {}}, \"order_payment_method\": {\"after\": \"card\", \"before\": null}, \"order_status\": {\"after\": \"placed\", \"before\": \"none\"}, \"order_total\": {\"after\": 3100, \"before\": 0}, \"payment_method\": {\"after\": null, \"before\": \"card\"}, \"shipping_address\": {\"after\": null, \"before\": \"home\"}, \"stock\": {\"after\": {\"book\": 2}, \"before\": {\"book\": 2, \"gift\": 1}}}\n- Unchanged fields: [\"card_limit\", \"coupon_code\", \"logged_in\", \"wallet_balance\"]\n\nRevise every clause contradicted by the observed changed or unchanged fields.\nOutput only the complete revised JSON contract:"
+        }
+      ],
+      "prompt_sha256": "56be6894ee3e3fdb91a69b97c4f2eb540269c7e2ca04ac02bae77d086d40b7a1",
+      "response_sha256": "502231af83ad7c27fc6d07581dd761cc162ef749a841562af12df6a3e99de7d6",
+      "request": {
+        "model": "muse-glimmer-30b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a formal verification engineer.\nWrite one declarative JSON contract for the `place_order` operation.\nOutput JSON only, without markdown or explanatory prose.\nAll monetary values are integer cents.\n\nState variables:\n- `card_limit` (number)\n- `cart` (multiset)\n- `cart_size` (number)\n- `cart_subtotal` (number)\n- `checkout_total` (number)\n- `coupon_code` (option)\n- `logged_in` (bool)\n- `order_items` (multiset)\n- `order_payment_method` (option)\n- `order_size` (number)\n- `order_status` (text)\n- `order_total` (number)\n- `payment_method` (option)\n- `shipping_address` (option)\n- `stock` (multiset)\n- `wallet_balance` (number)\n\nPublic configuration sets:\n- `addresses`\n- `coupon_codes`\n- `items`\n- `payment_methods`\n\nTerm literals:\n- {\"var\": \"<state var>\", \"when\": \"before\"|\"after\"} — a state variable. \"when\" defaults to \"before\" and may only be \"after\" in a postcondition.\n- {\"const\": true|1|\"text\"|null} — a literal boolean, integer, string, or null.\n- {\"multiset\": {\"<item>\": <count>, ...}} — a literal item multiset.\n\nTerm operators:\n- `count`: {\"op\": \"count\", \"of\": t, \"item\": \"<item>\"} — units of one item in a multiset.\n- `total`: {\"op\": \"total\", \"of\": t} — total units in a multiset.\n- `difference`: {\"op\": \"difference\", \"left\": t, \"right\": t} — the first multiset minus the second; has no value if any line would go negative.\n- `subtract`: {\"op\": \"subtract\", \"left\": t, \"right\": t} — numeric subtraction.\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item multiset has no units.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — a text/optional term is a member of a configured set; an unset value is never a member.\n- `covers`: {\"op\": \"covers\", \"available\": t, \"required\": t} — the first multiset holds at least every quantity of the second.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"<state var>\", ...]} — every listed variable has the same value before and after (postcondition only).\n\nRules:\n- The precondition may read only before-state variables.\n- The postcondition may compare before and after variables.\n- `unchanged` is valid only in the postcondition.\n- Use only the listed operators and state variables.\n- Return exactly one complete JSON object."
+          },
+          {
+            "role": "user",
+            "content": "Refine this valid `place_order` contract using the observed transition fields.\n\nPrevious contract:\n{\n  \"postcondition\": {\n    \"args\": [\n      {\n        \"left\": {\n          \"var\": \"order_items\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_size\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"cart_size\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_total\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_payment_method\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"payment_method\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        },\n        \"op\": \"is_empty\"\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_size\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_subtotal\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"stock\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"left\": {\n            \"var\": \"stock\",\n            \"when\": \"before\"\n          },\n          \"op\": \"difference\",\n          \"right\": {\n            \"var\": \"cart\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"wallet_balance\",\n          \"card_limit\",\n          \"coupon_code\",\n          \"shipping_address\",\n          \"payment_method\",\n          \"logged_in\"\n        ]\n      },\n      {\n        \"left\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": 0\n        }\n      }\n    ],\n    \"op\": \"and\"\n  },\n  \"precondition\": {\n    \"args\": [\n      {\n        \"arg\": {\n          \"var\": \"logged_in\",\n          \"when\": \"before\"\n        },\n        \"op\": \"is_true\"\n      },\n      {\n        \"arg\": {\n          \"arg\": {\n            \"var\": \"cart\",\n            \"when\": \"before\"\n          },\n          \"op\": \"is_empty\"\n        },\n        \"op\": \"not\"\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_size\",\n          \"when\": \"before\"\n        },\n        \"op\": \"gt\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_size\",\n          \"when\": \"before\"\n        },\n        \"op\": \"le\",\n        \"right\": {\n          \"const\": 2\n        }\n      },\n      {\n        \"arg\": {\n          \"arg\": {\n            \"var\": \"shipping_address\",\n            \"when\": \"before\"\n          },\n          \"op\": \"is_null\"\n        },\n        \"op\": \"not\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"set\": \"addresses\",\n        \"value\": {\n          \"var\": \"shipping_address\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"arg\": {\n          \"arg\": {\n            \"var\": \"payment_method\",\n            \"when\": \"before\"\n          },\n          \"op\": \"is_null\"\n        },\n        \"op\": \"not\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"set\": \"payment_methods\",\n        \"value\": {\n          \"var\": \"payment_method\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"args\": [\n          {\n            \"arg\": {\n              \"var\": \"coupon_code\",\n              \"when\": \"before\"\n            },\n            \"op\": \"is_null\"\n          },\n          {\n            \"op\": \"in_set\",\n            \"set\": \"coupon_codes\",\n            \"value\": {\n              \"var\": \"coupon_code\",\n              \"when\": \"before\"\n            }\n          }\n        ],\n        \"op\": \"or\"\n      },\n      {\n        \"available\": {\n          \"var\": \"stock\",\n          \"when\": \"before\"\n        },\n        \"op\": \"covers\",\n        \"required\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"card_limit\",\n          \"when\": \"before\"\n        },\n        \"op\": \"ge\",\n        \"right\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"before\"\n        },\n        \"op\": \"gt\",\n        \"right\": {\n          \"const\": 0\n        }\n      }\n    ],\n    \"op\": \"and\"\n  },\n  \"skill\": \"place_order\"\n}\n\nRevise the previous contract using the checker evidence below.\nFalse accepts: 1\nFalse rejects: 0\nPostcondition violations: 1\nStates checked: 16\n\nCounterexample 1 (false_accept):\n- Detail: contract accepted the state but sandbox rejected with: episode ended after order placement\n- Before: {\"card_limit\": 10000, \"cart\": {\"gift\": 1}, \"cart_subtotal\": 2500, \"checkout_total\": 3100, \"coupon_code\": null, \"logged_in\": true, \"order_items\": {\"book\": 1}, \"order_payment_method\": \"card\", \"order_status\": \"placed\", \"order_total\": 3000, \"payment_method\": \"card\", \"shipping_address\": \"home\", \"stock\": {\"book\": 1, \"gift\": 1}, \"wallet_balance\": 10000}\n- After: null (sandbox rejected the action)\n- Changed fields: {}\n- Unchanged fields: []\n\nCounterexample 2 (postcondition_violation):\n- Detail: observed after-state breaks the promised postcondition\n- Before: {\"card_limit\": 10000, \"cart\": {\"gift\": 1}, \"cart_subtotal\": 2500, \"checkout_total\": 3100, \"coupon_code\": null, \"logged_in\": true, \"order_items\": {}, \"order_payment_method\": null, \"order_status\": \"none\", \"order_total\": 0, \"payment_method\": \"card\", \"shipping_address\": \"home\", \"stock\": {\"book\": 2, \"gift\": 1}, \"wallet_balance\": 10000}\n- After: {\"card_limit\": 10000, \"cart\": {}, \"cart_subtotal\": 0, \"checkout_total\": 0, \"coupon_code\": null, \"logged_in\": true, \"order_items\": {\"gift\": 1}, \"order_payment_method\": \"card\", \"order_status\": \"placed\", \"order_total\": 3100, \"payment_method\": null, \"shipping_address\": null, \"stock\": {\"book\": 2}, \"wallet_balance\": 10000}\n- Changed fields: {\"cart\": {\"after\": {}, \"before\": {\"gift\": 1}}, \"cart_subtotal\": {\"after\": 0, \"before\": 2500}, \"checkout_total\": {\"after\": 0, \"before\": 3100}, \"order_items\": {\"after\": {\"gift\": 1}, \"before\": {}}, \"order_payment_method\": {\"after\": \"card\", \"before\": null}, \"order_status\": {\"after\": \"placed\", \"before\": \"none\"}, \"order_total\": {\"after\": 3100, \"before\": 0}, \"payment_method\": {\"after\": null, \"before\": \"card\"}, \"shipping_address\": {\"after\": null, \"before\": \"home\"}, \"stock\": {\"after\": {\"book\": 2}, \"before\": {\"book\": 2, \"gift\": 1}}}\n- Unchanged fields: [\"card_limit\", \"coupon_code\", \"logged_in\", \"wallet_balance\"]\n\nRevise every clause contradicted by the observed changed or unchanged fields.\nOutput only the complete revised JSON contract:"
+          }
+        ],
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "max_tokens": 2048,
+        "stream": false,
+        "seed": 18,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "skill": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "precondition": {
+                  "$ref": "#/$defs/formula"
+                },
+                "postcondition": {
+                  "$ref": "#/$defs/formula"
+                }
+              },
+              "required": [
+                "precondition",
+                "postcondition"
+              ],
+              "additionalProperties": false,
+              "$defs": {
+                "formula": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "const"
+                        },
+                        "value": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "and"
+                        },
+                        "args": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/$defs/formula"
+                          }
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "args"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "or"
+                        },
+                        "args": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/$defs/formula"
+                          }
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "args"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "not"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/formula"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "is_true"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "is_null"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "is_empty"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "eq"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "ne"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "lt"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "le"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "gt"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "ge"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "in_set"
+                        },
+                        "value": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "set": {
+                          "type": "string",
+                          "enum": [
+                            "addresses",
+                            "coupon_codes",
+                            "items",
+                            "payment_methods"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "value",
+                        "set"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "covers"
+                        },
+                        "available": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "required": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "available",
+                        "required"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "unchanged"
+                        },
+                        "vars": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "card_limit",
+                              "cart",
+                              "cart_size",
+                              "cart_subtotal",
+                              "checkout_total",
+                              "coupon_code",
+                              "logged_in",
+                              "order_items",
+                              "order_payment_method",
+                              "order_size",
+                              "order_status",
+                              "order_total",
+                              "payment_method",
+                              "shipping_address",
+                              "stock",
+                              "wallet_balance"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "vars"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "term": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "var": {
+                          "type": "string",
+                          "enum": [
+                            "card_limit",
+                            "cart",
+                            "cart_size",
+                            "cart_subtotal",
+                            "checkout_total",
+                            "coupon_code",
+                            "logged_in",
+                            "order_items",
+                            "order_payment_method",
+                            "order_size",
+                            "order_status",
+                            "order_total",
+                            "payment_method",
+                            "shipping_address",
+                            "stock",
+                            "wallet_balance"
+                          ]
+                        },
+                        "when": {
+                          "type": "string",
+                          "enum": [
+                            "before",
+                            "after"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "var"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "const": {
+                          "anyOf": [
+                            {
+                              "type": "boolean"
+                            },
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "const"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "multiset": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "required": [
+                        "multiset"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "count"
+                        },
+                        "of": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "item": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "of",
+                        "item"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "total"
+                        },
+                        "of": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "of"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "difference"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "subtract"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            },
+            "strict": true
+          }
+        }
+      },
+      "response_text": "{\"postcondition\": {\"args\": [{\"left\": {\"var\": \"order_items\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"var\": \"cart\", \"when\": \"before\"}}, {\"left\": {\"var\": \"order_size\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"var\": \"cart_size\", \"when\": \"before\"}}, {\"left\": {\"var\": \"order_total\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"var\": \"checkout_total\", \"when\": \"before\"}}, {\"left\": {\"var\": \"order_payment_method\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"var\": \"payment_method\", \"when\": \"before\"}}, {\"left\": {\"var\": \"order_status\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"const\": \"placed\"}}, {\"arg\": {\"var\": \"cart\", \"when\": \"after\"}, \"op\": \"is_empty\"}, {\"left\": {\"var\": \"cart_size\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"const\": 0}}, {\"left\": {\"var\": \"cart_subtotal\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"const\": 0}}, {\"left\": {\"var\": \"stock\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"left\": {\"var\": \"stock\", \"when\": \"before\"}, \"op\": \"difference\", \"right\": {\"var\": \"cart\", \"when\": \"before\"}}}, {\"op\": \"unchanged\", \"vars\": [\"wallet_balance\", \"card_limit\", \"coupon_code\", \"logged_in\"]}, {\"left\": {\"var\": \"checkout_total\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"const\": 0}}], \"op\": \"and\"}, \"precondition\": {\"args\": [{\"arg\": {\"var\": \"logged_in\", \"when\": \"before\"}, \"op\": \"is_true\"}, {\"arg\": {\"arg\": {\"var\": \"cart\", \"when\": \"before\"}, \"op\": \"is_empty\"}, \"op\": \"not\"}, {\"left\": {\"var\": \"cart_size\", \"when\": \"before\"}, \"op\": \"gt\", \"right\": {\"const\": 0}}, {\"left\": {\"var\": \"cart_size\", \"when\": \"before\"}, \"op\": \"le\", \"right\": {\"const\": 2}}, {\"arg\": {\"arg\": {\"var\": \"shipping_address\", \"when\": \"before\"}, \"op\": \"is_null\"}, \"op\": \"not\"}, {\"op\": \"in_set\", \"set\": \"addresses\", \"value\": {\"var\": \"shipping_address\", \"when\": \"before\"}}, {\"arg\": {\"arg\": {\"var\": \"payment_method\", \"when\": \"before\"}, \"op\": \"is_null\"}, \"op\": \"not\"}, {\"op\": \"in_set\", \"set\": \"payment_methods\", \"value\": {\"var\": \"payment_method\", \"when\": \"before\"}}, {\"args\": [{\"arg\": {\"var\": \"coupon_code\", \"when\": \"before\"}, \"op\": \"is_null\"}, {\"op\": \"in_set\", \"set\": \"coupon_codes\", \"value\": {\"var\": \"coupon_code\", \"when\": \"before\"}}], \"op\": \"or\"}, {\"available\": {\"var\": \"stock\", \"when\": \"before\"}, \"op\": \"covers\", \"required\": {\"var\": \"cart\", \"when\": \"before\"}}, {\"left\": {\"var\": \"card_limit\", \"when\": \"before\"}, \"op\": \"ge\", \"right\": {\"var\": \"checkout_total\", \"when\": \"before\"}}, {\"left\": {\"var\": \"checkout_total\", \"when\": \"before\"}, \"op\": \"gt\", \"right\": {\"const\": 0}}, {\"left\": {\"var\": \"order_status\", \"when\": \"before\"}, \"op\": \"ne\", \"right\": {\"const\": \"placed\"}}, {\"arg\": {\"var\": \"order_items\", \"when\": \"before\"}, \"op\": \"is_empty\"}], \"op\": \"and\"}, \"skill\": \"place_order\"}",
+      "raw_response": {
+        "id": "chatcmpl-b72a625769ed1fc2",
+        "object": "chat.completion",
+        "created": 1788908435,
+        "model": "muse-glimmer-30b",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"postcondition\": {\"args\": [{\"left\": {\"var\": \"order_items\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"var\": \"cart\", \"when\": \"before\"}}, {\"left\": {\"var\": \"order_size\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"var\": \"cart_size\", \"when\": \"before\"}}, {\"left\": {\"var\": \"order_total\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"var\": \"checkout_total\", \"when\": \"before\"}}, {\"left\": {\"var\": \"order_payment_method\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"var\": \"payment_method\", \"when\": \"before\"}}, {\"left\": {\"var\": \"order_status\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"const\": \"placed\"}}, {\"arg\": {\"var\": \"cart\", \"when\": \"after\"}, \"op\": \"is_empty\"}, {\"left\": {\"var\": \"cart_size\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"const\": 0}}, {\"left\": {\"var\": \"cart_subtotal\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"const\": 0}}, {\"left\": {\"var\": \"stock\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"left\": {\"var\": \"stock\", \"when\": \"before\"}, \"op\": \"difference\", \"right\": {\"var\": \"cart\", \"when\": \"before\"}}}, {\"op\": \"unchanged\", \"vars\": [\"wallet_balance\", \"card_limit\", \"coupon_code\", \"logged_in\"]}, {\"left\": {\"var\": \"checkout_total\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"const\": 0}}], \"op\": \"and\"}, \"precondition\": {\"args\": [{\"arg\": {\"var\": \"logged_in\", \"when\": \"before\"}, \"op\": \"is_true\"}, {\"arg\": {\"arg\": {\"var\": \"cart\", \"when\": \"before\"}, \"op\": \"is_empty\"}, \"op\": \"not\"}, {\"left\": {\"var\": \"cart_size\", \"when\": \"before\"}, \"op\": \"gt\", \"right\": {\"const\": 0}}, {\"left\": {\"var\": \"cart_size\", \"when\": \"before\"}, \"op\": \"le\", \"right\": {\"const\": 2}}, {\"arg\": {\"arg\": {\"var\": \"shipping_address\", \"when\": \"before\"}, \"op\": \"is_null\"}, \"op\": \"not\"}, {\"op\": \"in_set\", \"set\": \"addresses\", \"value\": {\"var\": \"shipping_address\", \"when\": \"before\"}}, {\"arg\": {\"arg\": {\"var\": \"payment_method\", \"when\": \"before\"}, \"op\": \"is_null\"}, \"op\": \"not\"}, {\"op\": \"in_set\", \"set\": \"payment_methods\", \"value\": {\"var\": \"payment_method\", \"when\": \"before\"}}, {\"args\": [{\"arg\": {\"var\": \"coupon_code\", \"when\": \"before\"}, \"op\": \"is_null\"}, {\"op\": \"in_set\", \"set\": \"coupon_codes\", \"value\": {\"var\": \"coupon_code\", \"when\": \"before\"}}], \"op\": \"or\"}, {\"available\": {\"var\": \"stock\", \"when\": \"before\"}, \"op\": \"covers\", \"required\": {\"var\": \"cart\", \"when\": \"before\"}}, {\"left\": {\"var\": \"card_limit\", \"when\": \"before\"}, \"op\": \"ge\", \"right\": {\"var\": \"checkout_total\", \"when\": \"before\"}}, {\"left\": {\"var\": \"checkout_total\", \"when\": \"before\"}, \"op\": \"gt\", \"right\": {\"const\": 0}}, {\"left\": {\"var\": \"order_status\", \"when\": \"before\"}, \"op\": \"ne\", \"right\": {\"const\": \"placed\"}}, {\"arg\": {\"var\": \"order_items\", \"when\": \"before\"}, \"op\": \"is_empty\"}], \"op\": \"and\"}, \"skill\": \"place_order\"}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": "Refine contract using evidence.\n\nFalse accept: episode ended after order placement. Before state has order_items already placed? order_status placed, order_items book 1, order_total 3000. Cart has gift 1. So precondition should prevent placing when order already placed? Or episode ended means cannot place if order already exists? The before state has order_status placed. So need precondition that order_status is not placed? Or order_items empty? Probably need order not already placed. Also maybe need order_items empty before? Let's see counterexample 2 postcondition violation: after state shows payment_method changed to null, shipping_address changed to null. Previous contract had unchanged for payment_method and shipping_address. So need to allow them to be cleared. Also unchanged list included them, so remove.\n\nAlso postcondition had order_payment_method eq payment_method before. In counterexample2, order_payment_method after = card, payment_method before = card, ok. But payment_method after is null, so unchanged clause violated. So remove unchanged for payment_method and shipping_address.\n\nAlso unchanged for card_limit, coupon_code, logged_in, wallet_balance remains? In counterexample2 unchanged fields include card_limit, coupon_code, logged_in, wallet_balance. So keep those unchanged.\n\nAlso postcondition had cart empty etc ok.\n\nAlso stock after = before minus cart? Before stock book2 gift1, cart gift1 => after book2. matches.\n\nAlso order_total after = checkout_total before? 3100 =3100 yes.\n\nBut also need precondition to reject false accept. False accept before state has order_status placed, order_items book1, order_total 3000. So maybe need precondition that order_status is not placed, or order_items empty, or order_total =0. Also maybe need cart items are in items set? Not.\n\nAlso episode ended after order placement suggests cannot place if order already placed. So add precondition: order_status != \"placed\"? Or order_items empty? Let's check before state: order_items {\"book\":1} not empty. So require order_items empty before? Could be.\n\nAlso need precondition that payment_method not null? Already.\n\nAlso need to ensure payment_method and shipping_address are cleared after? In counterexample2, after payment_method null, shipping_address null. So postcondition should reflect that they become null? Or unchanged removed. Might need to assert they become null? Changed fields show they become null. Could be they are reset. Let's assume postcondition should allow them to change, not require unchanged. Maybe they should be set to null after. The changed fields show they become null. Could be requirement. Safer to just remove unchanged clause for those two, not assert specific value.\n\nAlso precondition maybe need order_status not placed. Let's add precondition: order_status != \"placed\"? Use ne with const \"placed\". Also maybe order_items empty? Let's add order_items is_empty before.\n\nAlso false accept had cart gift1, stock has gift1, so covers ok. card_limit >= checkout_total? 10000 >=3100 yes. So passes.\n\nAdd precondition: order_status != placed. Also maybe order_total =0? Could be.\n\nLet's add precondition args: order_status ne const \"placed\". Also order_items is_empty.\n\nAlso need to adjust unchanged vars list to remove payment_method and shipping_address.\n\nAlso postcondition unchanged vars now: wallet_balance, card_limit, coupon_code, logged_in.\n\nAlso maybe need to ensure payment_method after is null? Evidence shows after null. Might be expected. Could add postcondition eq null. But not required? Might be safe to assert they become null? The contract revision says revise every clause contradicted. Unchanged clause contradicted. Could keep unspecified.\n\nI'll remove unchanged for payment_method and shipping_address. Keep others.\n\nAlso maybe need to allow payment_method to be cleared, so remove unchanged.\n\nOutput revised JSON."
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": 200008,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.28.0-e15acfcc",
+        "usage": {
+          "prompt_tokens": 2862,
+          "total_tokens": 4540,
+          "completion_tokens": 1678,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "usage": {
+        "prompt_tokens": 2862,
+        "completion_tokens": 1678,
+        "total_tokens": 4540
+      },
+      "latency_s": 66.24390745256096,
+      "finish_reason": "stop",
+      "error": null,
+      "prompt_tokens": 2862,
+      "requested_max_tokens": 2048,
+      "effective_max_tokens": 2048,
+      "clamp_reason": "none",
+      "context_window": 8192,
+      "safety_margin": 256
+    }
+  ],
+  "rounds": [
+    {
+      "round": 0,
+      "audit": 0,
+      "role": "propose",
+      "adaptation": "active_cegis_uniform",
+      "evidence_policy": "unpartitioned_uniform",
+      "contract_status": "parsed",
+      "fresh_states": 16,
+      "reachable_predicted_accepts": 22,
+      "cumulative_states": 16,
+      "report": {
+        "contract": "model.place_order",
+        "states_checked": 16,
+        "successes": 1,
+        "failures": 2,
+        "false_accepts": 1,
+        "false_rejects": 0,
+        "postcondition_violations": 1,
+        "symptoms": [
+          "false_accept",
+          "postcondition_violation"
+        ],
+        "exact": false,
+        "primary_defect": "too_weak_precondition",
+        "counterexamples": [
+          {
+            "symptom": "false_accept",
+            "state": {
+              "logged_in": true,
+              "cart": {
+                "gift": 1
+              },
+              "stock": {
+                "book": 1,
+                "gift": 1
+              },
+              "payment_method": "card",
+              "shipping_address": "home",
+              "coupon_code": null,
+              "wallet_balance": 10000,
+              "card_limit": 10000,
+              "cart_subtotal": 2500,
+              "checkout_total": 3100,
+              "order_status": "placed",
+              "order_items": {
+                "book": 1
+              },
+              "order_total": 3000,
+              "order_payment_method": "card"
+            },
+            "before_state": {
+              "logged_in": true,
+              "cart": {
+                "gift": 1
+              },
+              "stock": {
+                "book": 1,
+                "gift": 1
+              },
+              "payment_method": "card",
+              "shipping_address": "home",
+              "coupon_code": null,
+              "wallet_balance": 10000,
+              "card_limit": 10000,
+              "cart_subtotal": 2500,
+              "checkout_total": 3100,
+              "order_status": "placed",
+              "order_items": {
+                "book": 1
+              },
+              "order_total": 3000,
+              "order_payment_method": "card"
+            },
+            "after_state": null,
+            "action_succeeded": false,
+            "changed_fields": {},
+            "unchanged_fields": [],
+            "detail": "contract accepted the state but sandbox rejected with: episode ended after order placement"
+          },
+          {
+            "symptom": "postcondition_violation",
+            "state": {
+              "logged_in": true,
+              "cart": {
+                "gift": 1
+              },
+              "stock": {
+                "book": 2,
+                "gift": 1
+              },
+              "payment_method": "card",
+              "shipping_address": "home",
+              "coupon_code": null,
+              "wallet_balance": 10000,
+              "card_limit": 10000,
+              "cart_subtotal": 2500,
+              "checkout_total": 3100,
+              "order_status": "none",
+              "order_items": {},
+              "order_total": 0,
+              "order_payment_method": null
+            },
+            "before_state": {
+              "logged_in": true,
+              "cart": {
+                "gift": 1
+              },
+              "stock": {
+                "book": 2,
+                "gift": 1
+              },
+              "payment_method": "card",
+              "shipping_address": "home",
+              "coupon_code": null,
+              "wallet_balance": 10000,
+              "card_limit": 10000,
+              "cart_subtotal": 2500,
+              "checkout_total": 3100,
+              "order_status": "none",
+              "order_items": {},
+              "order_total": 0,
+              "order_payment_method": null
+            },
+            "after_state": {
+              "logged_in": true,
+              "cart": {},
+              "stock": {
+                "book": 2
+              },
+              "payment_method": null,
+              "shipping_address": null,
+              "coupon_code": null,
+              "wallet_balance": 10000,
+              "card_limit": 10000,
+              "cart_subtotal": 0,
+              "checkout_total": 0,
+              "order_status": "placed",
+              "order_items": {
+                "gift": 1
+              },
+              "order_total": 3100,
+              "order_payment_method": "card"
+            },
+            "action_succeeded": true,
+            "changed_fields": {
+              "cart": {
+                "before": {
+                  "gift": 1
+                },
+                "after": {}
+              },
+              "cart_subtotal": {
+                "before": 2500,
+                "after": 0
+              },
+              "checkout_total": {
+                "before": 3100,
+                "after": 0
+              },
+              "order_items": {
+                "before": {},
+                "after": {
+                  "gift": 1
+                }
+              },
+              "order_payment_method": {
+                "before": null,
+                "after": "card"
+              },
+              "order_status": {
+                "before": "none",
+                "after": "placed"
+              },
+              "order_total": {
+                "before": 0,
+                "after": 3100
+              },
+              "payment_method": {
+                "before": "card",
+                "after": null
+              },
+              "shipping_address": {
+                "before": "home",
+                "after": null
+              },
+              "stock": {
+                "before": {
+                  "book": 2,
+                  "gift": 1
+                },
+                "after": {
+                  "book": 2
+                }
+              }
+            },
+            "unchanged_fields": [
+              "card_limit",
+              "coupon_code",
+              "logged_in",
+              "wallet_balance"
+            ],
+            "detail": "observed after-state breaks the promised postcondition"
+          }
+        ]
+      }
+    },
+    {
+      "round": 1,
+      "audit": 1,
+      "role": "revise",
+      "adaptation": "active_cegis_uniform",
+      "evidence_policy": "unpartitioned_uniform",
+      "contract_status": "parsed",
+      "fresh_states": 16,
+      "reachable_predicted_accepts": 8,
+      "cumulative_states": 32,
+      "report": {
+        "contract": "model.place_order",
+        "states_checked": 32,
+        "successes": 2,
+        "failures": 0,
+        "false_accepts": 0,
+        "false_rejects": 0,
+        "postcondition_violations": 0,
+        "symptoms": [],
+        "exact": true,
+        "primary_defect": "none",
+        "counterexamples": []
+      }
+    }
+  ],
+  "contract": {
+    "status": "parsed",
+    "source": "{\n  \"postcondition\": {\n    \"args\": [\n      {\n        \"left\": {\n          \"var\": \"order_items\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_size\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"cart_size\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_total\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_payment_method\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"payment_method\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        },\n        \"op\": \"is_empty\"\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_size\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_subtotal\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"stock\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"left\": {\n            \"var\": \"stock\",\n            \"when\": \"before\"\n          },\n          \"op\": \"difference\",\n          \"right\": {\n            \"var\": \"cart\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"wallet_balance\",\n          \"card_limit\",\n          \"coupon_code\",\n          \"logged_in\"\n        ]\n      },\n      {\n        \"left\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": 0\n        }\n      }\n    ],\n    \"op\": \"and\"\n  },\n  \"precondition\": {\n    \"args\": [\n      {\n        \"arg\": {\n          \"var\": \"logged_in\",\n          \"when\": \"before\"\n        },\n        \"op\": \"is_true\"\n      },\n      {\n        \"arg\": {\n          \"arg\": {\n            \"var\": \"cart\",\n            \"when\": \"before\"\n          },\n          \"op\": \"is_empty\"\n        },\n        \"op\": \"not\"\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_size\",\n          \"when\": \"before\"\n        },\n        \"op\": \"gt\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_size\",\n          \"when\": \"before\"\n        },\n        \"op\": \"le\",\n        \"right\": {\n          \"const\": 2\n        }\n      },\n      {\n        \"arg\": {\n          \"arg\": {\n            \"var\": \"shipping_address\",\n            \"when\": \"before\"\n          },\n          \"op\": \"is_null\"\n        },\n        \"op\": \"not\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"set\": \"addresses\",\n        \"value\": {\n          \"var\": \"shipping_address\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"arg\": {\n          \"arg\": {\n            \"var\": \"payment_method\",\n            \"when\": \"before\"\n          },\n          \"op\": \"is_null\"\n        },\n        \"op\": \"not\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"set\": \"payment_methods\",\n        \"value\": {\n          \"var\": \"payment_method\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"args\": [\n          {\n            \"arg\": {\n              \"var\": \"coupon_code\",\n              \"when\": \"before\"\n            },\n            \"op\": \"is_null\"\n          },\n          {\n            \"op\": \"in_set\",\n            \"set\": \"coupon_codes\",\n            \"value\": {\n              \"var\": \"coupon_code\",\n              \"when\": \"before\"\n            }\n          }\n        ],\n        \"op\": \"or\"\n      },\n      {\n        \"available\": {\n          \"var\": \"stock\",\n          \"when\": \"before\"\n        },\n        \"op\": \"covers\",\n        \"required\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"card_limit\",\n          \"when\": \"before\"\n        },\n        \"op\": \"ge\",\n        \"right\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"before\"\n        },\n        \"op\": \"gt\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"before\"\n        },\n        \"op\": \"ne\",\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"arg\": {\n          \"var\": \"order_items\",\n          \"when\": \"before\"\n        },\n        \"op\": \"is_empty\"\n      }\n    ],\n    \"op\": \"and\"\n  },\n  \"skill\": \"place_order\"\n}",
+    "spec": {
+      "postcondition": {
+        "args": [
+          {
+            "left": {
+              "var": "order_items",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "var": "cart",
+              "when": "before"
+            }
+          },
+          {
+            "left": {
+              "var": "order_size",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "var": "cart_size",
+              "when": "before"
+            }
+          },
+          {
+            "left": {
+              "var": "order_total",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "var": "checkout_total",
+              "when": "before"
+            }
+          },
+          {
+            "left": {
+              "var": "order_payment_method",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "var": "payment_method",
+              "when": "before"
+            }
+          },
+          {
+            "left": {
+              "var": "order_status",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "const": "placed"
+            }
+          },
+          {
+            "arg": {
+              "var": "cart",
+              "when": "after"
+            },
+            "op": "is_empty"
+          },
+          {
+            "left": {
+              "var": "cart_size",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "const": 0
+            }
+          },
+          {
+            "left": {
+              "var": "cart_subtotal",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "const": 0
+            }
+          },
+          {
+            "left": {
+              "var": "stock",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "left": {
+                "var": "stock",
+                "when": "before"
+              },
+              "op": "difference",
+              "right": {
+                "var": "cart",
+                "when": "before"
+              }
+            }
+          },
+          {
+            "op": "unchanged",
+            "vars": [
+              "wallet_balance",
+              "card_limit",
+              "coupon_code",
+              "logged_in"
+            ]
+          },
+          {
+            "left": {
+              "var": "checkout_total",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "const": 0
+            }
+          }
+        ],
+        "op": "and"
+      },
+      "precondition": {
+        "args": [
+          {
+            "arg": {
+              "var": "logged_in",
+              "when": "before"
+            },
+            "op": "is_true"
+          },
+          {
+            "arg": {
+              "arg": {
+                "var": "cart",
+                "when": "before"
+              },
+              "op": "is_empty"
+            },
+            "op": "not"
+          },
+          {
+            "left": {
+              "var": "cart_size",
+              "when": "before"
+            },
+            "op": "gt",
+            "right": {
+              "const": 0
+            }
+          },
+          {
+            "left": {
+              "var": "cart_size",
+              "when": "before"
+            },
+            "op": "le",
+            "right": {
+              "const": 2
+            }
+          },
+          {
+            "arg": {
+              "arg": {
+                "var": "shipping_address",
+                "when": "before"
+              },
+              "op": "is_null"
+            },
+            "op": "not"
+          },
+          {
+            "op": "in_set",
+            "set": "addresses",
+            "value": {
+              "var": "shipping_address",
+              "when": "before"
+            }
+          },
+          {
+            "arg": {
+              "arg": {
+                "var": "payment_method",
+                "when": "before"
+              },
+              "op": "is_null"
+            },
+            "op": "not"
+          },
+          {
+            "op": "in_set",
+            "set": "payment_methods",
+            "value": {
+              "var": "payment_method",
+              "when": "before"
+            }
+          },
+          {
+            "args": [
+              {
+                "arg": {
+                  "var": "coupon_code",
+                  "when": "before"
+                },
+                "op": "is_null"
+              },
+              {
+                "op": "in_set",
+                "set": "coupon_codes",
+                "value": {
+                  "var": "coupon_code",
+                  "when": "before"
+                }
+              }
+            ],
+            "op": "or"
+          },
+          {
+            "available": {
+              "var": "stock",
+              "when": "before"
+            },
+            "op": "covers",
+            "required": {
+              "var": "cart",
+              "when": "before"
+            }
+          },
+          {
+            "left": {
+              "var": "card_limit",
+              "when": "before"
+            },
+            "op": "ge",
+            "right": {
+              "var": "checkout_total",
+              "when": "before"
+            }
+          },
+          {
+            "left": {
+              "var": "checkout_total",
+              "when": "before"
+            },
+            "op": "gt",
+            "right": {
+              "const": 0
+            }
+          },
+          {
+            "left": {
+              "var": "order_status",
+              "when": "before"
+            },
+            "op": "ne",
+            "right": {
+              "const": "placed"
+            }
+          },
+          {
+            "arg": {
+              "var": "order_items",
+              "when": "before"
+            },
+            "op": "is_empty"
+          }
+        ],
+        "op": "and"
+      },
+      "skill": "place_order"
+    },
+    "node_count": 74,
+    "error": null,
+    "interaction_index": 2
+  },
+  "usage": {
+    "prompt_tokens": 5698,
+    "completion_tokens": 3851,
+    "total_tokens": 9549,
+    "calls": 3
+  },
+  "latency": {
+    "total_s": 151.50841877050698,
+    "per_call_s": [
+      45.7366803791374,
+      39.52783093880862,
+      66.24390745256096
+    ]
+  },
+  "spend": {
+    "model_calls": 3,
+    "states_observed": 32,
+    "oracle_feedback_queries": 0,
+    "sampled_feedback_queries": 2,
+    "sampled_states_checked": 48,
+    "remaining_calls": 1,
+    "remaining_tokens": 6451,
+    "remaining_states": 16,
+    "parse_failures": 1
+  },
+  "evaluation": {
+    "metrics": {
+      "contract": "model.place_order",
+      "states_checked": 288,
+      "successes": 8,
+      "failures": 4,
+      "false_accepts": 0,
+      "false_rejects": 0,
+      "postcondition_violations": 4,
+      "symptoms": [
+        "postcondition_violation"
+      ],
+      "exact": false,
+      "sound": false,
+      "complete": true
+    },
+    "counterexamples": [
+      {
+        "symptom": "postcondition_violation",
+        "state": "login=y cart=bookx1 stock=bookx2,giftx1 pay=card addr=home coupon=save500 subtotal=2400 checkout=2500 wallet=10000 limit=10000 order=none total=0",
+        "state_fields": {
+          "logged_in": true,
+          "cart": {
+            "book": 1
+          },
+          "stock": {
+            "book": 2,
+            "gift": 1
+          },
+          "payment_method": "card",
+          "shipping_address": "home",
+          "coupon_code": "save500",
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 2400,
+          "checkout_total": 2500,
+          "order_status": "none",
+          "order_items": {},
+          "order_total": 0,
+          "order_payment_method": null
+        },
+        "before_state": {
+          "logged_in": true,
+          "cart": {
+            "book": 1
+          },
+          "stock": {
+            "book": 2,
+            "gift": 1
+          },
+          "payment_method": "card",
+          "shipping_address": "home",
+          "coupon_code": "save500",
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 2400,
+          "checkout_total": 2500,
+          "order_status": "none",
+          "order_items": {},
+          "order_total": 0,
+          "order_payment_method": null
+        },
+        "after_state": {
+          "logged_in": true,
+          "cart": {},
+          "stock": {
+            "book": 1,
+            "gift": 1
+          },
+          "payment_method": null,
+          "shipping_address": null,
+          "coupon_code": null,
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 0,
+          "checkout_total": 0,
+          "order_status": "placed",
+          "order_items": {
+            "book": 1
+          },
+          "order_total": 2500,
+          "order_payment_method": "card"
+        },
+        "action_succeeded": true,
+        "changed_fields": {
+          "cart": {
+            "before": {
+              "book": 1
+            },
+            "after": {}
+          },
+          "cart_subtotal": {
+            "before": 2400,
+            "after": 0
+          },
+          "checkout_total": {
+            "before": 2500,
+            "after": 0
+          },
+          "coupon_code": {
+            "before": "save500",
+            "after": null
+          },
+          "order_items": {
+            "before": {},
+            "after": {
+              "book": 1
+            }
+          },
+          "order_payment_method": {
+            "before": null,
+            "after": "card"
+          },
+          "order_status": {
+            "before": "none",
+            "after": "placed"
+          },
+          "order_total": {
+            "before": 0,
+            "after": 2500
+          },
+          "payment_method": {
+            "before": "card",
+            "after": null
+          },
+          "shipping_address": {
+            "before": "home",
+            "after": null
+          },
+          "stock": {
+            "before": {
+              "book": 2,
+              "gift": 1
+            },
+            "after": {
+              "book": 1,
+              "gift": 1
+            }
+          }
+        },
+        "unchanged_fields": [
+          "card_limit",
+          "logged_in",
+          "wallet_balance"
+        ],
+        "detail": "observed after-state breaks the promised postcondition"
+      },
+      {
+        "symptom": "postcondition_violation",
+        "state": "login=y cart=giftx1 stock=bookx2,giftx1 pay=card addr=home coupon=save500 subtotal=2500 checkout=2600 wallet=10000 limit=10000 order=none total=0",
+        "state_fields": {
+          "logged_in": true,
+          "cart": {
+            "gift": 1
+          },
+          "stock": {
+            "book": 2,
+            "gift": 1
+          },
+          "payment_method": "card",
+          "shipping_address": "home",
+          "coupon_code": "save500",
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 2500,
+          "checkout_total": 2600,
+          "order_status": "none",
+          "order_items": {},
+          "order_total": 0,
+          "order_payment_method": null
+        },
+        "before_state": {
+          "logged_in": true,
+          "cart": {
+            "gift": 1
+          },
+          "stock": {
+            "book": 2,
+            "gift": 1
+          },
+          "payment_method": "card",
+          "shipping_address": "home",
+          "coupon_code": "save500",
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 2500,
+          "checkout_total": 2600,
+          "order_status": "none",
+          "order_items": {},
+          "order_total": 0,
+          "order_payment_method": null
+        },
+        "after_state": {
+          "logged_in": true,
+          "cart": {},
+          "stock": {
+            "book": 2
+          },
+          "payment_method": null,
+          "shipping_address": null,
+          "coupon_code": null,
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 0,
+          "checkout_total": 0,
+          "order_status": "placed",
+          "order_items": {
+            "gift": 1
+          },
+          "order_total": 2600,
+          "order_payment_method": "card"
+        },
+        "action_succeeded": true,
+        "changed_fields": {
+          "cart": {
+            "before": {
+              "gift": 1
+            },
+            "after": {}
+          },
+          "cart_subtotal": {
+            "before": 2500,
+            "after": 0
+          },
+          "checkout_total": {
+            "before": 2600,
+            "after": 0
+          },
+          "coupon_code": {
+            "before": "save500",
+            "after": null
+          },
+          "order_items": {
+            "before": {},
+            "after": {
+              "gift": 1
+            }
+          },
+          "order_payment_method": {
+            "before": null,
+            "after": "card"
+          },
+          "order_status": {
+            "before": "none",
+            "after": "placed"
+          },
+          "order_total": {
+            "before": 0,
+            "after": 2600
+          },
+          "payment_method": {
+            "before": "card",
+            "after": null
+          },
+          "shipping_address": {
+            "before": "home",
+            "after": null
+          },
+          "stock": {
+            "before": {
+              "book": 2,
+              "gift": 1
+            },
+            "after": {
+              "book": 2
+            }
+          }
+        },
+        "unchanged_fields": [
+          "card_limit",
+          "logged_in",
+          "wallet_balance"
+        ],
+        "detail": "observed after-state breaks the promised postcondition"
+      },
+      {
+        "symptom": "postcondition_violation",
+        "state": "login=y cart=bookx2 stock=bookx2,giftx1 pay=card addr=home coupon=save500 subtotal=4800 checkout=4300 wallet=10000 limit=10000 order=none total=0",
+        "state_fields": {
+          "logged_in": true,
+          "cart": {
+            "book": 2
+          },
+          "stock": {
+            "book": 2,
+            "gift": 1
+          },
+          "payment_method": "card",
+          "shipping_address": "home",
+          "coupon_code": "save500",
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 4800,
+          "checkout_total": 4300,
+          "order_status": "none",
+          "order_items": {},
+          "order_total": 0,
+          "order_payment_method": null
+        },
+        "before_state": {
+          "logged_in": true,
+          "cart": {
+            "book": 2
+          },
+          "stock": {
+            "book": 2,
+            "gift": 1
+          },
+          "payment_method": "card",
+          "shipping_address": "home",
+          "coupon_code": "save500",
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 4800,
+          "checkout_total": 4300,
+          "order_status": "none",
+          "order_items": {},
+          "order_total": 0,
+          "order_payment_method": null
+        },
+        "after_state": {
+          "logged_in": true,
+          "cart": {},
+          "stock": {
+            "gift": 1
+          },
+          "payment_method": null,
+          "shipping_address": null,
+          "coupon_code": null,
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 0,
+          "checkout_total": 0,
+          "order_status": "placed",
+          "order_items": {
+            "book": 2
+          },
+          "order_total": 4300,
+          "order_payment_method": "card"
+        },
+        "action_succeeded": true,
+        "changed_fields": {
+          "cart": {
+            "before": {
+              "book": 2
+            },
+            "after": {}
+          },
+          "cart_subtotal": {
+            "before": 4800,
+            "after": 0
+          },
+          "checkout_total": {
+            "before": 4300,
+            "after": 0
+          },
+          "coupon_code": {
+            "before": "save500",
+            "after": null
+          },
+          "order_items": {
+            "before": {},
+            "after": {
+              "book": 2
+            }
+          },
+          "order_payment_method": {
+            "before": null,
+            "after": "card"
+          },
+          "order_status": {
+            "before": "none",
+            "after": "placed"
+          },
+          "order_total": {
+            "before": 0,
+            "after": 4300
+          },
+          "payment_method": {
+            "before": "card",
+            "after": null
+          },
+          "shipping_address": {
+            "before": "home",
+            "after": null
+          },
+          "stock": {
+            "before": {
+              "book": 2,
+              "gift": 1
+            },
+            "after": {
+              "gift": 1
+            }
+          }
+        },
+        "unchanged_fields": [
+          "card_limit",
+          "logged_in",
+          "wallet_balance"
+        ],
+        "detail": "observed after-state breaks the promised postcondition"
+      }
+    ],
+    "exact": false,
+    "truncated": false,
+    "deepest_level": 11,
+    "state_count": 288
+  },
+  "outcome": "inexact",
+  "stopped_because": "sampled_oracle_satisfied"
+}

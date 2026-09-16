@@ -1,0 +1,678 @@
+{
+  "schema_version": 1,
+  "run": "random_probe__seed15",
+  "created_at": "2026-09-01T07:38:24.168640+00:00",
+  "method": "random_probe",
+  "model": "qwen2.5-32b-instruct",
+  "endpoint": "[endpoint-redacted]",
+  "seed": 15,
+  "decoding": {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "max_tokens": 1024,
+    "seed": 15
+  },
+  "budgets": {
+    "state_budget": 24,
+    "query_budget": 4,
+    "token_budget": 16000
+  },
+  "sandbox": {
+    "config_path": "experiment/configs/default.json",
+    "config": {
+      "seed": 20260901,
+      "items": [
+        "book",
+        "pen"
+      ],
+      "max_stock": 2,
+      "cart_capacity": 2,
+      "valid_payment_methods": [
+        "card",
+        "voucher"
+      ],
+      "rejected_payment_methods": [
+        "expired_card"
+      ],
+      "valid_addresses": [
+        "home"
+      ],
+      "rejected_addresses": [
+        "po_box"
+      ]
+    },
+    "max_depth": 20,
+    "max_states": 6000,
+    "enumeration": {
+      "states": 4752,
+      "transitions": 47470,
+      "truncated": false,
+      "max_depth": 20,
+      "max_states": 6000,
+      "deepest_level": 17
+    },
+    "evaluation_states": 4752,
+    "oracle_contract": "ground_truth.place_order"
+  },
+  "serving": {
+    "model": "qwen2.5-32b-instruct",
+    "endpoint": "[endpoint-redacted]",
+    "vllm_version": "0.8.5.post1",
+    "max_model_len": 8192,
+    "tensor_parallel_size": 4,
+    "dtype": "half",
+    "gpu_ids": "0,1,2,3",
+    "profile": "experiment/serving/profiles/v100-4x32b.env",
+    "max_num_seqs": 8,
+    "max_num_batched_tokens": 8192,
+    "swap_space_gib": 4
+  },
+  "hashes": {
+    "sandbox_config_sha256": "bd4d1c15682916b4814e4bb5b6ab8a4263a61cf84625f0e61f4f8c08dbe4feb9",
+    "decoding_sha256": "5edf41664e166d3aa60b520c831b1060aed2c5fe0e65fbb225c99c07ef4bf5cf",
+    "budgets_sha256": "fa643ea5135deb2fb7af2c96c008213bbc8e1f3320886ebb8e2a9d76d61ab0da"
+  },
+  "interactions": [
+    {
+      "index": 0,
+      "role": "propose",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You specify the behaviour of one skill in a small storefront simulator.\nYou answer with a single JSON object in the contract DSL described below,\nand with nothing else.\n\nA contract is a JSON object with these keys:\n  \"skill\"          the skill being specified; must be \"place_order\".\n  \"precondition\"   a formula over the state BEFORE the action.\n  \"postcondition\"  a formula over the states BEFORE and AFTER the action.\n  \"name\", \"notes\"  optional free text (ignored by the scorer).\n\nTerms (values):\n  {\"var\": \"<state var>\", \"when\": \"before\"|\"after\"} — a state variable. \"when\" defaults to \"before\" and may only be \"after\" in a postcondition.\n  {\"const\": true|1|\"text\"|null} — a literal boolean, integer, string, or null.\n  {\"multiset\": {\"<item>\": <count>, ...}} — a literal item multiset.\n  {\"op\": \"count\", \"of\": t, \"item\": \"<item>\"} — units of one item in a multiset.\n  {\"op\": \"total\", \"of\": t} — total units in a multiset.\n  {\"op\": \"difference\", \"left\": t, \"right\": t} — the first multiset minus the second; has no value if any line would go negative.\n\nFormulas (truth values):\n  {\"op\": \"const\", \"value\": true} — a literal truth value.\n  {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n  {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n  {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n  {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n  {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n  {\"op\": \"is_empty\", \"arg\": t} — an item multiset has no units.\n  {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n  {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n  {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n  {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n  {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n  {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n  {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — a text/optional term is a member of a configured set; an unset value is never a member.\n  {\"op\": \"covers\", \"available\": t, \"required\": t} — the first multiset holds at least every quantity of the second.\n  {\"op\": \"unchanged\", \"vars\": [\"<state var>\", ...]} — every listed variable has the same value before and after (postcondition only).\n\nState variables and their kinds:\n  cart (multiset), cart_size (number), logged_in (bool), order_items (multiset), order_size (number), order_status (text), payment_method (option), shipping_address (option), stock (multiset)\n  order_status is one of: none, placed, confirmed, cancelled\n\nConfigured sets usable with in_set:\n  address_options, items, payment_options, rejected_addresses, rejected_payment_methods, valid_addresses, valid_payment_methods\n\nRules:\n  - Output the JSON object only. No prose, no code fences, no Python.\n  - Use only the operators listed above; anything else is rejected.\n  - A precondition may not read \"after\" variables, and only a postcondition may use unchanged.\n  - At most 200 nodes and 12 levels of nesting.\n\nShape of a well-formed answer:\n{\n  \"skill\": \"place_order\",\n  \"notes\": \"Example only — the clauses below are illustrative, not correct.\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"logged_in\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_empty\",\n          \"arg\": {\n            \"var\": \"cart\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"payment_method\"\n        },\n        \"set\": \"valid_payment_methods\"\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"logged_in\"\n        ]\n      }\n    ]\n  }\n}"
+        },
+        {
+          "role": "user",
+          "content": "Sandbox description (agent-facing):\n  items: ['book', 'pen']\n  cart capacity: 2 units in total\n  opening stock per item: at most 2 units\n  selectable payment methods: ['card', 'expired_card', 'voucher']\n    of these, the store accepts: ['card', 'voucher']\n  selectable addresses: ['home', 'po_box']\n    of these, the store ships to: ['home']\n\nThe shopper can log in and out, add or remove cart items, clear the cart,\nset or clear a payment method, set or clear a shipping address, and place,\nconfirm, cancel, or clear a single order. Selecting a payment method or an\naddress always succeeds, even for options the store does not accept.\n\nThere is one order slot per shopper, so order_status tracks that slot and\norder_items holds what is in it.\n\nYou probed 24 randomly chosen reachable states by attempting place_order in each. 0 were accepted. The transcript below is the whole of your evidence; the states were sampled at random, so they need not cover every case.\n\n[0] before: login=n cart=penx2 stock=bookx2 pay=- addr=home order=placed\n     place_order -> REFUSED (not logged in)\n[1] before: login=n cart=bookx1 stock=- pay=card addr=- order=placed\n     place_order -> REFUSED (not logged in)\n[2] before: login=y cart=bookx2 stock=penx1 pay=expired_card addr=home order=confirmed\n     place_order -> REFUSED (an order is already confirmed)\n[3] before: login=n cart=bookx1,penx1 stock=bookx2 pay=card addr=- order=cancelled\n     place_order -> REFUSED (not logged in)\n[4] before: login=n cart=penx2 stock=bookx1 pay=voucher addr=home order=cancelled\n     place_order -> REFUSED (not logged in)\n[5] before: login=y cart=penx2 stock=- pay=- addr=po_box order=placed\n     place_order -> REFUSED (an order is already placed)\n[6] before: login=y cart=penx2 stock=bookx1 pay=voucher addr=home order=confirmed\n     place_order -> REFUSED (an order is already confirmed)\n[7] before: login=n cart=bookx2 stock=- pay=expired_card addr=- order=placed\n     place_order -> REFUSED (not logged in)\n[8] before: login=n cart=bookx1 stock=bookx2,penx1 pay=voucher addr=- order=none\n     place_order -> REFUSED (not logged in)\n[9] before: login=y cart=bookx1,penx1 stock=bookx1,penx1 pay=card addr=- order=placed\n     place_order -> REFUSED (an order is already placed)\n[10] before: login=y cart=penx1 stock=bookx2 pay=voucher addr=- order=cancelled\n     place_order -> REFUSED (an order is already cancelled)\n[11] before: login=y cart=penx1 stock=penx1 pay=expired_card addr=home order=cancelled\n     place_order -> REFUSED (an order is already cancelled)\n[12] before: login=n cart=- stock=penx1 pay=- addr=- order=none\n     place_order -> REFUSED (not logged in)\n[13] before: login=n cart=- stock=- pay=card addr=home order=confirmed\n     place_order -> REFUSED (not logged in)\n[14] before: login=n cart=penx1 stock=- pay=- addr=- order=confirmed\n     place_order -> REFUSED (not logged in)\n[15] before: login=n cart=bookx1,penx1 stock=- pay=- addr=- order=none\n     place_order -> REFUSED (not logged in)\n[16] before: login=y cart=bookx1 stock=penx1 pay=- addr=- order=none\n     place_order -> REFUSED (payment method is missing or not accepted)\n[17] before: login=y cart=- stock=- pay=- addr=home order=confirmed\n     place_order -> REFUSED (an order is already confirmed)\n[18] before: login=y cart=- stock=bookx1,penx1 pay=card addr=home order=cancelled\n     place_order -> REFUSED (an order is already cancelled)\n[19] before: login=y cart=- stock=- pay=- addr=- order=confirmed\n     place_order -> REFUSED (an order is already confirmed)\n[20] before: login=n cart=bookx1 stock=- pay=expired_card addr=home order=placed\n     place_order -> REFUSED (not logged in)\n[21] before: login=y cart=penx1 stock=bookx1 pay=expired_card addr=po_box order=none\n     place_order -> REFUSED (payment method is missing or not accepted)\n[22] before: login=n cart=bookx2 stock=penx1 pay=- addr=- order=confirmed\n     place_order -> REFUSED (not logged in)\n[23] before: login=n cart=bookx2 stock=penx1 pay=card addr=po_box order=placed\n     place_order -> REFUSED (not logged in)\n\nTask: write a contract for the place_order action.\nGeneralise from the transcript: the precondition should separate the accepted attempts from the refused ones, and the postcondition should describe the observed before/after changes.\nReply with the JSON contract object and nothing else."
+        }
+      ],
+      "prompt_sha256": "78d609ce983732b0c980b4a56d5580d6edb499bc33d1b0a52c9602eb854b4e8d",
+      "response_sha256": "255b399ed08724c0237843991a77dde18b526594d7e1018a5ab4b254a717abdb",
+      "request": {
+        "model": "qwen2.5-32b-instruct",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You specify the behaviour of one skill in a small storefront simulator.\nYou answer with a single JSON object in the contract DSL described below,\nand with nothing else.\n\nA contract is a JSON object with these keys:\n  \"skill\"          the skill being specified; must be \"place_order\".\n  \"precondition\"   a formula over the state BEFORE the action.\n  \"postcondition\"  a formula over the states BEFORE and AFTER the action.\n  \"name\", \"notes\"  optional free text (ignored by the scorer).\n\nTerms (values):\n  {\"var\": \"<state var>\", \"when\": \"before\"|\"after\"} — a state variable. \"when\" defaults to \"before\" and may only be \"after\" in a postcondition.\n  {\"const\": true|1|\"text\"|null} — a literal boolean, integer, string, or null.\n  {\"multiset\": {\"<item>\": <count>, ...}} — a literal item multiset.\n  {\"op\": \"count\", \"of\": t, \"item\": \"<item>\"} — units of one item in a multiset.\n  {\"op\": \"total\", \"of\": t} — total units in a multiset.\n  {\"op\": \"difference\", \"left\": t, \"right\": t} — the first multiset minus the second; has no value if any line would go negative.\n\nFormulas (truth values):\n  {\"op\": \"const\", \"value\": true} — a literal truth value.\n  {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n  {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n  {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n  {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n  {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n  {\"op\": \"is_empty\", \"arg\": t} — an item multiset has no units.\n  {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n  {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n  {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n  {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n  {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n  {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n  {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — a text/optional term is a member of a configured set; an unset value is never a member.\n  {\"op\": \"covers\", \"available\": t, \"required\": t} — the first multiset holds at least every quantity of the second.\n  {\"op\": \"unchanged\", \"vars\": [\"<state var>\", ...]} — every listed variable has the same value before and after (postcondition only).\n\nState variables and their kinds:\n  cart (multiset), cart_size (number), logged_in (bool), order_items (multiset), order_size (number), order_status (text), payment_method (option), shipping_address (option), stock (multiset)\n  order_status is one of: none, placed, confirmed, cancelled\n\nConfigured sets usable with in_set:\n  address_options, items, payment_options, rejected_addresses, rejected_payment_methods, valid_addresses, valid_payment_methods\n\nRules:\n  - Output the JSON object only. No prose, no code fences, no Python.\n  - Use only the operators listed above; anything else is rejected.\n  - A precondition may not read \"after\" variables, and only a postcondition may use unchanged.\n  - At most 200 nodes and 12 levels of nesting.\n\nShape of a well-formed answer:\n{\n  \"skill\": \"place_order\",\n  \"notes\": \"Example only — the clauses below are illustrative, not correct.\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"logged_in\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_empty\",\n          \"arg\": {\n            \"var\": \"cart\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"payment_method\"\n        },\n        \"set\": \"valid_payment_methods\"\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"logged_in\"\n        ]\n      }\n    ]\n  }\n}"
+          },
+          {
+            "role": "user",
+            "content": "Sandbox description (agent-facing):\n  items: ['book', 'pen']\n  cart capacity: 2 units in total\n  opening stock per item: at most 2 units\n  selectable payment methods: ['card', 'expired_card', 'voucher']\n    of these, the store accepts: ['card', 'voucher']\n  selectable addresses: ['home', 'po_box']\n    of these, the store ships to: ['home']\n\nThe shopper can log in and out, add or remove cart items, clear the cart,\nset or clear a payment method, set or clear a shipping address, and place,\nconfirm, cancel, or clear a single order. Selecting a payment method or an\naddress always succeeds, even for options the store does not accept.\n\nThere is one order slot per shopper, so order_status tracks that slot and\norder_items holds what is in it.\n\nYou probed 24 randomly chosen reachable states by attempting place_order in each. 0 were accepted. The transcript below is the whole of your evidence; the states were sampled at random, so they need not cover every case.\n\n[0] before: login=n cart=penx2 stock=bookx2 pay=- addr=home order=placed\n     place_order -> REFUSED (not logged in)\n[1] before: login=n cart=bookx1 stock=- pay=card addr=- order=placed\n     place_order -> REFUSED (not logged in)\n[2] before: login=y cart=bookx2 stock=penx1 pay=expired_card addr=home order=confirmed\n     place_order -> REFUSED (an order is already confirmed)\n[3] before: login=n cart=bookx1,penx1 stock=bookx2 pay=card addr=- order=cancelled\n     place_order -> REFUSED (not logged in)\n[4] before: login=n cart=penx2 stock=bookx1 pay=voucher addr=home order=cancelled\n     place_order -> REFUSED (not logged in)\n[5] before: login=y cart=penx2 stock=- pay=- addr=po_box order=placed\n     place_order -> REFUSED (an order is already placed)\n[6] before: login=y cart=penx2 stock=bookx1 pay=voucher addr=home order=confirmed\n     place_order -> REFUSED (an order is already confirmed)\n[7] before: login=n cart=bookx2 stock=- pay=expired_card addr=- order=placed\n     place_order -> REFUSED (not logged in)\n[8] before: login=n cart=bookx1 stock=bookx2,penx1 pay=voucher addr=- order=none\n     place_order -> REFUSED (not logged in)\n[9] before: login=y cart=bookx1,penx1 stock=bookx1,penx1 pay=card addr=- order=placed\n     place_order -> REFUSED (an order is already placed)\n[10] before: login=y cart=penx1 stock=bookx2 pay=voucher addr=- order=cancelled\n     place_order -> REFUSED (an order is already cancelled)\n[11] before: login=y cart=penx1 stock=penx1 pay=expired_card addr=home order=cancelled\n     place_order -> REFUSED (an order is already cancelled)\n[12] before: login=n cart=- stock=penx1 pay=- addr=- order=none\n     place_order -> REFUSED (not logged in)\n[13] before: login=n cart=- stock=- pay=card addr=home order=confirmed\n     place_order -> REFUSED (not logged in)\n[14] before: login=n cart=penx1 stock=- pay=- addr=- order=confirmed\n     place_order -> REFUSED (not logged in)\n[15] before: login=n cart=bookx1,penx1 stock=- pay=- addr=- order=none\n     place_order -> REFUSED (not logged in)\n[16] before: login=y cart=bookx1 stock=penx1 pay=- addr=- order=none\n     place_order -> REFUSED (payment method is missing or not accepted)\n[17] before: login=y cart=- stock=- pay=- addr=home order=confirmed\n     place_order -> REFUSED (an order is already confirmed)\n[18] before: login=y cart=- stock=bookx1,penx1 pay=card addr=home order=cancelled\n     place_order -> REFUSED (an order is already cancelled)\n[19] before: login=y cart=- stock=- pay=- addr=- order=confirmed\n     place_order -> REFUSED (an order is already confirmed)\n[20] before: login=n cart=bookx1 stock=- pay=expired_card addr=home order=placed\n     place_order -> REFUSED (not logged in)\n[21] before: login=y cart=penx1 stock=bookx1 pay=expired_card addr=po_box order=none\n     place_order -> REFUSED (payment method is missing or not accepted)\n[22] before: login=n cart=bookx2 stock=penx1 pay=- addr=- order=confirmed\n     place_order -> REFUSED (not logged in)\n[23] before: login=n cart=bookx2 stock=penx1 pay=card addr=po_box order=placed\n     place_order -> REFUSED (not logged in)\n\nTask: write a contract for the place_order action.\nGeneralise from the transcript: the precondition should separate the accepted attempts from the refused ones, and the postcondition should describe the observed before/after changes.\nReply with the JSON contract object and nothing else."
+          }
+        ],
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "max_tokens": 1024,
+        "stream": false,
+        "seed": 15
+      },
+      "response_text": "{\n  \"skill\": \"place_order\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"logged_in\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"in_set\",\n          \"value\": {\n            \"var\": \"order_status\"\n          },\n          \"set\": \"{'placed', 'confirmed', 'cancelled'}\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_empty\",\n          \"arg\": {\n            \"var\": \"cart\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"payment_method\"\n        },\n        \"set\": \"valid_payment_methods\"\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_items\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"logged_in\",\n          \"stock\",\n          \"payment_method\",\n          \"shipping_address\"\n        ]\n      }\n    ]\n  }\n}",
+      "raw_response": {
+        "id": "chatcmpl-f666fdf65359424da5469fa6fef86191",
+        "object": "chat.completion",
+        "created": 1788248279,
+        "model": "qwen2.5-32b-instruct",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "reasoning_content": null,
+              "content": "{\n  \"skill\": \"place_order\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"logged_in\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"in_set\",\n          \"value\": {\n            \"var\": \"order_status\"\n          },\n          \"set\": \"{'placed', 'confirmed', 'cancelled'}\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_empty\",\n          \"arg\": {\n            \"var\": \"cart\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"payment_method\"\n        },\n        \"set\": \"valid_payment_methods\"\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_items\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"logged_in\",\n          \"stock\",\n          \"payment_method\",\n          \"shipping_address\"\n        ]\n      }\n    ]\n  }\n}",
+              "tool_calls": []
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 2364,
+          "total_tokens": 2750,
+          "completion_tokens": 386,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null
+      },
+      "usage": {
+        "prompt_tokens": 2364,
+        "completion_tokens": 386,
+        "total_tokens": 2750
+      },
+      "latency_s": 24.800357650965452,
+      "finish_reason": "stop",
+      "error": null
+    }
+  ],
+  "rounds": [
+    {
+      "round": 0,
+      "role": "probe",
+      "states_probed": 24,
+      "accepted": 0,
+      "observations": [
+        {
+          "before": "login=n cart=penx2 stock=bookx2 pay=- addr=home order=placed",
+          "before_fields": {
+            "logged_in": false,
+            "cart": {
+              "pen": 2
+            },
+            "stock": {
+              "book": 2
+            },
+            "payment_method": null,
+            "shipping_address": "home",
+            "order_status": "placed",
+            "order_items": {
+              "pen": 1
+            }
+          },
+          "ok": false,
+          "error": "not logged in",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=n cart=bookx1 stock=- pay=card addr=- order=placed",
+          "before_fields": {
+            "logged_in": false,
+            "cart": {
+              "book": 1
+            },
+            "stock": {},
+            "payment_method": "card",
+            "shipping_address": null,
+            "order_status": "placed",
+            "order_items": {
+              "book": 2
+            }
+          },
+          "ok": false,
+          "error": "not logged in",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=y cart=bookx2 stock=penx1 pay=expired_card addr=home order=confirmed",
+          "before_fields": {
+            "logged_in": true,
+            "cart": {
+              "book": 2
+            },
+            "stock": {
+              "pen": 1
+            },
+            "payment_method": "expired_card",
+            "shipping_address": "home",
+            "order_status": "confirmed",
+            "order_items": {
+              "book": 2
+            }
+          },
+          "ok": false,
+          "error": "an order is already confirmed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=n cart=bookx1,penx1 stock=bookx2 pay=card addr=- order=cancelled",
+          "before_fields": {
+            "logged_in": false,
+            "cart": {
+              "book": 1,
+              "pen": 1
+            },
+            "stock": {
+              "book": 2
+            },
+            "payment_method": "card",
+            "shipping_address": null,
+            "order_status": "cancelled",
+            "order_items": {}
+          },
+          "ok": false,
+          "error": "not logged in",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=n cart=penx2 stock=bookx1 pay=voucher addr=home order=cancelled",
+          "before_fields": {
+            "logged_in": false,
+            "cart": {
+              "pen": 2
+            },
+            "stock": {
+              "book": 1
+            },
+            "payment_method": "voucher",
+            "shipping_address": "home",
+            "order_status": "cancelled",
+            "order_items": {}
+          },
+          "ok": false,
+          "error": "not logged in",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=y cart=penx2 stock=- pay=- addr=po_box order=placed",
+          "before_fields": {
+            "logged_in": true,
+            "cart": {
+              "pen": 2
+            },
+            "stock": {},
+            "payment_method": null,
+            "shipping_address": "po_box",
+            "order_status": "placed",
+            "order_items": {
+              "book": 2
+            }
+          },
+          "ok": false,
+          "error": "an order is already placed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=y cart=penx2 stock=bookx1 pay=voucher addr=home order=confirmed",
+          "before_fields": {
+            "logged_in": true,
+            "cart": {
+              "pen": 2
+            },
+            "stock": {
+              "book": 1
+            },
+            "payment_method": "voucher",
+            "shipping_address": "home",
+            "order_status": "confirmed",
+            "order_items": {
+              "book": 1
+            }
+          },
+          "ok": false,
+          "error": "an order is already confirmed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=n cart=bookx2 stock=- pay=expired_card addr=- order=placed",
+          "before_fields": {
+            "logged_in": false,
+            "cart": {
+              "book": 2
+            },
+            "stock": {},
+            "payment_method": "expired_card",
+            "shipping_address": null,
+            "order_status": "placed",
+            "order_items": {
+              "book": 1,
+              "pen": 1
+            }
+          },
+          "ok": false,
+          "error": "not logged in",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=n cart=bookx1 stock=bookx2,penx1 pay=voucher addr=- order=none",
+          "before_fields": {
+            "logged_in": false,
+            "cart": {
+              "book": 1
+            },
+            "stock": {
+              "book": 2,
+              "pen": 1
+            },
+            "payment_method": "voucher",
+            "shipping_address": null,
+            "order_status": "none",
+            "order_items": {}
+          },
+          "ok": false,
+          "error": "not logged in",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=y cart=bookx1,penx1 stock=bookx1,penx1 pay=card addr=- order=placed",
+          "before_fields": {
+            "logged_in": true,
+            "cart": {
+              "book": 1,
+              "pen": 1
+            },
+            "stock": {
+              "book": 1,
+              "pen": 1
+            },
+            "payment_method": "card",
+            "shipping_address": null,
+            "order_status": "placed",
+            "order_items": {
+              "book": 1
+            }
+          },
+          "ok": false,
+          "error": "an order is already placed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=y cart=penx1 stock=bookx2 pay=voucher addr=- order=cancelled",
+          "before_fields": {
+            "logged_in": true,
+            "cart": {
+              "pen": 1
+            },
+            "stock": {
+              "book": 2
+            },
+            "payment_method": "voucher",
+            "shipping_address": null,
+            "order_status": "cancelled",
+            "order_items": {}
+          },
+          "ok": false,
+          "error": "an order is already cancelled",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=y cart=penx1 stock=penx1 pay=expired_card addr=home order=cancelled",
+          "before_fields": {
+            "logged_in": true,
+            "cart": {
+              "pen": 1
+            },
+            "stock": {
+              "pen": 1
+            },
+            "payment_method": "expired_card",
+            "shipping_address": "home",
+            "order_status": "cancelled",
+            "order_items": {}
+          },
+          "ok": false,
+          "error": "an order is already cancelled",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=n cart=- stock=penx1 pay=- addr=- order=none",
+          "before_fields": {
+            "logged_in": false,
+            "cart": {},
+            "stock": {
+              "pen": 1
+            },
+            "payment_method": null,
+            "shipping_address": null,
+            "order_status": "none",
+            "order_items": {}
+          },
+          "ok": false,
+          "error": "not logged in",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=n cart=- stock=- pay=card addr=home order=confirmed",
+          "before_fields": {
+            "logged_in": false,
+            "cart": {},
+            "stock": {},
+            "payment_method": "card",
+            "shipping_address": "home",
+            "order_status": "confirmed",
+            "order_items": {
+              "book": 1,
+              "pen": 1
+            }
+          },
+          "ok": false,
+          "error": "not logged in",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=n cart=penx1 stock=- pay=- addr=- order=confirmed",
+          "before_fields": {
+            "logged_in": false,
+            "cart": {
+              "pen": 1
+            },
+            "stock": {},
+            "payment_method": null,
+            "shipping_address": null,
+            "order_status": "confirmed",
+            "order_items": {
+              "book": 1,
+              "pen": 1
+            }
+          },
+          "ok": false,
+          "error": "not logged in",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=n cart=bookx1,penx1 stock=- pay=- addr=- order=none",
+          "before_fields": {
+            "logged_in": false,
+            "cart": {
+              "book": 1,
+              "pen": 1
+            },
+            "stock": {},
+            "payment_method": null,
+            "shipping_address": null,
+            "order_status": "none",
+            "order_items": {}
+          },
+          "ok": false,
+          "error": "not logged in",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=y cart=bookx1 stock=penx1 pay=- addr=- order=none",
+          "before_fields": {
+            "logged_in": true,
+            "cart": {
+              "book": 1
+            },
+            "stock": {
+              "pen": 1
+            },
+            "payment_method": null,
+            "shipping_address": null,
+            "order_status": "none",
+            "order_items": {}
+          },
+          "ok": false,
+          "error": "payment method is missing or not accepted",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=y cart=- stock=- pay=- addr=home order=confirmed",
+          "before_fields": {
+            "logged_in": true,
+            "cart": {},
+            "stock": {},
+            "payment_method": null,
+            "shipping_address": "home",
+            "order_status": "confirmed",
+            "order_items": {
+              "book": 2
+            }
+          },
+          "ok": false,
+          "error": "an order is already confirmed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=y cart=- stock=bookx1,penx1 pay=card addr=home order=cancelled",
+          "before_fields": {
+            "logged_in": true,
+            "cart": {},
+            "stock": {
+              "book": 1,
+              "pen": 1
+            },
+            "payment_method": "card",
+            "shipping_address": "home",
+            "order_status": "cancelled",
+            "order_items": {}
+          },
+          "ok": false,
+          "error": "an order is already cancelled",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=y cart=- stock=- pay=- addr=- order=confirmed",
+          "before_fields": {
+            "logged_in": true,
+            "cart": {},
+            "stock": {},
+            "payment_method": null,
+            "shipping_address": null,
+            "order_status": "confirmed",
+            "order_items": {
+              "pen": 1
+            }
+          },
+          "ok": false,
+          "error": "an order is already confirmed",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=n cart=bookx1 stock=- pay=expired_card addr=home order=placed",
+          "before_fields": {
+            "logged_in": false,
+            "cart": {
+              "book": 1
+            },
+            "stock": {},
+            "payment_method": "expired_card",
+            "shipping_address": "home",
+            "order_status": "placed",
+            "order_items": {
+              "pen": 1
+            }
+          },
+          "ok": false,
+          "error": "not logged in",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=y cart=penx1 stock=bookx1 pay=expired_card addr=po_box order=none",
+          "before_fields": {
+            "logged_in": true,
+            "cart": {
+              "pen": 1
+            },
+            "stock": {
+              "book": 1
+            },
+            "payment_method": "expired_card",
+            "shipping_address": "po_box",
+            "order_status": "none",
+            "order_items": {}
+          },
+          "ok": false,
+          "error": "payment method is missing or not accepted",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=n cart=bookx2 stock=penx1 pay=- addr=- order=confirmed",
+          "before_fields": {
+            "logged_in": false,
+            "cart": {
+              "book": 2
+            },
+            "stock": {
+              "pen": 1
+            },
+            "payment_method": null,
+            "shipping_address": null,
+            "order_status": "confirmed",
+            "order_items": {
+              "book": 2
+            }
+          },
+          "ok": false,
+          "error": "not logged in",
+          "after": null,
+          "after_fields": null
+        },
+        {
+          "before": "login=n cart=bookx2 stock=penx1 pay=card addr=po_box order=placed",
+          "before_fields": {
+            "logged_in": false,
+            "cart": {
+              "book": 2
+            },
+            "stock": {
+              "pen": 1
+            },
+            "payment_method": "card",
+            "shipping_address": "po_box",
+            "order_status": "placed",
+            "order_items": {
+              "book": 1
+            }
+          },
+          "ok": false,
+          "error": "not logged in",
+          "after": null,
+          "after_fields": null
+        }
+      ]
+    }
+  ],
+  "contract": {
+    "status": "parse_failure",
+    "source": "{\n  \"skill\": \"place_order\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"logged_in\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"in_set\",\n          \"value\": {\n            \"var\": \"order_status\"\n          },\n          \"set\": \"{'placed', 'confirmed', 'cancelled'}\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_empty\",\n          \"arg\": {\n            \"var\": \"cart\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"payment_method\"\n        },\n        \"set\": \"valid_payment_methods\"\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"order_items\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"logged_in\",\n          \"stock\",\n          \"payment_method\",\n          \"shipping_address\"\n        ]\n      }\n    ]\n  }\n}",
+    "spec": null,
+    "node_count": null,
+    "error": "precondition.args[1].arg: unknown configured set \"{'placed', 'confirmed', 'cancelled'}\"; allowed: ['address_options', 'items', 'payment_options', 'rejected_addresses', 'rejected_payment_methods', 'valid_addresses', 'valid_payment_methods']",
+    "interaction_index": 0
+  },
+  "usage": {
+    "prompt_tokens": 2364,
+    "completion_tokens": 386,
+    "total_tokens": 2750,
+    "calls": 1
+  },
+  "latency": {
+    "total_s": 24.800357650965452,
+    "per_call_s": [
+      24.800357650965452
+    ]
+  },
+  "spend": {
+    "model_calls": 1,
+    "states_observed": 24,
+    "oracle_feedback_queries": 0,
+    "remaining_calls": 3,
+    "remaining_tokens": 13250,
+    "remaining_states": 0,
+    "parse_failures": 1
+  },
+  "evaluation": null,
+  "outcome": "parse_failure",
+  "stopped_because": "method_complete"
+}

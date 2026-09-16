@@ -1,0 +1,173 @@
+{
+  "kind": "contract_repair_core_v1_manifest",
+  "generated_at": "2026-09-07T21:49:11",
+  "question": "Does restoring restricted patch operations and improvement-based adoption change contract recovery versus free rewriting?",
+  "scope_note": "Pilot vehicle is Qwen2.5-14B on local V100s (fp16). The handoff fixes the model as Gemma-4-31B; this does not replace that evidence.",
+  "model_and_serving": {
+    "qwen2.5-14b-instruct": {
+      "role": "pilot vehicle (not the model the handoff fixes)",
+      "weights": "Qwen/Qwen2.5-14B-Instruct",
+      "endpoint": "[endpoint-redacted]",
+      "hardware": "4x Tesla V100-DGXS-32GB, tensor-parallel 4",
+      "dtype": "half (fp16; V100 has no bf16)",
+      "serving_profile": "experiment/serving/profiles/v100-4x14b-xgrammar.env",
+      "vllm": "0.8.5.post1",
+      "guided_decoding_backend": "xgrammar",
+      "enforce_eager": true
+    },
+    "gemma-4-31b-it": {
+      "role": "the model the handoff fixes",
+      "weights": "[model-cache]/google--gemma-4-31B-it (remote)",
+      "endpoint": "[endpoint-redacted]",
+      "hardware": "1x A100-SXM 80GB (GPU 1 only; GPUs 0/2/3 carried other researchers' jobs)",
+      "dtype": "bfloat16 (native)",
+      "tensor_parallel_size": 1,
+      "vllm": "0.19.1",
+      "structured_outputs_backend": "auto (no outlines fallback observed; verified live)",
+      "enforce_eager": false
+    }
+  },
+  "budgets": {
+    "state_budget": 48,
+    "query_budget": 4,
+    "token_budget": 16000,
+    "max_tokens": 2048,
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "compact_context": false,
+    "context_token_limit": 8192,
+    "context_margin": 256,
+    "guided_json": true
+  },
+  "patch_limits": {
+    "patch_cap": 3,
+    "insert_node_cap": 7,
+    "adoption_rule": "strict decrease of observed D = FA+FR+PV",
+    "weighted_objective": false
+  },
+  "schema_sha256": {
+    "contract": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+    "patch": "0cd0e1d07b9437063cd54347b1afed38c77955efbfab0a01d97b5a9764670e57"
+  },
+  "prompt_sha256": {
+    "direct": "84b1cb676f4ef27dbd0da85cbdac53e9dd30619afac02ae036c0bf619ec2b7ca",
+    "system": "2bc4ca5f5a24a23496af4532b94954a235039743c867009f128113959c378254"
+  },
+  "sandbox": {
+    "config": "experiment/configs/deployment_default.json",
+    "config_sha256": "dac8959f80dd77abb5314f9219f3d3fb891d10910e6aab2e0dd13fe80f07b9ba",
+    "closure_states": 11712,
+    "accepting_states": 88
+  },
+  "source_sha256": {
+    "experiment/deployment/patch.py": "a1b431cd3a7fb67e520595ad95428138aba76c4eaee0d469f787c5ed20b67c63",
+    "experiment/deployment/repair_core.py": "733896fba377faf1de97f91b103189c68b533f498caf208ef9c14a26554685d1",
+    "experiment/deployment/repair_prompts.py": "220d3e8ca1027b0c306603970a2d003de6f779aa3973b12fc406de1dd9f4f1aa",
+    "experiment/deployment/witness.py": "221185427d1b70a4b7c75fdc6c7b86abc6b00d4acf97c49083d1b417964281d4",
+    "experiment/deployment/runner.py": "0f5f061b98eb999f4d7cc621af5007c73ff4638c8fd4b2fe55bff25b8eeb3147",
+    "experiment/deployment/dsl.py": "c72761462607932e1b070a742e85b0e0e442727d3702533076ce9919ff8eae2a",
+    "experiment/deployment/prompts.py": "15dead0ab0b640e107b54e79dfbddcac54c88fbdaaeff62206252900ed35b3b4",
+    "experiment/deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+    "experiment/deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+    "experiment/deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+    "experiment/modeling/runner.py": "8f35d512bf87f3760a9a99fe18ca877e8bd919df7a8e9ce2118ff4ae0266a6e4",
+    "experiment/modeling/client.py": "9ab2dd1f987c0fcb6f18e81a346df47ae6dadd20744d52d59cb54e81554fae4e",
+    "experiment/configs/deployment_default.json": "dac8959f80dd77abb5314f9219f3d3fb891d10910e6aab2e0dd13fe80f07b9ba",
+    "scripts/run_repair_core.py": "13899cc0c26068d05d5b1c9094a3b8f0f57d7b7474f4e42044ba10443096cae5",
+    "scripts/check_guided_schema.py": "b2212261f9b953ec9db8af536481ac343aaca0333a4d8c886df8b73bd5c1f46e",
+    "scripts/repair_core_full.sh": "cd0bbc5ce8cd7ca00c98022d232cb2817fbe3e81f6c0076ce7fd37d4c57acbcd",
+    "experiment/tests/test_repair_core.py": "dd5c2cb48f2ae4d393269ce54ea95a38e96672699652025f4784cd25ca234fb8"
+  },
+  "initial_contracts": {
+    "initial_pilot_qwen14b.json": {
+      "file_sha256": "95b870b32eea851cd54c1b5dfa8b4b904d96c43f84409bcde8c7d6054c65fb7f",
+      "n": 5,
+      "parsed": 5,
+      "per_seed_sha256": {
+        "0": "d5237e6cdc5e662ff499ae0b923109c47e2e461e5c15c4e68460d060fb8f1919",
+        "1": "0742252c2143cb9970c3c4004063ebc9919270b26b5f2e4e094e1f6933831e7d",
+        "2": "0742252c2143cb9970c3c4004063ebc9919270b26b5f2e4e094e1f6933831e7d",
+        "3": "32ef2fc05f71b26078d53bd5c46c76c71f6684e30b739bbc9022f04567853314",
+        "4": "0eaa7f84da7e03828a676b57ea0b90eae69a9a38b6553c96bc1e08839201d01a"
+      }
+    },
+    "initial_s20_qwen14b.json": {
+      "file_sha256": "becdc5bf6eb377a0be34dcfa82b3e88fd40e9763a18567c40ea46e39b3038e44",
+      "n": 20,
+      "parsed": 20,
+      "per_seed_sha256": {
+        "0": "d5237e6cdc5e662ff499ae0b923109c47e2e461e5c15c4e68460d060fb8f1919",
+        "1": "0742252c2143cb9970c3c4004063ebc9919270b26b5f2e4e094e1f6933831e7d",
+        "2": "0742252c2143cb9970c3c4004063ebc9919270b26b5f2e4e094e1f6933831e7d",
+        "3": "32ef2fc05f71b26078d53bd5c46c76c71f6684e30b739bbc9022f04567853314",
+        "4": "0eaa7f84da7e03828a676b57ea0b90eae69a9a38b6553c96bc1e08839201d01a",
+        "5": "0eaa7f84da7e03828a676b57ea0b90eae69a9a38b6553c96bc1e08839201d01a",
+        "6": "24eae5500cb2ce1bb8404c21abb5de078dbcc8ffec1b08251d6a7659699b4c74",
+        "7": "0eaa7f84da7e03828a676b57ea0b90eae69a9a38b6553c96bc1e08839201d01a",
+        "8": "d5237e6cdc5e662ff499ae0b923109c47e2e461e5c15c4e68460d060fb8f1919",
+        "9": "0c44aff3772588f561cfaef75fb014eae092955b79781dc3300b0d22212c268f",
+        "10": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+        "11": "2dd4ff88eecbb7cd0d7e61a0eb9fb02dd8f0cb391241813011b3081545cacf06",
+        "12": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+        "13": "24eae5500cb2ce1bb8404c21abb5de078dbcc8ffec1b08251d6a7659699b4c74",
+        "14": "d5237e6cdc5e662ff499ae0b923109c47e2e461e5c15c4e68460d060fb8f1919",
+        "15": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+        "16": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+        "17": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+        "18": "2dd4ff88eecbb7cd0d7e61a0eb9fb02dd8f0cb391241813011b3081545cacf06",
+        "19": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da"
+      }
+    },
+    "initial_s20_gemma31b.json": {
+      "file_sha256": "142957784227cc4f36302f7fdf73415c4891bb441ce6020593a87b466c58a0f1",
+      "n": 20,
+      "parsed": 20,
+      "per_seed_sha256": {
+        "0": "b16a0e961b0b7acc534579003291ee730e9362afbc9aa5a46465ace565dd20b9",
+        "1": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "2": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "3": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "4": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "5": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "6": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "7": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "8": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "9": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "10": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "11": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "12": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "13": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "14": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "15": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "16": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "17": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "18": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9",
+        "19": "47ea6733bbaefa14734bd01cdd8afc68c45eb837ea4a247380978928b47d63e9"
+      }
+    }
+  },
+  "conditions": {
+    "repair_free_pool": "A  uniform fixed pool, whole-contract rewrite, always replace",
+    "repair_patch_pool": "B  uniform fixed pool, restricted patch, adopt on strict improvement",
+    "repair_free_active": "C  candidate-partitioned re-selection, whole-contract rewrite",
+    "repair_free_witness": "A' fixed evidence known to expose an observed error, free rewrite",
+    "repair_patch_witness": "B' the same evidence, restricted patch"
+  },
+  "result_paths": {
+    "qwen14b_pilot3_seeds_0_4": "results/deployment_qwen14b_repair_core_v1_pilot3",
+    "qwen14b_s20_seeds_0_19": "results/deployment_qwen14b_repair_core_v1_s20",
+    "gemma31b_s20_seeds_0_19": "results/deployment_gemma31b_repair_core_v1",
+    "quarantined": "results/discarded_repair_core_preschemafix/"
+  },
+  "known_artifact_defects": {
+    "adoption_rule_label": "In results/deployment_gemma31b_repair_core_v1 and the qwen14b runs, artifacts for condition repair_patch_witness record repair_core.adoption_rule as 'always_replace'. The loop applied the strict rule correctly; the per-round records carry adoption_rule='strict_d_obs_decrease' and d_obs_delta. The driver checked one condition name instead of the patch-condition set and has been fixed; existing artifacts are left unmodified."
+  },
+  "interpretation_limits": {
+    "gemma31b_initial_diversity": "Only 2 unique initial contracts across 20 seeds (19 share one). Seeds are not 20 independent trials; do not attach binomial intervals to counts like 17/20.",
+    "witness_conditions": "A'/B' evidence is uniform conditioned on exposing an observed error for the shared initial candidate. Not a uniform fixed pool, and A'-B' was designed after seeing the entry-rate problem, so it is a diagnostic, not an independent confirmation."
+  },
+  "quarantine_reasons": {
+    "deployment_qwen14b_repair_core_v1_pilot": "guided patch schema rejected (HTTP 400 union type)",
+    "deployment_qwen14b_repair_core_v1_pilot2": "context clamp disabled; prompt overflow biased the patch conditions"
+  }
+}

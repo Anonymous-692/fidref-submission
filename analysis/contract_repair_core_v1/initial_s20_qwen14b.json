@@ -1,0 +1,365 @@
+{
+  "generated": [
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 0,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\", \"target_region\"]}\n    ]\n  }\n}",
+      "source_sha256": "d5237e6cdc5e662ff499ae0b923109c47e2e461e5c15c4e68460d060fb8f1919",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 483,
+        "total_tokens": 2207
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "d5237e6cdc5e662ff499ae0b923109c47e2e461e5c15c4e68460d060fb8f1919",
+      "finish_reason": "stop",
+      "latency_s": 24.04421241953969
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 1,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"op\": \"union\", \"left\": {\"var\": \"active_deployment\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocation_size\", \"when\": \"after\"}, \"right\": {\"const\": 0}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "0742252c2143cb9970c3c4004063ebc9919270b26b5f2e4e094e1f6933831e7d",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 573,
+        "total_tokens": 2297
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "0742252c2143cb9970c3c4004063ebc9919270b26b5f2e4e094e1f6933831e7d",
+      "finish_reason": "stop",
+      "latency_s": 28.48785139247775
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 2,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"op\": \"union\", \"left\": {\"var\": \"active_deployment\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocation_size\", \"when\": \"after\"}, \"right\": {\"const\": 0}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "0742252c2143cb9970c3c4004063ebc9919270b26b5f2e4e094e1f6933831e7d",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 573,
+        "total_tokens": 2297
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "0742252c2143cb9970c3c4004063ebc9919270b26b5f2e4e094e1f6933831e7d",
+      "finish_reason": "stop",
+      "latency_s": 28.381414252333343
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 3,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "32ef2fc05f71b26078d53bd5c46c76c71f6684e30b739bbc9022f04567853314",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 488,
+        "total_tokens": 2212
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "32ef2fc05f71b26078d53bd5c46c76c71f6684e30b739bbc9022f04567853314",
+      "finish_reason": "stop",
+      "latency_s": 24.1091080410406
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 4,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "0eaa7f84da7e03828a676b57ea0b90eae69a9a38b6553c96bc1e08839201d01a",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 479,
+        "total_tokens": 2203
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "0eaa7f84da7e03828a676b57ea0b90eae69a9a38b6553c96bc1e08839201d01a",
+      "finish_reason": "stop",
+      "latency_s": 23.761786319315434
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 5,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "0eaa7f84da7e03828a676b57ea0b90eae69a9a38b6553c96bc1e08839201d01a",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 479,
+        "total_tokens": 2203
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "0eaa7f84da7e03828a676b57ea0b90eae69a9a38b6553c96bc1e08839201d01a",
+      "finish_reason": "stop",
+      "latency_s": 23.763555913232267
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 6,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"op\": \"union\", \"left\": {\"var\": \"active_deployment\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\", \"target_region\"]}\n    ]\n  }\n}",
+      "source_sha256": "24eae5500cb2ce1bb8404c21abb5de078dbcc8ffec1b08251d6a7659699b4c74",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 580,
+        "total_tokens": 2304
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "24eae5500cb2ce1bb8404c21abb5de078dbcc8ffec1b08251d6a7659699b4c74",
+      "finish_reason": "stop",
+      "latency_s": 28.590891620144248
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 7,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "0eaa7f84da7e03828a676b57ea0b90eae69a9a38b6553c96bc1e08839201d01a",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 479,
+        "total_tokens": 2203
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "0eaa7f84da7e03828a676b57ea0b90eae69a9a38b6553c96bc1e08839201d01a",
+      "finish_reason": "stop",
+      "latency_s": 23.83343470748514
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 8,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\", \"target_region\"]}\n    ]\n  }\n}",
+      "source_sha256": "d5237e6cdc5e662ff499ae0b923109c47e2e461e5c15c4e68460d060fb8f1919",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 483,
+        "total_tokens": 2207
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "d5237e6cdc5e662ff499ae0b923109c47e2e461e5c15c4e68460d060fb8f1919",
+      "finish_reason": "stop",
+      "latency_s": 23.952866178937256
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 9,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\", \"target_region\"]}\n    ]\n  }\n}",
+      "source_sha256": "0c44aff3772588f561cfaef75fb014eae092955b79781dc3300b0d22212c268f",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 514,
+        "total_tokens": 2238
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "0c44aff3772588f561cfaef75fb014eae092955b79781dc3300b0d22212c268f",
+      "finish_reason": "stop",
+      "latency_s": 25.530852167867124
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 10,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"op\": \"union\", \"left\": {\"var\": \"active_deployment\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 576,
+        "total_tokens": 2300
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+      "finish_reason": "stop",
+      "latency_s": 28.39754380658269
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 11,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "2dd4ff88eecbb7cd0d7e61a0eb9fb02dd8f0cb391241813011b3081545cacf06",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 514,
+        "total_tokens": 2238
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "2dd4ff88eecbb7cd0d7e61a0eb9fb02dd8f0cb391241813011b3081545cacf06",
+      "finish_reason": "stop",
+      "latency_s": 25.523177025839686
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 12,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"op\": \"union\", \"left\": {\"var\": \"active_deployment\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 576,
+        "total_tokens": 2300
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+      "finish_reason": "stop",
+      "latency_s": 28.627506617456675
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 13,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"op\": \"union\", \"left\": {\"var\": \"active_deployment\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\", \"target_region\"]}\n    ]\n  }\n}",
+      "source_sha256": "24eae5500cb2ce1bb8404c21abb5de078dbcc8ffec1b08251d6a7659699b4c74",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 580,
+        "total_tokens": 2304
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "24eae5500cb2ce1bb8404c21abb5de078dbcc8ffec1b08251d6a7659699b4c74",
+      "finish_reason": "stop",
+      "latency_s": 28.681152713485062
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 14,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\", \"target_region\"]}\n    ]\n  }\n}",
+      "source_sha256": "d5237e6cdc5e662ff499ae0b923109c47e2e461e5c15c4e68460d060fb8f1919",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 483,
+        "total_tokens": 2207
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "d5237e6cdc5e662ff499ae0b923109c47e2e461e5c15c4e68460d060fb8f1919",
+      "finish_reason": "stop",
+      "latency_s": 23.95936968550086
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 15,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"op\": \"union\", \"left\": {\"var\": \"active_deployment\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 576,
+        "total_tokens": 2300
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+      "finish_reason": "stop",
+      "latency_s": 28.467741165310144
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 16,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"op\": \"union\", \"left\": {\"var\": \"active_deployment\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 576,
+        "total_tokens": 2300
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+      "finish_reason": "stop",
+      "latency_s": 28.471045473590493
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 17,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"op\": \"union\", \"left\": {\"var\": \"active_deployment\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 576,
+        "total_tokens": 2300
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+      "finish_reason": "stop",
+      "latency_s": 28.451484446413815
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 18,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "2dd4ff88eecbb7cd0d7e61a0eb9fb02dd8f0cb391241813011b3081545cacf06",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 514,
+        "total_tokens": 2238
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "2dd4ff88eecbb7cd0d7e61a0eb9fb02dd8f0cb391241813011b3081545cacf06",
+      "finish_reason": "stop",
+      "latency_s": 25.441522856242955
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen2.5-14b-instruct",
+      "seed": 19,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"rejected_regions\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"not\", \"arg\": {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"rejected_cluster_tiers\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"le\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}},\n      {\"op\": \"le\", \"left\": {\"var\": \"allocation_size\", \"when\": \"before\"}, \"right\": {\"const\": 2}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"op\": \"union\", \"left\": {\"var\": \"active_deployment\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"allocated_resources\", \"when\": \"after\"}, \"right\": {\"const\": {}}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 576,
+        "total_tokens": 2300
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "c30468f615f0b794f9f26c0b7d58d6d0ca3013b6576dfa78166d12218918b3da",
+      "finish_reason": "stop",
+      "latency_s": 28.61459226347506
+    }
+  ],
+  "note": "Shared round-0 candidates for the contract-repair comparison. One generation call per seed; all three conditions replay this source and are charged one call for it. Parse failures are retained as produced."
+}

@@ -1,0 +1,365 @@
+{
+  "generated": [
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 0,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"target_region\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"cluster_tier\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_deployment\", \"when\": \"before\"}},\n      {\"op\": \"gt\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 0}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"after\"}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "f0b850bec68ba6e62ba04eeef80ce741184bac2e22d09239e3c9b19792e48d8c",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 458,
+        "total_tokens": 2300
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "f0b850bec68ba6e62ba04eeef80ce741184bac2e22d09239e3c9b19792e48d8c",
+      "finish_reason": "stop",
+      "latency_s": 17.46453290991485
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 1,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"target_region\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"cluster_tier\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_deployment\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"after\"}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "ccb2d144f02326652fc388f7445e934bbb15371b5fe1fe842383d03a0d1c7716",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 492,
+        "total_tokens": 2334
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "ccb2d144f02326652fc388f7445e934bbb15371b5fe1fe842383d03a0d1c7716",
+      "finish_reason": "stop",
+      "latency_s": 18.837658115662634
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 2,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"target_region\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"cluster_tier\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_deployment\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\"]}\n    ]\n  }\n}",
+      "source_sha256": "4cca81ec5f91177ece9c16ec7cef34d51e9f08decdc5f682e0216ee0efe90506",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 510,
+        "total_tokens": 2352
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "4cca81ec5f91177ece9c16ec7cef34d51e9f08decdc5f682e0216ee0efe90506",
+      "finish_reason": "stop",
+      "latency_s": 19.54869268182665
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 3,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"target_region\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"cluster_tier\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_deployment\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"after\"}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "ccb2d144f02326652fc388f7445e934bbb15371b5fe1fe842383d03a0d1c7716",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 492,
+        "total_tokens": 2334
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "ccb2d144f02326652fc388f7445e934bbb15371b5fe1fe842383d03a0d1c7716",
+      "finish_reason": "stop",
+      "latency_s": 18.87908188253641
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 4,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\", \"allocation_size\", \"quota_size\", \"active_size\"]}\n    ]\n  }\n}",
+      "source_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 416,
+        "total_tokens": 2258
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "finish_reason": "stop",
+      "latency_s": 16.037570261396468
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 5,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\", \"allocation_size\", \"quota_size\", \"active_size\"]}\n    ]\n  }\n}",
+      "source_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 416,
+        "total_tokens": 2258
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "finish_reason": "stop",
+      "latency_s": 16.041442468762398
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 6,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\"]}\n    ]\n  }\n}",
+      "source_sha256": "1714644cb12b78fdeb195ba54b5ff4f3f6803f49d7affc0f2e6c33fcc1ee4044",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 404,
+        "total_tokens": 2246
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "1714644cb12b78fdeb195ba54b5ff4f3f6803f49d7affc0f2e6c33fcc1ee4044",
+      "finish_reason": "stop",
+      "latency_s": 15.598915086127818
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 7,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\", \"allocation_size\", \"quota_size\", \"active_size\"]}\n    ]\n  }\n}",
+      "source_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 416,
+        "total_tokens": 2258
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "finish_reason": "stop",
+      "latency_s": 16.047192237339914
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 8,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\", \"allocation_size\", \"quota_size\", \"active_size\"]}\n    ]\n  }\n}",
+      "source_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 416,
+        "total_tokens": 2258
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "finish_reason": "stop",
+      "latency_s": 16.04541945271194
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 9,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\", \"allocation_size\", \"quota_size\", \"active_size\"]}\n    ]\n  }\n}",
+      "source_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 416,
+        "total_tokens": 2258
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "finish_reason": "stop",
+      "latency_s": 16.048366460949183
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 10,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\"]}\n    ]\n  }\n}",
+      "source_sha256": "1714644cb12b78fdeb195ba54b5ff4f3f6803f49d7affc0f2e6c33fcc1ee4044",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 404,
+        "total_tokens": 2246
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "1714644cb12b78fdeb195ba54b5ff4f3f6803f49d7affc0f2e6c33fcc1ee4044",
+      "finish_reason": "stop",
+      "latency_s": 15.60257976129651
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 11,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\"]}\n    ]\n  }\n}",
+      "source_sha256": "1714644cb12b78fdeb195ba54b5ff4f3f6803f49d7affc0f2e6c33fcc1ee4044",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 404,
+        "total_tokens": 2246
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "1714644cb12b78fdeb195ba54b5ff4f3f6803f49d7affc0f2e6c33fcc1ee4044",
+      "finish_reason": "stop",
+      "latency_s": 15.598071232438087
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 12,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\", \"allocation_size\", \"quota_size\", \"active_size\"]}\n    ]\n  }\n}",
+      "source_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 416,
+        "total_tokens": 2258
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "finish_reason": "stop",
+      "latency_s": 16.04988033697009
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 13,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\"]}\n    ]\n  }\n}",
+      "source_sha256": "1714644cb12b78fdeb195ba54b5ff4f3f6803f49d7affc0f2e6c33fcc1ee4044",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 404,
+        "total_tokens": 2246
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "1714644cb12b78fdeb195ba54b5ff4f3f6803f49d7affc0f2e6c33fcc1ee4044",
+      "finish_reason": "stop",
+      "latency_s": 15.603834833018482
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 14,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"target_region\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"cluster_tier\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_deployment\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"after\"}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "ccb2d144f02326652fc388f7445e934bbb15371b5fe1fe842383d03a0d1c7716",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 492,
+        "total_tokens": 2334
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "ccb2d144f02326652fc388f7445e934bbb15371b5fe1fe842383d03a0d1c7716",
+      "finish_reason": "stop",
+      "latency_s": 18.88974812719971
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 15,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"target_region\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"cluster_tier\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_deployment\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"after\"}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}\n    ]\n  }\n}",
+      "source_sha256": "ccb2d144f02326652fc388f7445e934bbb15371b5fe1fe842383d03a0d1c7716",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 492,
+        "total_tokens": 2334
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "ccb2d144f02326652fc388f7445e934bbb15371b5fe1fe842383d03a0d1c7716",
+      "finish_reason": "stop",
+      "latency_s": 18.888662646524608
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 16,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\", \"allocation_size\", \"quota_size\", \"active_size\"]}\n    ]\n  }\n}",
+      "source_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 416,
+        "total_tokens": 2258
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "finish_reason": "stop",
+      "latency_s": 16.05063863750547
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 17,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"target_region\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"cluster_tier\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_deployment\", \"when\": \"before\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\", \"allocation_size\", \"quota_size\", \"active_size\"]}\n    ]\n  }\n}",
+      "source_sha256": "982dcc74f0e1bd976f2cf13afb214e849486848bbcfd303ac5a75232d5f05621",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 522,
+        "total_tokens": 2364
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "982dcc74f0e1bd976f2cf13afb214e849486848bbcfd303ac5a75232d5f05621",
+      "finish_reason": "stop",
+      "latency_s": 20.00992283038795
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 18,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}, \"set\": \"valid_regions\"},\n      {\"op\": \"in_set\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"set\": \"valid_cluster_tiers\"},\n      {\"op\": \"covers\", \"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\", \"allocation_size\", \"quota_size\", \"active_size\"]}\n    ]\n  }\n}",
+      "source_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 416,
+        "total_tokens": 2258
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "d0e66b162e2cdda2236a7447ccd5b77fc49d8948dde58ff96b7cc51f3394c064",
+      "finish_reason": "stop",
+      "latency_s": 16.047826543450356
+    },
+    {
+      "domain": "deployment",
+      "model": "qwen3.8-27b",
+      "seed": 19,
+      "source": "{\n  \"skill\": \"deploy_service\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"is_true\", \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"right\": {\"const\": \"idle\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"target_region\", \"when\": \"before\"}},\n      {\"op\": \"is_null\", \"arg\": {\"var\": \"cluster_tier\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"is_empty\", \"arg\": {\"var\": \"active_deployment\", \"when\": \"before\"}},\n      {\"op\": \"gt\", \"left\": {\"var\": \"quota_size\", \"when\": \"before\"}, \"right\": {\"const\": 0}}\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\"op\": \"eq\", \"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"right\": {\"const\": \"deployed\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}},\n      {\"op\": \"eq\", \"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"right\": {\"op\": \"difference\", \"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}},\n      {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\", \"allocated_resources\", \"allocation_size\", \"quota_size\", \"active_size\"]}\n    ]\n  }\n}",
+      "source_sha256": "01fa5e1d3bcf747a664d36e91d29a3de6d92342df68fa9ae8a3465bb813272f1",
+      "parsed": true,
+      "parse_error": null,
+      "usage": {
+        "prompt_tokens": 1842,
+        "completion_tokens": 448,
+        "total_tokens": 2290
+      },
+      "prompt_sha256": "1c433eda5ae3e9d62fb846b0d13f817409e5d30a7045ab02fd0f87ace65900c3",
+      "response_sha256": "01fa5e1d3bcf747a664d36e91d29a3de6d92342df68fa9ae8a3465bb813272f1",
+      "finish_reason": "stop",
+      "latency_s": 17.24758644681424
+    }
+  ],
+  "note": "Shared round-0 candidates for the B16 factorial. One generation call per (model, domain, seed); every condition replays this source and is charged one call. Parse failures are retained as produced."
+}

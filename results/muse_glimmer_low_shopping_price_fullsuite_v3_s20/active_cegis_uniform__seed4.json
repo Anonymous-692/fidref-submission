@@ -1,0 +1,1282 @@
+{
+  "schema_version": 2,
+  "run": "active_cegis_uniform__seed4",
+  "created_at": "2026-09-08T22:32:18.527654+00:00",
+  "method": "active_cegis_uniform",
+  "model": "muse-glimmer-30b",
+  "endpoint": "[endpoint-redacted]",
+  "seed": 4,
+  "decoding": {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "max_tokens": 2048,
+    "seed": 4
+  },
+  "budgets": {
+    "state_budget": 48,
+    "query_budget": 4,
+    "token_budget": 16000
+  },
+  "sandbox": {
+    "domain": "shopping_price",
+    "config_path": "experiment/configs/shopping_price_easy_v4.json",
+    "config": {
+      "items": [
+        "book",
+        "gift"
+      ],
+      "item_prices": {
+        "book": 2400,
+        "gift": 2500
+      },
+      "opening_stock": {
+        "book": 2,
+        "gift": 1
+      },
+      "cart_capacity": 2,
+      "payment_methods": [
+        "card"
+      ],
+      "accepted_payment_methods": [
+        "card"
+      ],
+      "addresses": [
+        "home"
+      ],
+      "serviceable_addresses": [
+        "home"
+      ],
+      "coupon_codes": [
+        "save500"
+      ],
+      "accepted_coupon_codes": [
+        "save500"
+      ],
+      "coupon_min_subtotal": 500,
+      "coupon_discount": 500,
+      "coupon_excluded_items": [],
+      "free_shipping_threshold": 4000,
+      "shipping_fee": 600,
+      "remote_shipping_surcharge": 0,
+      "initial_wallet_balance": 10000,
+      "card_limit": 10000,
+      "terminal_after_order": true,
+      "allow_post_order_cart_add": true,
+      "clear_checkout_selections_after_order": true
+    },
+    "max_depth": 20,
+    "max_states": 15000,
+    "enumeration": {
+      "states": 288,
+      "transitions": 1048,
+      "truncated": false,
+      "max_depth": 20,
+      "max_states": 15000,
+      "deepest_level": 11
+    },
+    "evaluation_states": 288,
+    "oracle_contract": "ground_truth.place_order"
+  },
+  "serving": {
+    "model": "muse-glimmer-30b",
+    "endpoint": "[endpoint-redacted]",
+    "vllm_version": "0.28.0",
+    "structured_output_style": "response_format",
+    "max_model_len": 8192
+  },
+  "hashes": {
+    "sandbox_config_sha256": "4d4a39e660cbb87e3c28c53f9c9d11f442b39ece965724501994c31a803bf080",
+    "decoding_sha256": "851b4291a3c9b54fc644cd59a48801642ce93c17c658f0ef021c41bcfde1ecb8",
+    "budgets_sha256": "a226cbdc29a384e2524cd88ae62f8c02d60cef8c0e3140c1c81a5d96041126f2",
+    "protocol_sha256": "46696b730be6565d5680b373505f5083cd045145b94962083f09c3646c2a1758"
+  },
+  "interactions": [
+    {
+      "index": 0,
+      "role": "propose",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a formal verification engineer.\nWrite one declarative JSON contract for the `place_order` operation.\nOutput JSON only, without markdown or explanatory prose.\nAll monetary values are integer cents.\n\nState variables:\n- `card_limit` (number)\n- `cart` (multiset)\n- `cart_size` (number)\n- `cart_subtotal` (number)\n- `checkout_total` (number)\n- `coupon_code` (option)\n- `logged_in` (bool)\n- `order_items` (multiset)\n- `order_payment_method` (option)\n- `order_size` (number)\n- `order_status` (text)\n- `order_total` (number)\n- `payment_method` (option)\n- `shipping_address` (option)\n- `stock` (multiset)\n- `wallet_balance` (number)\n\nPublic configuration sets:\n- `addresses`\n- `coupon_codes`\n- `items`\n- `payment_methods`\n\nTerm literals:\n- {\"var\": \"<state var>\", \"when\": \"before\"|\"after\"} — a state variable. \"when\" defaults to \"before\" and may only be \"after\" in a postcondition.\n- {\"const\": true|1|\"text\"|null} — a literal boolean, integer, string, or null.\n- {\"multiset\": {\"<item>\": <count>, ...}} — a literal item multiset.\n\nTerm operators:\n- `count`: {\"op\": \"count\", \"of\": t, \"item\": \"<item>\"} — units of one item in a multiset.\n- `total`: {\"op\": \"total\", \"of\": t} — total units in a multiset.\n- `difference`: {\"op\": \"difference\", \"left\": t, \"right\": t} — the first multiset minus the second; has no value if any line would go negative.\n- `subtract`: {\"op\": \"subtract\", \"left\": t, \"right\": t} — numeric subtraction.\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item multiset has no units.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — a text/optional term is a member of a configured set; an unset value is never a member.\n- `covers`: {\"op\": \"covers\", \"available\": t, \"required\": t} — the first multiset holds at least every quantity of the second.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"<state var>\", ...]} — every listed variable has the same value before and after (postcondition only).\n\nRules:\n- The precondition may read only before-state variables.\n- The postcondition may compare before and after variables.\n- `unchanged` is valid only in the postcondition.\n- Use only the listed operators and state variables.\n- Return exactly one complete JSON object."
+        },
+        {
+          "role": "user",
+          "content": "Synthesize the exact applicability and effect contract for `place_order`.\nThe storefront is deterministic, but not every policy boundary is stated explicitly.\nCounterexamples, when supplied later, are observations from the storefront.\n\nAgent-visible configuration:\n- Items and unit prices: {'book': 2400, 'gift': 2500}\n- Cart capacity: 2\n- Selectable payment methods: ['card']\n- Selectable addresses: ['home']\n- Selectable coupon codes: ['save500']\n- Initial wallet balance: 10000\n- Card limit: 10000\n\nThe state exposes `cart_subtotal` and `checkout_total` as storefront-computed values.\nSelecting a payment method, address, or coupon does not prove that checkout will accept it.\nA successful order records payment, populates the order slot, and may update checkout-related state.\nInfer the exact conditions and frame/effect relations.\n\nNeutral JSON envelope:\n{\n  \"skill\": \"place_order\",\n  \"notes\": \"schema envelope only; not a candidate contract\",\n  \"precondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  },\n  \"postcondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  }\n}\n\nOutput only the complete JSON contract:"
+        }
+      ],
+      "prompt_sha256": "6be5ba4ea5ff59fafaabcf08c3fa26a47755c5c5c216c639f92edf4c24a8ed42",
+      "response_sha256": "da2805cc38e70fc23f496e2663d1f1986ecc9b9c9c42aad41cd3b5c5ac632d52",
+      "request": {
+        "model": "muse-glimmer-30b",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a formal verification engineer.\nWrite one declarative JSON contract for the `place_order` operation.\nOutput JSON only, without markdown or explanatory prose.\nAll monetary values are integer cents.\n\nState variables:\n- `card_limit` (number)\n- `cart` (multiset)\n- `cart_size` (number)\n- `cart_subtotal` (number)\n- `checkout_total` (number)\n- `coupon_code` (option)\n- `logged_in` (bool)\n- `order_items` (multiset)\n- `order_payment_method` (option)\n- `order_size` (number)\n- `order_status` (text)\n- `order_total` (number)\n- `payment_method` (option)\n- `shipping_address` (option)\n- `stock` (multiset)\n- `wallet_balance` (number)\n\nPublic configuration sets:\n- `addresses`\n- `coupon_codes`\n- `items`\n- `payment_methods`\n\nTerm literals:\n- {\"var\": \"<state var>\", \"when\": \"before\"|\"after\"} — a state variable. \"when\" defaults to \"before\" and may only be \"after\" in a postcondition.\n- {\"const\": true|1|\"text\"|null} — a literal boolean, integer, string, or null.\n- {\"multiset\": {\"<item>\": <count>, ...}} — a literal item multiset.\n\nTerm operators:\n- `count`: {\"op\": \"count\", \"of\": t, \"item\": \"<item>\"} — units of one item in a multiset.\n- `total`: {\"op\": \"total\", \"of\": t} — total units in a multiset.\n- `difference`: {\"op\": \"difference\", \"left\": t, \"right\": t} — the first multiset minus the second; has no value if any line would go negative.\n- `subtract`: {\"op\": \"subtract\", \"left\": t, \"right\": t} — numeric subtraction.\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item multiset has no units.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — a text/optional term is a member of a configured set; an unset value is never a member.\n- `covers`: {\"op\": \"covers\", \"available\": t, \"required\": t} — the first multiset holds at least every quantity of the second.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"<state var>\", ...]} — every listed variable has the same value before and after (postcondition only).\n\nRules:\n- The precondition may read only before-state variables.\n- The postcondition may compare before and after variables.\n- `unchanged` is valid only in the postcondition.\n- Use only the listed operators and state variables.\n- Return exactly one complete JSON object."
+          },
+          {
+            "role": "user",
+            "content": "Synthesize the exact applicability and effect contract for `place_order`.\nThe storefront is deterministic, but not every policy boundary is stated explicitly.\nCounterexamples, when supplied later, are observations from the storefront.\n\nAgent-visible configuration:\n- Items and unit prices: {'book': 2400, 'gift': 2500}\n- Cart capacity: 2\n- Selectable payment methods: ['card']\n- Selectable addresses: ['home']\n- Selectable coupon codes: ['save500']\n- Initial wallet balance: 10000\n- Card limit: 10000\n\nThe state exposes `cart_subtotal` and `checkout_total` as storefront-computed values.\nSelecting a payment method, address, or coupon does not prove that checkout will accept it.\nA successful order records payment, populates the order slot, and may update checkout-related state.\nInfer the exact conditions and frame/effect relations.\n\nNeutral JSON envelope:\n{\n  \"skill\": \"place_order\",\n  \"notes\": \"schema envelope only; not a candidate contract\",\n  \"precondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  },\n  \"postcondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  }\n}\n\nOutput only the complete JSON contract:"
+          }
+        ],
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "max_tokens": 2048,
+        "stream": false,
+        "seed": 4,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "skill": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "precondition": {
+                  "$ref": "#/$defs/formula"
+                },
+                "postcondition": {
+                  "$ref": "#/$defs/formula"
+                }
+              },
+              "required": [
+                "precondition",
+                "postcondition"
+              ],
+              "additionalProperties": false,
+              "$defs": {
+                "formula": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "const"
+                        },
+                        "value": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "and"
+                        },
+                        "args": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/$defs/formula"
+                          }
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "args"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "or"
+                        },
+                        "args": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/$defs/formula"
+                          }
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "args"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "not"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/formula"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "is_true"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "is_null"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "is_empty"
+                        },
+                        "arg": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "arg"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "eq"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "ne"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "lt"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "le"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "gt"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "ge"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "in_set"
+                        },
+                        "value": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "set": {
+                          "type": "string",
+                          "enum": [
+                            "addresses",
+                            "coupon_codes",
+                            "items",
+                            "payment_methods"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "value",
+                        "set"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "covers"
+                        },
+                        "available": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "required": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "available",
+                        "required"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "unchanged"
+                        },
+                        "vars": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "card_limit",
+                              "cart",
+                              "cart_size",
+                              "cart_subtotal",
+                              "checkout_total",
+                              "coupon_code",
+                              "logged_in",
+                              "order_items",
+                              "order_payment_method",
+                              "order_size",
+                              "order_status",
+                              "order_total",
+                              "payment_method",
+                              "shipping_address",
+                              "stock",
+                              "wallet_balance"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "vars"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "term": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "var": {
+                          "type": "string",
+                          "enum": [
+                            "card_limit",
+                            "cart",
+                            "cart_size",
+                            "cart_subtotal",
+                            "checkout_total",
+                            "coupon_code",
+                            "logged_in",
+                            "order_items",
+                            "order_payment_method",
+                            "order_size",
+                            "order_status",
+                            "order_total",
+                            "payment_method",
+                            "shipping_address",
+                            "stock",
+                            "wallet_balance"
+                          ]
+                        },
+                        "when": {
+                          "type": "string",
+                          "enum": [
+                            "before",
+                            "after"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "var"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "const": {
+                          "anyOf": [
+                            {
+                              "type": "boolean"
+                            },
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "const"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "multiset": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "required": [
+                        "multiset"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "count"
+                        },
+                        "of": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "item": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "of",
+                        "item"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "total"
+                        },
+                        "of": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "of"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "difference"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "const": "subtract"
+                        },
+                        "left": {
+                          "$ref": "#/$defs/term"
+                        },
+                        "right": {
+                          "$ref": "#/$defs/term"
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            },
+            "strict": true
+          }
+        }
+      },
+      "response_text": "{\"skill\":\"place_order\",\"precondition\":{\"op\":\"and\",\"args\":[{\"op\":\"is_true\",\"arg\":{\"var\":\"logged_in\",\"when\":\"before\"}},{\"op\":\"not\",\"arg\":{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"gt\",\"left\":{\"op\":\"total\",\"of\":{\"var\":\"cart\",\"when\":\"before\"}},\"right\":{\"const\":0}},{\"op\":\"le\",\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":2}},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"shipping_address\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"value\":{\"var\":\"shipping_address\",\"when\":\"before\"},\"set\":\"addresses\"},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"payment_method\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"value\":{\"var\":\"payment_method\",\"when\":\"before\"},\"set\":\"payment_methods\"},{\"op\":\"or\",\"args\":[{\"op\":\"is_null\",\"arg\":{\"var\":\"coupon_code\",\"when\":\"before\"}},{\"op\":\"in_set\",\"value\":{\"var\":\"coupon_code\",\"when\":\"before\"},\"set\":\"coupon_codes\"}]},{\"op\":\"covers\",\"available\":{\"var\":\"stock\",\"when\":\"before\"},\"required\":{\"var\":\"cart\",\"when\":\"before\"}},{\"op\":\"ge\",\"left\":{\"var\":\"card_limit\",\"when\":\"before\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}},{\"op\":\"gt\",\"left\":{\"var\":\"checkout_total\",\"when\":\"before\"},\"right\":{\"const\":0}}]},\"postcondition\":{\"op\":\"and\",\"args\":[{\"op\":\"eq\",\"left\":{\"var\":\"order_items\",\"when\":\"after\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_size\",\"when\":\"after\"},\"right\":{\"var\":\"cart_size\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_total\",\"when\":\"after\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_payment_method\",\"when\":\"after\"},\"right\":{\"var\":\"payment_method\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_status\",\"when\":\"after\"},\"right\":{\"const\":\"placed\"}},{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"after\"}},{\"op\":\"eq\",\"left\":{\"var\":\"cart_size\",\"when\":\"after\"},\"right\":{\"const\":0}},{\"op\":\"eq\",\"left\":{\"var\":\"cart_subtotal\",\"when\":\"after\"},\"right\":{\"const\":0}},{\"op\":\"eq\",\"left\":{\"var\":\"checkout_total\",\"when\":\"after\"},\"right\":{\"const\":0}},{\"op\":\"eq\",\"left\":{\"var\":\"stock\",\"when\":\"after\"},\"right\":{\"op\":\"difference\",\"left\":{\"var\":\"stock\",\"when\":\"before\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"unchanged\",\"vars\":[\"card_limit\",\"wallet_balance\",\"shipping_address\",\"payment_method\",\"coupon_code\",\"logged_in\"]}]}}",
+      "raw_response": {
+        "id": "chatcmpl-8b5962ebe3215eca",
+        "object": "chat.completion",
+        "created": 1788906690,
+        "model": "muse-glimmer-30b",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"skill\":\"place_order\",\"precondition\":{\"op\":\"and\",\"args\":[{\"op\":\"is_true\",\"arg\":{\"var\":\"logged_in\",\"when\":\"before\"}},{\"op\":\"not\",\"arg\":{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"gt\",\"left\":{\"op\":\"total\",\"of\":{\"var\":\"cart\",\"when\":\"before\"}},\"right\":{\"const\":0}},{\"op\":\"le\",\"left\":{\"var\":\"cart_size\",\"when\":\"before\"},\"right\":{\"const\":2}},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"shipping_address\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"value\":{\"var\":\"shipping_address\",\"when\":\"before\"},\"set\":\"addresses\"},{\"op\":\"not\",\"arg\":{\"op\":\"is_null\",\"arg\":{\"var\":\"payment_method\",\"when\":\"before\"}}},{\"op\":\"in_set\",\"value\":{\"var\":\"payment_method\",\"when\":\"before\"},\"set\":\"payment_methods\"},{\"op\":\"or\",\"args\":[{\"op\":\"is_null\",\"arg\":{\"var\":\"coupon_code\",\"when\":\"before\"}},{\"op\":\"in_set\",\"value\":{\"var\":\"coupon_code\",\"when\":\"before\"},\"set\":\"coupon_codes\"}]},{\"op\":\"covers\",\"available\":{\"var\":\"stock\",\"when\":\"before\"},\"required\":{\"var\":\"cart\",\"when\":\"before\"}},{\"op\":\"ge\",\"left\":{\"var\":\"card_limit\",\"when\":\"before\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}},{\"op\":\"gt\",\"left\":{\"var\":\"checkout_total\",\"when\":\"before\"},\"right\":{\"const\":0}}]},\"postcondition\":{\"op\":\"and\",\"args\":[{\"op\":\"eq\",\"left\":{\"var\":\"order_items\",\"when\":\"after\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_size\",\"when\":\"after\"},\"right\":{\"var\":\"cart_size\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_total\",\"when\":\"after\"},\"right\":{\"var\":\"checkout_total\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_payment_method\",\"when\":\"after\"},\"right\":{\"var\":\"payment_method\",\"when\":\"before\"}},{\"op\":\"eq\",\"left\":{\"var\":\"order_status\",\"when\":\"after\"},\"right\":{\"const\":\"placed\"}},{\"op\":\"is_empty\",\"arg\":{\"var\":\"cart\",\"when\":\"after\"}},{\"op\":\"eq\",\"left\":{\"var\":\"cart_size\",\"when\":\"after\"},\"right\":{\"const\":0}},{\"op\":\"eq\",\"left\":{\"var\":\"cart_subtotal\",\"when\":\"after\"},\"right\":{\"const\":0}},{\"op\":\"eq\",\"left\":{\"var\":\"checkout_total\",\"when\":\"after\"},\"right\":{\"const\":0}},{\"op\":\"eq\",\"left\":{\"var\":\"stock\",\"when\":\"after\"},\"right\":{\"op\":\"difference\",\"left\":{\"var\":\"stock\",\"when\":\"before\"},\"right\":{\"var\":\"cart\",\"when\":\"before\"}}},{\"op\":\"unchanged\",\"vars\":[\"card_limit\",\"wallet_balance\",\"shipping_address\",\"payment_method\",\"coupon_code\",\"logged_in\"]}]}}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": "Synthesize exact applicability and effect contract for place_order.\n\nWe need precondition and postcondition.\n\nFrom config: items book 2400 gift 2500. Cart capacity 2. payment methods ['card']. addresses ['home']. coupon ['save500']. wallet 10000, card limit 10000.\n\nState vars listed.\n\nWe need infer conditions. Likely need logged_in true, cart not empty, cart_size <= capacity? cart_size maybe <=2. shipping_address set and in addresses. payment_method set and in payment_methods. coupon_code maybe null or in coupon_codes. checkout_total >0? Also stock covers cart? Probably need stock covers cart.\n\nAlso card limit >= checkout_total? payment method card. wallet_balance? maybe not used.\n\nSuccessful order records payment, populates order slot, may update checkout-related state.\n\nPrecondition likely: logged_in true, cart not empty, cart_size <=? maybe cart_size >0 and <=2. shipping_address not null and in_set addresses. payment_method not null and in_set payment_methods. coupon_code is null or in_set coupon_codes. stock covers cart. checkout_total >0? Also card_limit >= checkout_total if payment card.\n\nAlso cart_subtotal matches? Might be derived.\n\nPostcondition: if precondition holds? Need effect: order_items = cart before? order_size = cart_size before? order_total = checkout_total before? order_payment_method = payment_method before? order_status = ? maybe \"placed\". cart becomes empty, cart_size 0, cart_subtotal 0, checkout_total 0? stock decreased by cart. wallet_balance unchanged? card limit unchanged? shipping_address unchanged? payment_method unchanged? coupon_code unchanged? logged_in unchanged?\n\nAlso order slot populated.\n\nProbably precondition includes covers stock.\n\nLet's craft JSON.\n\nPrecondition: and of:\nis_true logged_in\nnot is_empty cart\ngt total of cart? maybe cart_size >0\nle cart_size 2? capacity 2\nis_null? shipping_address not null: not is_null shipping_address\nin_set shipping_address addresses\nnot is_null payment_method\nin_set payment_method payment_methods\ncoupon_code is null or in_set coupon_codes\ncovers stock cart\nge card_limit checkout_total? maybe gt? >=\ngt checkout_total 0? maybe le?\n\nSimplify.\n\nPostcondition: and of:\nunchanged vars [card_limit, wallet_balance, shipping_address, payment_method, coupon_code, logged_in]? maybe cart cleared.\n\nIf order placed: order_items = cart before, order_size = cart_size before, order_total = checkout_total before, order_payment_method = payment_method before, order_status = \"placed\"? status text.\n\nAlso cart empty after, cart_size 0, cart_subtotal 0, checkout_total 0, stock = difference stock before cart.\n\nAlso unchanged others.\n\nLet's produce JSON with operators.\n\nNeed term literals: {\"var\":\"cart\",\"when\":\"before\"} etc.\n\nWe'll assume success precondition leads to success postcondition. Might need conditional? Probably precondition ensures success.\n\nWe'll output contract.\n\n"
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": 200008,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.28.0-e15acfcc",
+        "usage": {
+          "prompt_tokens": 1207,
+          "total_tokens": 2433,
+          "completion_tokens": 1226,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "usage": {
+        "prompt_tokens": 1207,
+        "completion_tokens": 1226,
+        "total_tokens": 2433
+      },
+      "latency_s": 48.25590597651899,
+      "finish_reason": "stop",
+      "error": null,
+      "prompt_tokens": 1207,
+      "requested_max_tokens": 2048,
+      "effective_max_tokens": 2048,
+      "clamp_reason": "none",
+      "context_window": 8192,
+      "safety_margin": 256
+    }
+  ],
+  "rounds": [
+    {
+      "round": 0,
+      "audit": 0,
+      "role": "propose",
+      "adaptation": "active_cegis_uniform",
+      "evidence_policy": "unpartitioned_uniform",
+      "contract_status": "parsed",
+      "fresh_states": 16,
+      "reachable_predicted_accepts": 22,
+      "cumulative_states": 16,
+      "report": {
+        "contract": "model.place_order",
+        "states_checked": 16,
+        "successes": 0,
+        "failures": 0,
+        "false_accepts": 0,
+        "false_rejects": 0,
+        "postcondition_violations": 0,
+        "symptoms": [],
+        "exact": true,
+        "primary_defect": "none",
+        "counterexamples": []
+      }
+    }
+  ],
+  "contract": {
+    "status": "parsed",
+    "source": "{\n  \"postcondition\": {\n    \"args\": [\n      {\n        \"left\": {\n          \"var\": \"order_items\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_size\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"cart_size\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_total\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_payment_method\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"var\": \"payment_method\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"order_status\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": \"placed\"\n        }\n      },\n      {\n        \"arg\": {\n          \"var\": \"cart\",\n          \"when\": \"after\"\n        },\n        \"op\": \"is_empty\"\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_size\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_subtotal\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"stock\",\n          \"when\": \"after\"\n        },\n        \"op\": \"eq\",\n        \"right\": {\n          \"left\": {\n            \"var\": \"stock\",\n            \"when\": \"before\"\n          },\n          \"op\": \"difference\",\n          \"right\": {\n            \"var\": \"cart\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"card_limit\",\n          \"wallet_balance\",\n          \"shipping_address\",\n          \"payment_method\",\n          \"coupon_code\",\n          \"logged_in\"\n        ]\n      }\n    ],\n    \"op\": \"and\"\n  },\n  \"precondition\": {\n    \"args\": [\n      {\n        \"arg\": {\n          \"var\": \"logged_in\",\n          \"when\": \"before\"\n        },\n        \"op\": \"is_true\"\n      },\n      {\n        \"arg\": {\n          \"arg\": {\n            \"var\": \"cart\",\n            \"when\": \"before\"\n          },\n          \"op\": \"is_empty\"\n        },\n        \"op\": \"not\"\n      },\n      {\n        \"left\": {\n          \"of\": {\n            \"var\": \"cart\",\n            \"when\": \"before\"\n          },\n          \"op\": \"total\"\n        },\n        \"op\": \"gt\",\n        \"right\": {\n          \"const\": 0\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"cart_size\",\n          \"when\": \"before\"\n        },\n        \"op\": \"le\",\n        \"right\": {\n          \"const\": 2\n        }\n      },\n      {\n        \"arg\": {\n          \"arg\": {\n            \"var\": \"shipping_address\",\n            \"when\": \"before\"\n          },\n          \"op\": \"is_null\"\n        },\n        \"op\": \"not\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"set\": \"addresses\",\n        \"value\": {\n          \"var\": \"shipping_address\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"arg\": {\n          \"arg\": {\n            \"var\": \"payment_method\",\n            \"when\": \"before\"\n          },\n          \"op\": \"is_null\"\n        },\n        \"op\": \"not\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"set\": \"payment_methods\",\n        \"value\": {\n          \"var\": \"payment_method\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"args\": [\n          {\n            \"arg\": {\n              \"var\": \"coupon_code\",\n              \"when\": \"before\"\n            },\n            \"op\": \"is_null\"\n          },\n          {\n            \"op\": \"in_set\",\n            \"set\": \"coupon_codes\",\n            \"value\": {\n              \"var\": \"coupon_code\",\n              \"when\": \"before\"\n            }\n          }\n        ],\n        \"op\": \"or\"\n      },\n      {\n        \"available\": {\n          \"var\": \"stock\",\n          \"when\": \"before\"\n        },\n        \"op\": \"covers\",\n        \"required\": {\n          \"var\": \"cart\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"card_limit\",\n          \"when\": \"before\"\n        },\n        \"op\": \"ge\",\n        \"right\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"left\": {\n          \"var\": \"checkout_total\",\n          \"when\": \"before\"\n        },\n        \"op\": \"gt\",\n        \"right\": {\n          \"const\": 0\n        }\n      }\n    ],\n    \"op\": \"and\"\n  },\n  \"skill\": \"place_order\"\n}",
+    "spec": {
+      "skill": "place_order",
+      "precondition": {
+        "op": "and",
+        "args": [
+          {
+            "op": "is_true",
+            "arg": {
+              "var": "logged_in",
+              "when": "before"
+            }
+          },
+          {
+            "op": "not",
+            "arg": {
+              "op": "is_empty",
+              "arg": {
+                "var": "cart",
+                "when": "before"
+              }
+            }
+          },
+          {
+            "op": "gt",
+            "left": {
+              "op": "total",
+              "of": {
+                "var": "cart",
+                "when": "before"
+              }
+            },
+            "right": {
+              "const": 0
+            }
+          },
+          {
+            "op": "le",
+            "left": {
+              "var": "cart_size",
+              "when": "before"
+            },
+            "right": {
+              "const": 2
+            }
+          },
+          {
+            "op": "not",
+            "arg": {
+              "op": "is_null",
+              "arg": {
+                "var": "shipping_address",
+                "when": "before"
+              }
+            }
+          },
+          {
+            "op": "in_set",
+            "value": {
+              "var": "shipping_address",
+              "when": "before"
+            },
+            "set": "addresses"
+          },
+          {
+            "op": "not",
+            "arg": {
+              "op": "is_null",
+              "arg": {
+                "var": "payment_method",
+                "when": "before"
+              }
+            }
+          },
+          {
+            "op": "in_set",
+            "value": {
+              "var": "payment_method",
+              "when": "before"
+            },
+            "set": "payment_methods"
+          },
+          {
+            "op": "or",
+            "args": [
+              {
+                "op": "is_null",
+                "arg": {
+                  "var": "coupon_code",
+                  "when": "before"
+                }
+              },
+              {
+                "op": "in_set",
+                "value": {
+                  "var": "coupon_code",
+                  "when": "before"
+                },
+                "set": "coupon_codes"
+              }
+            ]
+          },
+          {
+            "op": "covers",
+            "available": {
+              "var": "stock",
+              "when": "before"
+            },
+            "required": {
+              "var": "cart",
+              "when": "before"
+            }
+          },
+          {
+            "op": "ge",
+            "left": {
+              "var": "card_limit",
+              "when": "before"
+            },
+            "right": {
+              "var": "checkout_total",
+              "when": "before"
+            }
+          },
+          {
+            "op": "gt",
+            "left": {
+              "var": "checkout_total",
+              "when": "before"
+            },
+            "right": {
+              "const": 0
+            }
+          }
+        ]
+      },
+      "postcondition": {
+        "op": "and",
+        "args": [
+          {
+            "op": "eq",
+            "left": {
+              "var": "order_items",
+              "when": "after"
+            },
+            "right": {
+              "var": "cart",
+              "when": "before"
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "var": "order_size",
+              "when": "after"
+            },
+            "right": {
+              "var": "cart_size",
+              "when": "before"
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "var": "order_total",
+              "when": "after"
+            },
+            "right": {
+              "var": "checkout_total",
+              "when": "before"
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "var": "order_payment_method",
+              "when": "after"
+            },
+            "right": {
+              "var": "payment_method",
+              "when": "before"
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "var": "order_status",
+              "when": "after"
+            },
+            "right": {
+              "const": "placed"
+            }
+          },
+          {
+            "op": "is_empty",
+            "arg": {
+              "var": "cart",
+              "when": "after"
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "var": "cart_size",
+              "when": "after"
+            },
+            "right": {
+              "const": 0
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "var": "cart_subtotal",
+              "when": "after"
+            },
+            "right": {
+              "const": 0
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "var": "checkout_total",
+              "when": "after"
+            },
+            "right": {
+              "const": 0
+            }
+          },
+          {
+            "op": "eq",
+            "left": {
+              "var": "stock",
+              "when": "after"
+            },
+            "right": {
+              "op": "difference",
+              "left": {
+                "var": "stock",
+                "when": "before"
+              },
+              "right": {
+                "var": "cart",
+                "when": "before"
+              }
+            }
+          },
+          {
+            "op": "unchanged",
+            "vars": [
+              "card_limit",
+              "wallet_balance",
+              "shipping_address",
+              "payment_method",
+              "coupon_code",
+              "logged_in"
+            ]
+          }
+        ]
+      }
+    },
+    "node_count": 70,
+    "error": null,
+    "interaction_index": 0
+  },
+  "usage": {
+    "prompt_tokens": 1207,
+    "completion_tokens": 1226,
+    "total_tokens": 2433,
+    "calls": 1
+  },
+  "latency": {
+    "total_s": 48.25590597651899,
+    "per_call_s": [
+      48.25590597651899
+    ]
+  },
+  "spend": {
+    "model_calls": 1,
+    "states_observed": 16,
+    "oracle_feedback_queries": 0,
+    "sampled_feedback_queries": 1,
+    "sampled_states_checked": 16,
+    "remaining_calls": 3,
+    "remaining_tokens": 13567,
+    "remaining_states": 32,
+    "parse_failures": 0
+  },
+  "evaluation": {
+    "metrics": {
+      "contract": "model.place_order",
+      "states_checked": 288,
+      "successes": 8,
+      "failures": 22,
+      "false_accepts": 14,
+      "false_rejects": 0,
+      "postcondition_violations": 8,
+      "symptoms": [
+        "false_accept",
+        "postcondition_violation"
+      ],
+      "exact": false,
+      "sound": false,
+      "complete": true
+    },
+    "counterexamples": [
+      {
+        "symptom": "false_accept",
+        "state": "login=y cart=bookx1 stock=bookx1,giftx1 pay=card addr=home coupon=- subtotal=2400 checkout=3000 wallet=10000 limit=10000 order=placed total=3000",
+        "state_fields": {
+          "logged_in": true,
+          "cart": {
+            "book": 1
+          },
+          "stock": {
+            "book": 1,
+            "gift": 1
+          },
+          "payment_method": "card",
+          "shipping_address": "home",
+          "coupon_code": null,
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 2400,
+          "checkout_total": 3000,
+          "order_status": "placed",
+          "order_items": {
+            "book": 1
+          },
+          "order_total": 3000,
+          "order_payment_method": "card"
+        },
+        "before_state": {
+          "logged_in": true,
+          "cart": {
+            "book": 1
+          },
+          "stock": {
+            "book": 1,
+            "gift": 1
+          },
+          "payment_method": "card",
+          "shipping_address": "home",
+          "coupon_code": null,
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 2400,
+          "checkout_total": 3000,
+          "order_status": "placed",
+          "order_items": {
+            "book": 1
+          },
+          "order_total": 3000,
+          "order_payment_method": "card"
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract accepted the state but sandbox rejected with: episode ended after order placement"
+      },
+      {
+        "symptom": "postcondition_violation",
+        "state": "login=y cart=bookx1 stock=bookx2,giftx1 pay=card addr=home coupon=- subtotal=2400 checkout=3000 wallet=10000 limit=10000 order=none total=0",
+        "state_fields": {
+          "logged_in": true,
+          "cart": {
+            "book": 1
+          },
+          "stock": {
+            "book": 2,
+            "gift": 1
+          },
+          "payment_method": "card",
+          "shipping_address": "home",
+          "coupon_code": null,
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 2400,
+          "checkout_total": 3000,
+          "order_status": "none",
+          "order_items": {},
+          "order_total": 0,
+          "order_payment_method": null
+        },
+        "before_state": {
+          "logged_in": true,
+          "cart": {
+            "book": 1
+          },
+          "stock": {
+            "book": 2,
+            "gift": 1
+          },
+          "payment_method": "card",
+          "shipping_address": "home",
+          "coupon_code": null,
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 2400,
+          "checkout_total": 3000,
+          "order_status": "none",
+          "order_items": {},
+          "order_total": 0,
+          "order_payment_method": null
+        },
+        "after_state": {
+          "logged_in": true,
+          "cart": {},
+          "stock": {
+            "book": 1,
+            "gift": 1
+          },
+          "payment_method": null,
+          "shipping_address": null,
+          "coupon_code": null,
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 0,
+          "checkout_total": 0,
+          "order_status": "placed",
+          "order_items": {
+            "book": 1
+          },
+          "order_total": 3000,
+          "order_payment_method": "card"
+        },
+        "action_succeeded": true,
+        "changed_fields": {
+          "cart": {
+            "before": {
+              "book": 1
+            },
+            "after": {}
+          },
+          "cart_subtotal": {
+            "before": 2400,
+            "after": 0
+          },
+          "checkout_total": {
+            "before": 3000,
+            "after": 0
+          },
+          "order_items": {
+            "before": {},
+            "after": {
+              "book": 1
+            }
+          },
+          "order_payment_method": {
+            "before": null,
+            "after": "card"
+          },
+          "order_status": {
+            "before": "none",
+            "after": "placed"
+          },
+          "order_total": {
+            "before": 0,
+            "after": 3000
+          },
+          "payment_method": {
+            "before": "card",
+            "after": null
+          },
+          "shipping_address": {
+            "before": "home",
+            "after": null
+          },
+          "stock": {
+            "before": {
+              "book": 2,
+              "gift": 1
+            },
+            "after": {
+              "book": 1,
+              "gift": 1
+            }
+          }
+        },
+        "unchanged_fields": [
+          "card_limit",
+          "coupon_code",
+          "logged_in",
+          "wallet_balance"
+        ],
+        "detail": "observed after-state breaks the promised postcondition"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "login=y cart=giftx1 stock=bookx1,giftx1 pay=card addr=home coupon=- subtotal=2500 checkout=3100 wallet=10000 limit=10000 order=placed total=3000",
+        "state_fields": {
+          "logged_in": true,
+          "cart": {
+            "gift": 1
+          },
+          "stock": {
+            "book": 1,
+            "gift": 1
+          },
+          "payment_method": "card",
+          "shipping_address": "home",
+          "coupon_code": null,
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 2500,
+          "checkout_total": 3100,
+          "order_status": "placed",
+          "order_items": {
+            "book": 1
+          },
+          "order_total": 3000,
+          "order_payment_method": "card"
+        },
+        "before_state": {
+          "logged_in": true,
+          "cart": {
+            "gift": 1
+          },
+          "stock": {
+            "book": 1,
+            "gift": 1
+          },
+          "payment_method": "card",
+          "shipping_address": "home",
+          "coupon_code": null,
+          "wallet_balance": 10000,
+          "card_limit": 10000,
+          "cart_subtotal": 2500,
+          "checkout_total": 3100,
+          "order_status": "placed",
+          "order_items": {
+            "book": 1
+          },
+          "order_total": 3000,
+          "order_payment_method": "card"
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract accepted the state but sandbox rejected with: episode ended after order placement"
+      }
+    ],
+    "exact": false,
+    "truncated": false,
+    "deepest_level": 11,
+    "state_count": 288
+  },
+  "outcome": "inexact",
+  "stopped_because": "sampled_oracle_satisfied"
+}

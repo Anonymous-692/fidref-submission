@@ -1,0 +1,68 @@
+SKILL APPLICABILITY CONTRACT SYNTHESIS — REVIEW ARTIFACT
+
+This artifact contains experiment code, configurations, selected preserved runs,
+and analysis inputs for the accompanying paper. The paper is submitted separately.
+
+QUICK START (tested with Python 3.13)
+  python3.13 -m venv .venv
+  .venv/bin/python -m pip install -r requirements.txt
+  .venv/bin/python reproduce.py verify
+  .venv/bin/python reproduce.py stats
+  .venv/bin/python reproduce.py figures
+
+The validated package passes 389 tests, reproduces the original factorial counts
+and all 16 adjusted comparisons, and matches the preserved convergence data.
+The stats command also recounts 149 descriptive follow-up cells. These follow-ups
+remain outside the earlier statistical test families.
+
+The default command, reproduce.py all, runs verification and statistics, then
+recomputes the convergence figure from contracts and enumerated environment states.
+Outputs are written under outputs/. CPU closure rescoring can take several minutes.
+These commands use preserved artifacts and make no model API requests.
+
+DATA AND CONDITIONS
+  analysis/cell_manifest_2026-09-04.json identifies the original cells and seeds.
+  Additional model, reasoning and adaptive-budget checks are under analysis/.
+  The suite-level summary keeps result directories and methods separate.
+  The adaptive-budget ledger identifies original and effective retry records;
+  do not pool both attempts as independent seeds.
+  Earlier partitioned retail Sampled runs and the later fixed-pool arm retain
+  distinct method identifiers. Follow-up cells retain their own protocol scope.
+  Original analysis families remain defined in the corresponding scripts.
+  Failure outcomes remain in their recorded denominators. Missing costs remain
+  missing or as originally recorded; zero fallback counters are not measured cost.
+
+PROVENANCE AND ANONYMIZATION
+  Infrastructure endpoints and personal local paths have been redacted.
+  Supplied configuration endpoints are localhost examples for new executions.
+  Model identity, software versions, available hardware settings, decoding,
+  budgets, contracts, evaluations and recorded protocol hashes are preserved.
+  RELEASE_MANIFEST.json hashes the actual files in this release. Historical
+  input-file hashes in analysis records describe the original artifacts before
+  anonymization; they are not release-file hashes. Internal document references
+  and original Git metadata have been omitted.
+  The export process compared the scientific fields of every included run against
+  its internal original. Release verification checks the exported file hashes and
+  recounts outcomes; it is distinct from rerunning model generation.
+
+NEW MODEL EXPERIMENTS
+  Start your own compatible model server, then use the domain runner, for example:
+    .venv/bin/python -m experiment.deployment.model_runner --help
+    .venv/bin/python -m experiment.calendar.model_runner --help
+    .venv/bin/python -m experiment.shopping_price.model_runner --help
+    .venv/bin/python -m experiment.taubench_retail.model_runner --help
+  Configure model identity and base_url (e.g. http://127.0.0.1:8000/v1) for your
+  server. Preserve the experiment's budget, prompt, structured-output and reasoning
+  settings when reproducing a particular cell. Serving dependencies are installed
+  separately for the chosen hardware; the historical versions are retained in runs.
+  Remote deployment, SSH, tunnel, monitoring and notification utilities are omitted.
+
+TESTS
+  .venv/bin/python -m unittest discover -s experiment/tests -t .
+
+UPSTREAM CODE
+  experiment/taubench_retail/vendor contains the upstream retail tool subset.
+  Its original MIT license and copyright notice are retained in vendor/LICENSE.
+
+This artifact is prepared for anonymous review. Public distribution is a separate
+release step; this repository does not grant a new license for original project code.

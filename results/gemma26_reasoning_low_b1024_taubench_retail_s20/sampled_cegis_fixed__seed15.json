@@ -1,0 +1,125 @@
+{
+  "schema_version": 2,
+  "run": "sampled_cegis_fixed__seed15",
+  "created_at": "2026-09-08T20:41:49.693234+00:00",
+  "method": "sampled_cegis_fixed",
+  "model": "gemma-4-26b-a4b-it",
+  "endpoint": "[endpoint-redacted]",
+  "seed": 15,
+  "decoding": {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "max_tokens": 3072,
+    "seed": 15
+  },
+  "budgets": {
+    "state_budget": 48,
+    "query_budget": 4,
+    "token_budget": 20096
+  },
+  "sandbox": {
+    "domain": "taubench_retail",
+    "config_path": "experiment/configs/taubench_retail_default.json",
+    "config": {
+      "valid_orders": [
+        "#W1",
+        "#W2"
+      ],
+      "rejected_orders": [
+        "#W99"
+      ],
+      "valid_items": [
+        "shoe_black_9",
+        "shirt_blue_m"
+      ],
+      "rejected_items": [
+        "shoe_red_9"
+      ],
+      "valid_new_items": [
+        "shoe_black_10",
+        "shoe_red_9",
+        "shirt_blue_l"
+      ],
+      "rejected_new_items": [
+        "shoe_blue_9"
+      ],
+      "valid_payment_methods": [
+        "gift_card_0",
+        "credit_card_0"
+      ],
+      "rejected_payment_methods": [
+        "invalid_pm"
+      ],
+      "max_items": 1,
+      "max_new_items": 1,
+      "max_depth": 20,
+      "max_states": 5000
+    },
+    "max_depth": 20,
+    "max_states": 5000,
+    "enumeration": {
+      "states": 1294,
+      "transitions": 8116,
+      "truncated": false,
+      "max_depth": 20,
+      "max_states": 5000,
+      "deepest_level": 6
+    },
+    "evaluation_states": 1294,
+    "oracle_contract": "ground_truth.exchange_delivered_order_items"
+  },
+  "serving": {
+    "model": "gemma-4-26b-a4b-it",
+    "endpoint": "[endpoint-redacted]",
+    "vllm_version": "0.28.0",
+    "structured_output_style": "response_format",
+    "max_model_len": 8192,
+    "reasoning_request": {
+      "reasoning_effort": "low",
+      "thinking_token_budget": 1024,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "return_token_ids": true
+    }
+  },
+  "hashes": {
+    "sandbox_config_sha256": "1c3fb534d789eb7548e286379ecbf3408b9d5e1353b5181a08c723ed1b321f52",
+    "decoding_sha256": "2a5902f761d3795b652ab2ec654becc9ca966d504102941dbc9e798c6a22a14c",
+    "budgets_sha256": "ff3eaf956cf1111d42ba430a2e6b17a4cb58a585182f12e93f8321fdc4b0ecc6",
+    "protocol_sha256": "98cafd236699a575b59fd3f56dbeadebdbf0ffe07675ec8878b4d11d96ea350f",
+    "error": "unhashable type: 'list'",
+    "traceback": "Traceback (most recent call last):\n  File \"experiment/taubench_retail/model_runner.py\", line 271, in run_one\n    artifact = runner.run_method(spec)\n  File \"experiment/taubench_retail/runner.py\", line 547, in run\n    dispatch[spec.method](session)\n    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"experiment/taubench_retail/runner.py\", line 625, in _run_sampled_cegis_fixed\n    report = self.score(contract, sample_pool)\n  File \"experiment/taubench_retail/runner.py\", line 523, in score\n    return evaluate_contract(\n        contract,\n    ...<3 lines>...\n        vocabulary_protocol=self.vocabulary_protocol,\n    )\n  File \"experiment/taubench_retail/contracts.py\", line 187, in evaluate_contract\n    claimed = contract.holds_in(state)\n  File \"experiment/taubench_retail/contracts.py\", line 50, in holds_in\n    return bool(self.precondition(state))\n                ~~~~~~~~~~~~~~~~~^^^^^^^\n  File \"experiment/taubench_retail/dsl.py\", line 570, in precondition\n    return bool(self._pre_fn(binding))\n                ~~~~~~~~~~~~^^^^^^^^^\n  File \"experiment/taubench_retail/dsl.py\", line 292, in <lambda>\n    return lambda binding, sf=sub_formulas: all(f(binding) for f in sf)\n                                            ~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"experiment/taubench_retail/dsl.py\", line 292, in <genexpr>\n    return lambda binding, sf=sub_formulas: all(f(binding) for f in sf)\n                                                ~^^^^^^^^^\n  File \"experiment/taubench_retail/dsl.py\", line 409, in check_items_in_order\n    order_items = ORDER_ITEMS.get(ord_id if o"
+  },
+  "interactions": [],
+  "rounds": [],
+  "contract": {
+    "status": "missing",
+    "source": null,
+    "spec": null,
+    "node_count": null,
+    "error": "unhashable type: 'list'",
+    "interaction_index": null
+  },
+  "usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "calls": 0
+  },
+  "latency": {
+    "total_s": 0.0,
+    "per_call_s": []
+  },
+  "spend": {
+    "calls": 0,
+    "parse_failures": 0,
+    "states_observed": 0,
+    "oracle_feedback_queries": 0,
+    "sampled_feedback_queries": 0,
+    "sampled_states_checked": 0
+  },
+  "evaluation": null,
+  "outcome": "runner_error",
+  "stopped_because": "runner_error: TypeError: unhashable type: 'list'"
+}

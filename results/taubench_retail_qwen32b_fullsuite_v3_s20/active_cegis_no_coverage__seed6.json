@@ -1,0 +1,1402 @@
+{
+  "schema_version": 2,
+  "run": "active_cegis_no_coverage__seed6",
+  "created_at": "2026-09-04T04:00:37.038270+00:00",
+  "method": "active_cegis_no_coverage",
+  "model": "qwen2.5-32b-instruct",
+  "endpoint": "[endpoint-redacted]",
+  "seed": 6,
+  "decoding": {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "max_tokens": 2048,
+    "seed": 6
+  },
+  "budgets": {
+    "state_budget": 48,
+    "query_budget": 4,
+    "token_budget": 16000
+  },
+  "sandbox": {
+    "domain": "taubench_retail",
+    "config_path": "experiment/configs/taubench_retail_default.json",
+    "config": {
+      "valid_orders": [
+        "#W1",
+        "#W2"
+      ],
+      "rejected_orders": [
+        "#W99"
+      ],
+      "valid_items": [
+        "shoe_black_9",
+        "shirt_blue_m"
+      ],
+      "rejected_items": [
+        "shoe_red_9"
+      ],
+      "valid_new_items": [
+        "shoe_black_10",
+        "shoe_red_9",
+        "shirt_blue_l"
+      ],
+      "rejected_new_items": [
+        "shoe_blue_9"
+      ],
+      "valid_payment_methods": [
+        "gift_card_0",
+        "credit_card_0"
+      ],
+      "rejected_payment_methods": [
+        "invalid_pm"
+      ],
+      "max_items": 1,
+      "max_new_items": 1,
+      "max_depth": 20,
+      "max_states": 5000
+    },
+    "max_depth": 20,
+    "max_states": 5000,
+    "enumeration": {
+      "states": 1294,
+      "transitions": 8116,
+      "truncated": false,
+      "max_depth": 20,
+      "max_states": 5000,
+      "deepest_level": 6
+    },
+    "evaluation_states": 1294,
+    "oracle_contract": "ground_truth.exchange_delivered_order_items"
+  },
+  "serving": {
+    "model": "qwen2.5-32b-instruct",
+    "endpoint": "[endpoint-redacted]",
+    "vllm_version": "0.19.1",
+    "structured_output_style": "response_format",
+    "max_model_len": 8192
+  },
+  "hashes": {
+    "sandbox_config_sha256": "1c3fb534d789eb7548e286379ecbf3408b9d5e1353b5181a08c723ed1b321f52",
+    "decoding_sha256": "12ed277835e1359cc3d7285555d9a74adf79678dd590642967c07bc51e5d18e7",
+    "budgets_sha256": "a226cbdc29a384e2524cd88ae62f8c02d60cef8c0e3140c1c81a5d96041126f2",
+    "protocol_sha256": "24bcd5e21b2a39577f559085aaff78814a3be992e9841025a56656263ab54c56"
+  },
+  "interactions": [
+    {
+      "index": 0,
+      "role": "synthesis",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert formal verification engineer specializing in online retail service contracts.\nYour task is to write declarative contracts in JSON for the `exchange_delivered_order_items` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `authenticated` (bool)\n- `gift_card_balance` (number)\n- `item_ids` (items)\n- `item_ids_count` (number)\n- `new_item_ids` (items)\n- `new_item_ids_count` (number)\n- `order_id` (option)\n- `order_w1_exchange_items` (items)\n- `order_w1_exchange_new_items` (items)\n- `order_w1_exchange_payment_method_id` (option)\n- `order_w1_exchange_price_difference` (number)\n- `order_w1_return_items` (items)\n- `order_w1_status` (option)\n- `order_w2_cancel_reason` (option)\n- `order_w2_status` (option)\n- `payment_method_id` (option)\n\nConfiguration sets:\n- `valid_orders`\n- `rejected_orders`\n- `order_options`\n- `valid_items`\n- `rejected_items`\n- `item_options`\n- `valid_new_items`\n- `rejected_new_items`\n- `new_item_options`\n- `valid_payment_methods`\n- `rejected_payment_methods`\n- `payment_method_options`\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item list has no members.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set (for option/text) or all members in set (for items list).\n- `contains`: {\"op\": \"contains\", \"container\": t, \"item\": t} — list contains item.\n- `items_in_order`: {\"op\": \"items_in_order\", \"items\": t, \"order\": t} — all items belong to order.\n- `valid_variants`: {\"op\": \"valid_variants\", \"items\": t, \"new_items\": t} — new items match product variants.\n- `items_available`: {\"op\": \"items_available\", \"items\": t} — all items in list are available.\n- `sufficient_balance`: {\"op\": \"sufficient_balance\", \"payment_method\": t, \"balance\": t, \"items\": t, \"new_items\": t} — balance covers diff.\n- `exchange_snapshot_matches`: {\"op\": \"exchange_snapshot_matches\"} — after-state reflects draft exchange execution.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, boolean, null, or list.\n- `count`: {\"op\": \"count\", \"arg\": t} — count of items in a list.\n- `price_difference`: {\"op\": \"price_difference\", \"items\": t, \"new_items\": t} — price diff of exchange.\n\nRules:\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is rejected.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- `unchanged` is valid only inside the postcondition, and only over known state variables.\n- Comparisons must join two terms of the same kind: number with number, option with option, items with items, bool with bool. Wrap literal values in term objects like {\"const\": \"#W1\"} or {\"const\": 0}.\n- `in_set` accepts either an option/text term (single element membership) or an items list term (asserts all items belong to the set, vacuously true if empty).\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact."
+        },
+        {
+          "role": "user",
+          "content": "Synthesize a declarative contract for `exchange_delivered_order_items` in the retail domain.\n\nTask configuration:\n- Valid orders: ['#W1', '#W2']\n- Rejected orders: ['#W99']\n- Valid items: ['shoe_black_9', 'shirt_blue_m']\n- Rejected items: ['shoe_red_9']\n- Valid new items: ['shoe_black_10', 'shoe_red_9', 'shirt_blue_l']\n- Rejected new items: ['shoe_blue_9']\n- Valid payment methods: ['gift_card_0', 'credit_card_0']\n- Rejected payment methods: ['invalid_pm']\n- Max items: 1\n- Max new items: 1\n\nThe contract must specify:\n1. `precondition`: when `exchange_delivered_order_items` is allowed to execute.\n2. `postcondition`: the relationship between the before-state and after-state upon execution.\n\nTypical postcondition patterns:\n- Asserting order status change upon exchange:\n    {\"op\": \"eq\", \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"}, \"right\": {\"const\": \"exchange requested\"}}\n- Clearing draft fields in after-state:\n    {\"op\": \"is_null\", \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}}\n    {\"op\": \"is_empty\", \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}}\n    {\"op\": \"is_empty\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}}\n    {\"op\": \"is_null\", \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}}\n- Frame conditions specifying unchanged variables:\n    {\"op\": \"unchanged\", \"vars\": [\"order_w2_status\", \"order_w2_cancel_reason\", \"gift_card_balance\"]}\n\nExample JSON schema envelope:\n{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"notes\": \"Demonstration schema envelope only - not a candidate contract\",\n  \"precondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  },\n  \"postcondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  }\n}\n\nOutput ONLY the JSON object:"
+        }
+      ],
+      "prompt_sha256": "e82068f0d46c8d4e76c8e5dd0eb5de0b4d19bea5ab571179530bbe994b1411f7",
+      "response_sha256": "508d548140b07003e972e3ec6076db43d1223eea50fafe63f448bbf69ebf247a",
+      "request": {
+        "model": "qwen2.5-32b-instruct",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are an expert formal verification engineer specializing in online retail service contracts.\nYour task is to write declarative contracts in JSON for the `exchange_delivered_order_items` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `authenticated` (bool)\n- `gift_card_balance` (number)\n- `item_ids` (items)\n- `item_ids_count` (number)\n- `new_item_ids` (items)\n- `new_item_ids_count` (number)\n- `order_id` (option)\n- `order_w1_exchange_items` (items)\n- `order_w1_exchange_new_items` (items)\n- `order_w1_exchange_payment_method_id` (option)\n- `order_w1_exchange_price_difference` (number)\n- `order_w1_return_items` (items)\n- `order_w1_status` (option)\n- `order_w2_cancel_reason` (option)\n- `order_w2_status` (option)\n- `payment_method_id` (option)\n\nConfiguration sets:\n- `valid_orders`\n- `rejected_orders`\n- `order_options`\n- `valid_items`\n- `rejected_items`\n- `item_options`\n- `valid_new_items`\n- `rejected_new_items`\n- `new_item_options`\n- `valid_payment_methods`\n- `rejected_payment_methods`\n- `payment_method_options`\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item list has no members.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set (for option/text) or all members in set (for items list).\n- `contains`: {\"op\": \"contains\", \"container\": t, \"item\": t} — list contains item.\n- `items_in_order`: {\"op\": \"items_in_order\", \"items\": t, \"order\": t} — all items belong to order.\n- `valid_variants`: {\"op\": \"valid_variants\", \"items\": t, \"new_items\": t} — new items match product variants.\n- `items_available`: {\"op\": \"items_available\", \"items\": t} — all items in list are available.\n- `sufficient_balance`: {\"op\": \"sufficient_balance\", \"payment_method\": t, \"balance\": t, \"items\": t, \"new_items\": t} — balance covers diff.\n- `exchange_snapshot_matches`: {\"op\": \"exchange_snapshot_matches\"} — after-state reflects draft exchange execution.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, boolean, null, or list.\n- `count`: {\"op\": \"count\", \"arg\": t} — count of items in a list.\n- `price_difference`: {\"op\": \"price_difference\", \"items\": t, \"new_items\": t} — price diff of exchange.\n\nRules:\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is rejected.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- `unchanged` is valid only inside the postcondition, and only over known state variables.\n- Comparisons must join two terms of the same kind: number with number, option with option, items with items, bool with bool. Wrap literal values in term objects like {\"const\": \"#W1\"} or {\"const\": 0}.\n- `in_set` accepts either an option/text term (single element membership) or an items list term (asserts all items belong to the set, vacuously true if empty).\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact."
+          },
+          {
+            "role": "user",
+            "content": "Synthesize a declarative contract for `exchange_delivered_order_items` in the retail domain.\n\nTask configuration:\n- Valid orders: ['#W1', '#W2']\n- Rejected orders: ['#W99']\n- Valid items: ['shoe_black_9', 'shirt_blue_m']\n- Rejected items: ['shoe_red_9']\n- Valid new items: ['shoe_black_10', 'shoe_red_9', 'shirt_blue_l']\n- Rejected new items: ['shoe_blue_9']\n- Valid payment methods: ['gift_card_0', 'credit_card_0']\n- Rejected payment methods: ['invalid_pm']\n- Max items: 1\n- Max new items: 1\n\nThe contract must specify:\n1. `precondition`: when `exchange_delivered_order_items` is allowed to execute.\n2. `postcondition`: the relationship between the before-state and after-state upon execution.\n\nTypical postcondition patterns:\n- Asserting order status change upon exchange:\n    {\"op\": \"eq\", \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"}, \"right\": {\"const\": \"exchange requested\"}}\n- Clearing draft fields in after-state:\n    {\"op\": \"is_null\", \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}}\n    {\"op\": \"is_empty\", \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}}\n    {\"op\": \"is_empty\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}}\n    {\"op\": \"is_null\", \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}}\n- Frame conditions specifying unchanged variables:\n    {\"op\": \"unchanged\", \"vars\": [\"order_w2_status\", \"order_w2_cancel_reason\", \"gift_card_balance\"]}\n\nExample JSON schema envelope:\n{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"notes\": \"Demonstration schema envelope only - not a candidate contract\",\n  \"precondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  },\n  \"postcondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  }\n}\n\nOutput ONLY the JSON object:"
+          }
+        ],
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "max_tokens": 2048,
+        "stream": false,
+        "seed": 6,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "title": "RetailContract",
+              "type": "object",
+              "required": [
+                "skill",
+                "precondition",
+                "postcondition"
+              ],
+              "properties": {
+                "skill": {
+                  "type": "string",
+                  "const": "exchange_delivered_order_items"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "precondition": {
+                  "type": "object"
+                },
+                "postcondition": {
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false
+            },
+            "strict": true
+          }
+        }
+      },
+      "response_text": "{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"le\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"const\": 1}\n      },\n      {\n        \"op\": \"le\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}},\n        \"right\": {\"const\": 1}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}",
+      "raw_response": {
+        "id": "chatcmpl-b7206c1a44a27f18",
+        "object": "chat.completion",
+        "created": 1788494289,
+        "model": "qwen2.5-32b-instruct",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"le\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"const\": 1}\n      },\n      {\n        \"op\": \"le\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}},\n        \"right\": {\"const\": 1}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "tool_calls": [],
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": null,
+        "usage": {
+          "prompt_tokens": 1637,
+          "total_tokens": 2394,
+          "completion_tokens": 757,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "kv_transfer_params": null
+      },
+      "usage": {
+        "prompt_tokens": 1637,
+        "completion_tokens": 757,
+        "total_tokens": 2394
+      },
+      "latency_s": 35.13904648181051,
+      "finish_reason": "stop",
+      "error": null,
+      "prompt_tokens": 1637,
+      "requested_max_tokens": 2048,
+      "effective_max_tokens": 2048,
+      "clamp_reason": "none",
+      "context_window": 8192,
+      "safety_margin": 256
+    },
+    {
+      "index": 1,
+      "role": "refinement_round_1",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert formal verification engineer specializing in online retail service contracts.\nYour task is to write declarative contracts in JSON for the `exchange_delivered_order_items` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `authenticated` (bool)\n- `gift_card_balance` (number)\n- `item_ids` (items)\n- `item_ids_count` (number)\n- `new_item_ids` (items)\n- `new_item_ids_count` (number)\n- `order_id` (option)\n- `order_w1_exchange_items` (items)\n- `order_w1_exchange_new_items` (items)\n- `order_w1_exchange_payment_method_id` (option)\n- `order_w1_exchange_price_difference` (number)\n- `order_w1_return_items` (items)\n- `order_w1_status` (option)\n- `order_w2_cancel_reason` (option)\n- `order_w2_status` (option)\n- `payment_method_id` (option)\n\nConfiguration sets:\n- `valid_orders`\n- `rejected_orders`\n- `order_options`\n- `valid_items`\n- `rejected_items`\n- `item_options`\n- `valid_new_items`\n- `rejected_new_items`\n- `new_item_options`\n- `valid_payment_methods`\n- `rejected_payment_methods`\n- `payment_method_options`\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item list has no members.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set (for option/text) or all members in set (for items list).\n- `contains`: {\"op\": \"contains\", \"container\": t, \"item\": t} — list contains item.\n- `items_in_order`: {\"op\": \"items_in_order\", \"items\": t, \"order\": t} — all items belong to order.\n- `valid_variants`: {\"op\": \"valid_variants\", \"items\": t, \"new_items\": t} — new items match product variants.\n- `items_available`: {\"op\": \"items_available\", \"items\": t} — all items in list are available.\n- `sufficient_balance`: {\"op\": \"sufficient_balance\", \"payment_method\": t, \"balance\": t, \"items\": t, \"new_items\": t} — balance covers diff.\n- `exchange_snapshot_matches`: {\"op\": \"exchange_snapshot_matches\"} — after-state reflects draft exchange execution.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, boolean, null, or list.\n- `count`: {\"op\": \"count\", \"arg\": t} — count of items in a list.\n- `price_difference`: {\"op\": \"price_difference\", \"items\": t, \"new_items\": t} — price diff of exchange.\n\nRules:\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is rejected.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- `unchanged` is valid only inside the postcondition, and only over known state variables.\n- Comparisons must join two terms of the same kind: number with number, option with option, items with items, bool with bool. Wrap literal values in term objects like {\"const\": \"#W1\"} or {\"const\": 0}.\n- `in_set` accepts either an option/text term (single element membership) or an items list term (asserts all items belong to the set, vacuously true if empty).\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact."
+        },
+        {
+          "role": "user",
+          "content": "Refine the following valid contract candidate for `exchange_delivered_order_items`.\nPreserve every correct clause and change only what the checker evidence requires.\n\nPrevious valid contract:\n{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"le\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"const\": 1}\n      },\n      {\n        \"op\": \"le\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}},\n        \"right\": {\"const\": 1}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}\n\nChecker metrics:\n- False accepts: 4\n- False rejects: 0\n- Postcondition violations: 0\n- States checked: 8\n\nCounterexample states where the contract disagreed with the sandbox:\nCounterexample 1 (false_accept):\n- Detail: contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged\n- Before: {\n  \"order_id\": \"#W1\",\n  \"item_ids\": [],\n  \"new_item_ids\": [\n    \"shoe_black_10\"\n  ],\n  \"payment_method_id\": \"gift_card_0\",\n  \"order_w1_status\": \"return requested\",\n  \"order_w1_exchange_items\": [],\n  \"order_w1_exchange_new_items\": [],\n  \"order_w1_exchange_payment_method_id\": null,\n  \"order_w1_exchange_price_difference\": null,\n  \"order_w1_return_items\": [\n    \"shoe_black_9\"\n  ],\n  \"order_w2_status\": \"cancelled\",\n  \"order_w2_cancel_reason\": \"no longer needed\",\n  \"gift_card_balance\": 40.0,\n  \"authenticated\": true\n}\n- After: null (sandbox rejected the action)\n- Changed fields: {}\n- Unchanged fields: []\n\nCounterexample 2 (false_accept):\n- Detail: contract accepted the state but sandbox rejected with: Error: the number of items to be exchanged should match\n- Before: {\n  \"order_id\": \"#W1\",\n  \"item_ids\": [\n    \"shirt_blue_m\"\n  ],\n  \"new_item_ids\": [],\n  \"payment_method_id\": \"credit_card_0\",\n  \"order_w1_status\": \"delivered\",\n  \"order_w1_exchange_items\": [],\n  \"order_w1_exchange_new_items\": [],\n  \"order_w1_exchange_payment_method_id\": null,\n  \"order_w1_exchange_price_difference\": null,\n  \"order_w1_return_items\": [],\n  \"order_w2_status\": \"pending\",\n  \"order_w2_cancel_reason\": null,\n  \"gift_card_balance\": 15.0,\n  \"authenticated\": true\n}\n- After: null (sandbox rejected the action)\n- Changed fields: {}\n- Unchanged fields: []\n\nCounterexample 3 (false_accept):\n- Detail: contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged\n- Before: {\n  \"order_id\": \"#W2\",\n  \"item_ids\": [],\n  \"new_item_ids\": [\n    \"shoe_red_9\"\n  ],\n  \"payment_method_id\": \"credit_card_0\",\n  \"order_w1_status\": \"delivered\",\n  \"order_w1_exchange_items\": [],\n  \"order_w1_exchange_new_items\": [],\n  \"order_w1_exchange_payment_method_id\": null,\n  \"order_w1_exchange_price_difference\": null,\n  \"order_w1_return_items\": [],\n  \"order_w2_status\": \"cancelled\",\n  \"order_w2_cancel_reason\": \"no longer needed\",\n  \"gift_card_balance\": 40.0,\n  \"authenticated\": true\n}\n- After: null (sandbox rejected the action)\n- Changed fields: {}\n- Unchanged fields: []\n\nRevise every effect clause contradicted by changed or unchanged observed fields.\nOutput ONLY the complete revised JSON object:"
+        }
+      ],
+      "prompt_sha256": "242e40e217d7b1a51e8200c83385d156512fa28b32928a77110bc9e07497dcce",
+      "response_sha256": "a70f9701285996518a4b1cd42e7a19dd5e5b8193e9c002db6ded8d7f3198e016",
+      "request": {
+        "model": "qwen2.5-32b-instruct",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are an expert formal verification engineer specializing in online retail service contracts.\nYour task is to write declarative contracts in JSON for the `exchange_delivered_order_items` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `authenticated` (bool)\n- `gift_card_balance` (number)\n- `item_ids` (items)\n- `item_ids_count` (number)\n- `new_item_ids` (items)\n- `new_item_ids_count` (number)\n- `order_id` (option)\n- `order_w1_exchange_items` (items)\n- `order_w1_exchange_new_items` (items)\n- `order_w1_exchange_payment_method_id` (option)\n- `order_w1_exchange_price_difference` (number)\n- `order_w1_return_items` (items)\n- `order_w1_status` (option)\n- `order_w2_cancel_reason` (option)\n- `order_w2_status` (option)\n- `payment_method_id` (option)\n\nConfiguration sets:\n- `valid_orders`\n- `rejected_orders`\n- `order_options`\n- `valid_items`\n- `rejected_items`\n- `item_options`\n- `valid_new_items`\n- `rejected_new_items`\n- `new_item_options`\n- `valid_payment_methods`\n- `rejected_payment_methods`\n- `payment_method_options`\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item list has no members.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set (for option/text) or all members in set (for items list).\n- `contains`: {\"op\": \"contains\", \"container\": t, \"item\": t} — list contains item.\n- `items_in_order`: {\"op\": \"items_in_order\", \"items\": t, \"order\": t} — all items belong to order.\n- `valid_variants`: {\"op\": \"valid_variants\", \"items\": t, \"new_items\": t} — new items match product variants.\n- `items_available`: {\"op\": \"items_available\", \"items\": t} — all items in list are available.\n- `sufficient_balance`: {\"op\": \"sufficient_balance\", \"payment_method\": t, \"balance\": t, \"items\": t, \"new_items\": t} — balance covers diff.\n- `exchange_snapshot_matches`: {\"op\": \"exchange_snapshot_matches\"} — after-state reflects draft exchange execution.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, boolean, null, or list.\n- `count`: {\"op\": \"count\", \"arg\": t} — count of items in a list.\n- `price_difference`: {\"op\": \"price_difference\", \"items\": t, \"new_items\": t} — price diff of exchange.\n\nRules:\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is rejected.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- `unchanged` is valid only inside the postcondition, and only over known state variables.\n- Comparisons must join two terms of the same kind: number with number, option with option, items with items, bool with bool. Wrap literal values in term objects like {\"const\": \"#W1\"} or {\"const\": 0}.\n- `in_set` accepts either an option/text term (single element membership) or an items list term (asserts all items belong to the set, vacuously true if empty).\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact."
+          },
+          {
+            "role": "user",
+            "content": "Refine the following valid contract candidate for `exchange_delivered_order_items`.\nPreserve every correct clause and change only what the checker evidence requires.\n\nPrevious valid contract:\n{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"le\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"const\": 1}\n      },\n      {\n        \"op\": \"le\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}},\n        \"right\": {\"const\": 1}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}\n\nChecker metrics:\n- False accepts: 4\n- False rejects: 0\n- Postcondition violations: 0\n- States checked: 8\n\nCounterexample states where the contract disagreed with the sandbox:\nCounterexample 1 (false_accept):\n- Detail: contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged\n- Before: {\n  \"order_id\": \"#W1\",\n  \"item_ids\": [],\n  \"new_item_ids\": [\n    \"shoe_black_10\"\n  ],\n  \"payment_method_id\": \"gift_card_0\",\n  \"order_w1_status\": \"return requested\",\n  \"order_w1_exchange_items\": [],\n  \"order_w1_exchange_new_items\": [],\n  \"order_w1_exchange_payment_method_id\": null,\n  \"order_w1_exchange_price_difference\": null,\n  \"order_w1_return_items\": [\n    \"shoe_black_9\"\n  ],\n  \"order_w2_status\": \"cancelled\",\n  \"order_w2_cancel_reason\": \"no longer needed\",\n  \"gift_card_balance\": 40.0,\n  \"authenticated\": true\n}\n- After: null (sandbox rejected the action)\n- Changed fields: {}\n- Unchanged fields: []\n\nCounterexample 2 (false_accept):\n- Detail: contract accepted the state but sandbox rejected with: Error: the number of items to be exchanged should match\n- Before: {\n  \"order_id\": \"#W1\",\n  \"item_ids\": [\n    \"shirt_blue_m\"\n  ],\n  \"new_item_ids\": [],\n  \"payment_method_id\": \"credit_card_0\",\n  \"order_w1_status\": \"delivered\",\n  \"order_w1_exchange_items\": [],\n  \"order_w1_exchange_new_items\": [],\n  \"order_w1_exchange_payment_method_id\": null,\n  \"order_w1_exchange_price_difference\": null,\n  \"order_w1_return_items\": [],\n  \"order_w2_status\": \"pending\",\n  \"order_w2_cancel_reason\": null,\n  \"gift_card_balance\": 15.0,\n  \"authenticated\": true\n}\n- After: null (sandbox rejected the action)\n- Changed fields: {}\n- Unchanged fields: []\n\nCounterexample 3 (false_accept):\n- Detail: contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged\n- Before: {\n  \"order_id\": \"#W2\",\n  \"item_ids\": [],\n  \"new_item_ids\": [\n    \"shoe_red_9\"\n  ],\n  \"payment_method_id\": \"credit_card_0\",\n  \"order_w1_status\": \"delivered\",\n  \"order_w1_exchange_items\": [],\n  \"order_w1_exchange_new_items\": [],\n  \"order_w1_exchange_payment_method_id\": null,\n  \"order_w1_exchange_price_difference\": null,\n  \"order_w1_return_items\": [],\n  \"order_w2_status\": \"cancelled\",\n  \"order_w2_cancel_reason\": \"no longer needed\",\n  \"gift_card_balance\": 40.0,\n  \"authenticated\": true\n}\n- After: null (sandbox rejected the action)\n- Changed fields: {}\n- Unchanged fields: []\n\nRevise every effect clause contradicted by changed or unchanged observed fields.\nOutput ONLY the complete revised JSON object:"
+          }
+        ],
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "max_tokens": 2048,
+        "stream": false,
+        "seed": 6,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "title": "RetailContract",
+              "type": "object",
+              "required": [
+                "skill",
+                "precondition",
+                "postcondition"
+              ],
+              "properties": {
+                "skill": {
+                  "type": "string",
+                  "const": "exchange_delivered_order_items"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "precondition": {
+                  "type": "object"
+                },
+                "postcondition": {
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false
+            },
+            "strict": true
+          }
+        }
+      },
+      "response_text": "{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"before\"},\n        \"right\": {\"const\": \"delivered\"}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}",
+      "raw_response": {
+        "id": "chatcmpl-80873f227cca02ee",
+        "object": "chat.completion",
+        "created": 1788494325,
+        "model": "qwen2.5-32b-instruct",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"before\"},\n        \"right\": {\"const\": \"delivered\"}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "tool_calls": [],
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": null,
+        "usage": {
+          "prompt_tokens": 2638,
+          "total_tokens": 3405,
+          "completion_tokens": 767,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "kv_transfer_params": null
+      },
+      "usage": {
+        "prompt_tokens": 2638,
+        "completion_tokens": 767,
+        "total_tokens": 3405
+      },
+      "latency_s": 35.589436368085444,
+      "finish_reason": "stop",
+      "error": null,
+      "prompt_tokens": 2638,
+      "requested_max_tokens": 2048,
+      "effective_max_tokens": 2048,
+      "clamp_reason": "none",
+      "context_window": 8192,
+      "safety_margin": 256
+    },
+    {
+      "index": 2,
+      "role": "refinement_round_2",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert formal verification engineer specializing in online retail service contracts.\nYour task is to write declarative contracts in JSON for the `exchange_delivered_order_items` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `authenticated` (bool)\n- `gift_card_balance` (number)\n- `item_ids` (items)\n- `item_ids_count` (number)\n- `new_item_ids` (items)\n- `new_item_ids_count` (number)\n- `order_id` (option)\n- `order_w1_exchange_items` (items)\n- `order_w1_exchange_new_items` (items)\n- `order_w1_exchange_payment_method_id` (option)\n- `order_w1_exchange_price_difference` (number)\n- `order_w1_return_items` (items)\n- `order_w1_status` (option)\n- `order_w2_cancel_reason` (option)\n- `order_w2_status` (option)\n- `payment_method_id` (option)\n\nConfiguration sets:\n- `valid_orders`\n- `rejected_orders`\n- `order_options`\n- `valid_items`\n- `rejected_items`\n- `item_options`\n- `valid_new_items`\n- `rejected_new_items`\n- `new_item_options`\n- `valid_payment_methods`\n- `rejected_payment_methods`\n- `payment_method_options`\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item list has no members.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set (for option/text) or all members in set (for items list).\n- `contains`: {\"op\": \"contains\", \"container\": t, \"item\": t} — list contains item.\n- `items_in_order`: {\"op\": \"items_in_order\", \"items\": t, \"order\": t} — all items belong to order.\n- `valid_variants`: {\"op\": \"valid_variants\", \"items\": t, \"new_items\": t} — new items match product variants.\n- `items_available`: {\"op\": \"items_available\", \"items\": t} — all items in list are available.\n- `sufficient_balance`: {\"op\": \"sufficient_balance\", \"payment_method\": t, \"balance\": t, \"items\": t, \"new_items\": t} — balance covers diff.\n- `exchange_snapshot_matches`: {\"op\": \"exchange_snapshot_matches\"} — after-state reflects draft exchange execution.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, boolean, null, or list.\n- `count`: {\"op\": \"count\", \"arg\": t} — count of items in a list.\n- `price_difference`: {\"op\": \"price_difference\", \"items\": t, \"new_items\": t} — price diff of exchange.\n\nRules:\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is rejected.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- `unchanged` is valid only inside the postcondition, and only over known state variables.\n- Comparisons must join two terms of the same kind: number with number, option with option, items with items, bool with bool. Wrap literal values in term objects like {\"const\": \"#W1\"} or {\"const\": 0}.\n- `in_set` accepts either an option/text term (single element membership) or an items list term (asserts all items belong to the set, vacuously true if empty).\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact."
+        },
+        {
+          "role": "user",
+          "content": "Refine the following valid contract candidate for `exchange_delivered_order_items`.\nPreserve every correct clause and change only what the checker evidence requires.\n\nPrevious valid contract:\n{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"before\"},\n        \"right\": {\"const\": \"delivered\"}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}\n\nChecker metrics:\n- False accepts: 1\n- False rejects: 0\n- Postcondition violations: 0\n- States checked: 16\n\nCounterexample states where the contract disagreed with the sandbox:\nCounterexample 1 (false_accept):\n- Detail: contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged\n- Before: {\n  \"order_id\": \"#W2\",\n  \"item_ids\": [],\n  \"new_item_ids\": [],\n  \"payment_method_id\": \"credit_card_0\",\n  \"order_w1_status\": \"delivered\",\n  \"order_w1_exchange_items\": [],\n  \"order_w1_exchange_new_items\": [],\n  \"order_w1_exchange_payment_method_id\": null,\n  \"order_w1_exchange_price_difference\": null,\n  \"order_w1_return_items\": [],\n  \"order_w2_status\": \"pending\",\n  \"order_w2_cancel_reason\": null,\n  \"gift_card_balance\": 15.0,\n  \"authenticated\": true\n}\n- After: null (sandbox rejected the action)\n- Changed fields: {}\n- Unchanged fields: []\n\nRevise every effect clause contradicted by changed or unchanged observed fields.\nOutput ONLY the complete revised JSON object:"
+        }
+      ],
+      "prompt_sha256": "bbce0042ebd8a876d92d8f9c2bcbf5b1ef3c73fd4dd57da11347743b571f2eb5",
+      "response_sha256": "212a79d195bce9e7f62c4c8eba318dda3fa8633f7d916a7c934a851535eb28ca",
+      "request": {
+        "model": "qwen2.5-32b-instruct",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are an expert formal verification engineer specializing in online retail service contracts.\nYour task is to write declarative contracts in JSON for the `exchange_delivered_order_items` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `authenticated` (bool)\n- `gift_card_balance` (number)\n- `item_ids` (items)\n- `item_ids_count` (number)\n- `new_item_ids` (items)\n- `new_item_ids_count` (number)\n- `order_id` (option)\n- `order_w1_exchange_items` (items)\n- `order_w1_exchange_new_items` (items)\n- `order_w1_exchange_payment_method_id` (option)\n- `order_w1_exchange_price_difference` (number)\n- `order_w1_return_items` (items)\n- `order_w1_status` (option)\n- `order_w2_cancel_reason` (option)\n- `order_w2_status` (option)\n- `payment_method_id` (option)\n\nConfiguration sets:\n- `valid_orders`\n- `rejected_orders`\n- `order_options`\n- `valid_items`\n- `rejected_items`\n- `item_options`\n- `valid_new_items`\n- `rejected_new_items`\n- `new_item_options`\n- `valid_payment_methods`\n- `rejected_payment_methods`\n- `payment_method_options`\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item list has no members.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set (for option/text) or all members in set (for items list).\n- `contains`: {\"op\": \"contains\", \"container\": t, \"item\": t} — list contains item.\n- `items_in_order`: {\"op\": \"items_in_order\", \"items\": t, \"order\": t} — all items belong to order.\n- `valid_variants`: {\"op\": \"valid_variants\", \"items\": t, \"new_items\": t} — new items match product variants.\n- `items_available`: {\"op\": \"items_available\", \"items\": t} — all items in list are available.\n- `sufficient_balance`: {\"op\": \"sufficient_balance\", \"payment_method\": t, \"balance\": t, \"items\": t, \"new_items\": t} — balance covers diff.\n- `exchange_snapshot_matches`: {\"op\": \"exchange_snapshot_matches\"} — after-state reflects draft exchange execution.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, boolean, null, or list.\n- `count`: {\"op\": \"count\", \"arg\": t} — count of items in a list.\n- `price_difference`: {\"op\": \"price_difference\", \"items\": t, \"new_items\": t} — price diff of exchange.\n\nRules:\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is rejected.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- `unchanged` is valid only inside the postcondition, and only over known state variables.\n- Comparisons must join two terms of the same kind: number with number, option with option, items with items, bool with bool. Wrap literal values in term objects like {\"const\": \"#W1\"} or {\"const\": 0}.\n- `in_set` accepts either an option/text term (single element membership) or an items list term (asserts all items belong to the set, vacuously true if empty).\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact."
+          },
+          {
+            "role": "user",
+            "content": "Refine the following valid contract candidate for `exchange_delivered_order_items`.\nPreserve every correct clause and change only what the checker evidence requires.\n\nPrevious valid contract:\n{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"before\"},\n        \"right\": {\"const\": \"delivered\"}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}\n\nChecker metrics:\n- False accepts: 1\n- False rejects: 0\n- Postcondition violations: 0\n- States checked: 16\n\nCounterexample states where the contract disagreed with the sandbox:\nCounterexample 1 (false_accept):\n- Detail: contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged\n- Before: {\n  \"order_id\": \"#W2\",\n  \"item_ids\": [],\n  \"new_item_ids\": [],\n  \"payment_method_id\": \"credit_card_0\",\n  \"order_w1_status\": \"delivered\",\n  \"order_w1_exchange_items\": [],\n  \"order_w1_exchange_new_items\": [],\n  \"order_w1_exchange_payment_method_id\": null,\n  \"order_w1_exchange_price_difference\": null,\n  \"order_w1_return_items\": [],\n  \"order_w2_status\": \"pending\",\n  \"order_w2_cancel_reason\": null,\n  \"gift_card_balance\": 15.0,\n  \"authenticated\": true\n}\n- After: null (sandbox rejected the action)\n- Changed fields: {}\n- Unchanged fields: []\n\nRevise every effect clause contradicted by changed or unchanged observed fields.\nOutput ONLY the complete revised JSON object:"
+          }
+        ],
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "max_tokens": 2048,
+        "stream": false,
+        "seed": 6,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "title": "RetailContract",
+              "type": "object",
+              "required": [
+                "skill",
+                "precondition",
+                "postcondition"
+              ],
+              "properties": {
+                "skill": {
+                  "type": "string",
+                  "const": "exchange_delivered_order_items"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "precondition": {
+                  "type": "object"
+                },
+                "postcondition": {
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false
+            },
+            "strict": true
+          }
+        }
+      },
+      "response_text": "{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"before\"},\n        \"right\": {\"const\": \"delivered\"}\n      },\n      {\n        \"op\": \"ne\",\n        \"left\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"right\": {\"const\": []}\n      },\n      {\n        \"op\": \"ne\",\n        \"left\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"right\": {\"const\": []}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}",
+      "raw_response": {
+        "id": "chatcmpl-a94e21e8b9a547c6",
+        "object": "chat.completion",
+        "created": 1788494360,
+        "model": "qwen2.5-32b-instruct",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"before\"},\n        \"right\": {\"const\": \"delivered\"}\n      },\n      {\n        \"op\": \"ne\",\n        \"left\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"right\": {\"const\": []}\n      },\n      {\n        \"op\": \"ne\",\n        \"left\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"right\": {\"const\": []}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "tool_calls": [],
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": null,
+        "usage": {
+          "prompt_tokens": 2222,
+          "total_tokens": 3064,
+          "completion_tokens": 842,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "kv_transfer_params": null
+      },
+      "usage": {
+        "prompt_tokens": 2222,
+        "completion_tokens": 842,
+        "total_tokens": 3064
+      },
+      "latency_s": 39.27357547450811,
+      "finish_reason": "stop",
+      "error": null,
+      "prompt_tokens": 2222,
+      "requested_max_tokens": 2048,
+      "effective_max_tokens": 2048,
+      "clamp_reason": "none",
+      "context_window": 8192,
+      "safety_margin": 256
+    },
+    {
+      "index": 3,
+      "role": "refinement_round_3",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert formal verification engineer specializing in online retail service contracts.\nYour task is to write declarative contracts in JSON for the `exchange_delivered_order_items` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `authenticated` (bool)\n- `gift_card_balance` (number)\n- `item_ids` (items)\n- `item_ids_count` (number)\n- `new_item_ids` (items)\n- `new_item_ids_count` (number)\n- `order_id` (option)\n- `order_w1_exchange_items` (items)\n- `order_w1_exchange_new_items` (items)\n- `order_w1_exchange_payment_method_id` (option)\n- `order_w1_exchange_price_difference` (number)\n- `order_w1_return_items` (items)\n- `order_w1_status` (option)\n- `order_w2_cancel_reason` (option)\n- `order_w2_status` (option)\n- `payment_method_id` (option)\n\nConfiguration sets:\n- `valid_orders`\n- `rejected_orders`\n- `order_options`\n- `valid_items`\n- `rejected_items`\n- `item_options`\n- `valid_new_items`\n- `rejected_new_items`\n- `new_item_options`\n- `valid_payment_methods`\n- `rejected_payment_methods`\n- `payment_method_options`\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item list has no members.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set (for option/text) or all members in set (for items list).\n- `contains`: {\"op\": \"contains\", \"container\": t, \"item\": t} — list contains item.\n- `items_in_order`: {\"op\": \"items_in_order\", \"items\": t, \"order\": t} — all items belong to order.\n- `valid_variants`: {\"op\": \"valid_variants\", \"items\": t, \"new_items\": t} — new items match product variants.\n- `items_available`: {\"op\": \"items_available\", \"items\": t} — all items in list are available.\n- `sufficient_balance`: {\"op\": \"sufficient_balance\", \"payment_method\": t, \"balance\": t, \"items\": t, \"new_items\": t} — balance covers diff.\n- `exchange_snapshot_matches`: {\"op\": \"exchange_snapshot_matches\"} — after-state reflects draft exchange execution.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, boolean, null, or list.\n- `count`: {\"op\": \"count\", \"arg\": t} — count of items in a list.\n- `price_difference`: {\"op\": \"price_difference\", \"items\": t, \"new_items\": t} — price diff of exchange.\n\nRules:\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is rejected.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- `unchanged` is valid only inside the postcondition, and only over known state variables.\n- Comparisons must join two terms of the same kind: number with number, option with option, items with items, bool with bool. Wrap literal values in term objects like {\"const\": \"#W1\"} or {\"const\": 0}.\n- `in_set` accepts either an option/text term (single element membership) or an items list term (asserts all items belong to the set, vacuously true if empty).\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact."
+        },
+        {
+          "role": "user",
+          "content": "Refine the following valid contract candidate for `exchange_delivered_order_items`.\nPreserve every correct clause and change only what the checker evidence requires.\n\nPrevious valid contract:\n{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"before\"},\n        \"right\": {\"const\": \"delivered\"}\n      },\n      {\n        \"op\": \"ne\",\n        \"left\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"right\": {\"const\": []}\n      },\n      {\n        \"op\": \"ne\",\n        \"left\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"right\": {\"const\": []}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}\n\nChecker metrics:\n- False accepts: 0\n- False rejects: 1\n- Postcondition violations: 0\n- States checked: 24\n\nCounterexample states where the contract disagreed with the sandbox:\nCounterexample 1 (false_reject):\n- Detail: contract rejected the state but the sandbox successfully executed the exchange\n- Before: {\n  \"order_id\": \"#W1\",\n  \"item_ids\": [],\n  \"new_item_ids\": [],\n  \"payment_method_id\": \"credit_card_0\",\n  \"order_w1_status\": \"delivered\",\n  \"order_w1_exchange_items\": [],\n  \"order_w1_exchange_new_items\": [],\n  \"order_w1_exchange_payment_method_id\": null,\n  \"order_w1_exchange_price_difference\": null,\n  \"order_w1_return_items\": [],\n  \"order_w2_status\": \"pending\",\n  \"order_w2_cancel_reason\": null,\n  \"gift_card_balance\": 15.0,\n  \"authenticated\": true\n}\n- After: {\n  \"order_id\": null,\n  \"item_ids\": [],\n  \"new_item_ids\": [],\n  \"payment_method_id\": null,\n  \"order_w1_status\": \"exchange requested\",\n  \"order_w1_exchange_items\": [],\n  \"order_w1_exchange_new_items\": [],\n  \"order_w1_exchange_payment_method_id\": \"credit_card_0\",\n  \"order_w1_exchange_price_difference\": 0,\n  \"order_w1_return_items\": [],\n  \"order_w2_status\": \"pending\",\n  \"order_w2_cancel_reason\": null,\n  \"gift_card_balance\": 15.0,\n  \"authenticated\": true\n}\n- Changed fields: {\n  \"order_id\": {\n    \"before\": \"#W1\",\n    \"after\": null\n  },\n  \"order_w1_exchange_payment_method_id\": {\n    \"before\": null,\n    \"after\": \"credit_card_0\"\n  },\n  \"order_w1_exchange_price_difference\": {\n    \"before\": null,\n    \"after\": 0\n  },\n  \"order_w1_status\": {\n    \"before\": \"delivered\",\n    \"after\": \"exchange requested\"\n  },\n  \"payment_method_id\": {\n    \"before\": \"credit_card_0\",\n    \"after\": null\n  }\n}\n- Unchanged fields: [\"authenticated\", \"gift_card_balance\", \"item_ids\", \"new_item_ids\", \"order_w1_exchange_items\", \"order_w1_exchange_new_items\", \"order_w1_return_items\", \"order_w2_cancel_reason\", \"order_w2_status\"]\n\nRevise every effect clause contradicted by changed or unchanged observed fields.\nOutput ONLY the complete revised JSON object:"
+        }
+      ],
+      "prompt_sha256": "403eeea6b6c2c0318affcf08b1cc40117e81ff8e27b25d8ff151f84d08e441fc",
+      "response_sha256": "fb519e3bb9060e67c0967ede5361aa8b312824125f8a5623c0ffb0ace021cd6f",
+      "request": {
+        "model": "qwen2.5-32b-instruct",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are an expert formal verification engineer specializing in online retail service contracts.\nYour task is to write declarative contracts in JSON for the `exchange_delivered_order_items` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `authenticated` (bool)\n- `gift_card_balance` (number)\n- `item_ids` (items)\n- `item_ids_count` (number)\n- `new_item_ids` (items)\n- `new_item_ids_count` (number)\n- `order_id` (option)\n- `order_w1_exchange_items` (items)\n- `order_w1_exchange_new_items` (items)\n- `order_w1_exchange_payment_method_id` (option)\n- `order_w1_exchange_price_difference` (number)\n- `order_w1_return_items` (items)\n- `order_w1_status` (option)\n- `order_w2_cancel_reason` (option)\n- `order_w2_status` (option)\n- `payment_method_id` (option)\n\nConfiguration sets:\n- `valid_orders`\n- `rejected_orders`\n- `order_options`\n- `valid_items`\n- `rejected_items`\n- `item_options`\n- `valid_new_items`\n- `rejected_new_items`\n- `new_item_options`\n- `valid_payment_methods`\n- `rejected_payment_methods`\n- `payment_method_options`\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — an item list has no members.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set (for option/text) or all members in set (for items list).\n- `contains`: {\"op\": \"contains\", \"container\": t, \"item\": t} — list contains item.\n- `items_in_order`: {\"op\": \"items_in_order\", \"items\": t, \"order\": t} — all items belong to order.\n- `valid_variants`: {\"op\": \"valid_variants\", \"items\": t, \"new_items\": t} — new items match product variants.\n- `items_available`: {\"op\": \"items_available\", \"items\": t} — all items in list are available.\n- `sufficient_balance`: {\"op\": \"sufficient_balance\", \"payment_method\": t, \"balance\": t, \"items\": t, \"new_items\": t} — balance covers diff.\n- `exchange_snapshot_matches`: {\"op\": \"exchange_snapshot_matches\"} — after-state reflects draft exchange execution.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, boolean, null, or list.\n- `count`: {\"op\": \"count\", \"arg\": t} — count of items in a list.\n- `price_difference`: {\"op\": \"price_difference\", \"items\": t, \"new_items\": t} — price diff of exchange.\n\nRules:\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is rejected.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- `unchanged` is valid only inside the postcondition, and only over known state variables.\n- Comparisons must join two terms of the same kind: number with number, option with option, items with items, bool with bool. Wrap literal values in term objects like {\"const\": \"#W1\"} or {\"const\": 0}.\n- `in_set` accepts either an option/text term (single element membership) or an items list term (asserts all items belong to the set, vacuously true if empty).\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact."
+          },
+          {
+            "role": "user",
+            "content": "Refine the following valid contract candidate for `exchange_delivered_order_items`.\nPreserve every correct clause and change only what the checker evidence requires.\n\nPrevious valid contract:\n{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"before\"},\n        \"right\": {\"const\": \"delivered\"}\n      },\n      {\n        \"op\": \"ne\",\n        \"left\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"right\": {\"const\": []}\n      },\n      {\n        \"op\": \"ne\",\n        \"left\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"right\": {\"const\": []}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}\n\nChecker metrics:\n- False accepts: 0\n- False rejects: 1\n- Postcondition violations: 0\n- States checked: 24\n\nCounterexample states where the contract disagreed with the sandbox:\nCounterexample 1 (false_reject):\n- Detail: contract rejected the state but the sandbox successfully executed the exchange\n- Before: {\n  \"order_id\": \"#W1\",\n  \"item_ids\": [],\n  \"new_item_ids\": [],\n  \"payment_method_id\": \"credit_card_0\",\n  \"order_w1_status\": \"delivered\",\n  \"order_w1_exchange_items\": [],\n  \"order_w1_exchange_new_items\": [],\n  \"order_w1_exchange_payment_method_id\": null,\n  \"order_w1_exchange_price_difference\": null,\n  \"order_w1_return_items\": [],\n  \"order_w2_status\": \"pending\",\n  \"order_w2_cancel_reason\": null,\n  \"gift_card_balance\": 15.0,\n  \"authenticated\": true\n}\n- After: {\n  \"order_id\": null,\n  \"item_ids\": [],\n  \"new_item_ids\": [],\n  \"payment_method_id\": null,\n  \"order_w1_status\": \"exchange requested\",\n  \"order_w1_exchange_items\": [],\n  \"order_w1_exchange_new_items\": [],\n  \"order_w1_exchange_payment_method_id\": \"credit_card_0\",\n  \"order_w1_exchange_price_difference\": 0,\n  \"order_w1_return_items\": [],\n  \"order_w2_status\": \"pending\",\n  \"order_w2_cancel_reason\": null,\n  \"gift_card_balance\": 15.0,\n  \"authenticated\": true\n}\n- Changed fields: {\n  \"order_id\": {\n    \"before\": \"#W1\",\n    \"after\": null\n  },\n  \"order_w1_exchange_payment_method_id\": {\n    \"before\": null,\n    \"after\": \"credit_card_0\"\n  },\n  \"order_w1_exchange_price_difference\": {\n    \"before\": null,\n    \"after\": 0\n  },\n  \"order_w1_status\": {\n    \"before\": \"delivered\",\n    \"after\": \"exchange requested\"\n  },\n  \"payment_method_id\": {\n    \"before\": \"credit_card_0\",\n    \"after\": null\n  }\n}\n- Unchanged fields: [\"authenticated\", \"gift_card_balance\", \"item_ids\", \"new_item_ids\", \"order_w1_exchange_items\", \"order_w1_exchange_new_items\", \"order_w1_return_items\", \"order_w2_cancel_reason\", \"order_w2_status\"]\n\nRevise every effect clause contradicted by changed or unchanged observed fields.\nOutput ONLY the complete revised JSON object:"
+          }
+        ],
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "max_tokens": 2048,
+        "stream": false,
+        "seed": 6,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "title": "RetailContract",
+              "type": "object",
+              "required": [
+                "skill",
+                "precondition",
+                "postcondition"
+              ],
+              "properties": {
+                "skill": {
+                  "type": "string",
+                  "const": "exchange_delivered_order_items"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "precondition": {
+                  "type": "object"
+                },
+                "postcondition": {
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false
+            },
+            "strict": true
+          }
+        }
+      },
+      "response_text": "{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"before\"},\n        \"right\": {\"const\": \"delivered\"}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\",\n          \"order_w1_exchange_items\",\n          \"order_w1_exchange_new_items\",\n          \"order_w1_return_items\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}",
+      "raw_response": {
+        "id": "chatcmpl-ba4de014a69b47c2",
+        "object": "chat.completion",
+        "created": 1788494399,
+        "model": "qwen2.5-32b-instruct",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"before\"},\n        \"right\": {\"const\": \"delivered\"}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\",\n          \"order_w1_exchange_items\",\n          \"order_w1_exchange_new_items\",\n          \"order_w1_return_items\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "tool_calls": [],
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": null,
+        "usage": {
+          "prompt_tokens": 2598,
+          "total_tokens": 3390,
+          "completion_tokens": 792,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "kv_transfer_params": null
+      },
+      "usage": {
+        "prompt_tokens": 2598,
+        "completion_tokens": 792,
+        "total_tokens": 3390
+      },
+      "latency_s": 36.99992198776454,
+      "finish_reason": "stop",
+      "error": null,
+      "prompt_tokens": 2598,
+      "requested_max_tokens": 2048,
+      "effective_max_tokens": 2048,
+      "clamp_reason": "none",
+      "context_window": 8192,
+      "safety_margin": 256
+    }
+  ],
+  "rounds": [
+    {
+      "round": 0,
+      "audit": 0,
+      "role": "synthesis",
+      "adaptation": "active_cegis_no_coverage",
+      "evidence_policy": "candidate_partitioned_uniform",
+      "contract_status": "parsed",
+      "fresh_states": 8,
+      "reachable_predicted_accepts": 100,
+      "cumulative_states": 8,
+      "report": {
+        "contract": "candidate_exchange_delivered_order_items",
+        "states_checked": 8,
+        "successes": 0,
+        "failures": 4,
+        "false_accepts": 4,
+        "false_rejects": 0,
+        "postcondition_violations": 0,
+        "symptoms": [
+          "false_accept"
+        ],
+        "exact": false,
+        "primary_defect": "too_weak_precondition",
+        "counterexamples": [
+          {
+            "symptom": "false_accept",
+            "state": {
+              "order_id": "#W1",
+              "item_ids": [],
+              "new_item_ids": [
+                "shoe_black_10"
+              ],
+              "payment_method_id": "gift_card_0",
+              "order_w1_status": "return requested",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [
+                "shoe_black_9"
+              ],
+              "order_w2_status": "cancelled",
+              "order_w2_cancel_reason": "no longer needed",
+              "gift_card_balance": 40.0,
+              "authenticated": true
+            },
+            "before_state": {
+              "order_id": "#W1",
+              "item_ids": [],
+              "new_item_ids": [
+                "shoe_black_10"
+              ],
+              "payment_method_id": "gift_card_0",
+              "order_w1_status": "return requested",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [
+                "shoe_black_9"
+              ],
+              "order_w2_status": "cancelled",
+              "order_w2_cancel_reason": "no longer needed",
+              "gift_card_balance": 40.0,
+              "authenticated": true
+            },
+            "after_state": null,
+            "action_succeeded": false,
+            "changed_fields": {},
+            "unchanged_fields": [],
+            "detail": "contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged"
+          },
+          {
+            "symptom": "false_accept",
+            "state": {
+              "order_id": "#W1",
+              "item_ids": [
+                "shirt_blue_m"
+              ],
+              "new_item_ids": [],
+              "payment_method_id": "credit_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "pending",
+              "order_w2_cancel_reason": null,
+              "gift_card_balance": 15.0,
+              "authenticated": true
+            },
+            "before_state": {
+              "order_id": "#W1",
+              "item_ids": [
+                "shirt_blue_m"
+              ],
+              "new_item_ids": [],
+              "payment_method_id": "credit_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "pending",
+              "order_w2_cancel_reason": null,
+              "gift_card_balance": 15.0,
+              "authenticated": true
+            },
+            "after_state": null,
+            "action_succeeded": false,
+            "changed_fields": {},
+            "unchanged_fields": [],
+            "detail": "contract accepted the state but sandbox rejected with: Error: the number of items to be exchanged should match"
+          },
+          {
+            "symptom": "false_accept",
+            "state": {
+              "order_id": "#W2",
+              "item_ids": [],
+              "new_item_ids": [
+                "shoe_red_9"
+              ],
+              "payment_method_id": "credit_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "cancelled",
+              "order_w2_cancel_reason": "no longer needed",
+              "gift_card_balance": 40.0,
+              "authenticated": true
+            },
+            "before_state": {
+              "order_id": "#W2",
+              "item_ids": [],
+              "new_item_ids": [
+                "shoe_red_9"
+              ],
+              "payment_method_id": "credit_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "cancelled",
+              "order_w2_cancel_reason": "no longer needed",
+              "gift_card_balance": 40.0,
+              "authenticated": true
+            },
+            "after_state": null,
+            "action_succeeded": false,
+            "changed_fields": {},
+            "unchanged_fields": [],
+            "detail": "contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged"
+          }
+        ]
+      }
+    },
+    {
+      "round": 1,
+      "audit": 1,
+      "role": "refinement_round_1",
+      "adaptation": "active_cegis_no_coverage",
+      "evidence_policy": "candidate_partitioned_uniform",
+      "contract_status": "parsed",
+      "fresh_states": 8,
+      "reachable_predicted_accepts": 18,
+      "cumulative_states": 16,
+      "report": {
+        "contract": "candidate_exchange_delivered_order_items",
+        "states_checked": 16,
+        "successes": 3,
+        "failures": 1,
+        "false_accepts": 1,
+        "false_rejects": 0,
+        "postcondition_violations": 0,
+        "symptoms": [
+          "false_accept"
+        ],
+        "exact": false,
+        "primary_defect": "too_weak_precondition",
+        "counterexamples": [
+          {
+            "symptom": "false_accept",
+            "state": {
+              "order_id": "#W2",
+              "item_ids": [],
+              "new_item_ids": [],
+              "payment_method_id": "credit_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "pending",
+              "order_w2_cancel_reason": null,
+              "gift_card_balance": 15.0,
+              "authenticated": true
+            },
+            "before_state": {
+              "order_id": "#W2",
+              "item_ids": [],
+              "new_item_ids": [],
+              "payment_method_id": "credit_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "pending",
+              "order_w2_cancel_reason": null,
+              "gift_card_balance": 15.0,
+              "authenticated": true
+            },
+            "after_state": null,
+            "action_succeeded": false,
+            "changed_fields": {},
+            "unchanged_fields": [],
+            "detail": "contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged"
+          }
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "audit": 2,
+      "role": "refinement_round_2",
+      "adaptation": "active_cegis_no_coverage",
+      "evidence_policy": "candidate_partitioned_uniform",
+      "contract_status": "parsed",
+      "fresh_states": 8,
+      "reachable_predicted_accepts": 10,
+      "cumulative_states": 24,
+      "report": {
+        "contract": "candidate_exchange_delivered_order_items",
+        "states_checked": 24,
+        "successes": 7,
+        "failures": 1,
+        "false_accepts": 0,
+        "false_rejects": 1,
+        "postcondition_violations": 0,
+        "symptoms": [
+          "false_reject"
+        ],
+        "exact": false,
+        "primary_defect": "too_strong_precondition",
+        "counterexamples": [
+          {
+            "symptom": "false_reject",
+            "state": {
+              "order_id": "#W1",
+              "item_ids": [],
+              "new_item_ids": [],
+              "payment_method_id": "credit_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "pending",
+              "order_w2_cancel_reason": null,
+              "gift_card_balance": 15.0,
+              "authenticated": true
+            },
+            "before_state": {
+              "order_id": "#W1",
+              "item_ids": [],
+              "new_item_ids": [],
+              "payment_method_id": "credit_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "pending",
+              "order_w2_cancel_reason": null,
+              "gift_card_balance": 15.0,
+              "authenticated": true
+            },
+            "after_state": {
+              "order_id": null,
+              "item_ids": [],
+              "new_item_ids": [],
+              "payment_method_id": null,
+              "order_w1_status": "exchange requested",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": "credit_card_0",
+              "order_w1_exchange_price_difference": 0,
+              "order_w1_return_items": [],
+              "order_w2_status": "pending",
+              "order_w2_cancel_reason": null,
+              "gift_card_balance": 15.0,
+              "authenticated": true
+            },
+            "action_succeeded": true,
+            "changed_fields": {
+              "order_id": {
+                "before": "#W1",
+                "after": null
+              },
+              "order_w1_exchange_payment_method_id": {
+                "before": null,
+                "after": "credit_card_0"
+              },
+              "order_w1_exchange_price_difference": {
+                "before": null,
+                "after": 0
+              },
+              "order_w1_status": {
+                "before": "delivered",
+                "after": "exchange requested"
+              },
+              "payment_method_id": {
+                "before": "credit_card_0",
+                "after": null
+              }
+            },
+            "unchanged_fields": [
+              "authenticated",
+              "gift_card_balance",
+              "item_ids",
+              "new_item_ids",
+              "order_w1_exchange_items",
+              "order_w1_exchange_new_items",
+              "order_w1_return_items",
+              "order_w2_cancel_reason",
+              "order_w2_status"
+            ],
+            "detail": "contract rejected the state but the sandbox successfully executed the exchange"
+          }
+        ]
+      }
+    },
+    {
+      "round": 3,
+      "audit": 3,
+      "role": "refinement_round_3",
+      "adaptation": "active_cegis_no_coverage",
+      "evidence_policy": "candidate_partitioned_uniform",
+      "contract_status": "parsed",
+      "fresh_states": 8,
+      "reachable_predicted_accepts": 18,
+      "cumulative_states": 32,
+      "report": {
+        "contract": "candidate_exchange_delivered_order_items",
+        "states_checked": 32,
+        "successes": 9,
+        "failures": 10,
+        "false_accepts": 3,
+        "false_rejects": 0,
+        "postcondition_violations": 7,
+        "symptoms": [
+          "false_accept",
+          "postcondition_violation"
+        ],
+        "exact": false,
+        "primary_defect": "too_weak_precondition",
+        "counterexamples": [
+          {
+            "symptom": "false_accept",
+            "state": {
+              "order_id": "#W2",
+              "item_ids": [],
+              "new_item_ids": [],
+              "payment_method_id": "gift_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "cancelled",
+              "order_w2_cancel_reason": "no longer needed",
+              "gift_card_balance": 40.0,
+              "authenticated": true
+            },
+            "before_state": {
+              "order_id": "#W2",
+              "item_ids": [],
+              "new_item_ids": [],
+              "payment_method_id": "gift_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "cancelled",
+              "order_w2_cancel_reason": "no longer needed",
+              "gift_card_balance": 40.0,
+              "authenticated": true
+            },
+            "after_state": null,
+            "action_succeeded": false,
+            "changed_fields": {},
+            "unchanged_fields": [],
+            "detail": "contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged"
+          },
+          {
+            "symptom": "postcondition_violation",
+            "state": {
+              "order_id": "#W1",
+              "item_ids": [
+                "shoe_black_9"
+              ],
+              "new_item_ids": [
+                "shoe_red_9"
+              ],
+              "payment_method_id": "credit_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "pending",
+              "order_w2_cancel_reason": null,
+              "gift_card_balance": 15.0,
+              "authenticated": true
+            },
+            "before_state": {
+              "order_id": "#W1",
+              "item_ids": [
+                "shoe_black_9"
+              ],
+              "new_item_ids": [
+                "shoe_red_9"
+              ],
+              "payment_method_id": "credit_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "pending",
+              "order_w2_cancel_reason": null,
+              "gift_card_balance": 15.0,
+              "authenticated": true
+            },
+            "after_state": {
+              "order_id": null,
+              "item_ids": [],
+              "new_item_ids": [],
+              "payment_method_id": null,
+              "order_w1_status": "exchange requested",
+              "order_w1_exchange_items": [
+                "shoe_black_9"
+              ],
+              "order_w1_exchange_new_items": [
+                "shoe_red_9"
+              ],
+              "order_w1_exchange_payment_method_id": "credit_card_0",
+              "order_w1_exchange_price_difference": 30.0,
+              "order_w1_return_items": [],
+              "order_w2_status": "pending",
+              "order_w2_cancel_reason": null,
+              "gift_card_balance": 15.0,
+              "authenticated": true
+            },
+            "action_succeeded": true,
+            "changed_fields": {
+              "item_ids": {
+                "before": [
+                  "shoe_black_9"
+                ],
+                "after": []
+              },
+              "new_item_ids": {
+                "before": [
+                  "shoe_red_9"
+                ],
+                "after": []
+              },
+              "order_id": {
+                "before": "#W1",
+                "after": null
+              },
+              "order_w1_exchange_items": {
+                "before": [],
+                "after": [
+                  "shoe_black_9"
+                ]
+              },
+              "order_w1_exchange_new_items": {
+                "before": [],
+                "after": [
+                  "shoe_red_9"
+                ]
+              },
+              "order_w1_exchange_payment_method_id": {
+                "before": null,
+                "after": "credit_card_0"
+              },
+              "order_w1_exchange_price_difference": {
+                "before": null,
+                "after": 30.0
+              },
+              "order_w1_status": {
+                "before": "delivered",
+                "after": "exchange requested"
+              },
+              "payment_method_id": {
+                "before": "credit_card_0",
+                "after": null
+              }
+            },
+            "unchanged_fields": [
+              "authenticated",
+              "gift_card_balance",
+              "order_w1_return_items",
+              "order_w2_cancel_reason",
+              "order_w2_status"
+            ],
+            "detail": "observed after-state breaks the promised postcondition"
+          },
+          {
+            "symptom": "false_accept",
+            "state": {
+              "order_id": "#W2",
+              "item_ids": [],
+              "new_item_ids": [],
+              "payment_method_id": "credit_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "cancelled",
+              "order_w2_cancel_reason": "no longer needed",
+              "gift_card_balance": 40.0,
+              "authenticated": true
+            },
+            "before_state": {
+              "order_id": "#W2",
+              "item_ids": [],
+              "new_item_ids": [],
+              "payment_method_id": "credit_card_0",
+              "order_w1_status": "delivered",
+              "order_w1_exchange_items": [],
+              "order_w1_exchange_new_items": [],
+              "order_w1_exchange_payment_method_id": null,
+              "order_w1_exchange_price_difference": null,
+              "order_w1_return_items": [],
+              "order_w2_status": "cancelled",
+              "order_w2_cancel_reason": "no longer needed",
+              "gift_card_balance": 40.0,
+              "authenticated": true
+            },
+            "after_state": null,
+            "action_succeeded": false,
+            "changed_fields": {},
+            "unchanged_fields": [],
+            "detail": "contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged"
+          }
+        ]
+      }
+    }
+  ],
+  "contract": {
+    "status": "parsed",
+    "source": "{\n  \"skill\": \"exchange_delivered_order_items\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"order_id\", \"when\": \"before\"},\n        \"set\": \"valid_orders\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"new_item_ids\", \"when\": \"before\"},\n        \"set\": \"valid_new_items\"\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"set\": \"valid_payment_methods\"\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"op\": \"count\", \"arg\": {\"var\": \"item_ids\", \"when\": \"before\"}},\n        \"right\": {\"op\": \"count\", \"arg\": {\"var\": \"new_item_ids\", \"when\": \"before\"}}\n      },\n      {\n        \"op\": \"valid_variants\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_in_order\",\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"order\": {\"var\": \"order_id\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"items_available\",\n        \"items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"sufficient_balance\",\n        \"payment_method\": {\"var\": \"payment_method_id\", \"when\": \"before\"},\n        \"balance\": {\"var\": \"gift_card_balance\", \"when\": \"before\"},\n        \"items\": {\"var\": \"item_ids\", \"when\": \"before\"},\n        \"new_items\": {\"var\": \"new_item_ids\", \"when\": \"before\"}\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"before\"},\n        \"right\": {\"const\": \"delivered\"}\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\"var\": \"order_w1_status\", \"when\": \"after\"},\n        \"right\": {\"const\": \"exchange requested\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"order_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_empty\",\n        \"arg\": {\"var\": \"new_item_ids\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"is_null\",\n        \"arg\": {\"var\": \"payment_method_id\", \"when\": \"after\"}\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"order_w2_status\",\n          \"order_w2_cancel_reason\",\n          \"gift_card_balance\",\n          \"order_w1_exchange_items\",\n          \"order_w1_exchange_new_items\",\n          \"order_w1_return_items\"\n        ]\n      },\n      {\n        \"op\": \"exchange_snapshot_matches\"\n      }\n    ]\n  }\n}",
+    "spec": null,
+    "node_count": null,
+    "error": null,
+    "interaction_index": 3
+  },
+  "usage": {
+    "prompt_tokens": 9095,
+    "completion_tokens": 3158,
+    "total_tokens": 12253,
+    "calls": 4
+  },
+  "latency": {
+    "total_s": 147.0019803121686,
+    "per_call_s": [
+      35.13904648181051,
+      35.589436368085444,
+      39.27357547450811,
+      36.99992198776454
+    ]
+  },
+  "spend": {
+    "model_calls": 4,
+    "states_observed": 32,
+    "oracle_feedback_queries": 0,
+    "sampled_feedback_queries": 4,
+    "sampled_states_checked": 80,
+    "remaining_calls": 0,
+    "remaining_tokens": 3747,
+    "remaining_states": 16,
+    "parse_failures": 0
+  },
+  "evaluation": {
+    "metrics": {
+      "contract": "candidate_exchange_delivered_order_items",
+      "states_checked": 1294,
+      "successes": 14,
+      "failures": 14,
+      "false_accepts": 4,
+      "false_rejects": 0,
+      "postcondition_violations": 10,
+      "symptoms": [
+        "false_accept",
+        "postcondition_violation"
+      ],
+      "exact": false,
+      "sound": false,
+      "complete": true
+    },
+    "counterexamples": [
+      {
+        "symptom": "false_accept",
+        "state": "w1=delivered, w2=pending, gc_bal=15.00, draft_order=#W2, draft_items=[], draft_new_items=[], draft_pm=credit_card_0",
+        "state_fields": {
+          "order_id": "#W2",
+          "item_ids": [],
+          "new_item_ids": [],
+          "payment_method_id": "credit_card_0",
+          "order_w1_status": "delivered",
+          "order_w1_exchange_items": [],
+          "order_w1_exchange_new_items": [],
+          "order_w1_exchange_payment_method_id": null,
+          "order_w1_exchange_price_difference": null,
+          "order_w1_return_items": [],
+          "order_w2_status": "pending",
+          "order_w2_cancel_reason": null,
+          "gift_card_balance": 15.0,
+          "authenticated": true
+        },
+        "before_state": {
+          "order_id": "#W2",
+          "item_ids": [],
+          "new_item_ids": [],
+          "payment_method_id": "credit_card_0",
+          "order_w1_status": "delivered",
+          "order_w1_exchange_items": [],
+          "order_w1_exchange_new_items": [],
+          "order_w1_exchange_payment_method_id": null,
+          "order_w1_exchange_price_difference": null,
+          "order_w1_return_items": [],
+          "order_w2_status": "pending",
+          "order_w2_cancel_reason": null,
+          "gift_card_balance": 15.0,
+          "authenticated": true
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged"
+      },
+      {
+        "symptom": "postcondition_violation",
+        "state": "w1=delivered, w2=pending, gc_bal=15.00, draft_order=#W1, draft_items=['shirt_blue_m'], draft_new_items=['shirt_blue_l'], draft_pm=credit_card_0",
+        "state_fields": {
+          "order_id": "#W1",
+          "item_ids": [
+            "shirt_blue_m"
+          ],
+          "new_item_ids": [
+            "shirt_blue_l"
+          ],
+          "payment_method_id": "credit_card_0",
+          "order_w1_status": "delivered",
+          "order_w1_exchange_items": [],
+          "order_w1_exchange_new_items": [],
+          "order_w1_exchange_payment_method_id": null,
+          "order_w1_exchange_price_difference": null,
+          "order_w1_return_items": [],
+          "order_w2_status": "pending",
+          "order_w2_cancel_reason": null,
+          "gift_card_balance": 15.0,
+          "authenticated": true
+        },
+        "before_state": {
+          "order_id": "#W1",
+          "item_ids": [
+            "shirt_blue_m"
+          ],
+          "new_item_ids": [
+            "shirt_blue_l"
+          ],
+          "payment_method_id": "credit_card_0",
+          "order_w1_status": "delivered",
+          "order_w1_exchange_items": [],
+          "order_w1_exchange_new_items": [],
+          "order_w1_exchange_payment_method_id": null,
+          "order_w1_exchange_price_difference": null,
+          "order_w1_return_items": [],
+          "order_w2_status": "pending",
+          "order_w2_cancel_reason": null,
+          "gift_card_balance": 15.0,
+          "authenticated": true
+        },
+        "after_state": {
+          "order_id": null,
+          "item_ids": [],
+          "new_item_ids": [],
+          "payment_method_id": null,
+          "order_w1_status": "exchange requested",
+          "order_w1_exchange_items": [
+            "shirt_blue_m"
+          ],
+          "order_w1_exchange_new_items": [
+            "shirt_blue_l"
+          ],
+          "order_w1_exchange_payment_method_id": "credit_card_0",
+          "order_w1_exchange_price_difference": 20.0,
+          "order_w1_return_items": [],
+          "order_w2_status": "pending",
+          "order_w2_cancel_reason": null,
+          "gift_card_balance": 15.0,
+          "authenticated": true
+        },
+        "action_succeeded": true,
+        "changed_fields": {
+          "item_ids": {
+            "before": [
+              "shirt_blue_m"
+            ],
+            "after": []
+          },
+          "new_item_ids": {
+            "before": [
+              "shirt_blue_l"
+            ],
+            "after": []
+          },
+          "order_id": {
+            "before": "#W1",
+            "after": null
+          },
+          "order_w1_exchange_items": {
+            "before": [],
+            "after": [
+              "shirt_blue_m"
+            ]
+          },
+          "order_w1_exchange_new_items": {
+            "before": [],
+            "after": [
+              "shirt_blue_l"
+            ]
+          },
+          "order_w1_exchange_payment_method_id": {
+            "before": null,
+            "after": "credit_card_0"
+          },
+          "order_w1_exchange_price_difference": {
+            "before": null,
+            "after": 20.0
+          },
+          "order_w1_status": {
+            "before": "delivered",
+            "after": "exchange requested"
+          },
+          "payment_method_id": {
+            "before": "credit_card_0",
+            "after": null
+          }
+        },
+        "unchanged_fields": [
+          "authenticated",
+          "gift_card_balance",
+          "order_w1_return_items",
+          "order_w2_cancel_reason",
+          "order_w2_status"
+        ],
+        "detail": "observed after-state breaks the promised postcondition"
+      },
+      {
+        "symptom": "false_accept",
+        "state": "w1=delivered, w2=pending, gc_bal=15.00, draft_order=#W2, draft_items=[], draft_new_items=[], draft_pm=gift_card_0",
+        "state_fields": {
+          "order_id": "#W2",
+          "item_ids": [],
+          "new_item_ids": [],
+          "payment_method_id": "gift_card_0",
+          "order_w1_status": "delivered",
+          "order_w1_exchange_items": [],
+          "order_w1_exchange_new_items": [],
+          "order_w1_exchange_payment_method_id": null,
+          "order_w1_exchange_price_difference": null,
+          "order_w1_return_items": [],
+          "order_w2_status": "pending",
+          "order_w2_cancel_reason": null,
+          "gift_card_balance": 15.0,
+          "authenticated": true
+        },
+        "before_state": {
+          "order_id": "#W2",
+          "item_ids": [],
+          "new_item_ids": [],
+          "payment_method_id": "gift_card_0",
+          "order_w1_status": "delivered",
+          "order_w1_exchange_items": [],
+          "order_w1_exchange_new_items": [],
+          "order_w1_exchange_payment_method_id": null,
+          "order_w1_exchange_price_difference": null,
+          "order_w1_return_items": [],
+          "order_w2_status": "pending",
+          "order_w2_cancel_reason": null,
+          "gift_card_balance": 15.0,
+          "authenticated": true
+        },
+        "after_state": null,
+        "action_succeeded": false,
+        "changed_fields": {},
+        "unchanged_fields": [],
+        "detail": "contract accepted the state but sandbox rejected with: Error: non-delivered order cannot be exchanged"
+      }
+    ],
+    "exact": false,
+    "truncated": false,
+    "deepest_level": 6,
+    "state_count": 1294
+  },
+  "outcome": "inexact",
+  "stopped_because": "query_budget_exhausted"
+}
