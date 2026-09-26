@@ -134893,15 +134893,13 @@
     "path": "analysis/error_asymmetry_20260926",
     "ratios": 7,
     "run_occurrences": 4160,
-    "distinct_artifact_paths": 3820,
-    "manuscript_pdf_sha256": "37f5ab29f7d61398aae4d587238bc4eb0c1a9a7d33d0e20cfcd3375b846d5e42"
+    "distinct_artifact_paths": 3820
   },
   "hosted_gapfill": {
     "runs": 940,
     "cells": 47,
     "results_dir": "results/openai_gapfill_v1_20260926",
     "aggregate": "analysis/openai_api_20260926/comparison.json",
-    "manuscript_pdf_sha256": "59bfab4f1818f83fe2312f9e697e40802644cd17059322aa1ce767f8f312dad3",
     "redaction": "sandbox.config_path absolute paths only; scientific fields asserted unchanged"
   }
 }
