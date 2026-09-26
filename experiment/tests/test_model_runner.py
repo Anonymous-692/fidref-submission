@@ -1610,7 +1610,12 @@ class SafetySourceTest(unittest.TestCase):
                 else:
                     continue
                 for name in names:
-                    self.assertIn(name, ALLOWED_IMPORTS, msg=f"{path.name} imports {name}")
+                    # Only the opt-in hosted coordinator needs a rate-limit queue
+                    # and thread-safe shared budget; both are standard library.
+                    allowed = ALLOWED_IMPORTS
+                    if path.name == "hosted_api.py":
+                        allowed = allowed | {"collections", "threading"}
+                    self.assertIn(name, allowed, msg=f"{path.name} imports {name}")
 
     def test_the_environment_package_is_still_unaware_of_the_modeling_package(self) -> None:
         from .. import environment

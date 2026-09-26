@@ -181,6 +181,17 @@ class St2x2LoopTest(unittest.TestCase):
         self.assertEqual(result["stopped_because"], STOP_PARSE_FAILURE)
         self.assertEqual(log, ["parse_repair_0"], "one repair attempt, then stop")
 
+    def test_invalid_revision_keeps_the_last_valid_source(self) -> None:
+        ask, log = _asker(["not a contract"])
+        result = run_st2x2(
+            self.adapter, ask=ask, seed=0, state_budget=48, query_budget=2,
+            balance=False, exhaust=False, initial_source="30",
+        )
+        self.assertEqual(result["stopped_because"], STOP_PARSE_FAILURE)
+        self.assertEqual(log, ["revision_0"])
+        self.assertEqual(result["source"], "30")
+        self.assertEqual(result["parsed"].k, 30)
+
     def test_transport_error_terminates_the_run(self) -> None:
         def ask(role, prompt):
             return None

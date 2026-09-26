@@ -1,0 +1,245 @@
+{
+  "status": "complete",
+  "runs": 160,
+  "request_cost_upper_usd": 0.41996810000000023,
+  "manifest_sha256": "bff6cd98950c77e0d5336c1d233fc7bfffeb0611a40d2788ea485bd79dda273c",
+  "combined_cost_upper_usd": 2.064063800000001,
+  "summary": {
+    "calendar": {
+      "direct": {
+        "exact": 0,
+        "total": 20,
+        "parse_failures": 7,
+        "iou_mean": 27.642857142857146,
+        "cfr_mean": 18.285714285714285,
+        "fa_dist": {
+          "n": 13,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 0.0
+        },
+        "fr_dist": {
+          "n": 13,
+          "median": 19.0,
+          "q1": 19.0,
+          "q3": 19.0
+        },
+        "pv_dist": {
+          "n": 13,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 16.0
+        },
+        "total_calls": 20,
+        "mean_calls": 1.0,
+        "total_prompt_tokens": 35480,
+        "total_completion_tokens": 24627
+      },
+      "fixed_pool": {
+        "exact": 0,
+        "total": 20,
+        "parse_failures": 5,
+        "iou_mean": 29.594076655052266,
+        "cfr_mean": 20.23693379790941,
+        "fa_dist": {
+          "n": 15,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 0.0
+        },
+        "fr_dist": {
+          "n": 15,
+          "median": 19.0,
+          "q1": 19.0,
+          "q3": 19.0
+        },
+        "pv_dist": {
+          "n": 15,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 8.0
+        },
+        "total_calls": 43,
+        "mean_calls": 2.15,
+        "total_prompt_tokens": 103141,
+        "total_completion_tokens": 52718
+      },
+      "active_cegis": {
+        "exact": 0,
+        "total": 20,
+        "parse_failures": 7,
+        "iou_mean": 30.142857142857146,
+        "cfr_mean": 20.571428571428573,
+        "fa_dist": {
+          "n": 13,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 0.0
+        },
+        "fr_dist": {
+          "n": 13,
+          "median": 19.0,
+          "q1": 19.0,
+          "q3": 19.0
+        },
+        "pv_dist": {
+          "n": 13,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 0.0
+        },
+        "total_calls": 35,
+        "mean_calls": 1.75,
+        "total_prompt_tokens": 78811,
+        "total_completion_tokens": 42195
+      },
+      "active_cegis_no_balance": {
+        "exact": 0,
+        "total": 20,
+        "parse_failures": 4,
+        "iou_mean": 34.16550522648084,
+        "cfr_mean": 24.808362369337978,
+        "fa_dist": {
+          "n": 16,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 0.0
+        },
+        "fr_dist": {
+          "n": 16,
+          "median": 19.0,
+          "q1": 19.0,
+          "q3": 19.0
+        },
+        "pv_dist": {
+          "n": 16,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 4.0
+        },
+        "total_calls": 29,
+        "mean_calls": 1.45,
+        "total_prompt_tokens": 57955,
+        "total_completion_tokens": 35542
+      }
+    },
+    "shopping_price": {
+      "direct": {
+        "exact": 0,
+        "total": 20,
+        "parse_failures": 11,
+        "iou_mean": 7.964015151515151,
+        "cfr_mean": 0.0,
+        "fa_dist": {
+          "n": 9,
+          "median": 14.0,
+          "q1": 14.0,
+          "q3": 14.0
+        },
+        "fr_dist": {
+          "n": 9,
+          "median": 4.0,
+          "q1": 0.0,
+          "q3": 6.0
+        },
+        "pv_dist": {
+          "n": 9,
+          "median": 4.0,
+          "q1": 2.0,
+          "q3": 8.0
+        },
+        "total_calls": 20,
+        "mean_calls": 1.0,
+        "total_prompt_tokens": 23780,
+        "total_completion_tokens": 22065
+      },
+      "fixed_pool": {
+        "exact": 0,
+        "total": 20,
+        "parse_failures": 4,
+        "iou_mean": 22.08787878787879,
+        "cfr_mean": 10.8,
+        "fa_dist": {
+          "n": 16,
+          "median": 14.0,
+          "q1": 14.0,
+          "q3": 14.0
+        },
+        "fr_dist": {
+          "n": 16,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 0.0
+        },
+        "pv_dist": {
+          "n": 16,
+          "median": 1.0,
+          "q1": 0.0,
+          "q3": 8.0
+        },
+        "total_calls": 72,
+        "mean_calls": 3.6,
+        "total_prompt_tokens": 151814,
+        "total_completion_tokens": 76323
+      },
+      "active_cegis": {
+        "exact": 0,
+        "total": 20,
+        "parse_failures": 4,
+        "iou_mean": 25.151515151515152,
+        "cfr_mean": 11.515151515151516,
+        "fa_dist": {
+          "n": 16,
+          "median": 14.0,
+          "q1": 14.0,
+          "q3": 14.0
+        },
+        "fr_dist": {
+          "n": 16,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 1.0
+        },
+        "pv_dist": {
+          "n": 16,
+          "median": 2.0,
+          "q1": 0.0,
+          "q3": 8.0
+        },
+        "total_calls": 69,
+        "mean_calls": 3.45,
+        "total_prompt_tokens": 151019,
+        "total_completion_tokens": 77750
+      },
+      "active_cegis_no_balance": {
+        "exact": 0,
+        "total": 20,
+        "parse_failures": 2,
+        "iou_mean": 23.10606060606061,
+        "cfr_mean": 3.181818181818182,
+        "fa_dist": {
+          "n": 18,
+          "median": 14.0,
+          "q1": 14.0,
+          "q3": 14.0
+        },
+        "fr_dist": {
+          "n": 18,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 5.5
+        },
+        "pv_dist": {
+          "n": 18,
+          "median": 8.0,
+          "q1": 0.0,
+          "q3": 8.0
+        },
+        "total_calls": 55,
+        "mean_calls": 2.75,
+        "total_prompt_tokens": 105893,
+        "total_completion_tokens": 59999
+      }
+    }
+  }
+}

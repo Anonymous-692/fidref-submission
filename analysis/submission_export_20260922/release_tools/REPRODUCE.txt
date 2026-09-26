@@ -74,20 +74,3 @@ count, origin, and role.
 
 This artifact is prepared for anonymous review. Public distribution is a separate
 release step; this repository does not grant a new license for original project code.
-
-DESCRIPTIVE ERROR ASYMMETRY
-  python3 analysis/error_asymmetry_20260926/verify.py --check analysis/error_asymmetry_20260926/results.json
-
-Run after restore_results.py. Recomputes all seven FA>FR ratios from
-selected raw artifacts, preserving retry mappings and invalid/exact exclusions.
-The main and ablation cohorts overlap; their denominators are not additive.
-No model calls or new statistical tests are performed.
-
-HOSTED GAP-FILL COHORT (940 runs)
-  python3 analysis/openai_api_20260926/compare.py
-  python3 analysis/openai_api_20260926/appendix_gapfill.py
-
-Run after restore_results.py. compare.py checks all 940 artifact hashes against the
-run completion record (via RELEASE_MANIFEST.json for redacted copies) and rebuilds
-comparison.json; appendix_gapfill.py rebuilds the appendix table and the
-false-accept/false-reject counts in residual_direction.json. No model calls.

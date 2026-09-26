@@ -1,0 +1,41 @@
+{
+ "definition": "valid (parsed) inexact runs; fa_gt_fr / fa_lt_fr / fa_eq_fr by stored FA and FR",
+ "inputs": {
+  "analysis/openai_api_20260926/comparison.json": "15abcb46cf6767786cca94640c7eda0bfb1fbd5605c82733dd89d4e6b1f4cc71",
+  "analysis/error_asymmetry_20260926/results.json": "a20dad0eaf63e336cea2f0a608055f4410d4144f679a6ad397a0ec1e9f4b7e1f"
+ },
+ "hosted_20260926": {
+  "Fixed-pool": {
+   "fa_lt_fr": 50,
+   "fa_eq_fr": 11,
+   "fa_gt_fr": 4
+  },
+  "No-Balance": {
+   "fa_lt_fr": 51,
+   "fa_eq_fr": 11,
+   "fa_gt_fr": 16
+  },
+  "Active": {
+   "fa_lt_fr": 137,
+   "fa_eq_fr": 22,
+   "fa_gt_fr": 41
+  }
+ },
+ "local_verified": {
+  "Fixed-pool": {
+   "fa_gt_fr": 270,
+   "fa_lt_fr": 90,
+   "fa_eq_fr": 31
+  },
+  "Active": {
+   "fa_gt_fr": 89,
+   "fa_lt_fr": 161,
+   "fa_eq_fr": 30
+  },
+  "No-Balance": {
+   "fa_gt_fr": 265,
+   "fa_lt_fr": 39,
+   "fa_eq_fr": 17
+  }
+ }
+}

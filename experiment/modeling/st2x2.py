@@ -121,6 +121,7 @@ def run_st2x2(
     vacuity_used = 0
     parsed = None
     source: str | None = None
+    parsed_source: str | None = None
     stopped = None
 
     def remaining_states() -> int:
@@ -143,6 +144,7 @@ def run_st2x2(
     while True:
         try:
             parsed = adapter.parse(source)
+            parsed_source = source
         except Exception as exc:  # noqa: BLE001 - the domain raises its own DslError
             repair_prompt = adapter.parse_repair_prompt(source, str(exc))
             if remaining_calls() <= 0:
@@ -156,6 +158,7 @@ def run_st2x2(
             source = raw
             try:
                 parsed = adapter.parse(source)
+                parsed_source = source
             except Exception:  # noqa: BLE001
                 stopped = STOP_PARSE_FAILURE
                 break
@@ -252,7 +255,7 @@ def run_st2x2(
         source = raw
         round_index += 1
 
-    return _finish(rounds, parsed, source, stopped, calls, audited, batch, selection, termination)
+    return _finish(rounds, parsed, parsed_source, stopped, calls, audited, batch, selection, termination)
 
 
 def _finish(rounds, parsed, source, stopped, calls, audited, batch, selection, termination):

@@ -1,0 +1,27 @@
+{
+  "at": "2026-09-18T11:49:30.439170+09:00",
+  "completed": [
+    "gemma26_deployment_sampled_cegis",
+    "gemma26_deployment_active_cegis",
+    "gemma26_shopping_price_direct",
+    "gemma26_shopping_price_self_refine",
+    "gemma26_shopping_price_random_probe",
+    "gemma26_shopping_price_active_cegis",
+    "qwen36_deployment_active_cegis",
+    "qwen36_taubench_retail_active_cegis",
+    "qwen36_shopping_price_self_refine",
+    "qwen36_shopping_price_sampled_cegis",
+    "muse_deployment_random_probe",
+    "muse_deployment_active_cegis",
+    "muse_taubench_retail_sampled_cegis_fixed",
+    "muse_taubench_retail_active_cegis",
+    "muse_shopping_price_random_probe",
+    "muse_shopping_price_sampled_cegis",
+    "muse_shopping_price_active_cegis",
+    "coder_deployment_active_cegis",
+    "qwen38_shopping_price_sampled_cegis",
+    "qwen38_shopping_price_active_cegis"
+  ],
+  "runs": 54,
+  "deferred_runs": 4
+}

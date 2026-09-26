@@ -1,0 +1,6815 @@
+{
+  "retail_partial_pool": {
+    "path": "results/partial_candidate_pool_tau_v1_20260917",
+    "domain": "taubench",
+    "artifacts": 240,
+    "initials": 40,
+    "issues": [],
+    "serialization_defects": [
+      {
+        "path": "results/partial_candidate_pool_tau_v1_20260917/gemma/pool500/st2x2_partitioned_exhaust__seed15.json",
+        "invalid_serialized_source_error": "invalid JSON: Unterminated string starting at: line 113 column 18 (char 2294)",
+        "recovered_incumbent": "interaction:1:revision_1"
+      },
+      {
+        "path": "results/partial_candidate_pool_tau_v1_20260917/qwen38/pool200/st2x2_partitioned_exhaust__seed6.json",
+        "invalid_serialized_source_error": "invalid JSON: Expecting property name enclosed in double quotes: line 16 column 19 (char 402)",
+        "recovered_incumbent": "interaction:1:revision_1"
+      },
+      {
+        "path": "results/partial_candidate_pool_tau_v1_20260917/qwen38/pool500/st2x2_partitioned_exhaust__seed9.json",
+        "invalid_serialized_source_error": "invalid JSON: Unterminated string starting at: line 130 column 18 (char 2637)",
+        "recovered_incumbent": "interaction:1:revision_1"
+      },
+      {
+        "path": "results/partial_candidate_pool_tau_v1_20260917/qwen38/pool500/st2x2_partitioned_exhaust__seed13.json",
+        "invalid_serialized_source_error": "invalid JSON: Unterminated string starting at: line 157 column 9 (char 3114)",
+        "recovered_incumbent": "interaction:1:revision_1"
+      },
+      {
+        "path": "results/partial_candidate_pool_tau_v1_20260917/qwen38/pool500/st2x2_partitioned_exhaust__seed18.json",
+        "invalid_serialized_source_error": "invalid JSON: Expecting property name enclosed in double quotes: line 28 column 19 (char 622)",
+        "recovered_incumbent": "interaction:1:revision_1"
+      },
+      {
+        "path": "results/partial_candidate_pool_tau_v1_20260917/qwen38/pool1294/st2x2_partitioned_exhaust__seed2.json",
+        "invalid_serialized_source_error": "invalid JSON: Expecting value: line 135 column 14 (char 2717)",
+        "recovered_incumbent": "interaction:1:revision_1"
+      },
+      {
+        "path": "results/partial_candidate_pool_tau_v1_20260917/qwen38/pool1294/st2x2_partitioned_exhaust__seed10.json",
+        "invalid_serialized_source_error": "invalid JSON: Unterminated string starting at: line 208 column 11 (char 4068)",
+        "recovered_incumbent": "interaction:1:revision_1"
+      }
+    ],
+    "provenance_notes": [],
+    "all_checks_passed": true,
+    "summaries": [
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 9,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 2,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 18,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 1,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 19,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 1,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 1,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 1,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 5,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 1,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 3,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 0,
+        "parse_status": {
+          "parsed": 20
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "model": "gemma",
+        "size": 200,
+        "partitioned_only": 8,
+        "uniform_only": 1,
+        "paired_difference": 0.35,
+        "p_raw": 0.0390625,
+        "p_holm": 0.15625,
+        "significant_holm_05": false
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "partitioned_only": 17,
+        "uniform_only": 0,
+        "paired_difference": 0.85,
+        "p_raw": 1.52587890625e-05,
+        "p_holm": 7.62939453125e-05,
+        "significant_holm_05": true
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "partitioned_only": 18,
+        "uniform_only": 0,
+        "paired_difference": 0.9,
+        "p_raw": 7.62939453125e-06,
+        "p_holm": 4.57763671875e-05,
+        "significant_holm_05": true
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "partitioned_only": 0,
+        "uniform_only": 0,
+        "paired_difference": 0.0,
+        "p_raw": 1.0,
+        "p_holm": 1.0,
+        "significant_holm_05": false
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "partitioned_only": 5,
+        "uniform_only": 1,
+        "paired_difference": 0.2,
+        "p_raw": 0.21875,
+        "p_holm": 0.65625,
+        "significant_holm_05": false
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "partitioned_only": 3,
+        "uniform_only": 0,
+        "paired_difference": 0.15,
+        "p_raw": 0.25,
+        "p_holm": 0.65625,
+        "significant_holm_05": false
+      }
+    ],
+    "parse_status": {
+      "parsed": 240
+    },
+    "stored_outcomes": {
+      "inexact": 179,
+      "exact": 61
+    },
+    "independent_cpu_rescore": {
+      "attempted_parsed": 240,
+      "matched": 240,
+      "recovered_from_prior_incumbent": 7,
+      "unique_contracts": 126
+    },
+    "rows": [
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 500,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1294,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      }
+    ]
+  },
+  "deployment_partial_pool": {
+    "path": "results/partial_candidate_pool_v1_20260917",
+    "domain": "deployment",
+    "artifacts": 320,
+    "initials": 40,
+    "issues": [],
+    "serialization_defects": [],
+    "provenance_notes": [
+      "gemma current driver hash differs from frozen manifest",
+      "qwen38 current driver hash differs from frozen manifest"
+    ],
+    "all_checks_passed": true,
+    "summaries": [
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 12,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 3,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 19,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 1,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 20,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 3,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 20,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 3,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 8,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 1,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 19,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 1,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 20,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 1,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "n": 20,
+        "exact": 20,
+        "parse_status": {
+          "parsed": 20
+        }
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "n": 20,
+        "exact": 2,
+        "parse_status": {
+          "parsed": 20
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "model": "gemma",
+        "size": 200,
+        "partitioned_only": 9,
+        "uniform_only": 0,
+        "paired_difference": 0.45,
+        "p_raw": 0.00390625,
+        "p_holm": 0.0078125,
+        "significant_holm_05": true
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "partitioned_only": 18,
+        "uniform_only": 0,
+        "paired_difference": 0.9,
+        "p_raw": 7.62939453125e-06,
+        "p_holm": 5.340576171875e-05,
+        "significant_holm_05": true
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "partitioned_only": 17,
+        "uniform_only": 0,
+        "paired_difference": 0.85,
+        "p_raw": 1.52587890625e-05,
+        "p_holm": 6.103515625e-05,
+        "significant_holm_05": true
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "partitioned_only": 17,
+        "uniform_only": 0,
+        "paired_difference": 0.85,
+        "p_raw": 1.52587890625e-05,
+        "p_holm": 6.103515625e-05,
+        "significant_holm_05": true
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "partitioned_only": 7,
+        "uniform_only": 0,
+        "paired_difference": 0.35,
+        "p_raw": 0.015625,
+        "p_holm": 0.015625,
+        "significant_holm_05": true
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "partitioned_only": 18,
+        "uniform_only": 0,
+        "paired_difference": 0.9,
+        "p_raw": 7.62939453125e-06,
+        "p_holm": 5.340576171875e-05,
+        "significant_holm_05": true
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "partitioned_only": 19,
+        "uniform_only": 0,
+        "paired_difference": 0.95,
+        "p_raw": 3.814697265625e-06,
+        "p_holm": 3.0517578125e-05,
+        "significant_holm_05": true
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "partitioned_only": 18,
+        "uniform_only": 0,
+        "paired_difference": 0.9,
+        "p_raw": 7.62939453125e-06,
+        "p_holm": 5.340576171875e-05,
+        "significant_holm_05": true
+      }
+    ],
+    "parse_status": {
+      "parsed": 320
+    },
+    "stored_outcomes": {
+      "inexact": 167,
+      "exact": 153
+    },
+    "independent_cpu_rescore": {
+      "attempted_parsed": 320,
+      "matched": 320,
+      "recovered_from_prior_incumbent": 0,
+      "unique_contracts": 28
+    },
+    "rows": [
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "gemma",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 200,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 1000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 5000,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 0,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 1,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 2,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 3,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 4,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 5,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 6,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 7,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 8,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 9,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 10,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 11,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 12,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 13,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 14,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 15,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 16,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 17,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 18,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_uniform_exhaust",
+        "seed": 19,
+        "outcome": "inexact",
+        "parse_status": "parsed",
+        "stored_exact": false,
+        "rescored_exact": false,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 0,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 1,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 2,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 3,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 4,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 5,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 6,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 7,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 8,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 9,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 10,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 11,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 12,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 13,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 14,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 15,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 16,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 17,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 18,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      },
+      {
+        "model": "qwen38",
+        "size": 11712,
+        "method": "st2x2_partitioned_exhaust",
+        "seed": 19,
+        "outcome": "exact",
+        "parse_status": "parsed",
+        "stored_exact": true,
+        "rescored_exact": true,
+        "oracle_feedback_queries": 0
+      }
+    ]
+  },
+  "openai_api": {
+    "total_result_files": 1600,
+    "expected_total": 1600,
+    "all_checks_passed": true,
+    "issues": [],
+    "suites": [
+      {
+        "suite": "json_mode_v1",
+        "result_files": 320,
+        "completion_runs": 320,
+        "expected": 320,
+        "completion_statuses": [
+          "complete"
+        ],
+        "manifest_hashes_match": true,
+        "api_seed_fields": [
+          null
+        ]
+      },
+      {
+        "suite": "nano_json_mode_v1",
+        "result_files": 160,
+        "completion_runs": 160,
+        "expected": 160,
+        "completion_statuses": [
+          "complete"
+        ],
+        "manifest_hashes_match": true,
+        "api_seed_fields": [
+          null
+        ]
+      },
+      {
+        "suite": "deployment_extension_v1",
+        "result_files": 480,
+        "completion_runs": 480,
+        "expected": 480,
+        "completion_statuses": [
+          "complete",
+          "complete"
+        ],
+        "manifest_hashes_match": true,
+        "api_seed_fields": [
+          null,
+          null
+        ]
+      },
+      {
+        "suite": "common_initial_v1",
+        "result_files": 180,
+        "completion_runs": 180,
+        "expected": 180,
+        "completion_statuses": [
+          "complete",
+          "complete"
+        ],
+        "manifest_hashes_match": true,
+        "api_seed_fields": [
+          null,
+          null
+        ]
+      },
+      {
+        "suite": "terra_flex_v1",
+        "result_files": 80,
+        "completion_runs": 80,
+        "expected": 80,
+        "completion_statuses": [
+          "complete"
+        ],
+        "manifest_hashes_match": true,
+        "api_seed_fields": [
+          null
+        ]
+      },
+      {
+        "suite": "nano_all_bench_v1",
+        "result_files": 160,
+        "completion_runs": 160,
+        "expected": 160,
+        "completion_statuses": [
+          "complete"
+        ],
+        "manifest_hashes_match": true,
+        "api_seed_fields": [
+          null
+        ]
+      },
+      {
+        "suite": "mini_all_bench_v1",
+        "result_files": 160,
+        "completion_runs": 160,
+        "expected": 160,
+        "completion_statuses": [
+          "complete"
+        ],
+        "manifest_hashes_match": true,
+        "api_seed_fields": [
+          null
+        ]
+      },
+      {
+        "suite": "mini_shopping_reasoning_v1",
+        "result_files": 60,
+        "completion_runs": 60,
+        "expected": 60,
+        "completion_statuses": [
+          "complete"
+        ],
+        "manifest_hashes_match": true,
+        "api_seed_fields": [
+          "not-declared"
+        ]
+      }
+    ],
+    "scope_note": "Counts and completion/manifest linkage only; published reports are retained for result interpretation and statistics. API sampling seed is distinct from local trial/state-selection IDs."
+  },
+  "qwen14b_calendar_controls": {
+    "artifacts": 40,
+    "all_checks_passed": true,
+    "issues": [],
+    "parse_status": {
+      "parsed": 34,
+      "parse_failure": 6
+    },
+    "outcomes": {
+      "inexact": 34,
+      "parse_failure": 6
+    },
+    "exact_by_method": {
+      "random_probe": 0,
+      "sampled_cegis": 0
+    },
+    "byte_identical_existing_artifacts": [],
+    "duplicate_judgment": "No byte-identical prior artifact"
+  }
+}

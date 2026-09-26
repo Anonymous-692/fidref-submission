@@ -1,0 +1,154 @@
+{
+  "status": "complete",
+  "runs": 60,
+  "request_cost_upper_usd": 0.96282975,
+  "manifest_sha256": "dfe5a1cb196cdc9a55e77a1c6ec0080351cccdbf4a20aa283801341ce5e45ab2",
+  "combined_cost_upper_usd": 4.702703300000001,
+  "summary": {
+    "legacy_off": {
+      "exact": 0,
+      "total": 20,
+      "parse_failures": 4,
+      "iou_mean": 0.8333333333333334,
+      "cfr_mean": 0.0,
+      "fa_dist": {
+        "n": 16,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0
+      },
+      "fr_dist": {
+        "n": 16,
+        "median": 8.0,
+        "q1": 8.0,
+        "q3": 8.0
+      },
+      "pv_dist": {
+        "n": 16,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0
+      },
+      "diagnostics": {
+        "initial_dsl_errors": 14,
+        "final_dsl_errors": 4,
+        "repaired_dsl_errors": 10,
+        "final_has_pre_order_status_none": 0,
+        "final_has_post_order_status_placed": 18,
+        "final_has_null_confusion": 12,
+        "final_has_unchanged_contradiction": 2
+      },
+      "termination_breakdown": {
+        "query_budget_exhausted": 7,
+        "vacuous_candidate_unrepaired": 9,
+        "duplicate_model_output": 4
+      },
+      "tokens": {
+        "total_calls": 57,
+        "mean_calls": 2.85,
+        "total_prompt_tokens": 113069,
+        "total_completion_tokens": 66821,
+        "total_reasoning_tokens": 0,
+        "total_non_reasoning_tokens": 66821,
+        "mean_reasoning_tokens_per_call": 0.0
+      }
+    },
+    "default_off": {
+      "exact": 0,
+      "total": 20,
+      "parse_failures": 4,
+      "iou_mean": 4.166666666666667,
+      "cfr_mean": 3.3333333333333335,
+      "fa_dist": {
+        "n": 16,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0
+      },
+      "fr_dist": {
+        "n": 16,
+        "median": 8.0,
+        "q1": 8.0,
+        "q3": 8.0
+      },
+      "pv_dist": {
+        "n": 16,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0
+      },
+      "diagnostics": {
+        "initial_dsl_errors": 14,
+        "final_dsl_errors": 4,
+        "repaired_dsl_errors": 10,
+        "final_has_pre_order_status_none": 0,
+        "final_has_post_order_status_placed": 18,
+        "final_has_null_confusion": 13,
+        "final_has_unchanged_contradiction": 3
+      },
+      "termination_breakdown": {
+        "query_budget_exhausted": 7,
+        "vacuous_candidate_unrepaired": 10,
+        "sampled_oracle_satisfied": 1,
+        "duplicate_model_output": 2
+      },
+      "tokens": {
+        "total_calls": 55,
+        "mean_calls": 2.75,
+        "total_prompt_tokens": 108271,
+        "total_completion_tokens": 62912,
+        "total_reasoning_tokens": 0,
+        "total_non_reasoning_tokens": 62912,
+        "mean_reasoning_tokens_per_call": 0.0
+      }
+    },
+    "default_low": {
+      "exact": 2,
+      "total": 20,
+      "parse_failures": 3,
+      "iou_mean": 26.25,
+      "cfr_mean": 20.0,
+      "fa_dist": {
+        "n": 17,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0
+      },
+      "fr_dist": {
+        "n": 17,
+        "median": 6.0,
+        "q1": 6.0,
+        "q3": 8.0
+      },
+      "pv_dist": {
+        "n": 17,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0
+      },
+      "diagnostics": {
+        "initial_dsl_errors": 14,
+        "final_dsl_errors": 3,
+        "repaired_dsl_errors": 11,
+        "final_has_pre_order_status_none": 7,
+        "final_has_post_order_status_placed": 18,
+        "final_has_null_confusion": 7,
+        "final_has_unchanged_contradiction": 2
+      },
+      "termination_breakdown": {
+        "sampled_oracle_satisfied": 8,
+        "query_budget_exhausted": 6,
+        "vacuous_candidate_unrepaired": 6
+      },
+      "tokens": {
+        "total_calls": 60,
+        "mean_calls": 3.0,
+        "total_prompt_tokens": 124424,
+        "total_completion_tokens": 78587,
+        "total_reasoning_tokens": 9812,
+        "total_non_reasoning_tokens": 68775,
+        "mean_reasoning_tokens_per_call": 163.53333333333333
+      }
+    }
+  }
+}

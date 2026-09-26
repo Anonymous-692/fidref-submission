@@ -1,0 +1,388 @@
+{
+  "policy": "same-seed exact McNemar; Holm within each affected displayed-core row",
+  "scope_note": "Standalone post-hoc retry-policy families; historical selector families are unchanged.",
+  "rows": [
+    {
+      "model": "Gemma-4-26B-A4B",
+      "domain": "deployment",
+      "family": "retry-policy displayed-core",
+      "holm_m": 4,
+      "comparisons": {
+        "direct": {
+          "n": 20,
+          "active_only": 11,
+          "other_only": 0,
+          "raw_p": 0.0009765625,
+          "holm_p": 0.00390625
+        },
+        "self_refine": {
+          "n": 20,
+          "active_only": 11,
+          "other_only": 0,
+          "raw_p": 0.0009765625,
+          "holm_p": 0.00390625
+        },
+        "random_probe": {
+          "n": 20,
+          "active_only": 11,
+          "other_only": 0,
+          "raw_p": 0.0009765625,
+          "holm_p": 0.00390625
+        },
+        "sampled_cegis": {
+          "n": 20,
+          "active_only": 11,
+          "other_only": 0,
+          "raw_p": 0.0009765625,
+          "holm_p": 0.00390625
+        }
+      }
+    },
+    {
+      "model": "Qwen3.6-35B-A3B",
+      "domain": "deployment",
+      "family": "retry-policy displayed-core",
+      "holm_m": 4,
+      "comparisons": {
+        "direct": {
+          "n": 20,
+          "active_only": 20,
+          "other_only": 0,
+          "raw_p": 1.9073486328125e-06,
+          "holm_p": 7.62939453125e-06
+        },
+        "self_refine": {
+          "n": 20,
+          "active_only": 20,
+          "other_only": 0,
+          "raw_p": 1.9073486328125e-06,
+          "holm_p": 7.62939453125e-06
+        },
+        "random_probe": {
+          "n": 20,
+          "active_only": 17,
+          "other_only": 0,
+          "raw_p": 1.52587890625e-05,
+          "holm_p": 1.52587890625e-05
+        },
+        "sampled_cegis": {
+          "n": 20,
+          "active_only": 19,
+          "other_only": 0,
+          "raw_p": 3.814697265625e-06,
+          "holm_p": 7.62939453125e-06
+        }
+      }
+    },
+    {
+      "model": "Muse-Glimmer-30B",
+      "domain": "deployment",
+      "family": "retry-policy displayed-core",
+      "holm_m": 4,
+      "comparisons": {
+        "direct": {
+          "n": 20,
+          "active_only": 16,
+          "other_only": 0,
+          "raw_p": 3.0517578125e-05,
+          "holm_p": 9.1552734375e-05
+        },
+        "self_refine": {
+          "n": 20,
+          "active_only": 10,
+          "other_only": 0,
+          "raw_p": 0.001953125,
+          "holm_p": 0.001953125
+        },
+        "random_probe": {
+          "n": 20,
+          "active_only": 17,
+          "other_only": 0,
+          "raw_p": 1.52587890625e-05,
+          "holm_p": 6.103515625e-05
+        },
+        "sampled_cegis": {
+          "n": 20,
+          "active_only": 15,
+          "other_only": 0,
+          "raw_p": 6.103515625e-05,
+          "holm_p": 0.0001220703125
+        }
+      }
+    },
+    {
+      "model": "Qwen2.5-Coder-32B",
+      "domain": "deployment",
+      "family": "retry-policy displayed-core",
+      "holm_m": 4,
+      "comparisons": {
+        "direct": {
+          "n": 20,
+          "active_only": 3,
+          "other_only": 0,
+          "raw_p": 0.25,
+          "holm_p": 1.0
+        },
+        "self_refine": {
+          "n": 20,
+          "active_only": 3,
+          "other_only": 0,
+          "raw_p": 0.25,
+          "holm_p": 1.0
+        },
+        "random_probe": {
+          "n": 20,
+          "active_only": 3,
+          "other_only": 1,
+          "raw_p": 0.625,
+          "holm_p": 1.0
+        },
+        "sampled_cegis": {
+          "n": 20,
+          "active_only": 3,
+          "other_only": 0,
+          "raw_p": 0.25,
+          "holm_p": 1.0
+        }
+      }
+    },
+    {
+      "model": "Qwen3.6-35B-A3B",
+      "domain": "taubench_retail",
+      "family": "retry-policy displayed-core",
+      "holm_m": 3,
+      "comparisons": {
+        "direct": {
+          "n": 20,
+          "active_only": 1,
+          "other_only": 0,
+          "raw_p": 1.0,
+          "holm_p": 1.0
+        },
+        "self_refine": {
+          "n": 20,
+          "active_only": 1,
+          "other_only": 0,
+          "raw_p": 1.0,
+          "holm_p": 1.0
+        },
+        "sampled_cegis_fixed": {
+          "n": 20,
+          "active_only": 1,
+          "other_only": 0,
+          "raw_p": 1.0,
+          "holm_p": 1.0
+        }
+      }
+    },
+    {
+      "model": "Muse-Glimmer-30B",
+      "domain": "taubench_retail",
+      "family": "retry-policy displayed-core",
+      "holm_m": 3,
+      "comparisons": {
+        "direct": {
+          "n": 20,
+          "active_only": 1,
+          "other_only": 0,
+          "raw_p": 1.0,
+          "holm_p": 1.0
+        },
+        "self_refine": {
+          "n": 20,
+          "active_only": 1,
+          "other_only": 0,
+          "raw_p": 1.0,
+          "holm_p": 1.0
+        },
+        "sampled_cegis_fixed": {
+          "n": 20,
+          "active_only": 1,
+          "other_only": 0,
+          "raw_p": 1.0,
+          "holm_p": 1.0
+        }
+      }
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "domain": "shopping_price",
+      "family": "retry-policy displayed-core",
+      "holm_m": 4,
+      "comparisons": {
+        "direct": {
+          "n": 20,
+          "active_only": 14,
+          "other_only": 0,
+          "raw_p": 0.0001220703125,
+          "holm_p": 0.00048828125
+        },
+        "self_refine": {
+          "n": 20,
+          "active_only": 14,
+          "other_only": 0,
+          "raw_p": 0.0001220703125,
+          "holm_p": 0.00048828125
+        },
+        "random_probe": {
+          "n": 20,
+          "active_only": 14,
+          "other_only": 0,
+          "raw_p": 0.0001220703125,
+          "holm_p": 0.00048828125
+        },
+        "sampled_cegis": {
+          "n": 20,
+          "active_only": 10,
+          "other_only": 2,
+          "raw_p": 0.03857421875,
+          "holm_p": 0.03857421875
+        }
+      }
+    },
+    {
+      "model": "Qwen2.5-14B",
+      "domain": "shopping_price",
+      "family": "retry-policy displayed-core",
+      "holm_m": 4,
+      "comparisons": {
+        "direct": {
+          "n": 20,
+          "active_only": 0,
+          "other_only": 0,
+          "raw_p": null,
+          "holm_p": null
+        },
+        "self_refine": {
+          "n": 20,
+          "active_only": 0,
+          "other_only": 0,
+          "raw_p": null,
+          "holm_p": null
+        },
+        "random_probe": {
+          "n": 20,
+          "active_only": 0,
+          "other_only": 0,
+          "raw_p": null,
+          "holm_p": null
+        },
+        "sampled_cegis": {
+          "n": 20,
+          "active_only": 0,
+          "other_only": 0,
+          "raw_p": null,
+          "holm_p": null
+        }
+      }
+    },
+    {
+      "model": "Gemma-4-26B-A4B",
+      "domain": "shopping_price",
+      "family": "retry-policy displayed-core",
+      "holm_m": 4,
+      "comparisons": {
+        "direct": {
+          "n": 20,
+          "active_only": 8,
+          "other_only": 0,
+          "raw_p": 0.0078125,
+          "holm_p": 0.03125
+        },
+        "self_refine": {
+          "n": 20,
+          "active_only": 8,
+          "other_only": 0,
+          "raw_p": 0.0078125,
+          "holm_p": 0.03125
+        },
+        "random_probe": {
+          "n": 20,
+          "active_only": 8,
+          "other_only": 0,
+          "raw_p": 0.0078125,
+          "holm_p": 0.03125
+        },
+        "sampled_cegis": {
+          "n": 20,
+          "active_only": 3,
+          "other_only": 5,
+          "raw_p": 0.7265625,
+          "holm_p": 0.7265625
+        }
+      }
+    },
+    {
+      "model": "Qwen3.6-35B-A3B",
+      "domain": "shopping_price",
+      "family": "retry-policy displayed-core",
+      "holm_m": 4,
+      "comparisons": {
+        "direct": {
+          "n": 20,
+          "active_only": 20,
+          "other_only": 0,
+          "raw_p": 1.9073486328125e-06,
+          "holm_p": 7.62939453125e-06
+        },
+        "self_refine": {
+          "n": 20,
+          "active_only": 20,
+          "other_only": 0,
+          "raw_p": 1.9073486328125e-06,
+          "holm_p": 7.62939453125e-06
+        },
+        "random_probe": {
+          "n": 20,
+          "active_only": 20,
+          "other_only": 0,
+          "raw_p": 1.9073486328125e-06,
+          "holm_p": 7.62939453125e-06
+        },
+        "sampled_cegis": {
+          "n": 20,
+          "active_only": 8,
+          "other_only": 0,
+          "raw_p": 0.0078125,
+          "holm_p": 0.0078125
+        }
+      }
+    },
+    {
+      "model": "Muse-Glimmer-30B",
+      "domain": "shopping_price",
+      "family": "retry-policy displayed-core",
+      "holm_m": 4,
+      "comparisons": {
+        "direct": {
+          "n": 20,
+          "active_only": 19,
+          "other_only": 0,
+          "raw_p": 3.814697265625e-06,
+          "holm_p": 1.52587890625e-05
+        },
+        "self_refine": {
+          "n": 20,
+          "active_only": 19,
+          "other_only": 0,
+          "raw_p": 3.814697265625e-06,
+          "holm_p": 1.52587890625e-05
+        },
+        "random_probe": {
+          "n": 20,
+          "active_only": 19,
+          "other_only": 0,
+          "raw_p": 3.814697265625e-06,
+          "holm_p": 1.52587890625e-05
+        },
+        "sampled_cegis": {
+          "n": 20,
+          "active_only": 11,
+          "other_only": 0,
+          "raw_p": 0.0009765625,
+          "holm_p": 0.0009765625
+        }
+      }
+    }
+  ]
+}

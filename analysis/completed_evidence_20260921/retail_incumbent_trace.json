@@ -1,0 +1,453 @@
+{
+  "runs": [
+    {
+      "path": "results/partial_candidate_pool_tau_v1_20260917/gemma/pool500/st2x2_partitioned_exhaust__seed15.json",
+      "stopped_because": "parse_failure_unrepaired",
+      "finish_reason": "length",
+      "serialized_contract_status": "parsed",
+      "serialized_source_origin": "interaction:2:revision_2",
+      "serialized_source_parseable": false,
+      "last_valid_incumbent_origin": "interaction:1:revision_1",
+      "incumbent_matches_stored_evaluation": true,
+      "incumbent_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 0,
+        "false_rejects": 4,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "stored_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 0,
+        "false_rejects": 4,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "candidate_trace": [
+        {
+          "origin": "initial",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 86,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:0:revision_0",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 36,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:1:revision_1",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 0,
+            "false_rejects": 4,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:2:revision_2",
+          "parseable": false,
+          "error": "invalid JSON: Unterminated string starting at: line 113 column 18 (char 2294)"
+        }
+      ]
+    },
+    {
+      "path": "results/partial_candidate_pool_tau_v1_20260917/qwen38/pool200/st2x2_partitioned_exhaust__seed6.json",
+      "stopped_because": "parse_failure_unrepaired",
+      "finish_reason": "length",
+      "serialized_contract_status": "parsed",
+      "serialized_source_origin": "interaction:2:vacuity_revision_2",
+      "serialized_source_parseable": false,
+      "last_valid_incumbent_origin": "interaction:1:revision_1",
+      "incumbent_matches_stored_evaluation": true,
+      "incumbent_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 0,
+        "false_rejects": 4,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "stored_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 0,
+        "false_rejects": 4,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "candidate_trace": [
+        {
+          "origin": "initial",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 86,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:0:revision_0",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 36,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:1:revision_1",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 0,
+            "false_rejects": 4,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:2:vacuity_revision_2",
+          "parseable": false,
+          "error": "invalid JSON: Expecting property name enclosed in double quotes: line 16 column 19 (char 402)"
+        }
+      ]
+    },
+    {
+      "path": "results/partial_candidate_pool_tau_v1_20260917/qwen38/pool500/st2x2_partitioned_exhaust__seed9.json",
+      "stopped_because": "parse_failure_unrepaired",
+      "finish_reason": "length",
+      "serialized_contract_status": "parsed",
+      "serialized_source_origin": "interaction:2:revision_2",
+      "serialized_source_parseable": false,
+      "last_valid_incumbent_origin": "interaction:1:revision_1",
+      "incumbent_matches_stored_evaluation": true,
+      "incumbent_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 20,
+        "false_rejects": 0,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "stored_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 20,
+        "false_rejects": 0,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "candidate_trace": [
+        {
+          "origin": "initial",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 86,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:0:revision_0",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 18,
+            "false_rejects": 8,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:1:revision_1",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 20,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:2:revision_2",
+          "parseable": false,
+          "error": "invalid JSON: Unterminated string starting at: line 130 column 18 (char 2637)"
+        }
+      ]
+    },
+    {
+      "path": "results/partial_candidate_pool_tau_v1_20260917/qwen38/pool500/st2x2_partitioned_exhaust__seed13.json",
+      "stopped_because": "parse_failure_unrepaired",
+      "finish_reason": "length",
+      "serialized_contract_status": "parsed",
+      "serialized_source_origin": "interaction:2:revision_2",
+      "serialized_source_parseable": false,
+      "last_valid_incumbent_origin": "interaction:1:revision_1",
+      "incumbent_matches_stored_evaluation": true,
+      "incumbent_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 0,
+        "false_rejects": 4,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "stored_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 0,
+        "false_rejects": 4,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "candidate_trace": [
+        {
+          "origin": "initial",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 86,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:0:revision_0",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 36,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:1:revision_1",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 0,
+            "false_rejects": 4,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:2:revision_2",
+          "parseable": false,
+          "error": "invalid JSON: Unterminated string starting at: line 157 column 9 (char 3114)"
+        }
+      ]
+    },
+    {
+      "path": "results/partial_candidate_pool_tau_v1_20260917/qwen38/pool500/st2x2_partitioned_exhaust__seed18.json",
+      "stopped_because": "parse_failure_unrepaired",
+      "finish_reason": "length",
+      "serialized_contract_status": "parsed",
+      "serialized_source_origin": "interaction:2:revision_2",
+      "serialized_source_parseable": false,
+      "last_valid_incumbent_origin": "interaction:1:revision_1",
+      "incumbent_matches_stored_evaluation": true,
+      "incumbent_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 4,
+        "false_rejects": 0,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "stored_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 4,
+        "false_rejects": 0,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "candidate_trace": [
+        {
+          "origin": "initial",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 86,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:0:revision_0",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 0,
+            "false_rejects": 4,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:1:revision_1",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 4,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:2:revision_2",
+          "parseable": false,
+          "error": "invalid JSON: Expecting property name enclosed in double quotes: line 28 column 19 (char 622)"
+        }
+      ]
+    },
+    {
+      "path": "results/partial_candidate_pool_tau_v1_20260917/qwen38/pool1294/st2x2_partitioned_exhaust__seed2.json",
+      "stopped_because": "parse_failure_unrepaired",
+      "finish_reason": "length",
+      "serialized_contract_status": "parsed",
+      "serialized_source_origin": "interaction:2:revision_2",
+      "serialized_source_parseable": false,
+      "last_valid_incumbent_origin": "interaction:1:revision_1",
+      "incumbent_matches_stored_evaluation": true,
+      "incumbent_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 0,
+        "false_rejects": 4,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "stored_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 0,
+        "false_rejects": 4,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "candidate_trace": [
+        {
+          "origin": "initial",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 86,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:0:revision_0",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 20,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:1:revision_1",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 0,
+            "false_rejects": 4,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:2:revision_2",
+          "parseable": false,
+          "error": "invalid JSON: Expecting value: line 135 column 14 (char 2717)"
+        }
+      ]
+    },
+    {
+      "path": "results/partial_candidate_pool_tau_v1_20260917/qwen38/pool1294/st2x2_partitioned_exhaust__seed10.json",
+      "stopped_because": "parse_failure_unrepaired",
+      "finish_reason": "length",
+      "serialized_contract_status": "parsed",
+      "serialized_source_origin": "interaction:2:revision_2",
+      "serialized_source_parseable": false,
+      "last_valid_incumbent_origin": "interaction:1:revision_1",
+      "incumbent_matches_stored_evaluation": true,
+      "incumbent_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 0,
+        "false_rejects": 4,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "stored_metrics": {
+        "states_checked": 1294,
+        "false_accepts": 0,
+        "false_rejects": 4,
+        "postcondition_violations": 0,
+        "exact": false
+      },
+      "candidate_trace": [
+        {
+          "origin": "initial",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 86,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:0:revision_0",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 20,
+            "false_rejects": 0,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:1:revision_1",
+          "parseable": true,
+          "metrics": {
+            "states_checked": 1294,
+            "false_accepts": 0,
+            "false_rejects": 4,
+            "postcondition_violations": 0,
+            "exact": false
+          }
+        },
+        {
+          "origin": "interaction:2:revision_2",
+          "parseable": false,
+          "error": "invalid JSON: Unterminated string starting at: line 208 column 11 (char 4068)"
+        }
+      ]
+    }
+  ],
+  "all_incumbents_match": true
+}

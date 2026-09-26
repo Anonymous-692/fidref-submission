@@ -1,0 +1,12 @@
+{
+  "baseline_results_sha256": "fe4337af0bab5c932d99511a814b8b640c8de1ad8a0b92944f367b242e52a877",
+  "new_results_sha256": "62eb7cfb95376a5c9f25d4baedfe0095c8c53e29a970faf655c8a677935f5b9f",
+  "cells": 136,
+  "runs": 2720,
+  "selected_runs": 58,
+  "selected_cells": 24,
+  "numeric_changed_cells": 16,
+  "selected_numeric_unchanged_cells": 8,
+  "unselected_cells": 112,
+  "all_cells_20_unique_seeds": true
+}

@@ -1,0 +1,3870 @@
+{
+  "artifact_counts": {
+    "original": 320,
+    "nano_original": 160,
+    "deployment_extension": 480,
+    "terra_flex": 80,
+    "mini_other": 160,
+    "nano_other": 160,
+    "reasoning": 60,
+    "common_initial": 180
+  },
+  "suite_summaries": {
+    "original": [
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "deployment",
+        "method": "Active",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "outcomes": {
+          "inexact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "deployment",
+        "method": "Direct",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 3,
+        "valid_evaluation_n": 17,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "outcomes": {
+          "parse_failure": 3,
+          "inexact": 17
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "deployment",
+        "method": "Fixed-pool",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 2.9423868313,
+        "cfr_mean": 2.9423868313,
+        "outcomes": {
+          "inexact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "deployment",
+        "method": "No-Balance",
+        "n": 20,
+        "exact": 1,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 8.5483870968,
+        "cfr_mean": 8.5483870968,
+        "outcomes": {
+          "inexact": 19,
+          "exact": 1
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "taubench_retail",
+        "method": "Active",
+        "n": 20,
+        "exact": 1,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          1294
+        ],
+        "successes_values": [
+          14
+        ],
+        "iou_mean": 66.3591269841,
+        "cfr_mean": 31.7261904762,
+        "outcomes": {
+          "inexact": 19,
+          "exact": 1
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "taubench_retail",
+        "method": "Direct",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          1294
+        ],
+        "successes_values": [
+          14
+        ],
+        "iou_mean": 21.7817460317,
+        "cfr_mean": 2.7595238095,
+        "outcomes": {
+          "inexact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "taubench_retail",
+        "method": "Fixed-pool",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          1294
+        ],
+        "successes_values": [
+          14
+        ],
+        "iou_mean": 45.0905695612,
+        "cfr_mean": 8.9350140056,
+        "outcomes": {
+          "inexact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "taubench_retail",
+        "method": "No-Balance",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          1294
+        ],
+        "successes_values": [
+          14
+        ],
+        "iou_mean": 25.5150793651,
+        "cfr_mean": 4.703968254,
+        "outcomes": {
+          "inexact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "domain": "deployment",
+        "method": "Active",
+        "n": 20,
+        "exact": 2,
+        "parse_failure": 1,
+        "valid_evaluation_n": 19,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 83.1363636364,
+        "cfr_mean": 11.1363636364,
+        "outcomes": {
+          "inexact": 17,
+          "parse_failure": 1,
+          "exact": 2
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "domain": "deployment",
+        "method": "Direct",
+        "n": 20,
+        "exact": 1,
+        "parse_failure": 15,
+        "valid_evaluation_n": 5,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 19.6847507331,
+        "cfr_mean": 5.0,
+        "outcomes": {
+          "inexact": 4,
+          "parse_failure": 15,
+          "exact": 1
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "domain": "deployment",
+        "method": "Fixed-pool",
+        "n": 20,
+        "exact": 3,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 77.1847507331,
+        "cfr_mean": 15.0,
+        "outcomes": {
+          "inexact": 17,
+          "exact": 3
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "domain": "deployment",
+        "method": "No-Balance",
+        "n": 20,
+        "exact": 3,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 71.1666008502,
+        "cfr_mean": 16.1363636364,
+        "outcomes": {
+          "inexact": 17,
+          "exact": 3
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "domain": "taubench_retail",
+        "method": "Active",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          1294
+        ],
+        "successes_values": [
+          14
+        ],
+        "iou_mean": 37.7731092437,
+        "cfr_mean": 18.4453781513,
+        "outcomes": {
+          "inexact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "domain": "taubench_retail",
+        "method": "Direct",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          1294
+        ],
+        "successes_values": [
+          14
+        ],
+        "iou_mean": 7.7380952381,
+        "cfr_mean": 5.6547619048,
+        "outcomes": {
+          "inexact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "domain": "taubench_retail",
+        "method": "Fixed-pool",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          1294
+        ],
+        "successes_values": [
+          14
+        ],
+        "iou_mean": 6.6596638655,
+        "cfr_mean": 1.6176470588,
+        "outcomes": {
+          "inexact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "domain": "taubench_retail",
+        "method": "No-Balance",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          1294
+        ],
+        "successes_values": [
+          14
+        ],
+        "iou_mean": 34.8214285714,
+        "cfr_mean": 9.2261904762,
+        "outcomes": {
+          "inexact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      }
+    ],
+    "nano_original": [
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "deployment",
+        "method": "Active",
+        "n": 20,
+        "exact": 12,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 79.181413692,
+        "cfr_mean": 74.181413692,
+        "outcomes": {
+          "inexact": 8,
+          "exact": 12
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "deployment",
+        "method": "Direct",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 31.7422743996,
+        "cfr_mean": 28.5734893417,
+        "outcomes": {
+          "inexact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "deployment",
+        "method": "Fixed-pool",
+        "n": 20,
+        "exact": 2,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 49.3109197084,
+        "cfr_mean": 33.5102284641,
+        "outcomes": {
+          "inexact": 18,
+          "exact": 2
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "deployment",
+        "method": "No-Balance",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 43.2933152506,
+        "cfr_mean": 29.6661485383,
+        "outcomes": {
+          "inexact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "taubench_retail",
+        "method": "Active",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 1,
+        "valid_evaluation_n": 19,
+        "states_checked_values": [
+          1294
+        ],
+        "successes_values": [
+          14
+        ],
+        "iou_mean": 38.411949366,
+        "cfr_mean": 38.411949366,
+        "outcomes": {
+          "inexact": 19,
+          "parse_failure": 1
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "taubench_retail",
+        "method": "Direct",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 7,
+        "valid_evaluation_n": 13,
+        "states_checked_values": [
+          1294
+        ],
+        "successes_values": [
+          14
+        ],
+        "iou_mean": 12.6669760387,
+        "cfr_mean": 12.6669760387,
+        "outcomes": {
+          "parse_failure": 7,
+          "inexact": 13
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "taubench_retail",
+        "method": "Fixed-pool",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 1,
+        "valid_evaluation_n": 19,
+        "states_checked_values": [
+          1294
+        ],
+        "successes_values": [
+          14
+        ],
+        "iou_mean": 27.9294043375,
+        "cfr_mean": 27.9294043375,
+        "outcomes": {
+          "inexact": 19,
+          "parse_failure": 1
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "taubench_retail",
+        "method": "No-Balance",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 1,
+        "valid_evaluation_n": 19,
+        "states_checked_values": [
+          1294
+        ],
+        "successes_values": [
+          14
+        ],
+        "iou_mean": 17.6912073221,
+        "cfr_mean": 17.6912073221,
+        "outcomes": {
+          "inexact": 19,
+          "parse_failure": 1
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      }
+    ],
+    "deployment_extension": [
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "deployment",
+        "method": "Active",
+        "n": 40,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 40,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 1.7741935484,
+        "cfr_mean": 0.0,
+        "outcomes": {
+          "inexact": 40
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "deployment",
+        "method": "Direct",
+        "n": 40,
+        "exact": 0,
+        "parse_failure": 12,
+        "valid_evaluation_n": 28,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "outcomes": {
+          "inexact": 28,
+          "parse_failure": 12
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "deployment",
+        "method": "Fixed-pool",
+        "n": 40,
+        "exact": 1,
+        "parse_failure": 0,
+        "valid_evaluation_n": 40,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 15.6451612903,
+        "cfr_mean": 7.8225806452,
+        "outcomes": {
+          "inexact": 39,
+          "exact": 1
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "deployment",
+        "method": "No-Balance",
+        "n": 40,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 40,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 1.0185185185,
+        "cfr_mean": 0.0,
+        "outcomes": {
+          "inexact": 40
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "deployment",
+        "method": "Active",
+        "n": 40,
+        "exact": 19,
+        "parse_failure": 0,
+        "valid_evaluation_n": 40,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 75.0329912023,
+        "cfr_mean": 56.9134897361,
+        "outcomes": {
+          "exact": 19,
+          "inexact": 21
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "deployment",
+        "method": "Direct",
+        "n": 40,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 40,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 32.364412801,
+        "cfr_mean": 23.6755367129,
+        "outcomes": {
+          "inexact": 40
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "deployment",
+        "method": "Fixed-pool",
+        "n": 40,
+        "exact": 2,
+        "parse_failure": 0,
+        "valid_evaluation_n": 40,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 42.4813344846,
+        "cfr_mean": 34.4851960651,
+        "outcomes": {
+          "inexact": 38,
+          "exact": 2
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "deployment",
+        "method": "No-Balance",
+        "n": 40,
+        "exact": 2,
+        "parse_failure": 0,
+        "valid_evaluation_n": 40,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 46.1182508166,
+        "cfr_mean": 38.199877374,
+        "outcomes": {
+          "inexact": 38,
+          "exact": 2
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "domain": "deployment",
+        "method": "Active",
+        "n": 40,
+        "exact": 5,
+        "parse_failure": 0,
+        "valid_evaluation_n": 40,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 82.5,
+        "cfr_mean": 12.5,
+        "outcomes": {
+          "inexact": 35,
+          "exact": 5
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "domain": "deployment",
+        "method": "Direct",
+        "n": 40,
+        "exact": 0,
+        "parse_failure": 32,
+        "valid_evaluation_n": 8,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "outcomes": {
+          "parse_failure": 32,
+          "inexact": 8
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "domain": "deployment",
+        "method": "Fixed-pool",
+        "n": 40,
+        "exact": 4,
+        "parse_failure": 0,
+        "valid_evaluation_n": 40,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 58.0355436081,
+        "cfr_mean": 11.7741935484,
+        "outcomes": {
+          "inexact": 36,
+          "exact": 4
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "domain": "deployment",
+        "method": "No-Balance",
+        "n": 40,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 40,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 72.0803446203,
+        "cfr_mean": 4.0918653576,
+        "outcomes": {
+          "inexact": 40
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      }
+    ],
+    "terra_flex": [
+      {
+        "model": "gpt-5.6-terra",
+        "domain": "deployment",
+        "method": "Active",
+        "n": 20,
+        "exact": 20,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 100.0,
+        "cfr_mean": 100.0,
+        "outcomes": {
+          "exact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-terra",
+        "domain": "deployment",
+        "method": "Direct",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 70.9677419355,
+        "cfr_mean": 7.0967741935,
+        "outcomes": {
+          "inexact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-terra",
+        "domain": "deployment",
+        "method": "Fixed-pool",
+        "n": 20,
+        "exact": 1,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 75.3225806452,
+        "cfr_mean": 22.7419354839,
+        "outcomes": {
+          "inexact": 19,
+          "exact": 1
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-terra",
+        "domain": "deployment",
+        "method": "No-Balance",
+        "n": 20,
+        "exact": 3,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 75.3225806452,
+        "cfr_mean": 36.2903225806,
+        "outcomes": {
+          "exact": 3,
+          "inexact": 17
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      }
+    ],
+    "mini_other": [
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "calendar",
+        "method": "Active",
+        "n": 20,
+        "exact": 3,
+        "parse_failure": 1,
+        "valid_evaluation_n": 19,
+        "states_checked_values": [
+          1676
+        ],
+        "successes_values": [
+          35
+        ],
+        "iou_mean": 28.3720859005,
+        "cfr_mean": 19.336996337,
+        "outcomes": {
+          "inexact": 16,
+          "parse_failure": 1,
+          "exact": 3
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "calendar",
+        "method": "Direct",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 1,
+        "valid_evaluation_n": 19,
+        "states_checked_values": [
+          1676
+        ],
+        "successes_values": [
+          35
+        ],
+        "iou_mean": 10.8254182301,
+        "cfr_mean": 6.5025015635,
+        "outcomes": {
+          "inexact": 19,
+          "parse_failure": 1
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "calendar",
+        "method": "Fixed-pool",
+        "n": 20,
+        "exact": 1,
+        "parse_failure": 1,
+        "valid_evaluation_n": 19,
+        "states_checked_values": [
+          1676
+        ],
+        "successes_values": [
+          35
+        ],
+        "iou_mean": 29.4926759134,
+        "cfr_mean": 9.0025015635,
+        "outcomes": {
+          "inexact": 18,
+          "parse_failure": 1,
+          "exact": 1
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "calendar",
+        "method": "No-Balance",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 0,
+        "valid_evaluation_n": 20,
+        "states_checked_values": [
+          1676
+        ],
+        "successes_values": [
+          35
+        ],
+        "iou_mean": 18.0994665046,
+        "cfr_mean": 9.0025015635,
+        "outcomes": {
+          "inexact": 20
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "shopping_price",
+        "method": "Active",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 3,
+        "valid_evaluation_n": 17,
+        "states_checked_values": [
+          288
+        ],
+        "successes_values": [
+          8
+        ],
+        "iou_mean": 3.6363636364,
+        "cfr_mean": 0.8333333333,
+        "outcomes": {
+          "inexact": 17,
+          "parse_failure": 3
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "shopping_price",
+        "method": "Direct",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 14,
+        "valid_evaluation_n": 6,
+        "states_checked_values": [
+          288
+        ],
+        "successes_values": [
+          8
+        ],
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "outcomes": {
+          "parse_failure": 14,
+          "inexact": 6
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "shopping_price",
+        "method": "Fixed-pool",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 4,
+        "valid_evaluation_n": 16,
+        "states_checked_values": [
+          288
+        ],
+        "successes_values": [
+          8
+        ],
+        "iou_mean": 7.803030303,
+        "cfr_mean": 6.9696969697,
+        "outcomes": {
+          "inexact": 16,
+          "parse_failure": 4
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "shopping_price",
+        "method": "No-Balance",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 2,
+        "valid_evaluation_n": 18,
+        "states_checked_values": [
+          288
+        ],
+        "successes_values": [
+          8
+        ],
+        "iou_mean": 2.5,
+        "cfr_mean": 0.0,
+        "outcomes": {
+          "inexact": 18,
+          "parse_failure": 2
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      }
+    ],
+    "nano_other": [
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "calendar",
+        "method": "Active",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 7,
+        "valid_evaluation_n": 13,
+        "states_checked_values": [
+          1676
+        ],
+        "successes_values": [
+          35
+        ],
+        "iou_mean": 30.1428571429,
+        "cfr_mean": 20.5714285714,
+        "outcomes": {
+          "parse_failure": 7,
+          "inexact": 13
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "calendar",
+        "method": "Direct",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 7,
+        "valid_evaluation_n": 13,
+        "states_checked_values": [
+          1676
+        ],
+        "successes_values": [
+          35
+        ],
+        "iou_mean": 27.6428571429,
+        "cfr_mean": 18.2857142857,
+        "outcomes": {
+          "parse_failure": 7,
+          "inexact": 13
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "calendar",
+        "method": "Fixed-pool",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 5,
+        "valid_evaluation_n": 15,
+        "states_checked_values": [
+          1676
+        ],
+        "successes_values": [
+          35
+        ],
+        "iou_mean": 29.5940766551,
+        "cfr_mean": 20.2369337979,
+        "outcomes": {
+          "inexact": 15,
+          "parse_failure": 5
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "calendar",
+        "method": "No-Balance",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 4,
+        "valid_evaluation_n": 16,
+        "states_checked_values": [
+          1676
+        ],
+        "successes_values": [
+          35
+        ],
+        "iou_mean": 34.1655052265,
+        "cfr_mean": 24.8083623693,
+        "outcomes": {
+          "inexact": 16,
+          "parse_failure": 4
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "shopping_price",
+        "method": "Active",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 4,
+        "valid_evaluation_n": 16,
+        "states_checked_values": [
+          288
+        ],
+        "successes_values": [
+          8
+        ],
+        "iou_mean": 25.1515151515,
+        "cfr_mean": 11.5151515152,
+        "outcomes": {
+          "inexact": 16,
+          "parse_failure": 4
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "shopping_price",
+        "method": "Direct",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 11,
+        "valid_evaluation_n": 9,
+        "states_checked_values": [
+          288
+        ],
+        "successes_values": [
+          8
+        ],
+        "iou_mean": 7.9640151515,
+        "cfr_mean": 0.0,
+        "outcomes": {
+          "inexact": 9,
+          "parse_failure": 11
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "shopping_price",
+        "method": "Fixed-pool",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 4,
+        "valid_evaluation_n": 16,
+        "states_checked_values": [
+          288
+        ],
+        "successes_values": [
+          8
+        ],
+        "iou_mean": 22.0878787879,
+        "cfr_mean": 10.8,
+        "outcomes": {
+          "inexact": 16,
+          "parse_failure": 4
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "shopping_price",
+        "method": "No-Balance",
+        "n": 20,
+        "exact": 0,
+        "parse_failure": 2,
+        "valid_evaluation_n": 18,
+        "states_checked_values": [
+          288
+        ],
+        "successes_values": [
+          8
+        ],
+        "iou_mean": 23.1060606061,
+        "cfr_mean": 3.1818181818,
+        "outcomes": {
+          "inexact": 18,
+          "parse_failure": 2
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      }
+    ],
+    "reasoning": [
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "shopping_price",
+        "method": "Active",
+        "n": 60,
+        "exact": 2,
+        "parse_failure": 11,
+        "valid_evaluation_n": 49,
+        "states_checked_values": [
+          288
+        ],
+        "successes_values": [
+          8
+        ],
+        "iou_mean": 10.4166666667,
+        "cfr_mean": 7.7777777778,
+        "outcomes": {
+          "inexact": 47,
+          "exact": 2,
+          "parse_failure": 11
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      }
+    ],
+    "common_initial": [
+      {
+        "model": "gpt-5.4-mini",
+        "domain": "deployment",
+        "method": "Active",
+        "n": 60,
+        "exact": 16,
+        "parse_failure": 0,
+        "valid_evaluation_n": 60,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 36.1827956989,
+        "cfr_mean": 26.6666666667,
+        "outcomes": {
+          "inexact": 44,
+          "exact": 16
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.4-nano",
+        "domain": "deployment",
+        "method": "Active",
+        "n": 60,
+        "exact": 27,
+        "parse_failure": 2,
+        "valid_evaluation_n": 58,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 61.2759461339,
+        "cfr_mean": 51.0779989198,
+        "outcomes": {
+          "inexact": 31,
+          "exact": 27,
+          "parse_failure": 2
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "domain": "deployment",
+        "method": "Active",
+        "n": 60,
+        "exact": 16,
+        "parse_failure": 0,
+        "valid_evaluation_n": 60,
+        "states_checked_values": [
+          11712
+        ],
+        "successes_values": [
+          88
+        ],
+        "iou_mean": 67.3191593353,
+        "cfr_mean": 29.0909090909,
+        "outcomes": {
+          "inexact": 44,
+          "exact": 16
+        },
+        "api_seed_values": [
+          "None"
+        ]
+      }
+    ]
+  },
+  "reasoning_by_arm": [
+    {
+      "model": "gpt-5.4-mini",
+      "domain": "shopping_price",
+      "method": "Active",
+      "n": 20,
+      "exact": 0,
+      "parse_failure": 4,
+      "valid_evaluation_n": 16,
+      "states_checked_values": [
+        288
+      ],
+      "successes_values": [
+        8
+      ],
+      "iou_mean": 0.8333333333,
+      "cfr_mean": 0.0,
+      "outcomes": {
+        "inexact": 16,
+        "parse_failure": 4
+      },
+      "api_seed_values": [
+        "None"
+      ],
+      "arm": "legacy_off",
+      "final_has_pre_order_status_none": 0
+    },
+    {
+      "model": "gpt-5.4-mini",
+      "domain": "shopping_price",
+      "method": "Active",
+      "n": 20,
+      "exact": 0,
+      "parse_failure": 4,
+      "valid_evaluation_n": 16,
+      "states_checked_values": [
+        288
+      ],
+      "successes_values": [
+        8
+      ],
+      "iou_mean": 4.1666666667,
+      "cfr_mean": 3.3333333333,
+      "outcomes": {
+        "inexact": 16,
+        "parse_failure": 4
+      },
+      "api_seed_values": [
+        "None"
+      ],
+      "arm": "default_off",
+      "final_has_pre_order_status_none": 0
+    },
+    {
+      "model": "gpt-5.4-mini",
+      "domain": "shopping_price",
+      "method": "Active",
+      "n": 20,
+      "exact": 2,
+      "parse_failure": 3,
+      "valid_evaluation_n": 17,
+      "states_checked_values": [
+        288
+      ],
+      "successes_values": [
+        8
+      ],
+      "iou_mean": 26.25,
+      "cfr_mean": 20.0,
+      "outcomes": {
+        "inexact": 15,
+        "exact": 2,
+        "parse_failure": 3
+      },
+      "api_seed_values": [
+        "None"
+      ],
+      "arm": "default_low",
+      "final_has_pre_order_status_none": 7
+    }
+  ],
+  "common_initial_cells": [
+    {
+      "initial_source_model": "gpt-5.4-mini",
+      "revision_model": "gpt-5.4-mini",
+      "n": 20,
+      "exact": 0,
+      "parse_failure": 0
+    },
+    {
+      "initial_source_model": "gpt-5.4-nano",
+      "revision_model": "gpt-5.4-mini",
+      "n": 20,
+      "exact": 13,
+      "parse_failure": 0
+    },
+    {
+      "initial_source_model": "gpt-5.6-luna",
+      "revision_model": "gpt-5.4-mini",
+      "n": 20,
+      "exact": 3,
+      "parse_failure": 0
+    },
+    {
+      "initial_source_model": "gpt-5.4-mini",
+      "revision_model": "gpt-5.4-nano",
+      "n": 20,
+      "exact": 5,
+      "parse_failure": 0
+    },
+    {
+      "initial_source_model": "gpt-5.4-nano",
+      "revision_model": "gpt-5.4-nano",
+      "n": 20,
+      "exact": 11,
+      "parse_failure": 0
+    },
+    {
+      "initial_source_model": "gpt-5.6-luna",
+      "revision_model": "gpt-5.4-nano",
+      "n": 20,
+      "exact": 11,
+      "parse_failure": 2
+    },
+    {
+      "initial_source_model": "gpt-5.4-mini",
+      "revision_model": "gpt-5.6-luna",
+      "n": 20,
+      "exact": 1,
+      "parse_failure": 0
+    },
+    {
+      "initial_source_model": "gpt-5.4-nano",
+      "revision_model": "gpt-5.6-luna",
+      "n": 20,
+      "exact": 12,
+      "parse_failure": 0
+    },
+    {
+      "initial_source_model": "gpt-5.6-luna",
+      "revision_model": "gpt-5.6-luna",
+      "n": 20,
+      "exact": 3,
+      "parse_failure": 0
+    }
+  ],
+  "service_tiers_in_raw_responses": {
+    "original": {
+      "default": 694
+    },
+    "nano_original": {
+      "default": 332
+    },
+    "deployment_extension": {
+      "default": 1131
+    },
+    "terra_flex": {
+      "flex": 121
+    }
+  },
+  "appendix_exact_checks": [
+    {
+      "block": "deployment_original",
+      "expected": {
+        "gpt-5.4-mini|Direct": 0,
+        "gpt-5.4-mini|Fixed-pool": 0,
+        "gpt-5.4-mini|Active": 0,
+        "gpt-5.4-mini|No-Balance": 1,
+        "gpt-5.6-luna|Direct": 1,
+        "gpt-5.6-luna|Fixed-pool": 3,
+        "gpt-5.6-luna|Active": 2,
+        "gpt-5.6-luna|No-Balance": 3,
+        "gpt-5.4-nano|Direct": 0,
+        "gpt-5.4-nano|Fixed-pool": 2,
+        "gpt-5.4-nano|Active": 12,
+        "gpt-5.4-nano|No-Balance": 0
+      },
+      "got": {
+        "gpt-5.4-mini|Active": 0,
+        "gpt-5.4-mini|Direct": 0,
+        "gpt-5.4-mini|Fixed-pool": 0,
+        "gpt-5.4-mini|No-Balance": 1,
+        "gpt-5.6-luna|Active": 2,
+        "gpt-5.6-luna|Direct": 1,
+        "gpt-5.6-luna|Fixed-pool": 3,
+        "gpt-5.6-luna|No-Balance": 3,
+        "gpt-5.4-nano|Active": 12,
+        "gpt-5.4-nano|Direct": 0,
+        "gpt-5.4-nano|Fixed-pool": 2,
+        "gpt-5.4-nano|No-Balance": 0
+      },
+      "pass": true
+    },
+    {
+      "block": "deployment_extension",
+      "expected": {
+        "gpt-5.4-mini|Direct": 0,
+        "gpt-5.4-mini|Fixed-pool": 1,
+        "gpt-5.4-mini|Active": 0,
+        "gpt-5.4-mini|No-Balance": 0,
+        "gpt-5.6-luna|Direct": 0,
+        "gpt-5.6-luna|Fixed-pool": 4,
+        "gpt-5.6-luna|Active": 5,
+        "gpt-5.6-luna|No-Balance": 0,
+        "gpt-5.4-nano|Direct": 0,
+        "gpt-5.4-nano|Fixed-pool": 2,
+        "gpt-5.4-nano|Active": 19,
+        "gpt-5.4-nano|No-Balance": 2
+      },
+      "got": {
+        "gpt-5.4-mini|Active": 0,
+        "gpt-5.4-mini|Direct": 0,
+        "gpt-5.4-mini|Fixed-pool": 1,
+        "gpt-5.4-mini|No-Balance": 0,
+        "gpt-5.4-nano|Active": 19,
+        "gpt-5.4-nano|Direct": 0,
+        "gpt-5.4-nano|Fixed-pool": 2,
+        "gpt-5.4-nano|No-Balance": 2,
+        "gpt-5.6-luna|Active": 5,
+        "gpt-5.6-luna|Direct": 0,
+        "gpt-5.6-luna|Fixed-pool": 4,
+        "gpt-5.6-luna|No-Balance": 0
+      },
+      "pass": true
+    },
+    {
+      "block": "terra",
+      "expected": {
+        "gpt-5.6-terra|Direct": 0,
+        "gpt-5.6-terra|Fixed-pool": 1,
+        "gpt-5.6-terra|Active": 20,
+        "gpt-5.6-terra|No-Balance": 3
+      },
+      "got": {
+        "gpt-5.6-terra|Active": 20,
+        "gpt-5.6-terra|Direct": 0,
+        "gpt-5.6-terra|Fixed-pool": 1,
+        "gpt-5.6-terra|No-Balance": 3
+      },
+      "pass": true
+    }
+  ],
+  "retail_artifacts": {
+    "n": 240,
+    "files": [
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial0.json",
+        "sha256": "8ae9e8492295504413abc5731e260d70a7a5a288ec95e2922d9a0fc804e1a633",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 0,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial1.json",
+        "sha256": "1cd31ff9362bfd1ea1bb5288b69adefd28e65d5d5405f6801527fc32eb0fc743",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 1,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial10.json",
+        "sha256": "bc863dcc972d6ef33b122cfe4dcf7610d0213b8503edfc1d0ccce121f5592e26",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 10,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial11.json",
+        "sha256": "118b50ed1a349ae6b16aaedd390f07d8e72e15cb191ed47b4466df499b2bcef4",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 11,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial12.json",
+        "sha256": "433821cd7f957945900fd3e0903cf4222ab51b3edeba1a1444127f7b412d5ec9",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 12,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial13.json",
+        "sha256": "903f551d71b550d0548ba0217dc79e98c41dee9d411066ccf814c98d62983279",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 13,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial14.json",
+        "sha256": "62f011ba637ba841f19971c1372a9ef157103dee0c9faf28ceece201fa7b2147",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 14,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial15.json",
+        "sha256": "80355c88d9c468531de83fee3bbc1800a5fbccb84cb4e0e30e1cd71e47338d32",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 15,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial16.json",
+        "sha256": "534bdf0211290549abf838e2a8f811b03e76a7f1dd0d1f40f04fc99f266e7d4f",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 16,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial17.json",
+        "sha256": "6cc0038ad40d419c9e3cbddcb76f1595bbe2d094efcca31d25142e1ea36bd970",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 17,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial18.json",
+        "sha256": "2c6c14fb71745ed8657a0e10124eabd150be19a262d02475d5b2391aae2c4618",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 18,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial19.json",
+        "sha256": "04d818d218fed437c4ed9952c4c9e3633ba56c3b31d38dba238dad02c3acdb8d",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 19,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial2.json",
+        "sha256": "8f6eb3805f4de153a28893bb12ad88440727a25a1efe68d9321586b8d188da9d",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 2,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial3.json",
+        "sha256": "6a9c5c366dc599116a989bbca56287e219f19e43661c221ef15db1b0cbbf3fc5",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 3,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial4.json",
+        "sha256": "f5aab84a364c30a77fd57239c38aeaf2e52ef7ca33728bda4306e89b64c44350",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 4,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial5.json",
+        "sha256": "45d0910b9f3fc58e14633a86ecf24850b7ffb706c96c41cf805dc531ab8b06db",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 5,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial6.json",
+        "sha256": "cdc456003c8edb463764c4047aa2a4ae7cdb2b2057669262cd42c4efb0095f1f",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 6,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial7.json",
+        "sha256": "511446aca2ceba3f39e5eb44919b39e7ea406e75b18ba43fb9a23d4f0b9b8928",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 7,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial8.json",
+        "sha256": "250caa8856b7347da340376be3a844b401867f0f75c61f9a32bcb240ccff6359",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 8,
+        "outcome": "exact",
+        "evaluation_exact": true
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis__trial9.json",
+        "sha256": "44e4165fd45d14482daa6527c1819cf4ab6f643a9107e529333aa7f3e53ccf1f",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis",
+        "trial_id": 9,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial0.json",
+        "sha256": "82c07045ded1d6e806d67026ecf14b98320d74c90f35fc8462e2630f5343fa52",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 0,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial1.json",
+        "sha256": "827feefa318c09bf3269cdb2a8646497c46a9e2d69b269aa5f9beb65f26c2460",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 1,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial10.json",
+        "sha256": "803d4f0c29fd90e3b17e35e09fc70adfc2d37907b6d6ecc60babce19e9b5af07",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 10,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial11.json",
+        "sha256": "1a9b7859f24f8285f213cb588d78e8a691a0cfce996fc82691a4a5c56fefb71d",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 11,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial12.json",
+        "sha256": "5bc8ef6ed04977e74115d5c14be6c6a546461c2ed1711200bafe732ca38ef6a7",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 12,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial13.json",
+        "sha256": "eefe504693e6947e45669f0206f16d79153dc45d0c0f360e3d36076342c19de3",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 13,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial14.json",
+        "sha256": "348803681dbcba217f8a70634f137edeb56728a6e9391c280c48c75753d30b89",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 14,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial15.json",
+        "sha256": "236573b4350bfbe9dc27ec0bdda460d3ce3dfb69fc09a79e4092bf775aac8f1e",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 15,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial16.json",
+        "sha256": "076ab4be7e0cdb5fcea82b35e98cbc10718a0c116ca9b4ea075ce56068fbba0f",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 16,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial17.json",
+        "sha256": "c1212cc95b3ef16d66b3e5affe61aa234290e1966121eb69136a6e5d21e1dd3c",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 17,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial18.json",
+        "sha256": "105e47d2b2b1903ebc80b45aaa942e5b1bea6c9901449778406b6834a765871f",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 18,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial19.json",
+        "sha256": "e50887e13c9a4616dfb40d41270fe29483f5351af12eee757d7afec7158ca787",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 19,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial2.json",
+        "sha256": "e4cfb47377761217cd7618af3c00839e2a2614a4d2ffd942770368a27c8b760b",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 2,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial3.json",
+        "sha256": "78e9d56ec3db05f4e09616c724d42dcc1de81a8478571d8d55c3a6db525cfd56",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 3,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial4.json",
+        "sha256": "dc873531eeb655bbe4745230930d3dc9589ba6c3fc55bab4b3b06bf49da973df",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 4,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial5.json",
+        "sha256": "16a7400d48c9bf9d5eecf287ef0f01a12d7eed66bbd2ff9052626374e04ba362",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 5,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial6.json",
+        "sha256": "d126c7e358bf3af2bbc17227a0dc0ec6ef37447b74a8ced9bbde6a1206719de1",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 6,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial7.json",
+        "sha256": "321f942ee5b66cbf1006a53608be7b24fc9f970c842b6757d3747e592f98fd9c",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 7,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial8.json",
+        "sha256": "f60eeb9b62d9a775cef1f6a99619c2c1b7cf6a98e8a869f76d5e70a7f1ef22fe",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 8,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/active_cegis_no_balance__trial9.json",
+        "sha256": "9480f61d7dbe41706354da4619970455ea25274dcaac3ed9404fd813ab80341c",
+        "model": "gpt-5.4-mini",
+        "method": "active_cegis_no_balance",
+        "trial_id": 9,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial0.json",
+        "sha256": "ae5e37ed234cfcf91e0049a9b587e1b063aa33fb3f0e2c0dd4e041c97ea9e08c",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 0,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial1.json",
+        "sha256": "4b178c31c19f2b861bf718318b69149cde3a0f71e3a54b0692d084ecbdd6ce45",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 1,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial10.json",
+        "sha256": "0f651c1b107f735adba0884dcc0c2e0ae2898c3994cb0d8927efe7ec64ca26ff",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 10,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial11.json",
+        "sha256": "110f9a9981f03f69468d4ef9dc5038391370edd1963897b7f442e4e8785ec066",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 11,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial12.json",
+        "sha256": "78412a8131a39bc18ab3d5c9cb0d90292cbcb6384328b8e0a4fedc61945079be",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 12,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial13.json",
+        "sha256": "ee346c4a286d846524f0793a16d1754a8f4cb40bf6d247dc63c84859f5735af1",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 13,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial14.json",
+        "sha256": "38daf80d92ff684312157bf05cd2947a3bdf7ab0f20f9076a66bfc8c2ad88cbc",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 14,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial15.json",
+        "sha256": "cfb4ae591c5a915eb88434db20dedb6d5b2f38b19be7209daa031e6a064a8068",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 15,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial16.json",
+        "sha256": "fd6420e419770cdf6f55f21f307ad3f430a8a69584c924894cc373a4eb9182a0",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 16,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial17.json",
+        "sha256": "d7b390143e45f88747c62b4ce4f2ef9f802ad35a824a0ed5268f80e67a0f1beb",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 17,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial18.json",
+        "sha256": "5903842be2311ccc1a48be84e49aa24273bbb82dd2915b44afd41cbf5cd466d4",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 18,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial19.json",
+        "sha256": "ead7b0353a531f10b7641afe7bc04ba0c1734dd9b3c632b1256a029f47d477a0",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 19,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial2.json",
+        "sha256": "d508b2118d219eea857104b3caf880879650634e571d997fe1ecf3be2a75da22",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 2,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial3.json",
+        "sha256": "8f4b400608dce9e5cc95ce6a855f044f33cffd980db83937445eae4aa7f78c32",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 3,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial4.json",
+        "sha256": "5b676be6f0d1a515f27a9eef50017458025b79a6de7af2d3f07d8d5a49019364",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 4,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial5.json",
+        "sha256": "e85e5e28864e86a0f6bc9a5ba1feaf4017ee7ed5cdaa07d5846c333946627799",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 5,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial6.json",
+        "sha256": "2d34a9c1df9f072a822977fda0bad74a7964a11f0bcbd55f3af43170da38d0db",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 6,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial7.json",
+        "sha256": "d0b24ccdcd7e3f0375388d605540899247317b751f8f81be3ecc080912ea2e38",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 7,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial8.json",
+        "sha256": "34d79d50fbeccfc8950f0b6fbec8392c7e0f9adc75e5f815791b947a93809ed3",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 8,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/direct__trial9.json",
+        "sha256": "a8bbcac70bdbb2f69fb138d85d2d1bae3f04b4759113822653e7170cf30ae043",
+        "model": "gpt-5.4-mini",
+        "method": "direct",
+        "trial_id": 9,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial0.json",
+        "sha256": "1a8c20a05c00bf8a302dd7eeab656c3834f7729be64ff1a35119cc85f89ccfe6",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 0,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial1.json",
+        "sha256": "bf0e989f0161c3a776c566a12d91a8cd83fb732157868613883205a7fa10c642",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 1,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial10.json",
+        "sha256": "65d8763c6ceae7d031fe19e7f70662300e66b3f4f34874b2e927d6c8d6b31337",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 10,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial11.json",
+        "sha256": "3123582610a9d02080d72e30657267a0a4b3f691a940a84eff86c4b18d94e5eb",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 11,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial12.json",
+        "sha256": "8773f1afb775c9ef61b9884e1d90930279182958805309fc76e84de0ecbeee51",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 12,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial13.json",
+        "sha256": "f13278cf65a21f4679308d85b7607fbeeae3273a7d7339c2919701a2f5fb53ae",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 13,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial14.json",
+        "sha256": "cfa136e0e82efa4721179a9eee3d2244900af789d3da7fbd5f687257a1e5c0af",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 14,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial15.json",
+        "sha256": "58c53969879b121216503e1efb8cdabfcaab248b9c2d72e331c691a056204d48",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 15,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial16.json",
+        "sha256": "d52dfbbda75c354dd635354784560abac1488632213f957a690eaced99d640f0",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 16,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial17.json",
+        "sha256": "321a45f4e9e62bd3ed3fa8ec377431d077b2c31e4eb96a7a608ad6ff0310b0a3",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 17,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial18.json",
+        "sha256": "c2cf7ac5c42a3eda9cfdaaa530daae45f3733a0d9e6257203f44c69c5cda96e9",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 18,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial19.json",
+        "sha256": "3f2fc2fd021a066dd2981f735d75fd966ef48abe108b2ab350b123a3a43676a4",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 19,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial2.json",
+        "sha256": "43e0f35e67781688c847192774afe99a1da3d9ec8c3229218a97633f89864565",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 2,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial3.json",
+        "sha256": "b241e4fee99778ad77eb09b01eb58682ebe9a27e0ccc73b14c73b35961a93611",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 3,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial4.json",
+        "sha256": "785cf31e3417ebf7a4047e771313a7585af47f7938f881a5c8a3b2de6b796db9",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 4,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial5.json",
+        "sha256": "8db6a91bd6d51648feec9d264998a307954211bdb5cb2e7b7c653bd7a2ec090c",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 5,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial6.json",
+        "sha256": "4087869c74d5dc933d52ab4c9d897c921ddefb4df158b5b19e4b9e8c3dd6c888",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 6,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial7.json",
+        "sha256": "e6d989170ff79c173e04aca1640c43274c97765d24ca60529d7c493e23578811",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 7,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial8.json",
+        "sha256": "277da943a45adac640ccb5a96af6f71676a4e77245911499631f1889edd1d9d4",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 8,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.4-mini/taubench/fixed_pool__trial9.json",
+        "sha256": "00a046df8b058735b7c9b302e07ddb7656ede7f2d24fa13fec823d9e8e26dbe6",
+        "model": "gpt-5.4-mini",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 9,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial0.json",
+        "sha256": "78c7da1c56dbc87950816db1397d78d37309be0f8df5f9b30e664fd522506fce",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 0,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial1.json",
+        "sha256": "0b1537bfe3696f3c3f77ac998dade9daf5ab041985b302879caa7fc38cec732a",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 1,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial10.json",
+        "sha256": "cde4b9d6acc63698cedc451fe92337934b2392c396cb211eb0bf7ebf1c8f3aea",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 10,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial11.json",
+        "sha256": "e99388e29f5e1f4a721ba1be535906f00226dddc4aabfe523c18716596bbde1d",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 11,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial12.json",
+        "sha256": "813c93db008a7a89a60fb8bf56ca358464a393e898a4bc9b4101117877d54b64",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 12,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial13.json",
+        "sha256": "96b0493372752ff376d740e23495a3a23850def213404ec8a3e1f83a0a05749a",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 13,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial14.json",
+        "sha256": "c78b33e42fd225d37d59124b857d5f14810be028fb5af452c35163d1e90736b0",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 14,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial15.json",
+        "sha256": "126c1c7a19aff91490cff164df4facfbf983f1883de27a37b581f844945a9ec3",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 15,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial16.json",
+        "sha256": "0341c6f63412e17782e5ce934737551ffc0ff7a21f0cb160506d7258e02d8af5",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 16,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial17.json",
+        "sha256": "95087803f08f238a248c78a84fb49266a3aea1824e4748e9d5dd07e3b0b3bee8",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 17,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial18.json",
+        "sha256": "dab52c9ea0f0751df7bd59893478026d9916a3e5438b284f2e3125f9463dd85c",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 18,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial19.json",
+        "sha256": "d17c3789b7a5352b93f57cccdd0b76362c62a7ed00a519aa4ed86a7fdfb3f0fc",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 19,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial2.json",
+        "sha256": "ccf0f03ab9897e2601ca222c436fd13cb79a0b49568197407ab6563651462371",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 2,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial3.json",
+        "sha256": "00df9ba28e64283866b07aef4db2e515459cbf41a2a250295e95b7f7393822cb",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 3,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial4.json",
+        "sha256": "4337ef430aa4a849dd2ef80d46b804f200a75c0f96426cce8b2fbc06872d630f",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 4,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial5.json",
+        "sha256": "a8a067f50ef33b094b73e9589d666d8b1f036b5dc3a224bcaaf7820a5d32fa50",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 5,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial6.json",
+        "sha256": "07ce90e1f0beb97ddf3aa75ce63b1d1a6a472e0a5bb1bb0f3502263f5e6ec8e6",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 6,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial7.json",
+        "sha256": "26684061b3e9ffb680d38dcbda0887fadf8b72dd4ebdb3b90ffe4762611f1989",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 7,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial8.json",
+        "sha256": "3bfe82893b60d575de1b5d774152e4a9c17a1712860e89d66ff995fa2aa151da",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 8,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis__trial9.json",
+        "sha256": "aeab7e262ad06fb49a9658d35154575b224b68e26bfbb7c427e68bc407c53491",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis",
+        "trial_id": 9,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial0.json",
+        "sha256": "16a9076fe62ebe5aa6494242662a65078c67917ca6870c250cc245bd29c9c228",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 0,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial1.json",
+        "sha256": "ce1f1bdf735aa0428d4aedc07d615a72152f8407de365d60d70ae0c07084ceff",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 1,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial10.json",
+        "sha256": "bd02b3613a0659bf5777708488992a99fbe26384d0eb89cf509308fffefcd4bd",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 10,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial11.json",
+        "sha256": "5737f045a6236f234f3fcd98f6ba29b9020cd1d727d3d5f814905b8b7e2081f9",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 11,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial12.json",
+        "sha256": "91e87d281356597eecaa6e4092e0152a73d72b2ed2f97d9f372c03776d4ef9d0",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 12,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial13.json",
+        "sha256": "d405ffb33d835fcc6a25f22b39c80b8434933a74a82b5c3a577ec3969d51313c",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 13,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial14.json",
+        "sha256": "e81d937b9a634a29579cc2352e23877bf48539a5ff7f983e788823918be836d1",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 14,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial15.json",
+        "sha256": "486e6b7bcc5a1655a0b968c3b0822518ec33df63a32d6bc7b96fcde2f90b6ab1",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 15,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial16.json",
+        "sha256": "cb8c42ffca4f3d6017c4239a1c9afb705e6504b1f8cbe4bb6482321609820417",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 16,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial17.json",
+        "sha256": "55ff7d163f343c14a7d01fac2e089332fe676f6713052b0b25cccdf5a90cf7cf",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 17,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial18.json",
+        "sha256": "bcce2efea65137b0511ded2cc0296c52b1b69b673867156be822581fe6dc99f2",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 18,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial19.json",
+        "sha256": "2c62fbcd840237652e1a53e0c4feda531c374b561c53cd7d884f8b85c0e792e0",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 19,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial2.json",
+        "sha256": "706f27cd18a715479667b3653dbbbeb29abd828c6f3cfc5579de87993c6f98dc",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 2,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial3.json",
+        "sha256": "d36122140f26d1d319a9ba7db35e0944f9a35c75e55ccfa13474584ba4cae8b0",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 3,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial4.json",
+        "sha256": "4de7e6bcc1e3f8172289a036c47bfbe6fd7896a453054885349429b794c5e8f7",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 4,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial5.json",
+        "sha256": "16c76abbfdd61b94aa6ca4506c6899614496b097db8fa36fabf4bf95c099887e",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 5,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial6.json",
+        "sha256": "77504fbe31b6ae7f83058618b76141ba831e20880d652ded0fd92ef1817fa9d0",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 6,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial7.json",
+        "sha256": "6b91b8e709ff4588551c1fabe72214960eb51ab855bdb3056620b9b1fddfb0fe",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 7,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial8.json",
+        "sha256": "c61959b407400118fa0d22a467de20bac2f56ee723c1659acb62c55e142d2bd2",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 8,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/active_cegis_no_balance__trial9.json",
+        "sha256": "a86c9c35421955586b0758dddb935dc3a562abe1e717046ab546a01bee90aae7",
+        "model": "gpt-5.6-luna",
+        "method": "active_cegis_no_balance",
+        "trial_id": 9,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial0.json",
+        "sha256": "2dda94bbcd0c5d5fb964e1432a2fa1c368c9906d35cc2d9e2c4cfb5473f3193d",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 0,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial1.json",
+        "sha256": "ddb20f06c0b14fc0f5e30da5771bbdf1eb9467ff6007af4f6c073ba5f94e9da0",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 1,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial10.json",
+        "sha256": "c922c61d1e56cf577df3983a1ab8dccdfa2d3a79092d9204721dbeea49608d15",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 10,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial11.json",
+        "sha256": "aa8d89c3fa024df5ee7666aae221fcdb68b3863afc4c5834c672269e6784190c",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 11,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial12.json",
+        "sha256": "0ed7748fd86bcc92806153fe5ebf8925002d673bd5b11477419cdb8fe58a6971",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 12,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial13.json",
+        "sha256": "13b54f649585882b0856fb9d4830d5a537f48c00fd807a75d104f21a60f59853",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 13,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial14.json",
+        "sha256": "d8938019471a8142ad3225820fa057384fdb9cd9392831df72040b2aed976fa7",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 14,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial15.json",
+        "sha256": "ac7aa6fc95d2742314a61e7c8df2b6a1fc003a508771fc9948433fc1dae5ee76",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 15,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial16.json",
+        "sha256": "cc14f44ae537eeccb3651b034c65068f7a62f4a49184b618c3b239ac2ba233fa",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 16,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial17.json",
+        "sha256": "e66976affc90e6b0551759b9073ec930a7d74303eaa19d3417227035e0e7127e",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 17,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial18.json",
+        "sha256": "e067670a3804e50ed8b1ec55226d8f58f0bc9ffcc4490f9d41f2a1abb5abdcb5",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 18,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial19.json",
+        "sha256": "8e17b32b382225f5cf8d49a85bf84dfc69021a808c077288a24b5c83e1e49ea6",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 19,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial2.json",
+        "sha256": "50b32057bb9a3a550b27e9de970e0d26aae2d7946129d14c12c5216a2c6ae092",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 2,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial3.json",
+        "sha256": "9c2be57cb5a8dc9f5190ee973867ac44f6b4832f54a2a1f2e5b63df6e5cb875b",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 3,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial4.json",
+        "sha256": "078616c3dcf59ed19942360c00318d0e6f50cb3b11ec32c65bc058abfe65dfa5",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 4,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial5.json",
+        "sha256": "32f045610520e1b04d52eb11dc1e857c365c1ea7796d6aea1add53d65fcd4a95",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 5,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial6.json",
+        "sha256": "0fc6eb8b31f2500b4f808967323ac9aad45404f96cbe600f0f862e374ec7d4f7",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 6,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial7.json",
+        "sha256": "9759e1e715d5add3c5a31ad46e696d75935a69bf0b40599241ed067d88e955f7",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 7,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial8.json",
+        "sha256": "adf73be3414c614f164516b277462ec58ad473122378213cffaa98b9a9ac1e08",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 8,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/direct__trial9.json",
+        "sha256": "912d5835c52775f1a2d6bc5b99f43c0a5a7bcf0eb0cfa421b9b5872d258d3cdf",
+        "model": "gpt-5.6-luna",
+        "method": "direct",
+        "trial_id": 9,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial0.json",
+        "sha256": "56382412146a96adf127877e4fa1a9c50c79ecaab3e4adf783b5b6312783fa31",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 0,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial1.json",
+        "sha256": "122d8438fde58d69a4d6499235c77fa9f435d315a8aa483c77f4ae831e771424",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 1,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial10.json",
+        "sha256": "382a8199b3082c726d39e9372343f52d8aced0e5e4160b6349bade90e8425252",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 10,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial11.json",
+        "sha256": "cdd5df782f6f3ebade27d908e1429cb480abd6a32ea975f116b15b7bde1a2650",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 11,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial12.json",
+        "sha256": "548c8a0cda055e49a1664ffe773d61e221529e0b4a38841208ced88f4f0e0aee",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 12,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial13.json",
+        "sha256": "cf8500870c2e6a3dec325a06b2e81bb0e83838942c8d8d7417a443650428472c",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 13,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial14.json",
+        "sha256": "cd38a937c8aac261985bcfa8d9f9c981d9a4798d9c74614a6fe2bc0474d5bb01",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 14,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial15.json",
+        "sha256": "566da04359024e7a7e9433469056a9fca4fa3e8baa50b316f9014ee0cf534611",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 15,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial16.json",
+        "sha256": "92b447050ad9871c00d8af997aced0aceef0cef14feb534da63125abbb2e91f4",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 16,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial17.json",
+        "sha256": "e43c5e775b12ac5771f0e210c7f013e043a9b7430b3386add43b3344e463c6c1",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 17,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial18.json",
+        "sha256": "d443bb3c68215ad79add133f865bfd5f6f36f67147cd51f5304be400558ad102",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 18,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial19.json",
+        "sha256": "9d20d4271aafe0153b82d0ffc11499259c2f6c0563997f3266d58664cedc0db4",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 19,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial2.json",
+        "sha256": "6499ae0158cea7eed54f1b15561b27024cdf4096c8089b37f4c301873ecf3939",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 2,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial3.json",
+        "sha256": "2c141ad8f60196c9bfb316513b57edfbe5eeaac03e103fc1386fc915abe3c62c",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 3,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial4.json",
+        "sha256": "c58c510bf4aa6b4363ad1b68c9dfb5a57ba694604679610c886a612339d9e71b",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 4,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial5.json",
+        "sha256": "fe35323bbca07f909a479ea06b4c0b7e925cb0caf28e59567899595b8f0a1f1d",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 5,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial6.json",
+        "sha256": "fa15feba74ac996bfe855b7509d392e5faf736f984e625aa7956cfbf0133de47",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 6,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial7.json",
+        "sha256": "48b1ed7908cef7c95727810c159064edb32a54fbf6af296261c9bff48bd0531f",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 7,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial8.json",
+        "sha256": "855d645eff67e1595555baddfa56a81d9f3bb4cc6370c1e9178c838122d00188",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 8,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_json_mode_v1_20260916/gpt-5.6-luna/taubench/fixed_pool__trial9.json",
+        "sha256": "1d8e548575071745950114616c18a360202f2687f4fe5a780a0d340a98311e9e",
+        "model": "gpt-5.6-luna",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 9,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial0.json",
+        "sha256": "6607afcf10dc6ac475008bcb6f54a6436e10071365c993194b9b312e568c81e8",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 0,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial1.json",
+        "sha256": "fe1493c0c35b7fb052e5d1d063782be1dcd43347f9597352099f3a448607769f",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 1,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial10.json",
+        "sha256": "8d553dd0086759e0f29203d78ff721e40910c3fd3705c1400cf94a93932ac01d",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 10,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial11.json",
+        "sha256": "23dcac9c288a66ebb6088523450547f8b5b45112d2dd4b8de830893d3f168abb",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 11,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial12.json",
+        "sha256": "95056359ffd4a330b105f12b9000d1407a4baba85bf6681c918d9045a6f0c1b0",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 12,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial13.json",
+        "sha256": "9d0b17e6601ee40f84dc04266bdfdfc1d69585cbb3cd096d230c35b26e8e9356",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 13,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial14.json",
+        "sha256": "f7f796db49e2f25214f8a0d9d85e354851962b77b133e16d0f83564906facaf7",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 14,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial15.json",
+        "sha256": "1e9d8cd0159c34a5d8a8a2160442f7b885b4812cc64bf66a62d738d8fa47c3b5",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 15,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial16.json",
+        "sha256": "c546d56c66fd7db9d637cf681a98a8c06537dacf5bdb49db84c477d6806ec5e6",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 16,
+        "outcome": "parse_failure",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial17.json",
+        "sha256": "d64961fec64da5654375e58779a7392823a0a2e7257a826ac539e414f2040fc3",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 17,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial18.json",
+        "sha256": "0d139d92147b25c8dcc0988739af504f4f32a1936920d7ee52e8adb7b4c45ea1",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 18,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial19.json",
+        "sha256": "3d1225f528a00c21e8bb427d21c1072c08c4542a88e5429d2fb1e7c7eee3d23f",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 19,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial2.json",
+        "sha256": "41a50c617557ce045f595e5fffcc77c0afc5c9941bce1a97a6a4ea485b84f810",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 2,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial3.json",
+        "sha256": "fd228247b5990ccd22d4b16c78396ca41b8a047c220ce22845774e47fd7268e8",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 3,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial4.json",
+        "sha256": "f9bbeadab317c4afe9a419376c566b49f38a70195a85d9194367144abc15bc51",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 4,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial5.json",
+        "sha256": "f8c259b50e25595c906f7f3c7faf32388bbc5da812c19515096e4df989cf5e9d",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 5,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial6.json",
+        "sha256": "a8b35fd6b2da760f17ed13a7f28041250445bc30714ff4735c310838e435b637",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 6,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial7.json",
+        "sha256": "1e99ec0d2dbf8182c21402024ed48885d541597e2678b1d887099b6e07407d55",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 7,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial8.json",
+        "sha256": "5b5da77ae089d09fe24aa378dcf77f65a277720d20491b117ae2b4750cc73d3c",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 8,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis__trial9.json",
+        "sha256": "973ac05e70ac7a187f26f6c7d77e1ef1c782ac38f9729ac0775885c23e8eea21",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis",
+        "trial_id": 9,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial0.json",
+        "sha256": "9d601b25367033d04302b51a5f557dc2ecbbed7bb51d9451fb526aaf01655800",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 0,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial1.json",
+        "sha256": "df5967b1791ba168efe1a3a25a3b46341bda143e75d7c96a1f2e63cf0410e744",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 1,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial10.json",
+        "sha256": "bed53c2bbc305e0eca33177c255286628caf6cf4042c2ff8737c9d14ce2e0456",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 10,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial11.json",
+        "sha256": "057677824700eeafc0dd29501445e253541d8e85ce8f88ab752ff0f7891787e9",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 11,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial12.json",
+        "sha256": "ff052cc0834b050c378b1982591b7cecffca10b9b9f589c7e9d2fc0f8ce51be2",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 12,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial13.json",
+        "sha256": "9f6a6d6f00464787bb68f83aa378649133c28dcacc3d5e27df7620aa21681633",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 13,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial14.json",
+        "sha256": "57bcdce1b83858b24b8ad8c2c89f1bb29c3c5daf07373c43f8cdee6108cf68b2",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 14,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial15.json",
+        "sha256": "18113ef4de8f47f0576a817a4a1f763a4d18b423f2350c8ac16cee8db23d9fa5",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 15,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial16.json",
+        "sha256": "c59766caf2278a51db4f6601bbe95a07b0c7cf7771bc85ff149720d19c11d0ab",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 16,
+        "outcome": "parse_failure",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial17.json",
+        "sha256": "234619b809011415b29ce3b87aaac446004abbf3f3c84ad162fd651378c1461c",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 17,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial18.json",
+        "sha256": "da09cb29f27cacf68d2008368d091ab951e4adae208c6d9bbdd426654e672cbf",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 18,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial19.json",
+        "sha256": "d7b99af1f0d8669e8731046f20bf616a6f839cda9270da635d82dee2a8aa8b85",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 19,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial2.json",
+        "sha256": "a8371bc41886941d0762f35545e24b95a6f588d082ae4b5738c109e35bd63787",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 2,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial3.json",
+        "sha256": "b8418961f7ed7c49a94f99e860de1d01aa4c1fd77d7badfbcfba9dac625fa0dd",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 3,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial4.json",
+        "sha256": "13f2c2d740fa0d23cc07087f3adc0eae85f08b6f641000857b013f7d10f8ef50",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 4,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial5.json",
+        "sha256": "3e5a8439c0114ad2e01636b7807fc28955be08b3a912cc5c644b29818323fa67",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 5,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial6.json",
+        "sha256": "8adcc00cd3509902aa5d8d750dec864c60ce5e457d1b55f44c1e21f3cd463e79",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 6,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial7.json",
+        "sha256": "f57ad3ba8a82eb8bd55ee984582775d95ee66fcdff022af6d48df126d367d6aa",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 7,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial8.json",
+        "sha256": "65eec7a30e5b4ebf8081806b9c0456eb3a8a0f31d11395bff91fa39bdc4400d4",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 8,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/active_cegis_no_balance__trial9.json",
+        "sha256": "be0e4b11d91b93243d011a4102115c4831a610a7a1acd0b139e7cb9f7dba5317",
+        "model": "gpt-5.4-nano",
+        "method": "active_cegis_no_balance",
+        "trial_id": 9,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial0.json",
+        "sha256": "780bda09395c952a5800afca3eea024abc93babf7d8dd7de472097591909bf2e",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 0,
+        "outcome": "parse_failure",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial1.json",
+        "sha256": "cb21a39f6f1b7a2ff94d85f8781a2cb1afe077395968ef94b662d0936fa03908",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 1,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial10.json",
+        "sha256": "161a633cc596e0f13177493f30363668bc032a572f1d5c1f7edfa73168479c1f",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 10,
+        "outcome": "parse_failure",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial11.json",
+        "sha256": "e60c1c54e631f3c8e837de6a8a82591dcbe1add8c2ee54d8cb00283a58b3aef2",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 11,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial12.json",
+        "sha256": "9e4b60c88528eb0ff151c4daebec0743c5257973ad32b0184bc7480da16ca275",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 12,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial13.json",
+        "sha256": "0bc9a6975f14a1df7eef3f8b127431dface65716ad7303de9b884a3660e1b9b2",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 13,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial14.json",
+        "sha256": "137da997e67f11866cf78924f3353c24bb5099d2749b90f014198053feaae04f",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 14,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial15.json",
+        "sha256": "a225105fa1597f2c8e08c03055701b2f499da3c6a2ea45d3ebc36429a4d0eb98",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 15,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial16.json",
+        "sha256": "41546997da44b4b68817c0766e5726a3f2d7a8c548797b977f2a5470ee55455a",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 16,
+        "outcome": "parse_failure",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial17.json",
+        "sha256": "796a6c035373a4c24126ed45e3690c5abd62e288f52fcff4cfdb182d2fc13ae3",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 17,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial18.json",
+        "sha256": "653e62adea7b47549c926161b01c580e55037a67578bfbfb0cf4224908b5f11e",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 18,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial19.json",
+        "sha256": "58144d78a29c020ffef502a57558ca39c2d67b693cde255a7bdddda54bb46315",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 19,
+        "outcome": "parse_failure",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial2.json",
+        "sha256": "3f60f42f6192c59bcee8b82cc3c314c4cec1a4e6702e35596590f06367648515",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 2,
+        "outcome": "parse_failure",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial3.json",
+        "sha256": "1cc2f64286935ae1ac2c13bec618400010a9ee1eaf1526ad2ea1b4d34d841b5c",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 3,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial4.json",
+        "sha256": "a6cd266b26a979bcac888c8e5408bae105320f9f07e0a089ef16342f72232fb4",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 4,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial5.json",
+        "sha256": "7756ac11ccd2b9b02ea6dcd214737d789f2989c7b3a361a70a21ccb1bcf0ae66",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 5,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial6.json",
+        "sha256": "13d3679d53ee44e97975f8e2073c8d560453c866b2b4cd72926916188a6d2bcd",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 6,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial7.json",
+        "sha256": "9b4539bc1e4a1e87bb322dd4c980146e6952297ceb513a83d108b3fae0856e74",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 7,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial8.json",
+        "sha256": "7a5805e1234c80506e8d0d11c0e9f48759dfddc856a3c54699217f40472546d5",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 8,
+        "outcome": "parse_failure",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/direct__trial9.json",
+        "sha256": "bed11f9052c998e4197799f2aa52179587fd049035a7babc79b35e108dcfe99b",
+        "model": "gpt-5.4-nano",
+        "method": "direct",
+        "trial_id": 9,
+        "outcome": "parse_failure",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial0.json",
+        "sha256": "bc32a52b50a2b5adf642361143cf90d3dcd2a1ba98e08c51bb4ec20d631d0f35",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 0,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial1.json",
+        "sha256": "0e505de784910e976a4a6e00fd9596c26f2be9f74c3de054a68d31349175bc13",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 1,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial10.json",
+        "sha256": "24f31e93b1e85b57fe593515dd2f17988195e1ae3059c94ae4f1df0eac4e092f",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 10,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial11.json",
+        "sha256": "72a1c010ed506e38affc524d88827c2518f2ecd9342efb6f731baed0ad4ee294",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 11,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial12.json",
+        "sha256": "74c27801a4ca628d39191a647545c2c9a12285d340b96e9248a62a6b3f4bdf89",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 12,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial13.json",
+        "sha256": "ebb19616b8aa159230d8d3750781adb60b0bd5f2e931c0a3d026ce8a2a7cbd4d",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 13,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial14.json",
+        "sha256": "509ab29b0f52808556391e105ff0b71ad43b1dc1a5d89610bd0778ebd657e06d",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 14,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial15.json",
+        "sha256": "431b687e6768598552003b2e4f7c805b48fe00ca5144bc5b307be0ab3b560b96",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 15,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial16.json",
+        "sha256": "3480b33dbbdf8b3ba9ace9750195b7730247f1ea989a1963fc72979f8309135b",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 16,
+        "outcome": "parse_failure",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial17.json",
+        "sha256": "b7b277ee340e5577b9c784fc4eb830b6b5c2dcfa4a74810e644a1bec81e70c44",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 17,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial18.json",
+        "sha256": "4a5e0e94c4dc4e6fa91ffdd0c0c0c0c22360452f9cc666cebc8eb0fea39b5045",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 18,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial19.json",
+        "sha256": "562ef790ea1ed50b4b83b5fe9262f991e17bdab6f3dc34064cbe88a32384e809",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 19,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial2.json",
+        "sha256": "5f1a67f25b251c5f22646f589ab11f58617b5e290428dff89ab2348e2482c6e8",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 2,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial3.json",
+        "sha256": "2c6d8214fe8eebbab715f5242f1b8942a1393819c552b543e4800df98edd5068",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 3,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial4.json",
+        "sha256": "422c1ebbc6e4f468d4e4dd2538cb105b030dff7afb3e801ea1d5a06fb4cf5d45",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 4,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial5.json",
+        "sha256": "815ff3add79fc4348ea7d7de8e38c63324c12ba76ad2d53094e2dafd0b60cd3d",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 5,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial6.json",
+        "sha256": "34119c57cb14e5a82d2323c67a84290b720fd68eb8b0a0fdd1ef2c3fe8c8e432",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 6,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial7.json",
+        "sha256": "38ea9ca7d5298b530d8f63cefbd6491cb2efea7ef3db6cee10422c07a3d33bd9",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 7,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial8.json",
+        "sha256": "a9978a0b08cf68be5f1abad28554bdd060a934bd39dba19f9538022bbe51ca7d",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 8,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      },
+      {
+        "path": "results/openai_nano_json_mode_v1_20260916/gpt-5.4-nano/taubench/fixed_pool__trial9.json",
+        "sha256": "63f5c33030c31b5adc1f4f625b70257c8e522d050fa11b49ea8504cdeee4b172",
+        "model": "gpt-5.4-nano",
+        "method": "sampled_cegis_fixed",
+        "trial_id": 9,
+        "outcome": "inexact",
+        "evaluation_exact": false
+      }
+    ]
+  },
+  "notes": [
+    "Exact uses outcome==exact with every artifact in denominator.",
+    "IoU/CFR assign zero to runs without evaluation, matching suite aggregation code.",
+    "No new full-closure evaluation was performed."
+  ]
+}

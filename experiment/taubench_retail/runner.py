@@ -297,6 +297,10 @@ class _Session:
 
             context_allowance = context_window - self.runner.context_margin - prompt_tokens
             context_clamped = context_allowance < requested_max_tokens
+            if hasattr(self.runner, 'g2_runtime'):
+                # Opt-in partial-pool replay: reserve actual input before output.
+                token_budget_allowance -= prompt_tokens
+                budget_clamped = token_budget_allowance < requested_max_tokens
 
             if context_clamped and budget_clamped:
                 clamp_reason = "both"
@@ -380,6 +384,14 @@ class _Session:
             safety_margin=safety_margin,
         )
         self.interactions.append(interaction)
+        if hasattr(self.runner, 'g2_runtime'):
+            from ..modeling.g2_runtime import usage_valid
+            if not usage_valid((response.raw or {}).get('usage')):
+                self.stopped_because = 'usage_unavailable'
+                return None
+            if self.ledger.remaining_tokens < 0:
+                self.stopped_because = 'token_budget_overrun'
+                return None
         if not self.runner.compact_context:
             self.messages.append({"role": "assistant", "content": response.text})
         return response.text
