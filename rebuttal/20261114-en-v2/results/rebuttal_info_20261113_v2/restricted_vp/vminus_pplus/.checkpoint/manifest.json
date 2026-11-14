@@ -1,0 +1,1773 @@
+{
+  "payload": {
+    "version": "information_resume_v1",
+    "workers": 2,
+    "timeout": 600.0,
+    "matrix": [
+      [
+        "direct",
+        0
+      ],
+      [
+        "direct",
+        1
+      ],
+      [
+        "direct",
+        2
+      ],
+      [
+        "direct",
+        3
+      ],
+      [
+        "direct",
+        4
+      ],
+      [
+        "direct",
+        5
+      ],
+      [
+        "direct",
+        6
+      ],
+      [
+        "direct",
+        7
+      ],
+      [
+        "direct",
+        8
+      ],
+      [
+        "direct",
+        9
+      ],
+      [
+        "direct",
+        10
+      ],
+      [
+        "direct",
+        11
+      ],
+      [
+        "direct",
+        12
+      ],
+      [
+        "direct",
+        13
+      ],
+      [
+        "direct",
+        14
+      ],
+      [
+        "direct",
+        15
+      ],
+      [
+        "direct",
+        16
+      ],
+      [
+        "direct",
+        17
+      ],
+      [
+        "direct",
+        18
+      ],
+      [
+        "direct",
+        19
+      ],
+      [
+        "sampled_cegis",
+        0
+      ],
+      [
+        "sampled_cegis",
+        1
+      ],
+      [
+        "sampled_cegis",
+        2
+      ],
+      [
+        "sampled_cegis",
+        3
+      ],
+      [
+        "sampled_cegis",
+        4
+      ],
+      [
+        "sampled_cegis",
+        5
+      ],
+      [
+        "sampled_cegis",
+        6
+      ],
+      [
+        "sampled_cegis",
+        7
+      ],
+      [
+        "sampled_cegis",
+        8
+      ],
+      [
+        "sampled_cegis",
+        9
+      ],
+      [
+        "sampled_cegis",
+        10
+      ],
+      [
+        "sampled_cegis",
+        11
+      ],
+      [
+        "sampled_cegis",
+        12
+      ],
+      [
+        "sampled_cegis",
+        13
+      ],
+      [
+        "sampled_cegis",
+        14
+      ],
+      [
+        "sampled_cegis",
+        15
+      ],
+      [
+        "sampled_cegis",
+        16
+      ],
+      [
+        "sampled_cegis",
+        17
+      ],
+      [
+        "sampled_cegis",
+        18
+      ],
+      [
+        "sampled_cegis",
+        19
+      ],
+      [
+        "active_cegis",
+        0
+      ],
+      [
+        "active_cegis",
+        1
+      ],
+      [
+        "active_cegis",
+        2
+      ],
+      [
+        "active_cegis",
+        3
+      ],
+      [
+        "active_cegis",
+        4
+      ],
+      [
+        "active_cegis",
+        5
+      ],
+      [
+        "active_cegis",
+        6
+      ],
+      [
+        "active_cegis",
+        7
+      ],
+      [
+        "active_cegis",
+        8
+      ],
+      [
+        "active_cegis",
+        9
+      ],
+      [
+        "active_cegis",
+        10
+      ],
+      [
+        "active_cegis",
+        11
+      ],
+      [
+        "active_cegis",
+        12
+      ],
+      [
+        "active_cegis",
+        13
+      ],
+      [
+        "active_cegis",
+        14
+      ],
+      [
+        "active_cegis",
+        15
+      ],
+      [
+        "active_cegis",
+        16
+      ],
+      [
+        "active_cegis",
+        17
+      ],
+      [
+        "active_cegis",
+        18
+      ],
+      [
+        "active_cegis",
+        19
+      ]
+    ],
+    "contexts": {
+      "0": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 0
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "1": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 1
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "2": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 2
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "3": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 3
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "4": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 4
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "5": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 5
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "6": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 6
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "7": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 7
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "8": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 8
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "9": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 9
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "10": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 10
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "11": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 11
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "12": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 12
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "13": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 13
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "14": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 14
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "15": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 15
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "16": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 16
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "17": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 17
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "18": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 18
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      },
+      "19": {
+        "version": "deployment_shared_initial_v1",
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "restricted_vp",
+          "reveal_valid_sets": false,
+          "reveal_postcondition_patterns": true
+        },
+        "fixture_sha256": "812a3808b6503f830b311680cdaf165731a7d533ebc67ea06fe498c9d9b1d208",
+        "prompt_sha256": "2a524f82788412bdfe2a0b343720bd431ac54d593813f16916a1f4eaadd23156",
+        "dsl_schema_sha256": "e4760bf493947407bff892a8852ebb732bbe9a558b004cf8012999406023f003",
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "model": "gemma-4-31b-it",
+        "endpoint": "[endpoint-redacted]",
+        "serving": {
+          "model": "gemma-4-31b-it",
+          "endpoint": "[endpoint-redacted]",
+          "vllm_version": "0.19.1",
+          "structured_output_style": "response_format",
+          "max_model_len": 8192,
+          "reasoning_request": {
+            "chat_template_kwargs": {
+              "enable_thinking": false
+            }
+          },
+          "request_concurrency": 2
+        },
+        "reasoning": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "structured_output_style": "response_format",
+        "decoding": {
+          "temperature": 0.2,
+          "top_p": 0.95,
+          "max_tokens": 2048,
+          "seed": 19
+        },
+        "budgets": {
+          "state_budget": 48,
+          "query_budget": 4,
+          "token_budget": 16000
+        },
+        "guided_json": true,
+        "max_depth": 20,
+        "max_states": 15000,
+        "context_token_limit": 8192,
+        "context_margin": 256,
+        "compact_context": false,
+        "counterexample_limit": 5,
+        "vacuity_revision_limit": 2
+      }
+    },
+    "resume_policy": "reuse_initials_results_and_recorded_calls; reject_uncertain_requests"
+  },
+  "sha256": "10b541acecda5b4d59666a53e3f6045e48f6162a9b3725702b637f8af2541c22"
+}

@@ -1,0 +1,1979 @@
+{
+  "at": "2026-11-14T00:57:30.746943+09:00",
+  "passed": true,
+  "paired_runs": 40,
+  "denominator_per_cell": 20,
+  "metrics": {
+    "iou": "100*(A-FR)/(A+FA)",
+    "cfr": "100*(A-FR-PV)/(A+FA)",
+    "A": 8,
+    "closure_states": 864,
+    "aggregation": "mean of per-run scores; invalid final contracts score zero"
+  },
+  "policy": {
+    "version": "identifiable_total_budget_continuation_v1",
+    "state_budget": 48,
+    "query_budget": 4,
+    "token_budget": 32768,
+    "max_tokens": 2048,
+    "context_window": 8192,
+    "safety_margin": 256,
+    "prefix_responses": 3,
+    "reuse_length_responses": true,
+    "automatic_retry": false
+  },
+  "cells": [
+    {
+      "method": "active_cegis",
+      "before": {
+        "n": 20,
+        "valid": 19,
+        "exact": 0,
+        "iou_mean": 24.811827956989248,
+        "cfr_mean": 19.272401433691755,
+        "iou_median": 22.22222222222222,
+        "cfr_median": 22.22222222222222,
+        "valid_only_iou_mean": 26.11771363893605,
+        "valid_only_cfr_mean": 20.28673835125448,
+        "fa_fr_pv_medians_valid": [
+          28,
+          0,
+          0
+        ],
+        "pv_positive_valid": 9
+      },
+      "after": {
+        "n": 20,
+        "valid": 19,
+        "exact": 0,
+        "iou_mean": 30.407066052227343,
+        "cfr_mean": 26.00652841781874,
+        "iou_median": 36.66666666666667,
+        "cfr_median": 26.785714285714285,
+        "valid_only_iou_mean": 32.007437949712994,
+        "valid_only_cfr_mean": 27.375293071388146,
+        "fa_fr_pv_medians_valid": [
+          12,
+          0,
+          0
+        ],
+        "pv_positive_valid": 5
+      },
+      "iou": {
+        "mean_delta_pp": 5.595238095238096,
+        "median_delta_pp": 0.0,
+        "improved": [
+          0,
+          3,
+          4,
+          8,
+          13,
+          14,
+          15,
+          19
+        ],
+        "unchanged": [
+          1,
+          2,
+          5,
+          7,
+          9,
+          10,
+          11,
+          12,
+          16,
+          17,
+          18
+        ],
+        "regressed": [
+          6
+        ]
+      },
+      "cfr": {
+        "mean_delta_pp": 6.734126984126984,
+        "median_delta_pp": 4.787506400409628,
+        "improved": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          7,
+          8,
+          11,
+          13,
+          14,
+          15,
+          19
+        ],
+        "unchanged": [
+          2,
+          9,
+          10,
+          12,
+          16,
+          17,
+          18
+        ],
+        "regressed": [
+          6
+        ]
+      },
+      "both_valid_n": 18,
+      "both_valid_iou": {
+        "mean_delta_pp": 6.734653240029584,
+        "median_delta_pp": 0.0,
+        "improved": [
+          0,
+          3,
+          4,
+          8,
+          13,
+          14,
+          19
+        ],
+        "unchanged": [
+          1,
+          2,
+          5,
+          7,
+          9,
+          10,
+          11,
+          12,
+          16,
+          17,
+          18
+        ],
+        "regressed": []
+      },
+      "both_valid_cfr": {
+        "mean_delta_pp": 8.537719747397167,
+        "median_delta_pp": 6.561699948796724,
+        "improved": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          7,
+          8,
+          11,
+          13,
+          14,
+          19
+        ],
+        "unchanged": [
+          2,
+          9,
+          10,
+          12,
+          16,
+          17,
+          18
+        ],
+        "regressed": []
+      },
+      "validity_recovered": [
+        15
+      ],
+      "validity_lost": [
+        6
+      ],
+      "fresh_length_seeds": [
+        6
+      ],
+      "stops_after": {
+        "query_budget_exhausted": 18,
+        "duplicate_model_output": 2
+      }
+    },
+    {
+      "method": "active_cegis_no_coverage",
+      "before": {
+        "n": 20,
+        "valid": 20,
+        "exact": 0,
+        "iou_mean": 24.936507936507937,
+        "cfr_mean": 18.500992063492063,
+        "iou_median": 22.22222222222222,
+        "cfr_median": 18.055555555555557,
+        "valid_only_iou_mean": 24.936507936507937,
+        "valid_only_cfr_mean": 18.500992063492063,
+        "fa_fr_pv_medians_valid": [
+          28.0,
+          0.0,
+          3.0
+        ],
+        "pv_positive_valid": 11
+      },
+      "after": {
+        "n": 20,
+        "valid": 18,
+        "exact": 0,
+        "iou_mean": 28.357142857142858,
+        "cfr_mean": 24.82936507936508,
+        "iou_median": 22.22222222222222,
+        "cfr_median": 22.22222222222222,
+        "valid_only_iou_mean": 31.507936507936506,
+        "valid_only_cfr_mean": 27.588183421516753,
+        "fa_fr_pv_medians_valid": [
+          28.0,
+          0.0,
+          0.0
+        ],
+        "pv_positive_valid": 5
+      },
+      "iou": {
+        "mean_delta_pp": 3.420634920634921,
+        "median_delta_pp": 0.0,
+        "improved": [
+          3,
+          7,
+          11,
+          12,
+          13,
+          16
+        ],
+        "unchanged": [
+          0,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          14,
+          15,
+          17,
+          18
+        ],
+        "regressed": [
+          1,
+          19
+        ]
+      },
+      "cfr": {
+        "mean_delta_pp": 6.328373015873016,
+        "median_delta_pp": 0.0,
+        "improved": [
+          2,
+          3,
+          7,
+          8,
+          11,
+          13,
+          16,
+          18
+        ],
+        "unchanged": [
+          0,
+          4,
+          5,
+          6,
+          9,
+          10,
+          12,
+          14,
+          15,
+          17,
+          19
+        ],
+        "regressed": [
+          1
+        ]
+      },
+      "both_valid_n": 18,
+      "both_valid_iou": {
+        "mean_delta_pp": 6.26984126984127,
+        "median_delta_pp": 0.0,
+        "improved": [
+          3,
+          7,
+          11,
+          12,
+          13,
+          16
+        ],
+        "unchanged": [
+          0,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          14,
+          15,
+          17,
+          18
+        ],
+        "regressed": []
+      },
+      "both_valid_cfr": {
+        "mean_delta_pp": 7.340167548500881,
+        "median_delta_pp": 0.0,
+        "improved": [
+          2,
+          3,
+          7,
+          8,
+          11,
+          13,
+          16,
+          18
+        ],
+        "unchanged": [
+          0,
+          4,
+          5,
+          6,
+          9,
+          10,
+          12,
+          14,
+          15,
+          17
+        ],
+        "regressed": []
+      },
+      "validity_recovered": [],
+      "validity_lost": [
+        1,
+        19
+      ],
+      "fresh_length_seeds": [
+        1,
+        19
+      ],
+      "stops_after": {
+        "query_budget_exhausted": 15,
+        "duplicate_model_output": 5
+      }
+    }
+  ],
+  "rows": [
+    {
+      "id": "active_cegis__seed0",
+      "method": "active_cegis",
+      "seed": 0,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed0/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed0/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 13.88888888888889,
+        "fa": 28,
+        "fr": 0,
+        "pv": 3
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3869,
+        "completion_tokens": 1969,
+        "total_tokens": 5838
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed0",
+      "method": "active_cegis_no_coverage",
+      "seed": 0,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed0/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed0/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3421,
+        "completion_tokens": 1851,
+        "total_tokens": 5272
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed1",
+      "method": "active_cegis",
+      "seed": 1,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed1/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed1/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 2.7777777777777777,
+        "fa": 28,
+        "fr": 0,
+        "pv": 7
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 5.555555555555555,
+        "fa": 28,
+        "fr": 0,
+        "pv": 6
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 4001,
+        "completion_tokens": 1986,
+        "total_tokens": 5987
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed1",
+      "method": "active_cegis_no_coverage",
+      "seed": 1,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed1/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed1/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 5.555555555555555,
+        "fa": 28,
+        "fr": 0,
+        "pv": 6
+      },
+      "after": {
+        "valid": false,
+        "exact": false,
+        "iou": 0.0,
+        "cfr": 0.0,
+        "fa": null,
+        "fr": null,
+        "pv": null
+      },
+      "new_role": "revise",
+      "finish_reason": "length",
+      "new_usage": {
+        "prompt_tokens": 4061,
+        "completion_tokens": 2048,
+        "total_tokens": 6109
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed2",
+      "method": "active_cegis",
+      "seed": 2,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed2/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed2/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3472,
+        "completion_tokens": 1894,
+        "total_tokens": 5366
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed2",
+      "method": "active_cegis_no_coverage",
+      "seed": 2,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed2/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed2/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 25.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 3
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3784,
+        "completion_tokens": 1735,
+        "total_tokens": 5519
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed3",
+      "method": "active_cegis",
+      "seed": 3,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed3/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed3/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 33.333333333333336,
+        "cfr": 33.333333333333336,
+        "fa": 16,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3352,
+        "completion_tokens": 1748,
+        "total_tokens": 5100
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed3",
+      "method": "active_cegis_no_coverage",
+      "seed": 3,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed3/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed3/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 0.0,
+        "cfr": 0.0,
+        "fa": 0,
+        "fr": 8,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 7.142857142857143,
+        "cfr": 7.142857142857143,
+        "fa": 104,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 2721,
+        "completion_tokens": 1623,
+        "total_tokens": 4344
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "duplicate_model_output",
+      "old_length_count": 0,
+      "states_before": 32,
+      "states_after": 32,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed4",
+      "method": "active_cegis",
+      "seed": 4,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed4/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed4/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3427,
+        "completion_tokens": 1698,
+        "total_tokens": 5125
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed4",
+      "method": "active_cegis_no_coverage",
+      "seed": 4,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed4/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed4/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3501,
+        "completion_tokens": 1825,
+        "total_tokens": 5326
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "duplicate_model_output",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed5",
+      "method": "active_cegis",
+      "seed": 5,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed5/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed5/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 13.88888888888889,
+        "fa": 28,
+        "fr": 0,
+        "pv": 3
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3874,
+        "completion_tokens": 1963,
+        "total_tokens": 5837
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed5",
+      "method": "active_cegis_no_coverage",
+      "seed": 5,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed5/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed5/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3454,
+        "completion_tokens": 1821,
+        "total_tokens": 5275
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed6",
+      "method": "active_cegis",
+      "seed": 6,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed6/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed6/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": false,
+        "exact": false,
+        "iou": 0.0,
+        "cfr": 0.0,
+        "fa": null,
+        "fr": null,
+        "pv": null
+      },
+      "new_role": "revise",
+      "finish_reason": "length",
+      "new_usage": {
+        "prompt_tokens": 3698,
+        "completion_tokens": 2048,
+        "total_tokens": 5746
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed6",
+      "method": "active_cegis_no_coverage",
+      "seed": 6,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed6/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed6/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3416,
+        "completion_tokens": 1816,
+        "total_tokens": 5232
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed7",
+      "method": "active_cegis",
+      "seed": 7,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed7/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed7/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 25.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 3
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3781,
+        "completion_tokens": 1838,
+        "total_tokens": 5619
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed7",
+      "method": "active_cegis_no_coverage",
+      "seed": 7,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed7/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed7/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 13.88888888888889,
+        "fa": 28,
+        "fr": 0,
+        "pv": 3
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 25.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 3
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3349,
+        "completion_tokens": 1630,
+        "total_tokens": 4979
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed8",
+      "method": "active_cegis",
+      "seed": 8,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed8/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed8/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 13.88888888888889,
+        "fa": 28,
+        "fr": 0,
+        "pv": 3
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3804,
+        "completion_tokens": 1838,
+        "total_tokens": 5642
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed8",
+      "method": "active_cegis_no_coverage",
+      "seed": 8,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed8/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed8/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 25.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 3
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3776,
+        "completion_tokens": 1838,
+        "total_tokens": 5614
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed9",
+      "method": "active_cegis",
+      "seed": 9,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed9/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed9/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3543,
+        "completion_tokens": 1969,
+        "total_tokens": 5512
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed9",
+      "method": "active_cegis_no_coverage",
+      "seed": 9,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed9/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed9/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 13.88888888888889,
+        "fa": 28,
+        "fr": 0,
+        "pv": 3
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 13.88888888888889,
+        "fa": 28,
+        "fr": 0,
+        "pv": 3
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3545,
+        "completion_tokens": 1867,
+        "total_tokens": 5412
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "duplicate_model_output",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed10",
+      "method": "active_cegis",
+      "seed": 10,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed10/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed10/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3433,
+        "completion_tokens": 1855,
+        "total_tokens": 5288
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed10",
+      "method": "active_cegis_no_coverage",
+      "seed": 10,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed10/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed10/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3351,
+        "completion_tokens": 1673,
+        "total_tokens": 5024
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "duplicate_model_output",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed11",
+      "method": "active_cegis",
+      "seed": 11,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed11/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed11/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 13.88888888888889,
+        "fa": 28,
+        "fr": 0,
+        "pv": 3
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3692,
+        "completion_tokens": 1673,
+        "total_tokens": 5365
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed11",
+      "method": "active_cegis_no_coverage",
+      "seed": 11,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed11/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed11/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 80.0,
+        "cfr": 80.0,
+        "fa": 2,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3468,
+        "completion_tokens": 1841,
+        "total_tokens": 5309
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed12",
+      "method": "active_cegis",
+      "seed": 12,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed12/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed12/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 5.555555555555555,
+        "fa": 28,
+        "fr": 0,
+        "pv": 6
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 5.555555555555555,
+        "fa": 28,
+        "fr": 0,
+        "pv": 6
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3972,
+        "completion_tokens": 2003,
+        "total_tokens": 5975
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed12",
+      "method": "active_cegis_no_coverage",
+      "seed": 12,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed12/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed12/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 7.142857142857143,
+        "cfr": 0.0,
+        "fa": 104,
+        "fr": 0,
+        "pv": 8
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 0.0,
+        "fa": 28,
+        "fr": 0,
+        "pv": 8
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3449,
+        "completion_tokens": 1843,
+        "total_tokens": 5292
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 32,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed13",
+      "method": "active_cegis",
+      "seed": 13,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed13/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed13/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 28.571428571428573,
+        "cfr": 28.571428571428573,
+        "fa": 20,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3530,
+        "completion_tokens": 1926,
+        "total_tokens": 5456
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed13",
+      "method": "active_cegis_no_coverage",
+      "seed": 13,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed13/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed13/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 13.88888888888889,
+        "fa": 28,
+        "fr": 0,
+        "pv": 3
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3876,
+        "completion_tokens": 1810,
+        "total_tokens": 5686
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed14",
+      "method": "active_cegis",
+      "seed": 14,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed14/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed14/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 16.666666666666668,
+        "cfr": 0.0,
+        "fa": 40,
+        "fr": 0,
+        "pv": 8
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 25.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 3
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3703,
+        "completion_tokens": 1660,
+        "total_tokens": 5363
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed14",
+      "method": "active_cegis_no_coverage",
+      "seed": 14,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed14/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed14/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3489,
+        "completion_tokens": 1866,
+        "total_tokens": 5355
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed15",
+      "method": "active_cegis",
+      "seed": 15,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed15/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed15/result.json",
+      "before": {
+        "valid": false,
+        "exact": false,
+        "iou": 0.0,
+        "cfr": 0.0,
+        "fa": null,
+        "fr": null,
+        "pv": null
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 12.903225806451612,
+        "cfr": 3.225806451612903,
+        "fa": 54,
+        "fr": 0,
+        "pv": 6
+      },
+      "new_role": "revise_parse_repair",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 2813,
+        "completion_tokens": 1575,
+        "total_tokens": 4388
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 1,
+      "states_before": 32,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed15",
+      "method": "active_cegis_no_coverage",
+      "seed": 15,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed15/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed15/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 5.555555555555555,
+        "fa": 28,
+        "fr": 0,
+        "pv": 6
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 5.555555555555555,
+        "fa": 28,
+        "fr": 0,
+        "pv": 6
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3981,
+        "completion_tokens": 2042,
+        "total_tokens": 6023
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed16",
+      "method": "active_cegis",
+      "seed": 16,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed16/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed16/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3619,
+        "completion_tokens": 1944,
+        "total_tokens": 5563
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "duplicate_model_output",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed16",
+      "method": "active_cegis_no_coverage",
+      "seed": 16,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed16/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed16/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 7.142857142857143,
+        "cfr": 4.464285714285714,
+        "fa": 104,
+        "fr": 0,
+        "pv": 3
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 13.88888888888889,
+        "fa": 28,
+        "fr": 0,
+        "pv": 3
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3418,
+        "completion_tokens": 1783,
+        "total_tokens": 5201
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed17",
+      "method": "active_cegis",
+      "seed": 17,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed17/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed17/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3424,
+        "completion_tokens": 1855,
+        "total_tokens": 5279
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed17",
+      "method": "active_cegis_no_coverage",
+      "seed": 17,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed17/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed17/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 40.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3299,
+        "completion_tokens": 1623,
+        "total_tokens": 4922
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "duplicate_model_output",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed18",
+      "method": "active_cegis",
+      "seed": 18,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed18/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed18/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3341,
+        "completion_tokens": 1673,
+        "total_tokens": 5014
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "duplicate_model_output",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed18",
+      "method": "active_cegis_no_coverage",
+      "seed": 18,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed18/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed18/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 13.88888888888889,
+        "fa": 28,
+        "fr": 0,
+        "pv": 3
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 22.22222222222222,
+        "fa": 28,
+        "fr": 0,
+        "pv": 0
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3810,
+        "completion_tokens": 1785,
+        "total_tokens": 5595
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis__seed19",
+      "method": "active_cegis",
+      "seed": 19,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis__seed19/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed19/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 12.903225806451612,
+        "cfr": 3.225806451612903,
+        "fa": 54,
+        "fr": 0,
+        "pv": 6
+      },
+      "after": {
+        "valid": true,
+        "exact": false,
+        "iou": 40.0,
+        "cfr": 10.0,
+        "fa": 12,
+        "fr": 0,
+        "pv": 6
+      },
+      "new_role": "revise",
+      "finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3880,
+        "completion_tokens": 2023,
+        "total_tokens": 5903
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 1,
+      "states_before": 32,
+      "states_after": 48,
+      "contract_changed": true
+    },
+    {
+      "id": "active_cegis_no_coverage__seed19",
+      "method": "active_cegis_no_coverage",
+      "seed": 19,
+      "source": "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed19/result.json",
+      "followup": "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed19/result.json",
+      "before": {
+        "valid": true,
+        "exact": false,
+        "iou": 22.22222222222222,
+        "cfr": 0.0,
+        "fa": 28,
+        "fr": 0,
+        "pv": 8
+      },
+      "after": {
+        "valid": false,
+        "exact": false,
+        "iou": 0.0,
+        "cfr": 0.0,
+        "fa": null,
+        "fr": null,
+        "pv": null
+      },
+      "new_role": "revise",
+      "finish_reason": "length",
+      "new_usage": {
+        "prompt_tokens": 4088,
+        "completion_tokens": 2048,
+        "total_tokens": 6136
+      },
+      "stop_before": "token_budget_exhausted",
+      "stop_after": "query_budget_exhausted",
+      "old_length_count": 0,
+      "states_before": 48,
+      "states_after": 48,
+      "contract_changed": true
+    }
+  ],
+  "input_hashes": {
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed0/result.json": "43432940ff21087db3a1321887804da5d81c99bd98d5dc66b21bedb4adaaebda",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed0/result.json": "df759ae55fca63067a9ca0c08271c55e21cf59b8f3ab059eb6c5f018febf8613",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed0/result.json": "25ba2dcc8907427430627497efadb8c07d611162104275b9148a3aa1e1e1d2df",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed0/result.json": "b326257c692dfd59983e1010db25396f78d7508e1a7c199a8b7eaa141e0759ea",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed1/result.json": "0b926fbb11dfafc9d77c44f56e44cf4c1bce397978334d90f65b866ca364f792",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed1/result.json": "6ce2223db74e33e20bb378259b7de89d7d57f58c5941c9703da52aaae953fcd1",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed1/result.json": "826d6ff181d4b5a85c62b4b4e55dbfb04d960e8e97447273d8cb33a096ac364b",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed1/result.json": "ae982188d3c1c8df92c39ccbbc47619ee00e7e8dd0ed37080d6c3ef69d797f7d",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed2/result.json": "28ae147bb6565982a59bb95f1d392ebe03b5ab72a229d2b4db7bcbffaaed9b9e",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed2/result.json": "30521b1f9a0a728b255db6e8eff8205d22964ef0997f216d0a678d1f46051f64",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed2/result.json": "6c80501510e6f13cc4e9bfdda5d7348e511a14f7e1231d5f391dd1b488e1f68f",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed2/result.json": "d6f8e52ca2088e59d0e8c6ca5e8fa570af2258d52b40df4b3b3c14f7833d0084",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed3/result.json": "2ef3727396ef18a44a0dbdc1bc28d6ebe06d902e35603d824ba58079decb283b",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed3/result.json": "2ce460368bab80cb1611999c35e39db12e230e6b2bdbff7a1f4e4e28572a6058",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed3/result.json": "d2d741fae344118ab43234ee3bbb2f9f1e71c8ee53845fd4249890d2093ab5de",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed3/result.json": "6b90781a84cbba04fc61159f6302a68581d4c4d26c3af77f203f9e2727dd31e1",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed4/result.json": "d9c259f3d78da711ebb19478707e0d553170ee5478542fdc125491850c023b8f",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed4/result.json": "fe8cc3864def5efa7e795770117f352075807d01f732985e951ec3e80ee7ad90",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed4/result.json": "1e415fb09f5d015f37abd46c04f8c8b32c41b6aa57842ea6966b4ecd4ff0a1cb",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed4/result.json": "8ef251440daa252545187f50af9097227336fd8fb1f5aa018c49e1b4e08f443b",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed5/result.json": "50ca7ec764dedbe83074a06e21ed42e15892cd2bdfd435b4badd46d06adbb261",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed5/result.json": "d3f9f7bc9efb86c0c495563dd1e8410d694ab7cf076db5d0d97dac5893f1ff26",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed5/result.json": "adb4262dc77c50e539420d49a632682c491877bcb19e0066e7b106de6bf09c4e",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed5/result.json": "c6c738bbc50de80b013391d8e0a239ecf02d16f8ac4c2edde71a0d33483f7b6e",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed6/result.json": "af316b0bc077221f23c31f371f0d6d6a172ba8d3026580ca0a103142977a403c",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed6/result.json": "f16d601b74e568fa28536501f74879ba58aeec1deadfc5e90831e3a4051a326c",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed6/result.json": "8a20705c7e99a64b1644e3b6e33a685db6b16fdcbcbd1905350bc4b07ed1b2ed",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed6/result.json": "528d07fce8e4284379131a0efc4a246d7e3916a2a7324c7e1e6be85b069d33c8",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed7/result.json": "52f629a4648845e79b9e1305712cd908ff953660941a0295f0e9988c0871a0c0",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed7/result.json": "2f6b9c6666f25f9bfde2be7e411d0f1ece4f9e9f0a688002db6d9f101539d001",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed7/result.json": "96ffec3bb822605f727fab75ad491ce4db060b3aa299c43a73d9840c1bd94139",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed7/result.json": "aadf4e9544508a16dde40ca371792cd4c70924c9b146024825065921c8f3f047",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed8/result.json": "062a576df90c19d5629283c014d7e8ca331b0b820fd687154bc9983711340203",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed8/result.json": "838a1d1891680554e5a2dd390b6b1062ccdfa163d734d134f1cc0730bbea42ec",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed8/result.json": "e66c88fe4ed4e9c80e7fca3979268f6bd206bbd7de170c15a0e4cb9994e81a3e",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed8/result.json": "27038d401997f1ce31d1aa35707393e486cced24568de4b2caa17485ed108b40",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed9/result.json": "6d514af1b38866b86b9ebd11de99dc05583879f3ccf048039d42518fde050a4e",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed9/result.json": "4503eff11cbe606d70775582d992b0733224d152f4a7f10d784a1f783adbbf85",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed9/result.json": "a5519f297a06838582d9386cbeb5a61b8d3fca1ae73d395b92bdd8958a25a9cc",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed9/result.json": "26b238f5b752e290e0e12678cc028e6b7a69c9c63286d688b767ce4a5e114b64",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed10/result.json": "875c425b3be23ca8f37a36f73a427e31405d72fa39a64cc92376277039299c9a",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed10/result.json": "3847b6e6da86a654d0481c5fea813f0800c6a55f820f1605e579d8bc6727a15d",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed10/result.json": "3d848e03092ed5d2a9dd21a387eb26d17c24c75bc011a4a62c0216d16bdb9beb",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed10/result.json": "dff7f9830e9bbe727d2fb11c0d982e010f2e09f9eed8d9959b9b17937a7e3b6d",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed11/result.json": "34ebbadeda0b387685db8be5910c3759c8dd5a1678949060b2e42276409f7a03",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed11/result.json": "d29ab676146cfd4b1bb4d1a42686052449e7705e7d434ec773519428f10c74c7",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed11/result.json": "33e48ad58938f4bcf01679b1a7d02e8798707ca242e1c305e826f7aa578e39f7",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed11/result.json": "e62c5832046b8b3b105d04cf80ac8406b9a8fef0fa5cc5a895c10b19e9cf400b",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed12/result.json": "050de4610663114d96916281b9aec7a5dff7531b95e9e60a19c6fcd07f1411f1",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed12/result.json": "a3f2b9858d7238958ab4ed69e1106ecc136b1b0810b392d490eb574ecff9d9ff",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed12/result.json": "6f3d10de2ceaea760f01ee599e8fbf3bcae5a70a0ed0b1780182af7a7bb70b86",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed12/result.json": "0ce99659b7a78eb43ee4b616fb2c2036bc56c92b11f78f3639a07400dbacc274",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed13/result.json": "d3288719455783cf0af06f3c22faaec3ad7609397a02391eeb8e939aeea10439",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed13/result.json": "a3b2ab8c0d44c0f58218c5624745fd6dab4dd2d3723ea3776b619483a4c2ff20",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed13/result.json": "1ee7555ddb4a432edb9cd1b63cda9bf3040e7cea8c3f099fa6d7b83109ca4f8b",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed13/result.json": "97be46ea022605de086244712e96b6d091c5d4cc25c5de95ee6d92948082f519",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed14/result.json": "51d68e7653cbee6398ed8b32fcf08e659faa3b8b2bd67ea4ee848f40c1c0cef2",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed14/result.json": "074da4f6a33cd15f6b52a4127d22b27e3bf8c3b93ce2f15c7b99c95c857b7cc6",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed14/result.json": "747d6ae6827958e75c244131bd8570c15d52d75e936cbd38ae0e02bb4ad2f16d",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed14/result.json": "c96550654de20ae3065ee86b6cc38e763d8220fd405a017ca2caa8a3a40ea6f4",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed15/result.json": "4b1eac8169749599dc7fe4ea89a909803b142704505d0fabf0f3f8a5edd261f2",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed15/result.json": "ad8d34141d50506c90993e46c5e66142a8146eb9695859b3f8c02e97a930619c",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed15/result.json": "6e14c9c0cae24e407ad2996dff4e6c09739a86881ff2d583c95f7795e34b7690",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed15/result.json": "8a4f71e0946244bf8965a9d1dad1594248aaf592b31760e6c903cd8f8ed72b56",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed16/result.json": "2c66a813cb4d484bbc2ce1fcf3cf147130808d57da7e4fe4f833d3245f87b57c",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed16/result.json": "0eaea09f15d1a6ffc2146fc9c257b076ff2b9cea067aeb0ec2e04c66cf6b8958",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed16/result.json": "e57a7f4592c3b592c385cfe4c4e164cbfe887645cc48f94fa04cee082595a631",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed16/result.json": "de8260867fa4cbb4ed20b25ca58de2ffe369879e4540a1b3f97e0c0f03b0b05f",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed17/result.json": "c939929ca27bd6e8459f65107e54c8477cab779a9c02cc75e135a711b53f4a49",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed17/result.json": "5e7ed97a87d64fce1bb6dce07e151b05755ea3d7b41258ad66b64d7098679315",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed17/result.json": "21ec34756d7c4ac4ab4ed6da4a43049de6668fad2b91ce2c789c610a56d64e7b",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed17/result.json": "73694f9f68ba8fedf01de83e60816574d30c8a89b3ccf5ebc87e04f2bfc1dcc4",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed18/result.json": "16534987f23712e52f7699601a35aae2abe3e5664ac200c8dd913cb294c6ba06",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed18/result.json": "c137a4bfacc21f837b40d2687f54ec25f5966bb3ba0bacae54ca9a95f00a1bed",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed18/result.json": "6bc999a60760244134caba5b17d400260fcddbfa473792f0ff6367f75c9cee89",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed18/result.json": "25eff7e5c37edb9ddf92c9b32ead96ae7d081f8120ca0e072ffdb137d1b33747",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis__seed19/result.json": "7480b462252456448c02da0659d0d8b5da125543f110cb95e244d420a1851e86",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis__seed19/result.json": "7102758ffa665271f32af77903ccbc824e4246159d3ecb3662837efa9bfe5432",
+    "results/rebuttal_identifiable_budget32768_20261113_v1/active_cegis_no_coverage__seed19/result.json": "808a510cf29ab9a7481b9adf27ad334810dd9976f1a3b91ae14186f3b7d5d1ec",
+    "results/rebuttal_identifiable_20261113_v2/active_cegis_no_coverage__seed19/result.json": "9c383f7f0c44296b4f594c1b34306ae3f78539f7a8fe943008c891f7be62d258",
+    "analysis/rebuttal_20261106/completion_review_20261113/summary.json": "aa5edb7087ec6735fce67abb26a0e60bfb51d529d27e9b78c64c898b500b70b0"
+  },
+  "new_model_calls": 40,
+  "replayed_responses": 120,
+  "shared_initials": 20,
+  "new_usage": {
+    "prompt_tokens": 143485,
+    "completion_tokens": 73506,
+    "total_tokens": 216991
+  },
+  "fresh_finish_reasons": {
+    "stop": 37,
+    "length": 3
+  },
+  "old_length_responses_preserved": 2,
+  "manifest_sha256": "ab41e41df85c9e1c87923fe0a7c60285c08c2e5f6987d106e30448134512b94f",
+  "completion_sha256": "58faa57cd86923e06fcea9b5f0c97ed8609201e1ffcf43850ad5d530dc11de7f",
+  "script_sha256": "ae1bebc81b0c9c32f7e3effff318f6743edb2f59c789c5f66e26ea4698f76b1f",
+  "interpretation": "Descriptive paired continuation, not independent trials; no new confirmatory tests or changes to existing families."
+}

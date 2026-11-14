@@ -1,0 +1,34 @@
+{
+  "description": "Five-seed easier price-aware Shopping v4 pilot with six active applicability clauses.",
+  "domain": "shopping_price",
+  "sandbox_config": "experiment/configs/shopping_price_easy_v4.json",
+  "base_url": "http://127.0.0.1:8000/v1",
+  "model": "qwen2.5-32b-instruct",
+  "methods": [
+    "direct",
+    "active_cegis"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "temperature": 0.2,
+  "top_p": 0.95,
+  "max_tokens": 2048,
+  "state_budget": 48,
+  "query_budget": 4,
+  "token_budget": 16000,
+  "max_depth": 20,
+  "max_states": 15000,
+  "timeout": 600,
+  "workers": 1,
+  "compact_context": true,
+  "context_token_limit": 8192,
+  "context_margin": 256,
+  "counterexample_limit": 3,
+  "refinement_protocol": "self_contained_v3",
+  "guided_json": true
+}

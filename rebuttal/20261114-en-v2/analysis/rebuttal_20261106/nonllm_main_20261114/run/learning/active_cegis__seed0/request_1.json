@@ -1,0 +1,298 @@
+{
+  "boundary": {
+    "delivered_total": 5,
+    "interaction": 1,
+    "new_observations": 5,
+    "packet": {
+      "observations": [
+        {
+          "after": null,
+          "before": {
+            "active_deployment": {},
+            "allocated_resources": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "authenticated": true,
+            "available_quota": {
+              "cpu": 1,
+              "ram": 1
+            },
+            "cluster_tier": "tier_a",
+            "deployment_status": "idle",
+            "target_region": "region_a"
+          }
+        },
+        {
+          "after": null,
+          "before": {
+            "active_deployment": {},
+            "allocated_resources": {
+              "ram": 1
+            },
+            "authenticated": true,
+            "available_quota": {
+              "cpu": 2,
+              "ram": 1
+            },
+            "cluster_tier": "tier_a",
+            "deployment_status": "idle",
+            "target_region": "region_b"
+          }
+        },
+        {
+          "after": null,
+          "before": {
+            "active_deployment": {},
+            "allocated_resources": {},
+            "authenticated": true,
+            "available_quota": {
+              "cpu": 1
+            },
+            "cluster_tier": "tier_b",
+            "deployment_status": "idle",
+            "target_region": "region_a"
+          }
+        },
+        {
+          "after": {
+            "active_deployment": {
+              "cpu": 1
+            },
+            "allocated_resources": {},
+            "authenticated": true,
+            "available_quota": {
+              "cpu": 1
+            },
+            "cluster_tier": "tier_c",
+            "deployment_status": "deployed",
+            "target_region": "region_c"
+          },
+          "before": {
+            "active_deployment": {},
+            "allocated_resources": {
+              "cpu": 1
+            },
+            "authenticated": true,
+            "available_quota": {
+              "cpu": 2
+            },
+            "cluster_tier": "tier_c",
+            "deployment_status": "idle",
+            "target_region": "region_c"
+          }
+        },
+        {
+          "after": {
+            "active_deployment": {
+              "ram": 2
+            },
+            "allocated_resources": {},
+            "authenticated": true,
+            "available_quota": {
+              "cpu": 2
+            },
+            "cluster_tier": "tier_b",
+            "deployment_status": "deployed",
+            "target_region": "region_c"
+          },
+          "before": {
+            "active_deployment": {},
+            "allocated_resources": {
+              "ram": 2
+            },
+            "authenticated": true,
+            "available_quota": {
+              "cpu": 2,
+              "ram": 2
+            },
+            "cluster_tier": "tier_b",
+            "deployment_status": "idle",
+            "target_region": "region_c"
+          }
+        }
+      ],
+      "public": {
+        "max_allocation_limit": 2,
+        "max_quota": 2,
+        "region_options": [
+          "region_a",
+          "region_b",
+          "region_c"
+        ],
+        "resource_types": [
+          "cpu",
+          "ram"
+        ],
+        "statuses": [
+          "idle",
+          "deployed",
+          "stopped",
+          "rolledback"
+        ],
+        "tier_options": [
+          "tier_a",
+          "tier_b",
+          "tier_c"
+        ],
+        "variables": {
+          "active_deployment": "multiset",
+          "active_size": "number",
+          "allocated_resources": "multiset",
+          "allocation_size": "number",
+          "authenticated": "bool",
+          "available_quota": "multiset",
+          "cluster_tier": "option",
+          "deployment_status": "text",
+          "quota_size": "number",
+          "target_region": "option"
+        }
+      }
+    },
+    "packet_sha256": "037b20160dcc41aa81f8106bde6dd20f4c6d860a4b9c8d51990fe5df945924fd",
+    "request_messages_sha256": "77afa9d575c279e8cfd41da35290bdf491c37e4584ca7f55116bb180499dce19",
+    "role": "revise",
+    "unique_observations": 5
+  },
+  "identity": {
+    "manifest_sha256": "bbc8275896c50bd45f56e1a4c1047865277d8ac08d4c543b980a85dd1e0831ae",
+    "packet_sha256": "037b20160dcc41aa81f8106bde6dd20f4c6d860a4b9c8d51990fe5df945924fd",
+    "source_sha256": "1a7212b6cbf61f714121356a3bad60eb0f71d869c15a988913a2f1eecdd17496"
+  },
+  "result": {
+    "ambiguity": {
+      "active_deployment": 4,
+      "allocated_resources": 6,
+      "authenticated": 2,
+      "available_quota": 1,
+      "cluster_tier": 1,
+      "deployment_status": 1,
+      "target_region": 2
+    },
+    "counts": {
+      "atom_evaluations": 1030,
+      "atoms": 206,
+      "expansions": 5,
+      "negatives": 3,
+      "observations": 5,
+      "positives": 2,
+      "post_evaluations": 222,
+      "rhs_terms": 111,
+      "steps": 24
+    },
+    "dsl_nodes": 28,
+    "elapsed_seconds": 0.02478418406099081,
+    "limits": {
+      "max_clauses": 12,
+      "max_expansions": 100000,
+      "max_steps": 1000000,
+      "seconds": 30.0
+    },
+    "post_identified_from_success": true,
+    "spec": {
+      "postcondition": {
+        "args": [
+          {
+            "left": {
+              "var": "authenticated",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "const": true
+            }
+          },
+          {
+            "left": {
+              "var": "allocated_resources",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "const": {}
+            }
+          },
+          {
+            "left": {
+              "var": "available_quota",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "left": {
+                "var": "available_quota",
+                "when": "before"
+              },
+              "op": "difference",
+              "right": {
+                "var": "allocated_resources",
+                "when": "before"
+              }
+            }
+          },
+          {
+            "left": {
+              "var": "active_deployment",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "var": "allocated_resources",
+              "when": "before"
+            }
+          },
+          {
+            "left": {
+              "var": "target_region",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "const": "region_c"
+            }
+          },
+          {
+            "left": {
+              "var": "cluster_tier",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "var": "cluster_tier",
+              "when": "before"
+            }
+          },
+          {
+            "left": {
+              "var": "deployment_status",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "const": "deployed"
+            }
+          }
+        ],
+        "op": "and"
+      },
+      "precondition": {
+        "args": [
+          {
+            "left": {
+              "var": "target_region",
+              "when": "before"
+            },
+            "op": "eq",
+            "right": {
+              "const": "region_c"
+            }
+          }
+        ],
+        "op": "and"
+      },
+      "skill": "deploy_service"
+    },
+    "status": "consistent"
+  },
+  "result_sha256": "4ec188ab6894fdb5d365c8416d5120494edcbd049ccde8a2bc1ff6c2d1c58581"
+}

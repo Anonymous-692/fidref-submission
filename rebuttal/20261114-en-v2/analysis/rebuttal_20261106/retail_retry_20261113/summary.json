@@ -1,0 +1,1392 @@
+{
+  "at": "2026-11-13T14:28:56.543011+09:00",
+  "completed_at": "2026-11-13T13:36:51.381033+09:00",
+  "passed": true,
+  "input_hashes": {
+    "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__sampled_cegis_fixed__seed0/result.json": "738fcda0dbb7cad169372d5e13a19642c704bc9adc51824e833ec5c8ef43a4ea",
+    "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__sampled_cegis_fixed__seed16/result.json": "150a3db02074faeb0435a6cd61f59816b1186428122dd090c8a9c93d69658c71",
+    "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed1/result.json": "d25e2cd624df2b3d922704a0ad78a4f99afab6aad73a9b5fca245e2a83f3d04d",
+    "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed2/result.json": "8e72a5e909feb83e2b9555a6897ae90027a1932b323a0c355b3c331267b8d77d",
+    "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed3/result.json": "f7263997e7f27492f979ee7a6e6a8ebf5438c2c1e07a6657ca0b0724c2a4b78d",
+    "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed5/result.json": "51e03ce9631d97a84da900b6569bf4366a05fac60c0d007d2ea95a972ae51d36",
+    "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed6/result.json": "b67dd5f0ea2774faee010b510b0dac957ff7382d58edb68b8d69d359fa86e1ec",
+    "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed8/result.json": "9f7fc843a2704a646448bc780ecdbc52b4dc15be5bd0a1ca09e254dbb519688b",
+    "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed9/result.json": "add4ee9e3b0edb2a9b3bf8570d526e75171615c04d638037aac72949b0934028",
+    "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed12/result.json": "d5ab971412945f256877b7782826c14dd4ec7cf18c091a4a26f9a8c1d96568be",
+    "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed17/result.json": "225fe72d20b9ffdf589ce2b8525525c6dd22c462d08eb36f251084a2be97ad1a",
+    "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed18/result.json": "d5c817ce4c698a7154a664a7eccd41e22df170e1ebf3c737a72e06782eb0c3f2",
+    "results/rebuttal_retail_length_retry_20261113_v1/vminus_pplus__sampled_cegis_fixed__seed0/result.json": "72dcae1de91a75625dab7993e62688c982f26aaa8b8c1a6daef0b4362fda0364",
+    "results/rebuttal_retail_length_retry_20261113_v1/vminus_pplus__sampled_cegis_fixed__seed16/result.json": "dafe3d7273b29232508e7e20def69856e34e14992f314b47d46a118d6bf9b50d",
+    "results/rebuttal_retail_length_retry_20261113_v1/vminus_pplus__active_cegis__seed16/result.json": "9a19bfe004814aec29e7af716ca433eb3c22e997b1eea072e9585f1217146d3f",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed0.json": "4a6bcd644c1b9cf196bfe7a465385fde1d4b3f885314a4873e1483bb6922dbf9",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed16.json": "fbaaa4e6ae54d87fb40f1eee0edd70634e69ebabf4a99491f345ef27e9cbc2cb",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed1.json": "91366621866854ea7620846111d7e0d8b0bf6dc65e7dec8dce3c37951b0638e0",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed2.json": "44c75d28a8f9671e04672efdff1f017431dfa1202cc7e039d5df6b1f262df0d7",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed3.json": "793945a6198b0245fa129d225ef4cfac86fc14e9c4e4487b1609a38ce2c92688",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed5.json": "534de814cec5e9e6b0c5c2939f00d5c44fbcc3e0c68aa1324a5fdd7af3385169",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed6.json": "8533d18b6210945a96fc945d20c75ec7268c533c45f335b224e1eecfe610ba4f",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed8.json": "5e95387f44bf65053778c82cb00b4a19e28a38f7146cdb453b93e90ae8a2a789",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed9.json": "dcc81e481615044b4f53fbb9bfbd1eb69d240b757e7cc421a6c43a98fe88ace5",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed12.json": "b30801e2afacc956418e17ce11bcfdcd01af96857d2aef984a51ab3e4824b081",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed17.json": "2a0eef35753d228fb655aeeab4ccd922d63a990bbb9a76a66c2f6871f54019cf",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed18.json": "fcb6ab4ff7ce7318981a0358f696f3c9354db6478b42f788b807128809835b6b",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed0.json": "5fb3fd273cee8a9f7d1670541fc1641f9aaa1707fac7ca39fa16513ccbe3bd0d",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed16.json": "021330443c71b6b0ee9d987295d86889644d9f980fbe06694d1fef56155c9078",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed16.json": "ee182a7c1a4a324e558fbe081141d3155f3773856e2054fcfc54ad56cf5276fd",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed7.json": "f4846dfaa61df111b26ae288af19ea135fc36ab7a219adddf166ee7765e564a4",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed12.json": "1d45805063f824a05f04f7235782ee7a70949974635537411e35e8621467c17c",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed14.json": "3c1bd7c8b82c7017de223446a1a4192369f7f3e0ef21d30db162d542a7a38535",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed16.json": "b9a795995c0d5d59fee09a4f741e4a904e08e3c605090bbdc1e1003de67c98a4",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed1.json": "28ff3f18b11dd958c1c530953ca25362d6532c35873beff469e8b4552df9455b",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed3.json": "c9feb179919eafbf3edbae776737622a9f1729607574ebba617e8cc1ab9cf5c7",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed4.json": "88759b5ade83e0c6b1ffef8b378e38ffd5ebb428f99df488a65bd15267ea7059",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed17.json": "344df3a8b672e583863a6c5c22bba369bf9b4761de2bd917950caa68ba52a4d4",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed17.json": "300dce3f287744e6e4e0a4740069aa795bfa5dd4cc967613ae61a12fa681eb14",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed9.json": "c589e74f689f72332a7b8418d44069ede00a16ba867bc72a63de84e24ae3ddf2",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed15.json": "408fb8bf963fd87f07fbf869c6619b9beca5a895dd2f2ba2acf5d4012556c137",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed13.json": "8ed36bc27eba99549e7d110f7845dbd7ddc3ea7c6684134d45ee919d48604306",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed13.json": "db503aebc379b066918260eab89afc1bf58a3eb94c2cc3a0890085e01d9c03f6",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed19.json": "03847fb573c6d832fcc97d5f989269e563f3f7c7ca9b83eb84728ea31ddfb212",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed19.json": "bbc511fb858eda135b077304b8a1f8238a92c5e8704d16ae1e03a27d631c204c",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/summary.json": "b7ea666bebfb8ed1d6f0fa4d6cf4e149817d475a3523fee316410c8cb624d142",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed4.json": "964442dd0e142f932c08ec6259edc36d11aaef0d24390b280d9786de25fd99db",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed0.json": "9a39d6be1230db4aa85f9a69923f8dc514447a93a4ecd230f3a1e1a4cd4120e7",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed14.json": "3d66a7280669733ee985d6547fb89d276b2a6e6715f6284c8a7fa1e5079bfcad",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed10.json": "a83758ebb3cf9132c5fa233cc678f8e1fa7766a9fbfe9d2bbbc05dee5617f2e5",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed6.json": "ed48b58e1189cc399818bd3d9d5464aea1b0a07bb21c035b6e3e98ef90f335ca",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed1.json": "1b7ef129931d9424e3b6cc9e68d6b48add1599232ff651bf1c66d5f0f56dbab4",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed2.json": "79a9695d57f39dfd2d9bd40e394d7b8985f7b7b6011f6c3315848acf05d4dbf1",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed7.json": "abb2a21d8deafd302e8688adde9c4daa7563a791d78b4b71c831ee29024480a9",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed14.json": "b3077eceb50d81baf597046b9d1c804d1ad1b9a98a4ef10d43c28fdd2e073d44",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed10.json": "0bdc6e3b776ee659967026e7e2acbf8c971df1c06125db86edd65c7f1a72719d",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed8.json": "6bb1cae9f5293a1ace210758e7d53ce2a50d315fcef92bc2efd2fadb960f5961",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed2.json": "9a3ed23a87857ff43d655d64f47c6e7d5e65cf3ed371bf08f4e01e222b6be5ec",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed8.json": "07fd8ea5cf78ee6244312ba50b8c446f094d9814c9e4843b08e95085bc920884",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed10.json": "c3234f1f167cce2521ff059fdc9640cf0753709ad78b7b7d71b9a5a12dd65964",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed18.json": "c24dd82d2b7eb889d8387e755f875986f4c5aafdab94862fc5308acad926d052",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed5.json": "a7301acffdd5062e075126b05e9ac525dd5fb8e95ae4be92f372b8b9b685d07b",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed3.json": "d0fa55a214e64e589ee54528d29b3dea52ddebccf506acff3cb0c0bd870dd934",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed5.json": "b1ca84743af22d4ec1d52115b8c20ee991bb7114c46ccdd885a27efd040005d1",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed0.json": "2bd547e7e24ccee40df6a94c7d8c6198630c41cd2a7a3af9bae5de8e9d0fa38f",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed18.json": "e467cb7d66dec64dafb03146008ec64e29b804e549b62697e9e1c9e6bc3db453",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed4.json": "676f9036f9802ca8d8386726cd23f6481a4129f5dc498503fa20daefca1c0506",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed11.json": "f3b2ef71b3e4d838b6edcc12db95e584d8b0ddb2b317d0ece676f3da53249a45",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed7.json": "b5922bcff59eac9abec86ef80db49079c81e4e9b911296ad522f96b1c5f7f3f9",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed19.json": "76a8cf8392d4787d2c9b2dc16b1ef5bec596bde18d00fc5d1be2957e19ca23ed",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed15.json": "5331bb268f807e0a825b322163cf5f52d408d24051679a1ea0c25d5245242318",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed11.json": "cdaee56b0163e596640601dbb23a4dc6bea74c8d2bd256f80c7dc520fb401be0",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed11.json": "ba27c842a4ef9e84b9f176b59d88543b0bcc633426c55521857c578135f9f308",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed9.json": "7363629c54e7287aa6497ef55097f8a0e14bf9aeebb7a9c5cb3fcc7dc790ba87",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed15.json": "c5d4d3aed787e6b2975eecb2cbfabf7832b503bfbb4f9e9bdd9a30f1ee443aed",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed16.json": "5e422514766fcf9bee5dc5a985c206c8646a27c9183a62ada253fe17a99d308e",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed6.json": "4977e2e089841938abe154583fa21d94389385ba0f75a1eed6af3f4c366e18d0",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed13.json": "9ef9eebf4c9e0880f05676bdafbf44bd2af7ab90cfeb68b2b7bd3df249790d40",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/direct__seed12.json": "b93b2f7c95822901edbeffc6bd26f582272ebf099756f493bf7810ad4ffa55e5",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_10.json": "3741ae3228174261ff3d146b0d4d5120a5caf4f5a507060e6b1300ff3f020a36",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_7.json": "36e6bc22da1680938e3d8ccac077eec11249d859ee0175bea58142cb5d9cfb8d",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_16.json": "9b3f89bf60178c1c59682261e006541ab6208722f73d37f7210d6319a9d67b17",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_14.json": "f4e49af1c9f452103c6750fe5d6cc068ef31837247038e3f46c1f69d9df287c6",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_8.json": "511cdc433ab83b88edacf8f1bc74f01ab3b6f60116c19597fbf9c7d88aaa3ca5",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_4.json": "a0965ca0f26ba831b14e6cae599f49cc666955020a8fbc799bb01a3a0c696e52",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_9.json": "eacfcc5e31de86d13f0954ccea830f52d05a66d9fc490c859d424e55f14de528",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_12.json": "1e151eb5b161cbe38bc644cc6f48f4d35a907e1f4d5307041a472c6bca093bab",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_11.json": "c397b24b14e9c10af2aa6a4d4a8a96f7a00570a49a3c4f3f27f3df4b71661c56",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_17.json": "76eac9c1963c5fa453794ad2b6bc0b7ef33f79c4b8536005bd41b5ca044842d6",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_15.json": "bafef9b5da5d03f641efcc70ae44d3708150f856cab5ffc21ee9b6eaccf1e29d",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_1.json": "4a5d8bcb55697a0de944e43d6b8307219655a71baf59d54f76184612e3b81bb8",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_5.json": "6d71296fe72032218c7c391171e3cfd0bc30dd4cbbcac0243b18c68e5d9066bb",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_6.json": "6075b1201fda19f3f651ae9f9b08a5433016851161881f0531c43b6c46d62cff",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_13.json": "ddff5ae3e6de4523608122c343795e819c91cb738c61cee94204fff9703b8d5f",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_3.json": "7bca5c594e134c08abff79d92fd2fb02347f32a5ead3d386994b597b4cea2e86",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_18.json": "16119febde6d6cfa0a5361481046d6f96d9658d9b5dfc4d556b2e61619a86618",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_19.json": "93dea89284cda5cd5cda73054148ae6cbf6ebe1abe2b38f08f986ec9cdfe07f3",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_2.json": "f72315c1c93f995e9fabac8a5fac42ac90bd65ccb5b4bd5c67e283b052c444f4",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_0.json": "8c51e068e52f75601ca864dc54468c3514b021a35577e5e0b29c302f2cfe1da0",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/manifest.json": "6c5bce760f46c29f46e9df3286579a6a85073c81e6137705eb277f054b1f4514",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed16.json": "e702c9eddbf0fa19e760479d7a9e978a987c0c8226db7b65b3fc380d888986ed",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed7.json": "fdda9b50a586acce897704c0b50e7be16cea14a0c0e474ef9e529bdd014bbb2f",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed12.json": "304770ce90299c715e7ce294e74f5f9d0c93194d4374054c2284c23490eab31e",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed14.json": "5dcb70c86c32d39d2e8274d75f2e6f63651ce3e9eb2e45db63f50b9fb5c3c1c0",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed16.json": "6175e5971188b264eac0c3e8f3baae8e232c589a84581a31fe889d25c7963310",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed1.json": "eb5e5d0c527403cef43b886d2ccff06173d1003b57fe81e450fa5a7c546243fa",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed3.json": "deb6c50e78bcc4c42e027b017852794f72863cb1ed3de46834a0bd6af8c47a31",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed12.json": "b0d6c903c712c4e48f1f99120a2e6aef186830f51405fa6d2f5a8fe83dc8abdc",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed5.json": "e9827b3c901616c82132fad494f8435278de0b4e9e03d6320728b829b8215c76",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed4.json": "17c48ac32754d5b8228f8e268391ac0269689ae6e0e1361d6a662e0fef5a44c7",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed17.json": "25e3f10c957b894d7cfda8ad7cbc49ce936d3c462925253ea8aaa258fc10e34d",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed17.json": "bd35c28874e2cfa0f43082b81c806306e4466ca468a33c76d63c7c62f22930ca",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed2.json": "e2b7783dbe2a9e49ca6c862cf405f62f6ea59c21fb9828d963c5b74e1aa7037f",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed9.json": "3e998f0f45af4c44b463dab5404ab24d5e829a24a81794684fbed350aee5f695",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed17.json": "311c83ceacbaed140be734b7b776ab44e45a50dfbe9c173e860af70b3977ecc6",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed15.json": "56e9531760259c9042cd6bfc8de99dfbc11900ffa05213b18fc324cfbf2f1252",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed13.json": "e826a249f9411b6d7a99a3a0957ca4830539e1b050700925a05de93003aa6ec4",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed13.json": "4c782e2d225e32ef1c91dffb76b43f92f5a1d35dd287253d1d38c0a460320e5f",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed19.json": "5503ae4f4cae2adec76c5612b08a686de0c2a0081dafdeca4ca0b25bf75016c2",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed19.json": "b99b83a30860c22ce9231cd329ad3c0f83322444f0d98fc699f6a0eb672de1f2",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed4.json": "531917e03a7d0e0bf5c3808a8522717aca35adbd240a86a0681ad6733508b210",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed0.json": "a2a323dba3a853607302ced4f1c7316e156604dcb492e0b235594e7caea4cd14",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed14.json": "d42d245e29a90f413bae25f6b43c98f8026f8d55677d7cfc96a8511b47199b83",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed10.json": "0a0f6ea41e4d5957035a59cacba4a78eb544529277df8a69daffdedca37b6b64",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed6.json": "a7d683e2e4261006f4fe0d84a05c15bcae7ce3ea6f827fffa10072b3e9ebadab",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed1.json": "9020babf8f6e1df025eed27b5a2ca9322d5a8864ffaa7628d044bceae4bb7493",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed2.json": "8e4fbd5495fbc0bf006edff14c3077c0a7c74e4e6b8e643f4811862b18ff4649",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed7.json": "adc5e3f97299e2f2a61205a6c0f636a9351f7929a0d26bac872e47be5af694ab",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed8.json": "a33ef0ecbb20507e9ddfeb84dbf903a4f1f371edae5e76117645f1cc7506355b",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed18.json": "d12d7a88f6c1a61f903bfb5ff11cf0ae83380def3e5e8b9c0dc72ae9a71c8614",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed6.json": "1d896f5d54ced34b29f4a151643fbd7d6d4ef615c1c4891bad29b1c5bd949e46",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed14.json": "1fce287ee0e33864f1e18abd7b8fb7d69055baf478ec5e7527b14bdad909c7f1",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed9.json": "6128b366037d06590849a455c7bdf0e868306e314600371e1476fdc75785823f",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed10.json": "98b8cc2ce8ec792da18e8bfaea0ddb5fd734869e660ec354b16bb130d7a132d2",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed8.json": "00d9b4ea0a0c91154253f82f9b8bcd499e8c1c9876ef0b9658fef493c5ba61fb",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed2.json": "12ca7a03a9698ae0b6a516654c06aee02f827da40399ea8865a8f24e9b5bcc05",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed8.json": "81ba69757e282daf92416e972b13ea9037099cb815ef8559e55d794e06c4df97",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed10.json": "5a95c343e57ea2c4f88af552e2a316acb128148b387126abaed4763b1cabd802",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed18.json": "dc302fb9bb940ab2d9233537f606406e36ba0caf86b806f0294f393e3a867163",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed5.json": "4ce9b42fe0d5c67e1d4350837bf4ee8bf6af0b9c8065ea196a390d4c63b07a07",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed3.json": "49f9fc974d2a0c4c31f02ccc6ffb345496daa3114ebf99790fbd3dd1827c925a",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed5.json": "ccb005f28458d7a594b7716f6f2a40be4c04641529131a9f86be579d49101900",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed0.json": "d9367b5590bf475aae272a113763224f854b7050844bbf05b6145c5f6222dbb3",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed18.json": "976551192483e8d2dceb61d97c7e945f185103b3b1bd199ad492624d5d4a6151",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed4.json": "1a9e9716877ea79a310539bb20cb77eed6c64e3a3d6b7e435c4e729dcb238f8a",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed11.json": "4f666aa264f19e63e742c0a8a5425520d1d3c460fa29c16044a6c3de3007d2db",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed7.json": "a79312c3bca1e8e2182d3be9c971c393ce7d0cf295d18a0b7e4caa266bc4ade9",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed19.json": "e9bd5d310a4629e96f9b77f4da5b4cea488f194f0a83a09a3f1c2e67cd20f64b",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed1.json": "7126fc270aa1cb29e26b887c64285a0d15a2c0c81f52a231c11ac84c959ab94b",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed15.json": "dde0562aeaa7b4d0f987302bafb99bbcdaeab82f126fc804fa5d16edc0f990c2",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed11.json": "0a9b8262abc99c88a874e1a9c0ebb3fc561e4526250a872dfdc90d8c97d37977",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed0.json": "2b4e1d6a0f38bfad1785a73c2e869807937536870ebc8283ea09183ef449b4cb",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed11.json": "c8c8f11233704358958cba72182a4c5ae9b6fea8b18e9ec44b927ef3fa997c7d",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed9.json": "ee52364f70cee128727423bf3104e56b24d201fb9375b4426bf7badd7ddb56cf",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed15.json": "a45389d8c4d391677972c271369b70eeb8d2866b78b88a8c1ddd292815305e3f",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed3.json": "85506f23bd84916f2284653e760d834c4b90065b9223d896347f9ff504dfa931",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed16.json": "c51d05972fc551f472f8dcf6b722ca8058c18c402ab0e5b411fedc2da1316e6a",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/sampled_cegis_fixed__seed6.json": "ef0afedd79b3cd27e10d3bf66e58f7ac04d25a54a0fb28dbf6c80235f5e73213",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/active_cegis__seed13.json": "dc3f165262569a9824ab92ef02411733877064016f3bf5a13e9a04eba266b471",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/results/direct__seed12.json": "0cb2108769c6466995185c9f6dec58d644a52c2b9ae6e2cb8162172783f2f545",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed17/call_0.json": "8a466c2b3edbaab86b0f9a05c46bb0d214e8441bbca592e3cac1f4f9e68629fa",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_16/call_0.json": "9bac4b3b383317829cc114f17b9c35a0696e838d8c6d2fbeb8245e9073a3ce04",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_5/call_0.json": "e0b615fa726768728e12aa1a4a99561df69cc95958924d63498bd0380a05fa9c",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed8/call_2.json": "55b9db6f2094ca08cba85d87cbcd13635ad8ffc0ee2ca27f56a89af0d7222d06",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed8/call_1.json": "71c835600ff8ad2bd563edb62449b46a12dff839079db10fa81fa84bf71613d0",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed8/call_0.json": "21a563d54ed8b199a074cdec9abb382140db89e4b71dbdb6de9894f873b63238",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed9/call_2.json": "cbcdf5c254261aa5705fbdd97cc4e0fe70e257b6d474858b8286cf69f79a173e",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed9/call_1.json": "99c31939fd154c77bbb0eb6032c3f97e18435fe59877047ca8f1bda8df1a60c7",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed9/call_0.json": "5d99f0cb69e8bfaaf7c062671d92b0236d8b3d93e8bcf04c058f3f8614f356bc",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_8/call_0.json": "ccdf9fc554d1d783f3a38c6d5f7a7dd62a3652932d5cf544f119e1d310bfdeae",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed7/call_2.json": "29db6167bdebed8e6810383531c71e6a83dc499e911faffca686e6d956c29423",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed7/call_1.json": "49cb8bf8e50df03d9ce957d967bb6d27a13acf82d3bca673c8ee6e52856d536e",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed7/call_0.json": "b805201de0973194ccb456aea3424e031c06aadb90ca83ef706db8eab1d5c9c3",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed0/call_2.json": "ba2afcff0496fd9897ba370678597cd5476322dab897b3533ca96d733cd38b98",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed0/call_1.json": "5587e0dcaf09b3244716c4cc4cc85260ba8c06ab09b9848cc713f6d55354a041",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed0/call_0.json": "bb5aa247857f41644ec53f28bc7f688b18fd41c9ceb4693c631f0d1a07a43461",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed14/call_1.json": "fc4b5f0097284fbdcc8e63a28b8ecc23586b939e28adc890d89e773f4f84e96a",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed14/call_0.json": "a9a1dcaeb275cc2985c7ff0be95ca165909c51f5ffb2403fa760e3c073e55407",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed19/call_1.json": "f5030af82ad7c67e0fd244990254f41b229a1ccec898eea2bcf1503b85d367f4",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed19/call_0.json": "fcc9e3a1974be341c7c4fb8d8a0eefec2ba46d5ada52c953a1b7e1ed4362f078",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed15/call_1.json": "0469d3eaf80840ce2f9e764730c6c8dd308d828795e2c77dbc1cdf1caaf47708",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed15/call_0.json": "67887fc83b35aa5569bf2fad497af2a4d65f9b9f815964fc66203555e888a9a6",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed18/call_2.json": "64b4712b27a380b8fd51534e355fdcb80cde25719b1c9db5b92b8570eec044f8",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed18/call_1.json": "7f625f48aa1c338f242931d1e2de24d53bd1f82c67ace3a36d3b8f129f36e3b7",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed18/call_0.json": "1bef8879874e6eb5b83b3521eff7ff32fbb2b8ad8660eed1decd49697ae214b1",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed6/call_2.json": "9f7b321dc3fa12265af586f59b60ed093796dcbd9119d457643e90566cdcbf9c",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed6/call_1.json": "1afb65712e33e64586a3ad737f1f0e236eb0b3ad4a0ba3771af0a8b7e24d00c1",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed6/call_0.json": "78280de9d399481f692ea0cbe0099b021fa52b378e23a6c2d1b678d7ff0c3ee2",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed3/call_0.json": "af5392009d7d2238423b88b916e241500e1b791cd1dbf7ed1ca759d430ff4481",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_2/call_0.json": "931400b65ea24ab0a4426687e999a0d30a7eaee971a4a07d22f24c10854d479c",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_3/call_0.json": "33fece4aa23504160552e2f80e8fd4361b13fb3df02e2e97ebd4d0190353ff55",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_0/call_0.json": "8ab1b67bdf8afa0097cbe804bca38b0fef3ae0ea7d69e92466ac2e4b4558e2ff",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_11/call_0.json": "596433a156031e21080b6bf52e76aa9b9880698f7424d9ec4b9ad802f1d53fb1",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed18/call_1.json": "1003912c0191c87a76d51a7708a01820677cb695107b22501ded9f3e1021fb6a",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed18/call_0.json": "b820804bcc7fa954c39eb6ac75260a934acd4a0e79a3fe444fb7a86c6c42945d",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed19/call_0.json": "687c93b1d8a6270c5afe29b0aacf3ddafcc1cb082758e112c2b3907e4c242efc",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed8/call_0.json": "4a41b0321d8f71ae2144f07b6b400b3cdfe27ef14509d85f881ea2540c9b178f",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed15/call_0.json": "03a2c3af2b712c649a8a93bede39e4bbcd8fbcde94ae529acfc3353fb2a45f5e",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed5/call_2.json": "9c6de67efd4b9f3760ddcddee617b170f1e372dab173c8de13ec19972083001e",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed5/call_1.json": "d9b9ad11dee0f8077134c7acac064b634955d71e7ee079dc762b62ec502779db",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed5/call_0.json": "648295da2d0cbc4d2bfd12898b3f060b4aa20c64fe867b6fe416aa94fd22ebee",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_18/call_0.json": "fea1c5608f87462f34058b196cc0e8157c3a95ab471650961b101e0c69d242e7",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed16/call_2.json": "aab3e8e945f217e9c67aa7bbfbc0a32d2ebb97c2e2eb7a515d9db630d22b1d83",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed16/call_1.json": "fc302cb6b9f4c4494bf3dd20d04b3cc6be14656edb38534a2333b1e017b393cf",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed16/call_0.json": "b89bdb48123ea164870ba0820ecfed6c58b0832ee32599da0cab629b012a7fb5",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_4/call_0.json": "b17169e577cacb2a5c387b5762259cfa0942c710e75cfa73048f690315ed11e0",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed13/call_0.json": "7016c179ddd9521faec95c3342f390d323da27adfa74b519227bb9efd8118ca9",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed12/call_0.json": "7f0713037c34c3e5c39c77a28890eeceecf2e0c3ad955d31de463e122fc3ca45",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed12/call_2.json": "cbd5fd30ac09213c7ec873a344cb6b3b3ae371d97dab4a0457cbc996a42ba766",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed12/call_1.json": "e7b47c1c3ca5b77ce8b54223e84c75464749c48893d8bd59878e803f8c1cdee3",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed12/call_0.json": "9684f4abd57438a4821ff0c3254ed2a557ab3367c31b7383a31f6054caa12b78",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed7/call_0.json": "f94e0576a3ad216409c4af7683b478b3db7aa1eebe98476656ee1e93e1b8d040",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_13/call_0.json": "41968dba8577f28ec5fc9dc9071d1b507df20e3a1fb17c5331633ca92bf973b7",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed5/call_2.json": "c44dd8a92b2ea33d54d95c21e88b9b2f6a5bded8a6a38f3a133c486785ed7b81",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed5/call_1.json": "ea14ef27a9334cd2f900458d25e477f9fc8351a0d625cb4c20b43e08a7fb49cf",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed5/call_0.json": "f074a8745bcaf4bbffae7c07c35dd3093bb070444a2ae384e179387abffee7f3",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_17/call_0.json": "282635e40ba991fdee056c0769d8f40c8caabcd7e14d78e7e36541e42118ebd7",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed10/call_0.json": "cd5f670e6261893c1cd205107d24bd8cc74a41806e77881186d08130d6d283ab",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_9/call_0.json": "11b79a5c0d9e0acb4e06c95cd5a8526a21d3abeee960562449932729334be61d",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed0/call_2.json": "0a4c8dbd7c814e42af6118152cfd1e2622de4c24ed1aa3b22177a9b91535b0f9",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed0/call_1.json": "0dbfee6da62ed1b61e607581fc9865b01b7e0f22a7ab89ff5273e6c5f19bfe40",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed0/call_0.json": "22ad8d47e4e1d537b1639013e6af17729c316f6e987fa7e9f2badfabbdb347d3",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed14/call_0.json": "89e426d5cd7af6925e2abf3b6a30377c546020e59a0af25640a1ee2928ea83d3",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_7/call_0.json": "3616ddc91ad3396077008aedfc942ccae997275bc1d02fb6643a6c6cb629a8b5",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_15/call_0.json": "ebd80757b95e12dfd7a592f0cc01b256b1a3215addffe34fcf3c623290b100ee",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_1/call_0.json": "2bce644f30f1452431821f10a649ea60d4a4b5defe1cac386939cd1401a76271",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed9/call_0.json": "00fee67dab769226e6729ac559406346ad43602668c8b556bbe14d31673abbe7",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_19/call_0.json": "72ffe35dc98049fe50c5f2c5a9265b53969679836741c85f2cdc9aafc13e950a",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed2/call_0.json": "a1bab83d40ac8e263797243d60bf80e3453e50ce60ceb16ce547a8526f05a3f8",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed3/call_2.json": "bede6a295de99fd063e1d96102bb5de2662f3e1f774c33301f4a9a1da85b01e6",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed3/call_1.json": "09a5b772cbe513f8394f6a294896536f45cc1feca6424197bf4844c8ab6fad9e",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed3/call_0.json": "28939acba63664d9afd13074da775102881762c8c0baf2c0b9a9320775cd1402",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed13/call_1.json": "1cc9c334987ac1ea42708479097520f37e75ccfd6d1e1a3e3818154a17927e73",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed13/call_0.json": "42c1f79d5be78c5902858693b6094e71569b8a2c8a14716214d600d675cf788d",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed16/call_0.json": "567a5426751cc3d5b724f37867e1861cfa3f5bec5e0dc858d1367ae95b503e83",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed6/call_2.json": "977186b939e9c9db774b55ef0470295c0f5db3c3bdaf0d8efff92797fd6ae873",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed6/call_1.json": "028d141e45ab102d2468e85d7c2abfeff4bdad5081aa3b75e41c7e5400d31b1a",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed6/call_0.json": "079658413429c611917c5463e3b5ed9351b17b2033fe941ab0007e38721eb231",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed17/call_2.json": "6850aad619f1b3e040e07075dd41730acb4b172a77a47f274eb85ef20dd5863b",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed17/call_1.json": "e6943a1595a0f064d2e324ce49448171f033a4027805d7bd89628eb7ecf390ac",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed17/call_0.json": "7f9ca17472edfb34dedcf9fe8af99d407282e3aed66f58dae785c4c0b5e75dbc",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed4/call_2.json": "9bf357d2b8accc3290d75ef5ecd76335214caf4eaa1894e0eb8735db0257afd6",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed4/call_1.json": "87b5473dcec61fca3f3d41382097e6b960d94b1caaf0f98f6213f3bb93d4f30d",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed4/call_0.json": "b123a0855fd7b1e5f3c760c8edd011749914716f4a1529699d8d316f9f8e8512",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_12/call_0.json": "8895b611567dcd8e1f5246f565d92d2ac4c6a589fe1c779729869dff20e5d003",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed11/call_0.json": "874bfaa400805fff1b850128fa97e9c304b98de0030f90e9ad59a80eefa47496",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_14/call_0.json": "855b05e759818e1977e3cfee7c6339214a0eb468f7ac7ba0c51384911f7b2925",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_10/call_0.json": "1f6060c4a4c1d22cbab6f8c79df55e98e7b2d9be9c1877203bc0bc6581bfac24",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed1/call_0.json": "85bf3defbef0215ff9e00dca3926e6445d5e6c3f1e94791317b8e7f59284e32b",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed1/call_2.json": "1b24692868b6a25647b4801462567b8f3b693926974a77d64af9faee9c4d61ec",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed1/call_1.json": "7dabd2bae660170b76069db5ef4bee9de02750971e1482928d73b470d241f22b",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed1/call_0.json": "a4aaae5a9b3b6c8a3858a82651762bc3e061dc5a7757fad1ba738135280bda0f",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/initial_6/call_0.json": "519f507f1603af69a747d6b6d985c9d1885e27428e3311d9605ac75306856210",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed11/call_1.json": "29c0c36f326224a0163e7637927d979e5d4595794de0ba775b4ae3363d7db379",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed11/call_0.json": "5b6f10d9dbe5cef2500b0a289b8e62c94068f3938619aa5e1431cda54fabe517",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed4/call_1.json": "7b21266bb3316926269796025e6512bd93424cc2cb885295751f57cdaed2a033",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed4/call_0.json": "d60c87979625b361782f50624b06bd97f88c673384c41df43177804fc6518f3b",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed2/call_2.json": "bc15eb9a154226a12cd4f266e33138c0692f0e4cf917432136d4bd5908a35142",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed2/call_1.json": "6a6aa5808db3af694621f6e9fb7d80f0ff68b231866a6dcdc244a95edef9d622",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed2/call_0.json": "23c6422d960ad4ed1706bce245499ab0c4d114f6451ce3ed0eb83f299020ad56",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed10/call_2.json": "1a7d6059ff4bcfb95bb2eeaa886b763155204b2474abb75ae12091904dc6f0e5",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed10/call_1.json": "02e71cdfdb2bdbd37d416fec48fadaf6643b3d2c4d09ff03b7dfeb559c56b4ee",
+    "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed10/call_0.json": "8d890e9b921eba42e814fd1f6c328b4d29275ca629c9a9c1deeabfb9084e88b7",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed7.json": "fe20aff52f5da60196f8182aaf1f6679544b3d0bcf179f2ed3e12e60ef5c97f2",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed12.json": "c67bdaef46710a270ab622304eacf78f64e970d4e9ed65c665d87ce53505a777",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed14.json": "dd723cb33448a7c22c76c3b225c80bf2c041cd210d00b3dfdf431670a4de6706",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed16.json": "591268a214699321dc0f6e15c342969f4dfbc8e66347f0b9a6059352e1859cd2",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed1.json": "7898c03a066b1dc70484c1f4952f10f58142aaf2b03436742ae799973c696e7e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed3.json": "ab2c4d8b34837524042dca9beae69d294f7cad6227d8755c2c7779c3a6dfa2f6",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed12.json": "a420966dcafd36aff3506d65ee50333c4e7eae01088b587232198776961a5180",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed5.json": "4b95e3c0b070ea94090e60c3bb3b4e2d4be65b8aa634714b7888a2db70de6e44",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed4.json": "adc0dcd5c97a090805a3e20eb666095cd9486979168318ef4fbf88650a5d7f5e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed17.json": "6b6b58b53702d3d0fb586650137ec808e18048c6efd559097b8c3e97327d1023",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed17.json": "2e472b179849647bbf6d4433f4220d3f054e92344d19a62959a4c330fa975c17",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed2.json": "d8056d21f228b41b31f1e87f0ddcee08de2ba569a17b32ff2e5627df0d3932cd",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed9.json": "58cbe992925de9d815adf786839d45538c25d173974f1f9c0ad7fef536dbedf3",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed17.json": "3bc4ae4ad2742351e61b96ec10e334ce6e5c0c47990434467bb7926a08443f25",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed15.json": "268a3bd4ad53c77a3303ecfaa4462e3b40e543fcf128ae73210dc893c148ff98",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed13.json": "e5e21fba5d62c88fc737aeca92e3cb6d9bbe0f15c5cec108127a0f40712115b3",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed13.json": "a7ddd26b18711a5fa0ba12acb98053ff75adf91c686cf3344e8136819e8c6cb8",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed19.json": "3571c48e3c8c41e3d8a9a54089841c48f52e1f917ac6342a8497f4d8cd111e5f",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed19.json": "a37d4e1f393a232fcb344efb65d7ad092dd1cd083a903929d860cf605e76a528",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/summary.json": "fdfa385c0dabb1b706cec9a44d85c8393f07321f8906a2b89c5741b9b864c961",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed4.json": "ead68c50dae30746c70a34a922c0f07610060cc5c3965658111be8c553e68f4d",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed0.json": "e00546897d2cc6669efaaa2d304356dbffe515fdc5cb903f6db963bd4ac9aa14",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed14.json": "1becab8eaf544219575105dbc0310eac65f79fdf88e93d820d54c8b0fd79220b",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed10.json": "71c487534ba72e7a41449527e0f12c3dc54b34708710f57b0ecf6880d498424e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed6.json": "d5ce55d3b720bc93958e5437b5629319be06a5cd65af3286398f2c24ccdc095c",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed1.json": "da94bd4176969339414ecb49611cbe4fe1c804c10777ee5caabbefad645f8e09",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed2.json": "f2d9f32464053f2532436aba4e7d2abd192bfec326f79632f3c912f6909d3082",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed7.json": "9aaef019acb6faeac34f2e18a1a801051dac70579d3dbfb1d2c72112db54250f",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed8.json": "bba0acbe3917453bae94eb0ecd0c03f0db578f3ea7b608998ef67e3115f1d171",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed18.json": "c15183b90f8e58fe904cd0640a96679e81016f5fd4a183452050bea183644777",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed6.json": "32c53c94227e3d4b2593cc50c686008aa41d1f2d794a6301bd0778565d5985e7",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed14.json": "2f3b26c50946262f9b33a4e3299851bd289f3ad7ec6ec4125806c234f1c34dea",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed9.json": "c445f4c05ad8961e2c5499ad19771f509827be99697bd84d30e8ba1fb78c97b1",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed10.json": "3ac08a625929b9ec2b104b8619730db85f0c18063d24213632a27e46ac8e3e22",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed8.json": "3baf3fdf54dfed31222a99cce63f3b09be53dccef7ac1bc9283bab3fbd8c10d4",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed2.json": "5213167d8e83c34cbfa6e1a5f4ffdc061d6f374344f797bbf5a728e14fbdaeec",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed8.json": "7e553a5a2d4140bd457198877f0d6413b780231db849a7d36919f540f45b8bd4",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed10.json": "95935d9f8265869d10c07889da575f0dfdc998163cb5dbc8bcc221afd9310a7d",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed18.json": "d5120cbdcd1a570431641bf35ac5579d1056fa10cd5abbf4c1c28a4fbaa9e6c3",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed5.json": "f36faec14b349379f0e84e6ad26972129c9ad259196202b88a1a2ac60831eb61",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed3.json": "11cd786cc43213b62caaeb20b87dda41fd47d2f133aea4c39475b877dcdf634e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed5.json": "7be28a97671710d1a4a8066bb54f06849e52f2422b383bafe81b91e617f1b24c",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed0.json": "f3978a7976f0d72bd3f1ad2fcc7732ec9512cc6d3b53320ccb6fcedaced10376",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed18.json": "8fc3451d94764587f3e8617f2f8ab5596f863b023b858a413f6184167f809cc2",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed4.json": "408b73ae1456901d93f28385cd45c6c12b518edff4d649e6e7757f92bccb9a9e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed11.json": "95c8c903e5f41ab6d0cf97b8f75880fe5a38269d685aa7baf9f34a425e6e8cf4",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed7.json": "eb45d5a8ac5a3649203b728d5a78fdbfb969d67f00618142503959c5f9ff89f5",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed19.json": "9cdbd23158306d2f51deef4649bad72b9ec63cf9afc1a4e5e92ee9635e70bbca",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed1.json": "473f3674f624742e130357927a6cc0987631a55a7c545e988034ac3575d7a051",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed15.json": "09df4e58697ae57d3c4ebdadffb3de8e0003f021a2a3818f6a03a137902c736c",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed11.json": "c8448dce2aca7c6b12cba921105396bd29717c73e5f04812c3d7019643b32df6",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed11.json": "4e299799ac7fe2aff97089130c29f577912267685fc40dc42e85afd7a99d2918",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed9.json": "2f9ebc78ec58ae074b8cdeb04c8cace1c314a2df1bb2d7d5b43dec5e809425f6",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed15.json": "d816aef5b43706937b3936453455f8abe5f58ef9766077d517cfdee6268f056e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed3.json": "360f65028b39ec1a39f3e32523d941b3ffebcc5b254871feb3bd64db3f393520",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed6.json": "f054ad440714530ca7e830b81a1fc79988f5e9dc7041db259124de141910c156",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed13.json": "ea3f8ac80c2b51ede6a63979da9d7a6fd8762584d376091259e084fe4d2f20b9",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/direct__seed12.json": "113424bf3e968db448800c393e8717168ccc5a10767f0cf7ef6cf4bdecc2d6a0",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_10.json": "752c00b8cf37f93bf49947ab575c54c7b682217e6cafbdccf1f7663157ce1618",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_7.json": "70c81ebcbe5856b72b1482d35fc5534c8cb4a29fd4d5f8b5c9300976ed55484a",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_16.json": "56d0577fce6ef6b58fd9602f1700233bf6923f0e1a411a4d0dcf1db810f9ea7e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_14.json": "02a078b2117dee3eab45dcc15cc1d6b9de14d1e71b0dfb0a9af38ab1e52c62d5",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_8.json": "b75f6a3a0821865a0ddbc780fc42190853e0761dbcfaeb28fb047c22b00e2085",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_4.json": "49c4602f081821e85348b774e067b157e5f06e08f5c8b224e51a4e2f15e31db0",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_9.json": "999f8874a7c44c95e18ab2446ddd802bee12654f9133df0b97b84658dc306ccc",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_12.json": "44661b7a33854756e31a5865ea8465564d36ed9d968ade3955f85d6dd424abf8",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_11.json": "0b5f6673cd3f43fe1c587caf10f831ccdaf2316e65501a6efe54d50109b0a5fc",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_17.json": "19a0a11396583d033295dca54eeccf642d0514b7ce70ec6aa629c072f65d64ae",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_15.json": "dfa466699716f3742a89d5aa9526bdfcebed177d0c723fbd5964b80fc7753850",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_1.json": "f7328c6555cbbcbada9dd5e0c64737d8a55c9997b46ad2286e75bdc1aec40f70",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_5.json": "672335245afc7db24b512bd63db342cf198d031bf301f14c8dfbdc96afc8cd11",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_6.json": "8b7f4ac717217d73ebfb0892163ca0cb2479d739d678f687ca54e3b107546dae",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_13.json": "a8108f7677bddb64866b43d407a5be7dcffdf11104d7cf99460529694f2ea469",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_3.json": "c445a7980360dfc679abf3ba6310fcf5c4a4f8a1cedf751d27e2a988c2eb7431",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_18.json": "1982b74a8caaa26904a11174113f1675c0a7ef9000345818f5638835ec9046e5",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_19.json": "a12e50d91260c3d74e4b7c4784c10ef43764e97e00364e1de779816da27bbc8f",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_2.json": "40b3a905ad089ea8fd2dd8e14deedfbe86435c688c04bb8ccc603a46a106456f",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_0.json": "5991bdd518bb752f0d9754e91ab30240ab190f2f2b4f5aa9214e175e7be6fd6d",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/manifest.json": "42cf5630171cffa69044c0c30055ab29e0d18ab33452ec9de269f9efaca11ab7",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed16.json": "dfc664155071ca736a11bdb16e650ee572f792719351a5cabbb2540fea28a40a",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed7.json": "7d3f1fa43fe793eea1663cb8b8d3ba11cc149e2c309db236f673c1e52170fecf",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed12.json": "9b209fd4a89be15eb034e73060db73c7f24992a0883149908dfbd0033b3da715",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed14.json": "93bf5124bcc5deaeb4d9703f5efbf62f337f7227be4c3ccdc7dd751b195dae5f",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed16.json": "a3e6686541a53840eac779c07ab5f2529870bf9ff3184c0bba8739f4665dbabf",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed1.json": "ef2d4ff0a321f7db28c91585e253f7fe2aa9bff202ef25b8a5edf6febea456ae",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed3.json": "73258be57856bb21ea60265071a28a1d4b178e6a31ad5883501193227a5c345e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed12.json": "b89514f72bdec94de0e1d06e1f256867811a212ffbfc1587cdb431e3f718d32a",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed5.json": "e0e0bbcbbad703fdfce3bca4fb5fae054b89327676698e375a12c1b220d180fd",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed4.json": "36e909a17f8c8d62bf922c39812bc0edb428d394747323e01b971fbcfd280a69",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed17.json": "48cec36146e0bb1cf1437712deecb3ae4f96dd1a631934cd20535b92d1d76c65",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed17.json": "59eef5de99d8dae58e785b9f03683b87ebc3282c7d75e056b24c3d6cdf6faf65",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed2.json": "e4a4579b9b5a83dd97d2a1ae25d97b5ceeeb052d3274d794d4f4f7a93d4253e7",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed9.json": "c1117c886dadff4a4943392a31f3f9a315da4b34450f1cbdf23babc96ff173ce",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed17.json": "cfe189f810c577f5f41cf0fddaac7b4e98d1acc4307cf09ec4dedb419992fe3b",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed15.json": "d17520ea6166b84c064dd12ded91f54a0ec763156a72859d7ffb58106582a8ee",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed13.json": "2fc67fff3ce9eccad44db013484b738d504a10b420c82829d3cac8bdd86298d7",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed13.json": "5930802862db72649437af3b9c1c042c85bf16efc3e46e91a7655ea999a9e1a1",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed19.json": "4f18243e4092ab008fe0900f212ceea6f6a5ac3b17911f8d8d740ef780ffc770",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed19.json": "f0b8457b0d1fb2c40132db2eb1dcedcec6f541a413b580767826c3fa9ab95e76",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed4.json": "90f6024b4343006a8b47f7ee066a24056d8dda04b0a387121795b59c15a9443e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed0.json": "5c66325325311aca03f9ebec6025a60248eb13536ac486293a7c721e9f390a33",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed14.json": "0a7aebe14e69e5c36455022dc568986ff0d7fb50af419f55634ad01389927073",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed10.json": "956431d53bddcffa50aaf56de86c475862c421a2f25f509f11afd34a65186b5a",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed6.json": "77dc3836297b449707c0c8d567dc018eb2db36210615ca51e6ba3306aeda2690",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed1.json": "36d87956a625745821f7ff5c103ee6e22c5819a0b1c58cb1e7abd3ecef6ef4cb",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed2.json": "ee55c5913ff05f393c33e3d1e1a2d2c707eddea8b67543c859a4f778e7eabfc9",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed7.json": "f54a13ed55c7c526ff76857ac03b8eb0fcd0e02b18b6d9daecbb0e0652a0aad0",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed8.json": "1e737c4c7427c9003a9072a0753fac5ce8841b020bcfe38280fb24437b9a1b94",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed18.json": "6cef40a09251dbb4c2bdb3733d44da197fae7bf126a2d7c1d0785492df66ef20",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed6.json": "cd32be74779a6e378c3a20993de563fd95c531132679516c30592e4e6181161b",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed14.json": "9c45426bea437fdee8d7a0aa60d95f0de0c48f0c60595a00d2def3a926386aa4",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed9.json": "93f16a29ae3529f828d33725656eb672952ce9356cdea1911b9111f2f40a4580",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed10.json": "cd02220d3c0500939d4563ded89ef110d9c978043c0373dc03433555015e9b1a",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed8.json": "9b5e0a391486f924fd24798011e942413530d54a8ae29c8f23a146dfc0800543",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed2.json": "e6eb5a0c23bcacc449ebb68dd26015afbec96ab4393a287723acbf599a059327",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed8.json": "adbaa51031b76e9c1ea8be7d6863c66d62cfdab09bd3c65bcf09aac43d8ebfd8",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed10.json": "3e610a869f45f09dbdd74d6e76b68e04c428d0dff4e2788d71b4972cb26c5f43",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed18.json": "15eea74031dc1ca54ad0ba53b21269de7ed37fa63beebbab6d0438b989ee1f38",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed5.json": "b33f180257aa0da068ffd2456d228a278e6f66ccc3552758b12e3555dbc2ee4b",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed3.json": "7f32ae7c4d03e43624358b90dd4707e2ad2f2a02d21a0d86e717616fa36e7812",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed5.json": "2c6ec70d420580abedfb5fe1da78f07d6d4ca0da1aa9f69a435b6f0dd8d4cc27",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed0.json": "52d97c154fc01a03e6c20c834434c5daf807b188b3a5cf3dc58ca6c43ca8e497",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed18.json": "55d0a853e1a14b2f01d9f2bd0156db717e607ee1df7788c2c82dccbf438fb6d8",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed4.json": "4ab2937a4525a9b25a7676a0d2069fbab3cf1867a0a9481462aeaf6132e47ed5",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed11.json": "7a976ccefa520a2a08150d47b2825a91e1446d9afc731417a2f3e9bd6379f225",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed7.json": "f4db93bc28171e4bc38a6bc3fa9021396b2e887cee23ac0d9f2cd46b3ad97815",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed19.json": "5b854760ef3f3b8e1384319c361d8631ea3bbba2fa528da453db03c6f4bd3aee",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed1.json": "19f241bcac6ca8c5925ddb9a461eeae06293b85810c7627ee1f594b491b69db3",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed15.json": "1b7b899f2fbbf8a7c551bfd6192b9d6598903cf31cf6c30f2deb8f0098604308",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed11.json": "d68a621df7ad8414d0411017b340702a6a9ff781741b1fd74c318715b88ebea9",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed0.json": "72438de79e08f80c00cd2104fcc0716131ff621ca5c552bc160b3665f11fd86b",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed11.json": "74d2884cc5cd3cd3a747e94ef64ea3d0093c1ce73d7b4a14aaf2a574096b0dae",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed9.json": "20484712a069ca94968501e4d1164fc54bf7f94cbe46c4888b1c07f7606f3e5b",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed15.json": "a851e95796e4da43fef27edb0fbe565fe217894b4c87eb3451e2d8c63d8a696e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed3.json": "9472fa39090fe84111bb1b99e5587bababf0cd11394edd81120ab5bc81abb735",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed16.json": "65edfee4bd470e9f053fa7a0a26b5bb095322ac25554645ff9abacf10c9bafa3",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/sampled_cegis_fixed__seed6.json": "848eebe92a583333788b98e7f9bb67fa723912d0892f324c908badd1ee3ac9de",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/active_cegis__seed13.json": "1e3958f0ce07f4a5d9233868e01ccb84b8b4bc7b4b91fbbd46266506a3eec9f6",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/results/direct__seed12.json": "ae49bbb546f3e5f4ad781de9484c1e405eb085f94fa3f447489a7e5f293dfc99",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed17/call_0.json": "77decf4d27823f20d070fb98d380c74cfd7f9fd843729ebc475d6e7339d556d9",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_16/call_0.json": "245ade8b105cc61731adf8507e692579513437fa9ff180de495caa2be6547e53",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_5/call_0.json": "ce79a71d9204471342ac0d4bf45fdfd041eb88bde12ed3f1051cc8162b136b83",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed8/call_1.json": "3df707435ea1c3f5a330377bb971384566019dcd4aa1ee76efcf546c6cf0706f",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed8/call_0.json": "39b708a964cc79d8e0ecde5baa419b6a1211752c63ee128db5a49166b2889fb0",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed9/call_1.json": "4eaf3afd65ea0b0b41120464b60a3c51262007ed41588d820eb4b255adf33eb0",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed9/call_0.json": "7296f80ef4e6c44865f077f2801d9bf0d0252c26f6068e65d343bc373d1250a7",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_8/call_0.json": "4de0ea05b24a0fdf02500f9e4b37ba00502aa0af8af5ed80a2b8b32e49d631e6",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed7/call_2.json": "9e181a0736f3c5b21fdad60aed855bd692750a2baed87ad2a4ce47ba36dfa1ea",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed7/call_1.json": "9b0606e9d5fb59612d899c35c47439a362e495c3c27e48e9a13dc9121e701808",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed7/call_0.json": "f9df0ccc54ecda2c91be7329d6a36354d6db1a0cd4284f63ed7dfdab3096348e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed0/call_2.json": "93221514d2448428ab65892a768f726a29dcbf217348929adccd519926748d83",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed0/call_1.json": "60386c7317467338527379506fd9ecda2013a84ad76a4a964708010a51c032eb",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed0/call_0.json": "08b8075c9afec49ba4d7745cb02724eaeb827f88d9fadaa7c1c9c1a260112667",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed14/call_1.json": "2678220ed0d19804b0e494a1dfe09cdd4c3f22942c1362939f04fb379925ea4a",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed14/call_0.json": "a7b026a5712fb2d3f4151b1044185097fe2a10c6e3724609a5d212a740f49f12",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed19/call_2.json": "b31361920c36bef6e5a0e6c4efde5ce9147871a7c8fb960bce34de1b279e4c8c",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed19/call_1.json": "f7ba3628161bf60045ddc70045ef55c8eee28d2fc20c26cb694243250152ddf4",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed19/call_0.json": "931795f05116e014918aca72efe5a4e2ac9d5c0e9476666d2868873ba19f16ad",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed15/call_1.json": "61a2706a6b86a2acac4443fcc02619bccc65855569009a2afdae5cf2f2911d3d",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed15/call_0.json": "886dc22de147db1d5c3f291aff09701531885f5a3a0cb5e1165e9a79e9e33311",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed18/call_1.json": "90ba99226c6da6ee861cfec67c112e5259aef9c12d468cb2fd4c3a38dd48ecc1",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed18/call_0.json": "a5433eef33c88228809e65a77bc9cecd881980f72b60cbeab762fe37f8fe3d25",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed6/call_2.json": "9b16f4b6e66d1208336a0d7ba2fad40a01db6b35a3f0dfa030e3a9e279baf827",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed6/call_1.json": "fc48c383128a0ce2d9596d4e8b8030c4f1d3461330aea01092a9151f5e4174d8",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed6/call_0.json": "eb536167298e58056d9ce01c768d0d48164c2355a11a2d4fcc8c482dbad87782",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed3/call_0.json": "0fb45d0999de0bb5bf98f842f786dfcc847a1c2fcf9a7289a901f895d17099bf",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_2/call_0.json": "e4e93ef7a935f6b29ffa6b816f9329a625ece0301752e02f54e86f78c92bd8b7",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_3/call_0.json": "2c6e43f3a376f9a04d9412954793389ec62f3eb0f82e39411e3ef5c5930cbe52",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_0/call_0.json": "ae43a3cd3d88552477c1cac70cf8399023ae0c1cfe659ef7c0d7da09a2b62456",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_11/call_0.json": "7147819885a3bc0550cc3d143e9e9be48f4cb66e09703052dba32686a7e4f3b3",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed18/call_1.json": "e5fffd8d3305422310c2f708eb9d660512bc5563fcc16ec485f24d43e7961d4d",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed18/call_0.json": "1d5e5459a6855119145cff6d8fc5dd9a057ef22ed95274453011432ca0bd117a",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed19/call_0.json": "4608b9730880fff9dfc202704098f8bb2c6e9f5d5fe8b5807fb66bac014d810d",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed8/call_0.json": "603611fe095032c4f2452dc91d2f86f5bc5517e33487a8dffb83408d934811cd",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed15/call_0.json": "fd66eeb6434cab4b05f5e21d749da3d14a23c6b2738ce2c4709e063c386e6fa4",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed5/call_0.json": "e28c6b9f461cb830b7465be735ccfeff8621d5e6b83a0d31ca7332e95302b361",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_18/call_0.json": "94c3b2e352edf108ef046e6a7ba60394d54d35f53ba2cfce4fd0eeca01bec51b",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed16/call_2.json": "c0603342292cd1993c78d2a0bc295ad4693ccd01aef16d4e5b2d76c42ecb6039",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed16/call_1.json": "9a75ecc90bfebc758b10fcec17316e7b02f7ec45923229a358b3aa826c2a1177",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed16/call_0.json": "42fa4e82756b053139392e6e43691a693693288e4f2ff47e6592ae6994766081",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_4/call_0.json": "83cf0058308e9d397d119cf68df2480a73df18373b7f3722a0f4ad5fffcc9e4f",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed13/call_0.json": "5c233f7beb3a7fee89e6c0f7fa9851acc55208cb371daad7094b13774921a9d4",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed12/call_0.json": "de06f15dad6118f2c80d20ed3bba021ed7b6ed5430b63dd9cc3c87ad2996365e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed12/call_1.json": "38e972c3f1f62ca4476b012452dec90cab6e370f37eb4fb29bce04eb11e4e18a",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed12/call_0.json": "33a5058f2e264607ded83bdcfb378170610c31bc15de3f38cfa7b56098c409cb",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed7/call_0.json": "08b2062827a0c6b4b0a7e02c45376b45c77ea16c5819f51c618c32eb12e235f5",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_13/call_0.json": "4f6aa7ce0b460f6f0e1c931917b29d4ec3b2d6ca77b3124cd3b6125c1a84c421",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed5/call_1.json": "dd0c507e9df5c2b845f9e2a5fd6f909ed52e59786ed00d0be231df46f801efff",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed5/call_0.json": "a94336f41eba1afb754189ea03d7ad40a3cf487a62b35be8cf9f33fd4c1f01e6",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_17/call_0.json": "fef1b2aff86d8206f448b773c7e178402ca9b5593bf5c610cd5d6bdafdefe3e5",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed10/call_0.json": "577e401da19e4a691e188869eba7128a7c417b46d165e5114eaebc7e756506b2",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_9/call_0.json": "f7beed8f61478ba7153b459022eb02199f03f2767cac896dd2041b05f95612eb",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed0/call_2.json": "cfd9f065f7b82b075ea0b40379665c96ba9d0c0134935d0d382fa17b8aec6000",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed0/call_1.json": "3242abe68f3f87689e5e0bf1da778b7f107a391cd00eed2f8096c641a3be5c4a",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed0/call_0.json": "8b636622564c7da7a9dd58fe612099be2cc113c437dba668190b633144c66f2d",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed14/call_0.json": "efcdb4181291ab82e2127a75350ebf3c663e2a43d43529f0443b27fbaf1c8a4b",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_7/call_0.json": "08704aba7998b14df4fada106b3ce33daa662690a832eca8d61ce94bf4099a72",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_15/call_0.json": "a95f885fbe5cf5181684ff7584271fc0825a2714e3a66b0595bedd6783c26664",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_1/call_0.json": "d470fb6b5377ffce249d2292a2e242619e54257e8f494b4474070af5104c96b4",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed9/call_0.json": "e23767073c0220bb0cfe029317caafdaf274b082aa3dc1c422473f9968f1ba6d",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_19/call_0.json": "2ea837a51b7f3a68c21bdaa63943f141e3d05502843979f7fbc86b88a6ed45bc",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed2/call_0.json": "01771ab331cd13c67bd589703cbd63bd3b1d4cde08da3f70b373d50b60e12486",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed3/call_1.json": "649f262a618da72816469ec3ea4249c9587a5ab837ee53813fb1b3ef5c1de9b1",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed3/call_0.json": "121b984b3b34df437390ba65bbffc66cf27ded89137c0f5c9d44150ac151bbb3",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed13/call_1.json": "6bdc5a0155df3884b274daac61f855219f1a001e0bc2f08545cc917ba8f4de28",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed13/call_0.json": "ae0b562ab8c93963200f3a37fa52d1556eb6e00d62cccc21333e28093e207f55",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed16/call_2.json": "5125995b966f5c2f738811370bdb463b4ed0c73c307cb66aeb2a853de5fcb022",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed16/call_1.json": "d21ad2516e922a098bfd78b27b7f8c6a71dcb8392a9878da54dd9a35e4022a6e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed16/call_0.json": "e7ebff0e5ea1cf591e17c16eaf0ef5380ff1c158528f67fc077f42cea96b9326",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed6/call_2.json": "6b5f0d4ee8ae2bfea4611c1bc75f80fb0ec4c04c3fadd8566df51a8c01c41088",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed6/call_1.json": "efce8e8aa91e0b9151caadb3febeb4d0f5041a675c1adfd9cd6260a98998288c",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed6/call_0.json": "8703805fa6e0b891ebc77f89689a5c0b00bcd56da96d09e8e6b53d7851bda4cc",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed17/call_1.json": "c7becea1c79725836fa7e1d2e7c7a767b4c8e7e5da1807c955127ffa5c7978db",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed17/call_0.json": "9d48cf67f20ae54a1cf885933a6756c095d3fdea7e9db445c364455d64c380df",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed4/call_2.json": "78cfd9d6a202302840d7dfedb25cec1384df549e8be3c8181c5766fe8eed07bd",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed4/call_1.json": "89f87eb7ad0fc02d942da5c8c731084a89d931845592b2b01a3ec9e85142b05a",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed4/call_0.json": "d63b7c5738a4020855e0cfc8635e18a315c9b1edd1a7b60f36c6ecf18e22073b",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_12/call_0.json": "b27b100f1fdd669bc61aecdf5bc6523c5a7e1a6578364a2e01113e161ae29c65",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed11/call_0.json": "cd853196f6eda61a7cfb036b0e8af2870fe3fb6ff56f4310864659d965934e57",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_14/call_0.json": "c0a3fcaff21098b7c957dffdccc0f6b8d397f7fe60eb6fa1af4bc7afab4daf9e",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_10/call_0.json": "81ac88fe93a054da5c033ff7d49a5ca258ceb6163fcd97632fe02e6ec2daa7ad",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/sampled_cegis_fixed__seed1/call_0.json": "c840c1c92ed207ebc1fab3e1674d505b7fcb511653b9b059684606878f0a0083",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed1/call_1.json": "c5f94ccd9f72d5a5564b495c7ac18d52abe58bab85af352f997857bee4f81a15",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed1/call_0.json": "0cefdd33399f0ab386cc64f3f6893b77b82be15ab42b0d4d377f5f91101f0efe",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/initial_6/call_0.json": "6a79bd55f60508cf1a5c41d0212c970d529d23abc6fd7a508a68db622f3a5ad0",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed11/call_2.json": "95843360a8bcd4ebe9252f4722ff36c7fc6fc400f6fe472cca9278b21bc4cc53",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed11/call_1.json": "ca08513f6b6fe5ddf506012a4c865b730540d4e8f414a4b8b52c479f9a2bab93",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed11/call_0.json": "03bf377c661be50600000f2e82871061463e173f53ce596528dda79d4b2076c1",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed4/call_1.json": "9a6b1339888c551f3a1033ecec01c333cfb9156b9ea5e146bf589d0393e8cd9a",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed4/call_0.json": "135212c508de2df27577a4932a6ea2b1d7fd95c209f089484f2fc12f0e6645c1",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed2/call_0.json": "7c3150ad0c61ab2f9668136134c64f6851fc3cced300e0090ddfa22ee1e0fae5",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed10/call_2.json": "034e2c863baf9aa359edf5f5fba35b199d7020cecab1d15e80fbd87aebde16cd",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed10/call_1.json": "b7ab0ec2eaa720ff9dd5be06e52d51e6221707b0e3c0bb62d5a9cb9e2044641c",
+    "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed10/call_0.json": "aa32bb94c9e6434201df916c0e31446e06356ff24c7c20bef235e273b4a3af07"
+  },
+  "selected_original": {
+    "n": 15,
+    "exact": 0,
+    "valid": 0,
+    "iou_mean": 0.0,
+    "cfr_mean": 0.0,
+    "length_runs": 15,
+    "parse_failure_events": 15,
+    "stops": {
+      "query_budget_exhausted": 15
+    },
+    "error_counts_valid_only": {}
+  },
+  "selected_retry": {
+    "n": 15,
+    "exact": 0,
+    "valid": 15,
+    "iou_mean": 51.42857142857143,
+    "cfr_mean": 51.42857142857143,
+    "length_runs": 0,
+    "parse_failure_events": 0,
+    "stops": {
+      "query_budget_exhausted": 4,
+      "duplicate_model_output": 10,
+      "sampled_oracle_satisfied": 1
+    },
+    "error_counts_valid_only": {
+      "(6, 4, 0)": 14,
+      "(0, 4, 0)": 1
+    }
+  },
+  "cells": [
+    {
+      "condition": "vplus_pplus",
+      "method": "direct",
+      "original": {
+        "n": 20,
+        "exact": 0,
+        "valid": 20,
+        "iou_mean": 14.705882352941176,
+        "cfr_mean": 14.705882352941176,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "method_complete": 20
+        },
+        "error_counts_valid_only": {
+          "(54, 4, 0)": 20
+        }
+      },
+      "followup_policy": {
+        "n": 20,
+        "exact": 0,
+        "valid": 20,
+        "iou_mean": 14.705882352941176,
+        "cfr_mean": 14.705882352941176,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "method_complete": 20
+        },
+        "error_counts_valid_only": {
+          "(54, 4, 0)": 20
+        }
+      }
+    },
+    {
+      "condition": "vplus_pplus",
+      "method": "sampled_cegis_fixed",
+      "original": {
+        "n": 20,
+        "exact": 0,
+        "valid": 18,
+        "iou_mean": 26.42641345582522,
+        "cfr_mean": 26.42641345582522,
+        "length_runs": 2,
+        "parse_failure_events": 2,
+        "stops": {
+          "query_budget_exhausted": 6,
+          "sampled_oracle_satisfied": 14
+        },
+        "error_counts_valid_only": {
+          "(22, 4, 0)": 8,
+          "(6, 4, 0)": 2,
+          "(54, 4, 0)": 4,
+          "(38, 0, 0)": 2,
+          "(6, 8, 0)": 1,
+          "(8, 0, 0)": 1
+        }
+      },
+      "followup_policy": {
+        "n": 20,
+        "exact": 0,
+        "valid": 20,
+        "iou_mean": 31.42641345582522,
+        "cfr_mean": 31.42641345582522,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "query_budget_exhausted": 6,
+          "sampled_oracle_satisfied": 14
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 4,
+          "(22, 4, 0)": 8,
+          "(54, 4, 0)": 4,
+          "(38, 0, 0)": 2,
+          "(6, 8, 0)": 1,
+          "(8, 0, 0)": 1
+        }
+      }
+    },
+    {
+      "condition": "vplus_pplus",
+      "method": "active_cegis",
+      "original": {
+        "n": 20,
+        "exact": 0,
+        "valid": 10,
+        "iou_mean": 21.113445378151262,
+        "cfr_mean": 21.113445378151262,
+        "length_runs": 10,
+        "parse_failure_events": 10,
+        "stops": {
+          "token_budget_exhausted": 2,
+          "query_budget_exhausted": 10,
+          "duplicate_model_output": 8
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 7,
+          "(54, 4, 0)": 2,
+          "(0, 8, 0)": 1
+        }
+      },
+      "followup_policy": {
+        "n": 20,
+        "exact": 0,
+        "valid": 20,
+        "iou_mean": 47.18487394957983,
+        "cfr_mean": 47.18487394957983,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "token_budget_exhausted": 2,
+          "duplicate_model_output": 17,
+          "sampled_oracle_satisfied": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 16,
+          "(0, 4, 0)": 1,
+          "(54, 4, 0)": 2,
+          "(0, 8, 0)": 1
+        }
+      }
+    },
+    {
+      "condition": "vminus_pplus",
+      "method": "direct",
+      "original": {
+        "n": 20,
+        "exact": 0,
+        "valid": 20,
+        "iou_mean": 14.705882352941176,
+        "cfr_mean": 14.705882352941176,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "method_complete": 20
+        },
+        "error_counts_valid_only": {
+          "(54, 4, 0)": 20
+        }
+      },
+      "followup_policy": {
+        "n": 20,
+        "exact": 0,
+        "valid": 20,
+        "iou_mean": 14.705882352941176,
+        "cfr_mean": 14.705882352941176,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "method_complete": 20
+        },
+        "error_counts_valid_only": {
+          "(54, 4, 0)": 20
+        }
+      }
+    },
+    {
+      "condition": "vminus_pplus",
+      "method": "sampled_cegis_fixed",
+      "original": {
+        "n": 20,
+        "exact": 0,
+        "valid": 18,
+        "iou_mean": 27.08000822706705,
+        "cfr_mean": 27.08000822706705,
+        "length_runs": 2,
+        "parse_failure_events": 2,
+        "stops": {
+          "query_budget_exhausted": 5,
+          "sampled_oracle_satisfied": 15
+        },
+        "error_counts_valid_only": {
+          "(22, 4, 0)": 9,
+          "(6, 4, 0)": 2,
+          "(54, 4, 0)": 3,
+          "(38, 0, 0)": 2,
+          "(6, 8, 0)": 1,
+          "(8, 0, 0)": 1
+        }
+      },
+      "followup_policy": {
+        "n": 20,
+        "exact": 0,
+        "valid": 20,
+        "iou_mean": 32.08000822706705,
+        "cfr_mean": 32.08000822706705,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "query_budget_exhausted": 5,
+          "sampled_oracle_satisfied": 15
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 4,
+          "(22, 4, 0)": 9,
+          "(54, 4, 0)": 3,
+          "(38, 0, 0)": 2,
+          "(6, 8, 0)": 1,
+          "(8, 0, 0)": 1
+        }
+      }
+    },
+    {
+      "condition": "vminus_pplus",
+      "method": "active_cegis",
+      "original": {
+        "n": 20,
+        "exact": 0,
+        "valid": 19,
+        "iou_mean": 43.61344537815126,
+        "cfr_mean": 43.61344537815126,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "token_budget_exhausted": 5,
+          "duplicate_model_output": 14,
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 16,
+          "(54, 4, 0)": 2,
+          "(0, 8, 0)": 1
+        }
+      },
+      "followup_policy": {
+        "n": 20,
+        "exact": 0,
+        "valid": 20,
+        "iou_mean": 46.11344537815126,
+        "cfr_mean": 46.11344537815126,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "token_budget_exhausted": 5,
+          "duplicate_model_output": 15
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 17,
+          "(54, 4, 0)": 2,
+          "(0, 8, 0)": 1
+        }
+      }
+    }
+  ],
+  "diagnostics": [
+    {
+      "job": "vplus_pplus__sampled_cegis_fixed__seed0",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3058,
+        "completion_tokens": 1327,
+        "total_tokens": 4385
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed0.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__sampled_cegis_fixed__seed0/result.json"
+    },
+    {
+      "job": "vplus_pplus__sampled_cegis_fixed__seed16",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3005,
+        "completion_tokens": 1274,
+        "total_tokens": 4279
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/sampled_cegis_fixed__seed16.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__sampled_cegis_fixed__seed16/result.json"
+    },
+    {
+      "job": "vplus_pplus__active_cegis__seed1",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "duplicate_model_output": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3517,
+        "completion_tokens": 1222,
+        "total_tokens": 4739
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed1.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed1/result.json"
+    },
+    {
+      "job": "vplus_pplus__active_cegis__seed2",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "duplicate_model_output": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3226,
+        "completion_tokens": 1213,
+        "total_tokens": 4439
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed2.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed2/result.json"
+    },
+    {
+      "job": "vplus_pplus__active_cegis__seed3",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "duplicate_model_output": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3573,
+        "completion_tokens": 1275,
+        "total_tokens": 4848
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed3.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed3/result.json"
+    },
+    {
+      "job": "vplus_pplus__active_cegis__seed5",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "duplicate_model_output": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3567,
+        "completion_tokens": 1275,
+        "total_tokens": 4842
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed5.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed5/result.json"
+    },
+    {
+      "job": "vplus_pplus__active_cegis__seed6",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 71.42857142857143,
+        "cfr_mean": 71.42857142857143,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "sampled_oracle_satisfied": 1
+        },
+        "error_counts_valid_only": {
+          "(0, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3508,
+        "completion_tokens": 1276,
+        "total_tokens": 4784
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed6.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed6/result.json"
+    },
+    {
+      "job": "vplus_pplus__active_cegis__seed8",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "duplicate_model_output": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3517,
+        "completion_tokens": 1222,
+        "total_tokens": 4739
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed8.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed8/result.json"
+    },
+    {
+      "job": "vplus_pplus__active_cegis__seed9",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "duplicate_model_output": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3517,
+        "completion_tokens": 1222,
+        "total_tokens": 4739
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed9.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed9/result.json"
+    },
+    {
+      "job": "vplus_pplus__active_cegis__seed12",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "duplicate_model_output": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3567,
+        "completion_tokens": 1275,
+        "total_tokens": 4842
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed12.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed12/result.json"
+    },
+    {
+      "job": "vplus_pplus__active_cegis__seed17",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "duplicate_model_output": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3517,
+        "completion_tokens": 1222,
+        "total_tokens": 4739
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed17.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed17/result.json"
+    },
+    {
+      "job": "vplus_pplus__active_cegis__seed18",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "duplicate_model_output": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3517,
+        "completion_tokens": 1222,
+        "total_tokens": 4739
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed18.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed18/result.json"
+    },
+    {
+      "job": "vminus_pplus__sampled_cegis_fixed__seed0",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3058,
+        "completion_tokens": 1327,
+        "total_tokens": 4385
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed0.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vminus_pplus__sampled_cegis_fixed__seed0/result.json"
+    },
+    {
+      "job": "vminus_pplus__sampled_cegis_fixed__seed16",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3058,
+        "completion_tokens": 1327,
+        "total_tokens": 4385
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/sampled_cegis_fixed__seed16.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vminus_pplus__sampled_cegis_fixed__seed16/result.json"
+    },
+    {
+      "job": "vminus_pplus__active_cegis__seed16",
+      "old": {
+        "n": 1,
+        "exact": 0,
+        "valid": 0,
+        "iou_mean": 0.0,
+        "cfr_mean": 0.0,
+        "length_runs": 1,
+        "parse_failure_events": 1,
+        "stops": {
+          "query_budget_exhausted": 1
+        },
+        "error_counts_valid_only": {}
+      },
+      "new": {
+        "n": 1,
+        "exact": 0,
+        "valid": 1,
+        "iou_mean": 50.0,
+        "cfr_mean": 50.0,
+        "length_runs": 0,
+        "parse_failure_events": 0,
+        "stops": {
+          "duplicate_model_output": 1
+        },
+        "error_counts_valid_only": {
+          "(6, 4, 0)": 1
+        }
+      },
+      "old_truncated_response_is_prefix": true,
+      "new_finish_reason": "stop",
+      "new_usage": {
+        "prompt_tokens": 3340,
+        "completion_tokens": 1327,
+        "total_tokens": 4667
+      },
+      "original": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed16.json",
+      "retry": "results/rebuttal_retail_length_retry_20261113_v1/vminus_pplus__active_cegis__seed16/result.json"
+    }
+  ],
+  "new_model_calls": 15,
+  "new_total_tokens": 69551,
+  "notes": [
+    "Original 120 artifacts unchanged. Follow-up rows substitute only all 15 preselected length cases; denominator 20 per cell.",
+    "Invalid final contracts score zero in IoU/CFR means. FA/FR/PV counts are valid contracts only.",
+    "Descriptive post-hoc retry policy; no change to original statistical families.",
+    "Client context 8192 unchanged; server max context differs from original, so not an isolated causal budget comparison.",
+    "Saved evaluations only; no new closure or fault-corpus execution."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "at": "2026-11-13T23:17:12.837950+09:00",
+  "passed": true,
+  "n": 7,
+  "files": [
+    {
+      "path": "results/rebuttal_retail_budget7_20261113_v1/vplus_pplus__active_cegis__seed0/result.json",
+      "sha256": "a3f029a38a0a1f8cabe714e900ca123864c16698034485b88daa8d1aa9c1ce9e"
+    },
+    {
+      "path": "results/rebuttal_retail_budget7_20261113_v1/vplus_pplus__active_cegis__seed10/result.json",
+      "sha256": "e64725b300a806c7e247ebf58732a6b60ed33e6e92040ec16de8c2fc7d5eb6a9"
+    },
+    {
+      "path": "results/rebuttal_retail_budget7_20261113_v1/vminus_pplus__active_cegis__seed0/result.json",
+      "sha256": "e276808a25ef16d53bf24d5c020b6160fb383543c6797548f5ae5db499770942"
+    },
+    {
+      "path": "results/rebuttal_retail_budget7_20261113_v1/vminus_pplus__active_cegis__seed6/result.json",
+      "sha256": "90fb6cb52ff473e52ba0e7e3ea96f2c2293859b05690dc90b1123b83a98d74a0"
+    },
+    {
+      "path": "results/rebuttal_retail_budget7_20261113_v1/vminus_pplus__active_cegis__seed10/result.json",
+      "sha256": "ec2030fd25bc1ada7d14afe5d2c5fab3dd4a0b6876667b0d6e08045000aa72ef"
+    },
+    {
+      "path": "results/rebuttal_retail_budget7_20261113_v1/vminus_pplus__active_cegis__seed11/result.json",
+      "sha256": "a10087cf0d0378a23a42b5e9372d08eb475a681978ec4cf30b0257b178fedadd"
+    },
+    {
+      "path": "results/rebuttal_retail_budget7_20261113_v1/vminus_pplus__active_cegis__seed19/result.json",
+      "sha256": "f41e71d8ca4518a72ad33f10ebd6d035fc6cc5cc18acaa52f6fa0ea21e0b7e82"
+    }
+  ]
+}

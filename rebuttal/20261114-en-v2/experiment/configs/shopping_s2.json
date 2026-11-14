@@ -1,0 +1,24 @@
+{
+  "description": "S2: three items, cart capacity 2 (multiset reasoning axis).",
+  "seed": 20260901,
+  "items": [
+    "book",
+    "pen",
+    "mug"
+  ],
+  "max_stock": 2,
+  "cart_capacity": 2,
+  "valid_payment_methods": [
+    "card",
+    "voucher"
+  ],
+  "rejected_payment_methods": [
+    "expired_card"
+  ],
+  "valid_addresses": [
+    "home"
+  ],
+  "rejected_addresses": [
+    "po_box"
+  ]
+}

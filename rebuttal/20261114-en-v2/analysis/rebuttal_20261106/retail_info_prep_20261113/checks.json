@@ -1,0 +1,79 @@
+{
+  "existing_launch_sources_unchanged": 149,
+  "hidden_label_invariance": true,
+  "closure": {
+    "states": 1294,
+    "normal_accepting": 14,
+    "state_action_view_checks": 34938,
+    "truncated": false,
+    "restricted_reference_exact": true
+  },
+  "faults": {
+    "reference_rejected": 26506,
+    "reference_disagreements": 0,
+    "constant_true_rejected": 0,
+    "corpus_sha256": "df80b125644615c4ac62dac1f9b1674ba492e120ba36c9d2b549e30ed83c3599"
+  },
+  "mock_protocols": {
+    "vplus_pplus": {
+      "initial_sha256": "de39381f13e1839e21194a3744312f8b2011c083c79ffc46480db18a049d844a",
+      "protocols": {
+        "direct": "f7623a4cfc1ad86e82dfdcafc09ad8a37420f2c3fe4d6c2e9acba6496598f50d",
+        "sampled_cegis_fixed": "b5aca58b729ef26e26c45c0bd5fde7c3c31f957f315ed1dd4f5f89c8f5ac62ce",
+        "active_cegis": "e784d2ea3bb15da6e17d2840045be18e04331577ef9e11226426358408ebc536"
+      }
+    },
+    "vminus_pplus": {
+      "initial_sha256": "242536ce34d4c3e5ffc5e692a6a890486055a652906e08f8a12a8c34b63f39d4",
+      "protocols": {
+        "direct": "b41fba54c7fe26dacb429d5a5b7ad080f0132314a2daeb75e647bea786c0e08f",
+        "sampled_cegis_fixed": "d78ccd60d1b58b0cc71739f32850ac484b1c272918916fc11de102d6941f56b2",
+        "active_cegis": "e262c708fea5089336df9a15fbaa4dcf052f5b194a0005ffababc7b8fc346515"
+      }
+    }
+  },
+  "tests_run": 534,
+  "failures": 0,
+  "errors": 0,
+  "passed": true,
+  "elapsed_s": 110.14704853575677,
+  "remote_model_calls": 0,
+  "network_blocked": true,
+  "source_unchanged_during_tests": true,
+  "test_modules": [
+    "experiment.tests.test_b16_statistics",
+    "experiment.tests.test_calendar_active_cegis",
+    "experiment.tests.test_calendar_domain",
+    "experiment.tests.test_demo",
+    "experiment.tests.test_deployment_active_cegis",
+    "experiment.tests.test_deployment_domain",
+    "experiment.tests.test_deployment_dsl_compat",
+    "experiment.tests.test_deployment_information_budget",
+    "experiment.tests.test_deployment_information_policy",
+    "experiment.tests.test_deployment_information_runner",
+    "experiment.tests.test_deployment_notified_launcher",
+    "experiment.tests.test_deployment_oracle_replay_audit",
+    "experiment.tests.test_deployment_prelaunch_safety",
+    "experiment.tests.test_deployment_resume",
+    "experiment.tests.test_enumeration",
+    "experiment.tests.test_env",
+    "experiment.tests.test_fixtures",
+    "experiment.tests.test_g2_runtime",
+    "experiment.tests.test_ground_truth",
+    "experiment.tests.test_hosted_api",
+    "experiment.tests.test_hosted_gapfill",
+    "experiment.tests.test_literature_baselines",
+    "experiment.tests.test_model_runner",
+    "experiment.tests.test_partial_pool_retail",
+    "experiment.tests.test_repair_core",
+    "experiment.tests.test_retail_semantic_fields",
+    "experiment.tests.test_serving",
+    "experiment.tests.test_shopping_price_domain",
+    "experiment.tests.test_st2x2",
+    "experiment.tests.test_st2x2_fixtures",
+    "experiment.tests.test_state",
+    "experiment.tests.test_taubench_order_neutral",
+    "experiment.tests.test_taubench_retail_domain"
+  ],
+  "skipped": 1
+}

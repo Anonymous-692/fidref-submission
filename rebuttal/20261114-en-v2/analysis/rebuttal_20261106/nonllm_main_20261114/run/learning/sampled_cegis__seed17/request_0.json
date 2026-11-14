@@ -1,0 +1,91 @@
+{
+  "boundary": {
+    "delivered_total": 0,
+    "interaction": 0,
+    "new_observations": 0,
+    "packet": {
+      "observations": [],
+      "public": {
+        "max_allocation_limit": 2,
+        "max_quota": 2,
+        "region_options": [
+          "region_a",
+          "region_b",
+          "region_c"
+        ],
+        "resource_types": [
+          "cpu",
+          "ram"
+        ],
+        "statuses": [
+          "idle",
+          "deployed",
+          "stopped",
+          "rolledback"
+        ],
+        "tier_options": [
+          "tier_a",
+          "tier_b",
+          "tier_c"
+        ],
+        "variables": {
+          "active_deployment": "multiset",
+          "active_size": "number",
+          "allocated_resources": "multiset",
+          "allocation_size": "number",
+          "authenticated": "bool",
+          "available_quota": "multiset",
+          "cluster_tier": "option",
+          "deployment_status": "text",
+          "quota_size": "number",
+          "target_region": "option"
+        }
+      }
+    },
+    "packet_sha256": "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+    "request_messages_sha256": "3fd38ddd699178a1931e75240d2bee54601d6fbd1bd6382244ca691775f41222",
+    "role": "propose",
+    "unique_observations": 0
+  },
+  "identity": {
+    "manifest_sha256": "bbc8275896c50bd45f56e1a4c1047865277d8ac08d4c543b980a85dd1e0831ae",
+    "packet_sha256": "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+    "source_sha256": "4307ddf5046150a1d8d79e112ea5aa3d59591400593d8f583d770db3abfd68ad"
+  },
+  "result": {
+    "ambiguity": {},
+    "counts": {
+      "atom_evaluations": 0,
+      "atoms": 206,
+      "expansions": 1,
+      "negatives": 0,
+      "observations": 0,
+      "positives": 0,
+      "post_evaluations": 0,
+      "rhs_terms": 111,
+      "steps": 0
+    },
+    "dsl_nodes": 2,
+    "elapsed_seconds": 0.012262243777513504,
+    "limits": {
+      "max_clauses": 12,
+      "max_expansions": 100000,
+      "max_steps": 1000000,
+      "seconds": 30.0
+    },
+    "post_identified_from_success": false,
+    "spec": {
+      "postcondition": {
+        "op": "const",
+        "value": true
+      },
+      "precondition": {
+        "op": "const",
+        "value": true
+      },
+      "skill": "deploy_service"
+    },
+    "status": "consistent"
+  },
+  "result_sha256": "ce710d6e4a0d04e14e86bfbac460f0ba16b10636c2b841b74430f747b02611dd"
+}

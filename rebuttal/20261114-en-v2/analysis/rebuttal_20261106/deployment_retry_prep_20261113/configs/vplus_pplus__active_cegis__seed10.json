@@ -1,0 +1,35 @@
+{
+  "description": "restricted_vp__vplus_pplus",
+  "sandbox_config": "experiment/configs/deployment_information_neutral_v1.json",
+  "base_url": "[endpoint-redacted]",
+  "model": "gemma-4-31b-it",
+  "methods": [
+    "active_cegis"
+  ],
+  "seeds": [
+    10
+  ],
+  "temperature": 0.2,
+  "top_p": 0.95,
+  "max_tokens": 2048,
+  "state_budget": 48,
+  "query_budget": 4,
+  "token_budget": 65536,
+  "max_depth": 20,
+  "max_states": 15000,
+  "timeout": 600.0,
+  "workers": 1,
+  "compact_context": false,
+  "context_token_limit": 16384,
+  "context_margin": 256,
+  "counterexample_limit": 5,
+  "guided_json": true,
+  "chat_template_kwargs": {
+    "enable_thinking": false
+  },
+  "information_policy": {
+    "track": "restricted_vp",
+    "reveal_valid_sets": true,
+    "reveal_postcondition_patterns": true
+  }
+}

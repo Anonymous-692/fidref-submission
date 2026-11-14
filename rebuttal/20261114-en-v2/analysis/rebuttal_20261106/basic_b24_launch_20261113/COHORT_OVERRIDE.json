@@ -1,0 +1,27 @@
+{
+  "authorization": "2026-11-13 user: 14B on V100, 32B on A100 GPU2",
+  "scope": "32B serving requirement replaces the preparation-only V100 recommendation",
+  "preparation_requirement": {
+    "vllm_version": "0.8.5.post1",
+    "dtype": "half",
+    "tensor_parallel_size": 4
+  },
+  "authorized_actual_32b": {
+    "vllm_version": "0.19.1",
+    "dtype": "bfloat16",
+    "tensor_parallel_size": 1,
+    "gpu_ids": "2"
+  },
+  "unchanged": {
+    "state_budget": 24,
+    "query_budget": 4,
+    "token_budget": 16000,
+    "max_tokens": 1024,
+    "context_window": 8192,
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "guided_json": false
+  },
+  "interpretation": "Separate serving cohort; not a historical byte replay or an isolated model-size comparison",
+  "implementation": "launch.py adapter verifies actual server and records its hash in serving metadata; frozen preparation source is unchanged"
+}

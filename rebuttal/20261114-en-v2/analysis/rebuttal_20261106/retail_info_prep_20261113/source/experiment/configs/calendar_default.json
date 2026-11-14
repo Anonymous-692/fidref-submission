@@ -1,0 +1,54 @@
+{
+  "attendees": [
+    "alice",
+    "bob"
+  ],
+  "max_attendees": 2,
+  "valid_slots": [
+    "morning",
+    "afternoon"
+  ],
+  "rejected_slots": [
+    "midnight"
+  ],
+  "valid_rooms": [
+    "room_alpha",
+    "room_beta"
+  ],
+  "rejected_rooms": [
+    "deprecated_room"
+  ],
+  "valid_types": [
+    "in_person",
+    "video_conf"
+  ],
+  "rejected_types": [
+    "unsupported_type"
+  ],
+  "room_capacities": {
+    "room_alpha": 2,
+    "room_beta": 1,
+    "deprecated_room": 2
+  },
+  "room_video_support": {
+    "room_alpha": true,
+    "room_beta": false,
+    "deprecated_room": true
+  },
+  "external_bookings": {
+    "alpha_morning_alice": {
+      "room": "room_alpha",
+      "slot": "morning",
+      "attendees": [
+        "alice"
+      ]
+    },
+    "beta_afternoon_bob": {
+      "room": "room_beta",
+      "slot": "afternoon",
+      "attendees": [
+        "bob"
+      ]
+    }
+  }
+}

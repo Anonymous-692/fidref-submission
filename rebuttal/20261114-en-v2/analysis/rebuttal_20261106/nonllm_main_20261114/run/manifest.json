@@ -1,0 +1,584 @@
+{
+  "input_hashes": {
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed0.json": "1a7212b6cbf61f714121356a3bad60eb0f71d869c15a988913a2f1eecdd17496",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed1.json": "13416436b187217c89c2c97e82460cdea0dc15e3c669dc15917f5662eee723fd",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed10.json": "a7f13d2cb6d28042f85ab007a462e853cb06ac5790c9d5aac47e0e59e5a08ea8",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed11.json": "611f0a8644b4895e0a03e29062e774506d54748f698065431e6fd1f0378ef214",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed12.json": "40fc14a8db31f50c2d027ef70dc2c0112528024b11ac7139f48c3cfc12243b07",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed13.json": "c79332e8e4eaafc6bc535ada8a2dbe98dc405241d54a917af74cbf115399b8fe",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed14.json": "9d2588bb90d227145645fea8bcd2c398d825a650cf86f3db645ec23a910a745b",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed15.json": "0be415f37b78212b5a7a1cc81a18f63fceacc13f8c210aaa68187a961187d127",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed16.json": "b7a11940435eb0a87ef806c2102a88d93990a0a2d37c7c4460120ff42ea4717c",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed17.json": "7334f25c6e27ef435f0576cdf02acd87357fd8f03e942d9b9362f1f4a70fe97f",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed18.json": "b9717d3dbe40098640b3d2ae2f72213b20f1ce2b54b7ebae1020dd4ed8476945",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed19.json": "8e50f015f7ea12ed422060be9e41118f35b8c292114e6b09134e2f396054df52",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed2.json": "854bc342f0ec05b7bb883f012d85b82b0e7b5849aaa944d5551d49ca33cf54fe",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed3.json": "e95770539271498b84e88cf01f67b73bb71cd3f0e4da7ec49db3b7074bd681a6",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed4.json": "7aad0ac37d0eea197e32041eb02f71f7c4e165bebdedfbfe41c641a1e3fdb48f",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed5.json": "7d56d0439fdf06cc3db2e09f50d6aa2aab94b72414677e39d344fa89e6b077cb",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed6.json": "46877e24af4732a08b279cc1a027f1ea66164789748a684493ad868773a670c7",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed7.json": "87af5577422a5710c091e043c04f079d38ef4ec93b630a641d2608a1daaa015b",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed8.json": "b277388911826364a008b0461f3c4ed7c9a8ae79a72a4e9743b146fa68018528",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed9.json": "184aaf433bd605e204db4c69c429cfc5b13549f52626db0e0de9a77ab5632390",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed0.json": "94bf3a810c6d63aec89647a9040c58795730f1ea1c053f19375306a0288de1ee",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed1.json": "8f6b513fff727ecd4a9f8fae92659ac2616e7af3910698d9b14e63c6d85d3877",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed10.json": "c3efebb8d41cf7ddd5a6a147bab216cf417c175bb637e8cb24a5a175225454aa",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed11.json": "18869658da869f4caa59ebc3797097fa21f1f973ff8d881658b69e4d7cc7b585",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed12.json": "0b301dbfa7e42722f22c15985bec0be7315b5aee04abf2b51776d71c78260253",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed13.json": "b3ded65e52c0633d0901d33409b6ae2609f5a317b4e36dab68c4d6d688021dc5",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed14.json": "8fde48a2a99984742881dc286d02fe5a0e136c5b288ebb7aa49fd00272457108",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed15.json": "dce805bdcaffaaada0489578269dd91806177821cb8444ea0262428eb2eaca4c",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed16.json": "5094c14caacdd90cf3825ac010acef4dbdb251d71331ed0c827c1ee07e2067b5",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed17.json": "4307ddf5046150a1d8d79e112ea5aa3d59591400593d8f583d770db3abfd68ad",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed18.json": "a526f92b0b1296c0f9185d6a043c00469b376d70eea77b96cf24bd7c12ec9b59",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed19.json": "c58cbb887d4675e6956070d84f8157e4ac089ad5f6233bfbf1bcee990da01037",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed2.json": "2ea44c5dddd707c09f2cb2c9ca57c22a2302278d9fc6a1e9a9d61a0f22c8b94d",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed3.json": "7d697a3859da1fde1ded7fd67a4815135721874bf748cd6097e3e1580c81d030",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed4.json": "5ca05c2628009f421ed91846df6b84f05a2debe46d36a3e97e64b103c91ee509",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed5.json": "0f03c05fe65dc19068c240aa102bf16002f4632a2aa892bf62c98c178867a705",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed6.json": "c8bc1899c85b9c571fef272479201426f9985e4da8f72180833b2ec9b0f3806b",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed7.json": "10d1b58ffaa71f126c07da8c62c0bbc5265e4e349f2ebbb1433448e3e0cdf1aa",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed8.json": "8d294669c62692036a32894a420b14ffda88bd7764e9080f094dd3ef367ba0d6",
+    "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed9.json": "0a52fdd72aedafc294f4b9a6cade4a0280ed363fc0e581e806e9d91762a360a9"
+  },
+  "jobs": [
+    {
+      "id": "active_cegis__seed0",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "037b20160dcc41aa81f8106bde6dd20f4c6d860a4b9c8d51990fe5df945924fd",
+        "fda70529a6a6e100e2a06dac6b5c7dd4f36953f05a5a0f09fc00727f1af913ca",
+        "c613796e5d0d23f7b681ae2712f3aa60077c8ac9a4d5f5b720e471b5fe0c1540"
+      ],
+      "seed": 0,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed0.json",
+      "source_sha256": "1a7212b6cbf61f714121356a3bad60eb0f71d869c15a988913a2f1eecdd17496"
+    },
+    {
+      "id": "active_cegis__seed1",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "2758b5e51790cbd8ce945f3b87187d06cdda44300a795a99740b386dab03e454",
+        "5db15b9ed33a03fa3623ed555c90dbe778717ccc07f4570b41df06ec29ed1f41",
+        "3ebd52e80eeb13fecacd35bb08726d78d6841bd6c8180765cba845128cc2d24d"
+      ],
+      "seed": 1,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed1.json",
+      "source_sha256": "13416436b187217c89c2c97e82460cdea0dc15e3c669dc15917f5662eee723fd"
+    },
+    {
+      "id": "active_cegis__seed2",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "f4273ff2df76c41475bf3f5e4af0ec08d198e1929f7cb556ae2f752c1e002c5b",
+        "3a8c7986d83ad0a23e1de7018f8672e950672cef276fc4ef2201ae17a80505d2",
+        "f1166ef2c5c303e893de8c2a3398eb065a266b292d7baad6b0ac3b2aa887d9b8"
+      ],
+      "seed": 2,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed2.json",
+      "source_sha256": "854bc342f0ec05b7bb883f012d85b82b0e7b5849aaa944d5551d49ca33cf54fe"
+    },
+    {
+      "id": "active_cegis__seed3",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "cd9ecd6dd57700ec420f4471c9f247df5d6fe442c5feed95b88432a860111a6e",
+        "ad5888a494289a66317925a99261324a835d76b740b6da4ebc504185b23a7ae8",
+        "ad5888a494289a66317925a99261324a835d76b740b6da4ebc504185b23a7ae8"
+      ],
+      "seed": 3,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed3.json",
+      "source_sha256": "e95770539271498b84e88cf01f67b73bb71cd3f0e4da7ec49db3b7074bd681a6"
+    },
+    {
+      "id": "active_cegis__seed4",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "3a4aa74d86cea98183f9c5c36c7831030ac416c9f9b62dad3fb54bdcdff7ddcd",
+        "8634c477a47ae0126d1484dd1f5506c5b540bd1e5a52587d53846f49cd54859b",
+        "9c64f22fccf07d9c5c3fa2fe21be235e20b46bf744ba6a9d040c9cc9606958ac"
+      ],
+      "seed": 4,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed4.json",
+      "source_sha256": "7aad0ac37d0eea197e32041eb02f71f7c4e165bebdedfbfe41c641a1e3fdb48f"
+    },
+    {
+      "id": "active_cegis__seed5",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "16643ee842ddaa1518b7fac9b0f1ac69b998bd7e3febf0311a92e71ccb85d243",
+        "d24d3dfbb313212c47c777de0e117b165755dc34ab9c103b8a0031dd68e74cb1",
+        "469eb4083f7dc8d5a4df0bfa3462b4ac6759983bf56679ec6889c5be48deb5bb"
+      ],
+      "seed": 5,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed5.json",
+      "source_sha256": "7d56d0439fdf06cc3db2e09f50d6aa2aab94b72414677e39d344fa89e6b077cb"
+    },
+    {
+      "id": "active_cegis__seed6",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "6e196c4dd21de3061d70a2471181acac1220a134ee813e927404af724a999f2b",
+        "51b4acdba9d9a7c7f2c6bd27b54f48818d6fbc790e915bb8e28c1fc89ddd4bb4",
+        "86bdd62d3e03efc9516f2ea8863b01852bbec665417883a7ab9cb651e48bb66b"
+      ],
+      "seed": 6,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed6.json",
+      "source_sha256": "46877e24af4732a08b279cc1a027f1ea66164789748a684493ad868773a670c7"
+    },
+    {
+      "id": "active_cegis__seed7",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "621123fae3158ba704ba7a0548ee027b22d76c77b9386b57827ac37288283e1e",
+        "6c7d13040a86bf9a4bc20c3bc3d6a5193a0a240b2499446bd3f73372187397ba"
+      ],
+      "seed": 7,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed7.json",
+      "source_sha256": "87af5577422a5710c091e043c04f079d38ef4ec93b630a641d2608a1daaa015b"
+    },
+    {
+      "id": "active_cegis__seed8",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "4f1127c644a0fa65ef9cfa5c1580e7f892016bdc077a4f07148c4df362ff8f2d",
+        "465dc940bcd8073c29363be8d515c54d4be90a1449dcbfb3064599e691e8c82d",
+        "55692573dc44f249f88e509fde45edbd851c9c8b97c0a5ad0748b4fae6e6ec6b"
+      ],
+      "seed": 8,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed8.json",
+      "source_sha256": "b277388911826364a008b0461f3c4ed7c9a8ae79a72a4e9743b146fa68018528"
+    },
+    {
+      "id": "active_cegis__seed9",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "085eb7c2ea4d650ae09b680570cdb7462a68d4a2113e10fc446f04d2fc2cc1cf",
+        "d586585279c48e03bad9c494de59f7dfd77aae2e7b612a809458a77744761c69"
+      ],
+      "seed": 9,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed9.json",
+      "source_sha256": "184aaf433bd605e204db4c69c429cfc5b13549f52626db0e0de9a77ab5632390"
+    },
+    {
+      "id": "active_cegis__seed10",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "5006b6337b0c0ba034d06b64371331c2832b6ad9671832456b0a463a83af3be9",
+        "2bc76ac06ea0d584c8756e13dafad1d32f9f3d7fd0d3ca09d65e263606c14c04",
+        "01aa8c26247885c603492db04f12a2c5ceb53524e42192fdf7c57f5518c61f0a"
+      ],
+      "seed": 10,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed10.json",
+      "source_sha256": "a7f13d2cb6d28042f85ab007a462e853cb06ac5790c9d5aac47e0e59e5a08ea8"
+    },
+    {
+      "id": "active_cegis__seed11",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "e03c64164fcb4984bec80650283fa25089c80024f9b51e2619d1bbee0a805941",
+        "67923041546c418a96d674c302c333ef480d8be3a1e816a2a89df1de67031d03"
+      ],
+      "seed": 11,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed11.json",
+      "source_sha256": "611f0a8644b4895e0a03e29062e774506d54748f698065431e6fd1f0378ef214"
+    },
+    {
+      "id": "active_cegis__seed12",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "14f042ffb966b796e19c57551d99efe7752c6613ffa0db4b8a093051d4615e7f",
+        "db672e5ad3c260c1bc8498e8bf2ea948d438ebbd16e2d3c31e7ff138aeaa6ce0",
+        "c92827fdee630e6059d0367c64c83a3977cbcf6abe9cc0d1bb5c4679617d5bef"
+      ],
+      "seed": 12,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed12.json",
+      "source_sha256": "40fc14a8db31f50c2d027ef70dc2c0112528024b11ac7139f48c3cfc12243b07"
+    },
+    {
+      "id": "active_cegis__seed13",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "eb88a2ca80992d9c29b0aa3dc74e07d9d5ab4cd25391cbedc84bc11f45f3fe7b",
+        "dff208325316578dd017ea7598def1baccac4cdab938c28c2e8a5f4c8d45b354",
+        "bda5bfaaa9fc4ceb36d7b664cd81a6a1d69104041ba970928312fac86f9db2c3"
+      ],
+      "seed": 13,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed13.json",
+      "source_sha256": "c79332e8e4eaafc6bc535ada8a2dbe98dc405241d54a917af74cbf115399b8fe"
+    },
+    {
+      "id": "active_cegis__seed14",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "eb7852aeeaec55d385a17522a1d4478bfaca01a84701d4a9dc7d293d56d60d82",
+        "fd29fbeefa2d99ead0b5321eab18f65270dcd4233825a9f9a74abc9a884cf569",
+        "782f1de137ceac30e618cef8fc3f8db4ffd50ed1fc8122f5df850c8710263f42"
+      ],
+      "seed": 14,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed14.json",
+      "source_sha256": "9d2588bb90d227145645fea8bcd2c398d825a650cf86f3db645ec23a910a745b"
+    },
+    {
+      "id": "active_cegis__seed15",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "ff7806163273ea843052b7dcbd57bc693cfc043cc754c6da4f749b828f948e56",
+        "6efc639bdecdada4e9aa98301ce68cc94718f43e45d052d4e274c3ce3f636fb8",
+        "98d1d2eeadbb2758e665442f96803113bd44a4d5c1583cee5d05599482a4cda6"
+      ],
+      "seed": 15,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed15.json",
+      "source_sha256": "0be415f37b78212b5a7a1cc81a18f63fceacc13f8c210aaa68187a961187d127"
+    },
+    {
+      "id": "active_cegis__seed16",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "23a9ae54b0d59aff633644eece22204c32d9c58ebfcb9f92aca7dea541fd0fd3",
+        "9f795bebc4988ef71f431e221516f726ff1c6e332863844e84fe38d013de29b8",
+        "bd9123b75d569f4c96110e5de34d22eedd74ec7a6fb287c8187dbf8f702b9d61"
+      ],
+      "seed": 16,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed16.json",
+      "source_sha256": "b7a11940435eb0a87ef806c2102a88d93990a0a2d37c7c4460120ff42ea4717c"
+    },
+    {
+      "id": "active_cegis__seed17",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "cf8043d30fd9f834b10312cc11f7b27a14b30247585b05bd40f10add4c370024",
+        "662f50d7d489be9209c5b9af480c2b2eaf2ee68979e820357e8d732bc3858f9f",
+        "736663fabacafbbbc653bce8dbc4969a9639563f2666230a67bd7534a777fe5b"
+      ],
+      "seed": 17,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed17.json",
+      "source_sha256": "7334f25c6e27ef435f0576cdf02acd87357fd8f03e942d9b9362f1f4a70fe97f"
+    },
+    {
+      "id": "active_cegis__seed18",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "94e61c1393b513d7e585eb586934c35d0ec182f3bbe33d152cf1440378d95163",
+        "846b666e1dad44a171099a1f0bc0db7209aa084978bb00700b7cfcebd90dd9df",
+        "8ed4da56cbdba0db284c8d7c3dd91d0538a33b87ac8ec8d9c055bbbe2a1c7cd4"
+      ],
+      "seed": 18,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed18.json",
+      "source_sha256": "b9717d3dbe40098640b3d2ae2f72213b20f1ce2b54b7ebae1020dd4ed8476945"
+    },
+    {
+      "id": "active_cegis__seed19",
+      "method": "active_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "43471ead8fed313b9de96434dc23fdb80cf48d7633549eb600190c395f2bbc52",
+        "663848130b3659220a5dd34c00f5ef77a91507f50e4cb0d878237a1d3d1c2336"
+      ],
+      "seed": 19,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/active_cegis__seed19.json",
+      "source_sha256": "8e50f015f7ea12ed422060be9e41118f35b8c292114e6b09134e2f396054df52"
+    },
+    {
+      "id": "sampled_cegis__seed0",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d"
+      ],
+      "seed": 0,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed0.json",
+      "source_sha256": "94bf3a810c6d63aec89647a9040c58795730f1ea1c053f19375306a0288de1ee"
+    },
+    {
+      "id": "sampled_cegis__seed1",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "d5154a23b5d0267f1575ec11c00e1645e4e85168232faa9a4d22631af9b45eec",
+        "d5154a23b5d0267f1575ec11c00e1645e4e85168232faa9a4d22631af9b45eec",
+        "d5154a23b5d0267f1575ec11c00e1645e4e85168232faa9a4d22631af9b45eec"
+      ],
+      "seed": 1,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed1.json",
+      "source_sha256": "8f6b513fff727ecd4a9f8fae92659ac2616e7af3910698d9b14e63c6d85d3877"
+    },
+    {
+      "id": "sampled_cegis__seed2",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "b060460fcbeea6bdd01b6694079ad2396151059f3ffa74314d814f1cc805fbce",
+        "b060460fcbeea6bdd01b6694079ad2396151059f3ffa74314d814f1cc805fbce",
+        "b060460fcbeea6bdd01b6694079ad2396151059f3ffa74314d814f1cc805fbce"
+      ],
+      "seed": 2,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed2.json",
+      "source_sha256": "2ea44c5dddd707c09f2cb2c9ca57c22a2302278d9fc6a1e9a9d61a0f22c8b94d"
+    },
+    {
+      "id": "sampled_cegis__seed3",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "70c6dc8325198167ee007ef1716a5e9bda9b599ab266be26ea55c8887d21c84e",
+        "70c6dc8325198167ee007ef1716a5e9bda9b599ab266be26ea55c8887d21c84e"
+      ],
+      "seed": 3,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed3.json",
+      "source_sha256": "7d697a3859da1fde1ded7fd67a4815135721874bf748cd6097e3e1580c81d030"
+    },
+    {
+      "id": "sampled_cegis__seed4",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "a3e0bd5f1e493a3e001c30b50a41f7d1d887add51c7398200cc1bea06d49b9c9",
+        "a3e0bd5f1e493a3e001c30b50a41f7d1d887add51c7398200cc1bea06d49b9c9",
+        "a3e0bd5f1e493a3e001c30b50a41f7d1d887add51c7398200cc1bea06d49b9c9"
+      ],
+      "seed": 4,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed4.json",
+      "source_sha256": "5ca05c2628009f421ed91846df6b84f05a2debe46d36a3e97e64b103c91ee509"
+    },
+    {
+      "id": "sampled_cegis__seed5",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "fd6a947565d97bff26c592e21adecfca3fcb0d795366a69fa2465ed719456d88",
+        "fd6a947565d97bff26c592e21adecfca3fcb0d795366a69fa2465ed719456d88",
+        "fd6a947565d97bff26c592e21adecfca3fcb0d795366a69fa2465ed719456d88"
+      ],
+      "seed": 5,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed5.json",
+      "source_sha256": "0f03c05fe65dc19068c240aa102bf16002f4632a2aa892bf62c98c178867a705"
+    },
+    {
+      "id": "sampled_cegis__seed6",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "a9ceae70d31d4913900d6cad6105e7c8df2caa9c1371e26209e7b003d0dc563e",
+        "a9ceae70d31d4913900d6cad6105e7c8df2caa9c1371e26209e7b003d0dc563e",
+        "a9ceae70d31d4913900d6cad6105e7c8df2caa9c1371e26209e7b003d0dc563e"
+      ],
+      "seed": 6,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed6.json",
+      "source_sha256": "c8bc1899c85b9c571fef272479201426f9985e4da8f72180833b2ec9b0f3806b"
+    },
+    {
+      "id": "sampled_cegis__seed7",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "389071a49d9694c95630d4d28df08cc9c2e68267e112233e91272c9e0e1f04f2",
+        "389071a49d9694c95630d4d28df08cc9c2e68267e112233e91272c9e0e1f04f2"
+      ],
+      "seed": 7,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed7.json",
+      "source_sha256": "10d1b58ffaa71f126c07da8c62c0bbc5265e4e349f2ebbb1433448e3e0cdf1aa"
+    },
+    {
+      "id": "sampled_cegis__seed8",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d"
+      ],
+      "seed": 8,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed8.json",
+      "source_sha256": "8d294669c62692036a32894a420b14ffda88bd7764e9080f094dd3ef367ba0d6"
+    },
+    {
+      "id": "sampled_cegis__seed9",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "e0071561936640d403c253e8e53db1e0f3d2f8eb4da1b6452e4cd3d70d11a124",
+        "e0071561936640d403c253e8e53db1e0f3d2f8eb4da1b6452e4cd3d70d11a124"
+      ],
+      "seed": 9,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed9.json",
+      "source_sha256": "0a52fdd72aedafc294f4b9a6cade4a0280ed363fc0e581e806e9d91762a360a9"
+    },
+    {
+      "id": "sampled_cegis__seed10",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d"
+      ],
+      "seed": 10,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed10.json",
+      "source_sha256": "c3efebb8d41cf7ddd5a6a147bab216cf417c175bb637e8cb24a5a175225454aa"
+    },
+    {
+      "id": "sampled_cegis__seed11",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "5f0dce132b368fedc9cc0cf8ff01039c743380ac741916b7f07eae22ca915e44",
+        "5f0dce132b368fedc9cc0cf8ff01039c743380ac741916b7f07eae22ca915e44",
+        "5f0dce132b368fedc9cc0cf8ff01039c743380ac741916b7f07eae22ca915e44"
+      ],
+      "seed": 11,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed11.json",
+      "source_sha256": "18869658da869f4caa59ebc3797097fa21f1f973ff8d881658b69e4d7cc7b585"
+    },
+    {
+      "id": "sampled_cegis__seed12",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "d69a18c72c820e265127492c68d5a984f770ec194f053e08cf99ad370a13bd20",
+        "d69a18c72c820e265127492c68d5a984f770ec194f053e08cf99ad370a13bd20",
+        "d69a18c72c820e265127492c68d5a984f770ec194f053e08cf99ad370a13bd20"
+      ],
+      "seed": 12,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed12.json",
+      "source_sha256": "0b301dbfa7e42722f22c15985bec0be7315b5aee04abf2b51776d71c78260253"
+    },
+    {
+      "id": "sampled_cegis__seed13",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "ad3a5a7848a28d86ded6ed2c91bba1d5c9b18d9b5428184e601074d460b3df20",
+        "ad3a5a7848a28d86ded6ed2c91bba1d5c9b18d9b5428184e601074d460b3df20",
+        "ad3a5a7848a28d86ded6ed2c91bba1d5c9b18d9b5428184e601074d460b3df20"
+      ],
+      "seed": 13,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed13.json",
+      "source_sha256": "b3ded65e52c0633d0901d33409b6ae2609f5a317b4e36dab68c4d6d688021dc5"
+    },
+    {
+      "id": "sampled_cegis__seed14",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d"
+      ],
+      "seed": 14,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed14.json",
+      "source_sha256": "8fde48a2a99984742881dc286d02fe5a0e136c5b288ebb7aa49fd00272457108"
+    },
+    {
+      "id": "sampled_cegis__seed15",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "01de1f80dcacb9a7c7c11080370116f43e108baa152d207495e2453a8208895b",
+        "01de1f80dcacb9a7c7c11080370116f43e108baa152d207495e2453a8208895b",
+        "01de1f80dcacb9a7c7c11080370116f43e108baa152d207495e2453a8208895b"
+      ],
+      "seed": 15,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed15.json",
+      "source_sha256": "dce805bdcaffaaada0489578269dd91806177821cb8444ea0262428eb2eaca4c"
+    },
+    {
+      "id": "sampled_cegis__seed16",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "19c3b7f6c9ff959d6eb2b3155b29e51b77c7498a01b8db25c5fd1ab1fe97702d",
+        "19c3b7f6c9ff959d6eb2b3155b29e51b77c7498a01b8db25c5fd1ab1fe97702d",
+        "19c3b7f6c9ff959d6eb2b3155b29e51b77c7498a01b8db25c5fd1ab1fe97702d"
+      ],
+      "seed": 16,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed16.json",
+      "source_sha256": "5094c14caacdd90cf3825ac010acef4dbdb251d71331ed0c827c1ee07e2067b5"
+    },
+    {
+      "id": "sampled_cegis__seed17",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "44559455c902a6157466d7e72ab97858ec314e0ec40c99ad9c379291c499a5d5"
+      ],
+      "seed": 17,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed17.json",
+      "source_sha256": "4307ddf5046150a1d8d79e112ea5aa3d59591400593d8f583d770db3abfd68ad"
+    },
+    {
+      "id": "sampled_cegis__seed18",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "8de3d5e4d2cead82a7c0ae530f115cf239c34e99c1a0fc1478a76646c3622eb2",
+        "8de3d5e4d2cead82a7c0ae530f115cf239c34e99c1a0fc1478a76646c3622eb2",
+        "8de3d5e4d2cead82a7c0ae530f115cf239c34e99c1a0fc1478a76646c3622eb2"
+      ],
+      "seed": 18,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed18.json",
+      "source_sha256": "a526f92b0b1296c0f9185d6a043c00469b376d70eea77b96cf24bd7c12ec9b59"
+    },
+    {
+      "id": "sampled_cegis__seed19",
+      "method": "sampled_cegis",
+      "packet_hashes": [
+        "59d03cae2cfad2981f83206d9fcc13aab607121c492b68103614f916a8017e2d",
+        "5f0dce132b368fedc9cc0cf8ff01039c743380ac741916b7f07eae22ca915e44",
+        "5f0dce132b368fedc9cc0cf8ff01039c743380ac741916b7f07eae22ca915e44",
+        "5f0dce132b368fedc9cc0cf8ff01039c743380ac741916b7f07eae22ca915e44"
+      ],
+      "seed": 19,
+      "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed19.json",
+      "source_sha256": "c58cbb887d4675e6956070d84f8157e4ac089ad5f6233bfbf1bcee990da01037"
+    }
+  ],
+  "limits": {
+    "max_clauses": 12,
+    "max_expansions": 100000,
+    "max_steps": 1000000,
+    "seconds": 30.0
+  },
+  "scope": "40 original V-P- runs, fixed observations, all delivered boundaries, no new LLM calls",
+  "source_hashes": {
+    "analysis/rebuttal_20261106/nonllm_cpu_20261114/evidence.py": "8bd6dffdbf34d4649801a4005bd81aacd039edf57bb9fb74de0402c2e5464018",
+    "analysis/rebuttal_20261106/nonllm_cpu_20261114/learner.py": "5afbaed2794ed38f8eb7cc1836d2767167be2030c6029a80055eb0fe899e5993",
+    "analysis/rebuttal_20261106/nonllm_cpu_20261114/test_cpu.py": "0c0b9d1f41e240d53d9279b5b10e5e5833ff77ee8a7c70bd518acc4d7fd73bb3",
+    "analysis/rebuttal_20261106/nonllm_cpu_20261114/validate.py": "036b544a5ffc279497bd360aed649022cd9ddfe65fa263b52cad44a5173aa892",
+    "analysis/rebuttal_20261106/nonllm_cpu_20261114/validation_v1/CHECKS.json": "50a7344e6f77c3f9f00d6b4e77987f32b9b268fafcf15e4a653259e84cb22feb",
+    "analysis/rebuttal_20261106/nonllm_main_20261114/run.py": "aee9937f0fc1931a91734c83d3e17d0f1ae9449634ac4e31608e01e5335b4d57",
+    "experiment/configs/deployment_information_neutral_v1.json": "7e150c80fd14c8302e1baa21b5931857dc66080410e907184a8d8832938e8284",
+    "experiment/deployment/__init__.py": "a2807f7e56818f75642827a178ea6e98a98fbc86c37439109f30cfac24ede3ac",
+    "experiment/deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+    "experiment/deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+    "experiment/deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+    "experiment/deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+    "experiment/deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+    "experiment/deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+    "experiment/deployment/fixtures.py": "32d9b6b6853d42dcd786f403915a8b5e562c1aa0763be7f814d7fa82d8761532",
+    "experiment/deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+    "experiment/deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+    "experiment/deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+    "experiment/deployment/launch_notified_experiment.py": "e9ed80de1165f695be4b1b7ce8bb8ae7612aa12f57869a44c5b5fdc257953eb8",
+    "experiment/deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+    "experiment/deployment/notify.py": "3d31b68e4e8e60fcc9c039ae1b7d155b0f20f8373e8a19a4588bce5426ac1cd6",
+    "experiment/deployment/oracle_replay_audit.py": "78c753c341c59ff0ea022f48cce8df9b9b71e62dd172eadb43bc5a959ea30d62",
+    "experiment/deployment/patch.py": "a1b431cd3a7fb67e520595ad95428138aba76c4eaee0d469f787c5ed20b67c63",
+    "experiment/deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+    "experiment/deployment/repair_core.py": "3e874d1dda5f25c22792ca37333d0ba9f2d7eccc2cb9658fee1dfb4b4d3d9f85",
+    "experiment/deployment/repair_prompts.py": "220d3e8ca1027b0c306603970a2d003de6f779aa3973b12fc406de1dd9f4f1aa",
+    "experiment/deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+    "experiment/deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+    "experiment/deployment/witness.py": "221185427d1b70a4b7c75fdc6c7b86abc6b00d4acf97c49083d1b417964281d4"
+  },
+  "statistics": "descriptive paired differences; no confirmatory testing"
+}

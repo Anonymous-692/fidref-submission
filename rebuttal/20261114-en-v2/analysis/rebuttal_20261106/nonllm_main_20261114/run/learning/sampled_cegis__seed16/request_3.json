@@ -1,0 +1,129 @@
+{
+  "boundary": {
+    "delivered_total": 6,
+    "interaction": 3,
+    "new_observations": 2,
+    "packet": {
+      "observations": [
+        {
+          "after": null,
+          "before": {
+            "active_deployment": {},
+            "allocated_resources": {
+              "cpu": 1
+            },
+            "authenticated": true,
+            "available_quota": {
+              "cpu": 2
+            },
+            "cluster_tier": "tier_a",
+            "deployment_status": "idle",
+            "target_region": "region_b"
+          }
+        },
+        {
+          "after": null,
+          "before": {
+            "active_deployment": {},
+            "allocated_resources": {
+              "cpu": 2
+            },
+            "authenticated": true,
+            "available_quota": {
+              "cpu": 2
+            },
+            "cluster_tier": "tier_a",
+            "deployment_status": "idle",
+            "target_region": "region_c"
+          }
+        }
+      ],
+      "public": {
+        "max_allocation_limit": 2,
+        "max_quota": 2,
+        "region_options": [
+          "region_a",
+          "region_b",
+          "region_c"
+        ],
+        "resource_types": [
+          "cpu",
+          "ram"
+        ],
+        "statuses": [
+          "idle",
+          "deployed",
+          "stopped",
+          "rolledback"
+        ],
+        "tier_options": [
+          "tier_a",
+          "tier_b",
+          "tier_c"
+        ],
+        "variables": {
+          "active_deployment": "multiset",
+          "active_size": "number",
+          "allocated_resources": "multiset",
+          "allocation_size": "number",
+          "authenticated": "bool",
+          "available_quota": "multiset",
+          "cluster_tier": "option",
+          "deployment_status": "text",
+          "quota_size": "number",
+          "target_region": "option"
+        }
+      }
+    },
+    "packet_sha256": "19c3b7f6c9ff959d6eb2b3155b29e51b77c7498a01b8db25c5fd1ab1fe97702d",
+    "request_messages_sha256": "c398b0350e119b2d14c03a6d3fddc11df0377bf10fad98a54ce5cccadbc3573e",
+    "role": "revise",
+    "unique_observations": 2
+  },
+  "identity": {
+    "manifest_sha256": "bbc8275896c50bd45f56e1a4c1047865277d8ac08d4c543b980a85dd1e0831ae",
+    "packet_sha256": "19c3b7f6c9ff959d6eb2b3155b29e51b77c7498a01b8db25c5fd1ab1fe97702d",
+    "source_sha256": "5094c14caacdd90cf3825ac010acef4dbdb251d71331ed0c827c1ee07e2067b5"
+  },
+  "result": {
+    "ambiguity": {},
+    "counts": {
+      "atom_evaluations": 412,
+      "atoms": 206,
+      "expansions": 2,
+      "negatives": 2,
+      "observations": 2,
+      "positives": 0,
+      "post_evaluations": 0,
+      "rhs_terms": 111,
+      "steps": 3
+    },
+    "dsl_nodes": 3,
+    "elapsed_seconds": 0.013931004330515862,
+    "limits": {
+      "max_clauses": 12,
+      "max_expansions": 100000,
+      "max_steps": 1000000,
+      "seconds": 30.0
+    },
+    "post_identified_from_success": false,
+    "spec": {
+      "postcondition": {
+        "op": "const",
+        "value": true
+      },
+      "precondition": {
+        "args": [
+          {
+            "op": "const",
+            "value": false
+          }
+        ],
+        "op": "and"
+      },
+      "skill": "deploy_service"
+    },
+    "status": "consistent"
+  },
+  "result_sha256": "33075c70062e2c168432b3625329fc1e1517eb87f3694b3af9b30a3bc01056ee"
+}

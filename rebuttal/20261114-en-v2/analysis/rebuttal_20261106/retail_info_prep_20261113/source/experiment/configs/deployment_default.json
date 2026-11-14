@@ -1,0 +1,24 @@
+{
+  "description": "Default configuration for the cloud service deployment sandbox.",
+  "seed": 20260902,
+  "resource_types": [
+    "cpu",
+    "ram"
+  ],
+  "max_quota": 2,
+  "max_allocation_limit": 2,
+  "valid_regions": [
+    "us-central",
+    "europe-west"
+  ],
+  "rejected_regions": [
+    "unsupported-edge"
+  ],
+  "valid_cluster_tiers": [
+    "standard",
+    "premium"
+  ],
+  "rejected_cluster_tiers": [
+    "deprecated-v0"
+  ]
+}

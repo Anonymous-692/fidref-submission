@@ -1,0 +1,251 @@
+{
+  "boundary": {
+    "delivered_total": 7,
+    "interaction": 3,
+    "new_observations": 2,
+    "packet": {
+      "observations": [
+        {
+          "after": null,
+          "before": {
+            "active_deployment": {},
+            "allocated_resources": {
+              "ram": 2
+            },
+            "authenticated": true,
+            "available_quota": {
+              "ram": 2
+            },
+            "cluster_tier": "tier_a",
+            "deployment_status": "idle",
+            "target_region": "region_a"
+          }
+        },
+        {
+          "after": null,
+          "before": {
+            "active_deployment": {},
+            "allocated_resources": {},
+            "authenticated": true,
+            "available_quota": {
+              "cpu": 1,
+              "ram": 2
+            },
+            "cluster_tier": "tier_b",
+            "deployment_status": "idle",
+            "target_region": "region_b"
+          }
+        },
+        {
+          "after": {
+            "active_deployment": {
+              "cpu": 2
+            },
+            "allocated_resources": {},
+            "authenticated": true,
+            "available_quota": {
+              "ram": 1
+            },
+            "cluster_tier": "tier_c",
+            "deployment_status": "deployed",
+            "target_region": "region_c"
+          },
+          "before": {
+            "active_deployment": {},
+            "allocated_resources": {
+              "cpu": 2
+            },
+            "authenticated": true,
+            "available_quota": {
+              "cpu": 2,
+              "ram": 1
+            },
+            "cluster_tier": "tier_c",
+            "deployment_status": "idle",
+            "target_region": "region_c"
+          }
+        }
+      ],
+      "public": {
+        "max_allocation_limit": 2,
+        "max_quota": 2,
+        "region_options": [
+          "region_a",
+          "region_b",
+          "region_c"
+        ],
+        "resource_types": [
+          "cpu",
+          "ram"
+        ],
+        "statuses": [
+          "idle",
+          "deployed",
+          "stopped",
+          "rolledback"
+        ],
+        "tier_options": [
+          "tier_a",
+          "tier_b",
+          "tier_c"
+        ],
+        "variables": {
+          "active_deployment": "multiset",
+          "active_size": "number",
+          "allocated_resources": "multiset",
+          "allocation_size": "number",
+          "authenticated": "bool",
+          "available_quota": "multiset",
+          "cluster_tier": "option",
+          "deployment_status": "text",
+          "quota_size": "number",
+          "target_region": "option"
+        }
+      }
+    },
+    "packet_sha256": "8de3d5e4d2cead82a7c0ae530f115cf239c34e99c1a0fc1478a76646c3622eb2",
+    "request_messages_sha256": "00ad58da3b778f8edc8f057db2ec95fc6e7f3fc2f6795224663a2e300813f8a9",
+    "role": "revise",
+    "unique_observations": 3
+  },
+  "identity": {
+    "manifest_sha256": "bbc8275896c50bd45f56e1a4c1047865277d8ac08d4c543b980a85dd1e0831ae",
+    "packet_sha256": "8de3d5e4d2cead82a7c0ae530f115cf239c34e99c1a0fc1478a76646c3622eb2",
+    "source_sha256": "a526f92b0b1296c0f9185d6a043c00469b376d70eea77b96cf24bd7c12ec9b59"
+  },
+  "result": {
+    "ambiguity": {
+      "active_deployment": 4,
+      "allocated_resources": 6,
+      "authenticated": 2,
+      "available_quota": 1,
+      "cluster_tier": 2,
+      "deployment_status": 1,
+      "target_region": 2
+    },
+    "counts": {
+      "atom_evaluations": 618,
+      "atoms": 206,
+      "expansions": 4,
+      "negatives": 2,
+      "observations": 3,
+      "positives": 1,
+      "post_evaluations": 111,
+      "rhs_terms": 111,
+      "steps": 9
+    },
+    "dsl_nodes": 28,
+    "elapsed_seconds": 0.019617521204054356,
+    "limits": {
+      "max_clauses": 12,
+      "max_expansions": 100000,
+      "max_steps": 1000000,
+      "seconds": 30.0
+    },
+    "post_identified_from_success": true,
+    "spec": {
+      "postcondition": {
+        "args": [
+          {
+            "left": {
+              "var": "authenticated",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "const": true
+            }
+          },
+          {
+            "left": {
+              "var": "allocated_resources",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "const": {}
+            }
+          },
+          {
+            "left": {
+              "var": "available_quota",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "left": {
+                "var": "available_quota",
+                "when": "before"
+              },
+              "op": "difference",
+              "right": {
+                "var": "allocated_resources",
+                "when": "before"
+              }
+            }
+          },
+          {
+            "left": {
+              "var": "active_deployment",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "var": "allocated_resources",
+              "when": "before"
+            }
+          },
+          {
+            "left": {
+              "var": "target_region",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "const": "region_c"
+            }
+          },
+          {
+            "left": {
+              "var": "cluster_tier",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "const": "tier_c"
+            }
+          },
+          {
+            "left": {
+              "var": "deployment_status",
+              "when": "after"
+            },
+            "op": "eq",
+            "right": {
+              "const": "deployed"
+            }
+          }
+        ],
+        "op": "and"
+      },
+      "precondition": {
+        "args": [
+          {
+            "left": {
+              "var": "cluster_tier",
+              "when": "before"
+            },
+            "op": "eq",
+            "right": {
+              "const": "tier_c"
+            }
+          }
+        ],
+        "op": "and"
+      },
+      "skill": "deploy_service"
+    },
+    "status": "consistent"
+  },
+  "result_sha256": "13d87d46c12fc19aa881ec6005cddfb93bd132852d8c3a72226514353071f91c"
+}

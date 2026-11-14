@@ -1,0 +1,31 @@
+{
+  "description": "Five-seed Active CEGIS pilot with compact prompts and an 8192-token context guard.",
+  "sandbox_config": "experiment/configs/deployment_default.json",
+  "base_url": "http://127.0.0.1:8000/v1",
+  "model": "qwen2.5-32b-instruct",
+  "methods": [
+    "active_cegis"
+  ],
+  "seeds": [
+    0,
+    1,
+    5,
+    8,
+    15
+  ],
+  "temperature": 0.2,
+  "top_p": 0.95,
+  "max_tokens": 2048,
+  "state_budget": 48,
+  "query_budget": 4,
+  "token_budget": 16000,
+  "max_depth": 20,
+  "max_states": 15000,
+  "timeout": 600.0,
+  "workers": 4,
+  "compact_context": true,
+  "context_token_limit": 8192,
+  "context_margin": 256,
+  "counterexample_limit": 3,
+  "guided_json": false
+}
