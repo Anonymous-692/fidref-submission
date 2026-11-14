@@ -1,0 +1,288 @@
+{
+  "at": "2026-11-13T23:09:37.789301+09:00",
+  "jobs": [
+    {
+      "id": "vplus_pplus__active_cegis__seed0",
+      "condition": "vplus_pplus",
+      "method": "active_cegis",
+      "seed": 0,
+      "boundary": 3,
+      "source": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed0.json",
+      "initial": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_0.json",
+      "journals": [
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed0/call_0.json",
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed0/call_1.json"
+      ],
+      "hashes": {
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed0.json": "2bd547e7e24ccee40df6a94c7d8c6198630c41cd2a7a3af9bae5de8e9d0fa38f",
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_0.json": "8c51e068e52f75601ca864dc54468c3514b021a35577e5e0b29c302f2cfe1da0",
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed0/call_0.json": "22ad8d47e4e1d537b1639013e6af17729c316f6e987fa7e9f2badfabbdb347d3",
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed0/call_1.json": "0dbfee6da62ed1b61e607581fc9865b01b7e0f22a7ab89ff5273e6c5f19bfe40",
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed0/call_2.json": "0a4c8dbd7c814e42af6118152cfd1e2622de4c24ed1aa3b22177a9b91535b0f9"
+      },
+      "blocked_journal": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed0/call_2.json",
+      "blocked_before_sha256": "fd09c0cc310a199d9d3149094533996116660351ef70d7b9c2d175c3daf0fe91",
+      "blocked_identity": "ce6ed7ef20a680613173e8aa158e0a105afdda2e04d2a7be2602bdcabd8560df"
+    },
+    {
+      "id": "vplus_pplus__active_cegis__seed10",
+      "condition": "vplus_pplus",
+      "method": "active_cegis",
+      "seed": 10,
+      "boundary": 3,
+      "source": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed10.json",
+      "initial": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_10.json",
+      "journals": [
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed10/call_0.json",
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed10/call_1.json"
+      ],
+      "hashes": {
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/active_cegis__seed10.json": "a83758ebb3cf9132c5fa233cc678f8e1fa7766a9fbfe9d2bbbc05dee5617f2e5",
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/initial/trial_10.json": "3741ae3228174261ff3d146b0d4d5120a5caf4f5a507060e6b1300ff3f020a36",
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed10/call_0.json": "8d890e9b921eba42e814fd1f6c328b4d29275ca629c9a9c1deeabfb9084e88b7",
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed10/call_1.json": "02e71cdfdb2bdbd37d416fec48fadaf6643b3d2c4d09ff03b7dfeb559c56b4ee",
+        "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed10/call_2.json": "1a7d6059ff4bcfb95bb2eeaa886b763155204b2474abb75ae12091904dc6f0e5"
+      },
+      "blocked_journal": "results/rebuttal_retail_info_20261113_v1/vplus_pplus/.checkpoint/calls/active_cegis__seed10/call_2.json",
+      "blocked_before_sha256": "47dcc332548ac291386de3f73f7c5d5d362731cd4a2495f80145d1a9d8cf03c3",
+      "blocked_identity": "ebd69920f706efb863eb57a58b3a2a1bba1d6cf3004af0e596c74fb6b1372bfe"
+    },
+    {
+      "id": "vminus_pplus__active_cegis__seed0",
+      "condition": "vminus_pplus",
+      "method": "active_cegis",
+      "seed": 0,
+      "boundary": 3,
+      "source": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed0.json",
+      "initial": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_0.json",
+      "journals": [
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed0/call_0.json",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed0/call_1.json"
+      ],
+      "hashes": {
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed0.json": "f3978a7976f0d72bd3f1ad2fcc7732ec9512cc6d3b53320ccb6fcedaced10376",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_0.json": "5991bdd518bb752f0d9754e91ab30240ab190f2f2b4f5aa9214e175e7be6fd6d",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed0/call_0.json": "8b636622564c7da7a9dd58fe612099be2cc113c437dba668190b633144c66f2d",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed0/call_1.json": "3242abe68f3f87689e5e0bf1da778b7f107a391cd00eed2f8096c641a3be5c4a",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed0/call_2.json": "cfd9f065f7b82b075ea0b40379665c96ba9d0c0134935d0d382fa17b8aec6000"
+      },
+      "blocked_journal": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed0/call_2.json",
+      "blocked_before_sha256": "d01508a59af4ee4c7994b22694561261f3bf8a80f893e66293f2fd7c784cc32a",
+      "blocked_identity": "52cab2fc1a2328de7160267bd38ad1f13818eb856e6036a14160bf18a6b359ee"
+    },
+    {
+      "id": "vminus_pplus__active_cegis__seed6",
+      "condition": "vminus_pplus",
+      "method": "active_cegis",
+      "seed": 6,
+      "boundary": 3,
+      "source": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed6.json",
+      "initial": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_6.json",
+      "journals": [
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed6/call_0.json",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed6/call_1.json"
+      ],
+      "hashes": {
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed6.json": "32c53c94227e3d4b2593cc50c686008aa41d1f2d794a6301bd0778565d5985e7",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_6.json": "8b7f4ac717217d73ebfb0892163ca0cb2479d739d678f687ca54e3b107546dae",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed6/call_0.json": "eb536167298e58056d9ce01c768d0d48164c2355a11a2d4fcc8c482dbad87782",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed6/call_1.json": "fc48c383128a0ce2d9596d4e8b8030c4f1d3461330aea01092a9151f5e4174d8",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed6/call_2.json": "9b16f4b6e66d1208336a0d7ba2fad40a01db6b35a3f0dfa030e3a9e279baf827"
+      },
+      "blocked_journal": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed6/call_2.json",
+      "blocked_before_sha256": "d6d9979838599808616b50b128239da9f3916a9f8faf09c5f5e0f3702e662e41",
+      "blocked_identity": "154f2d689b52067c5402853b4a44e3e5d685688ec627cbd8e78523c4b653b935"
+    },
+    {
+      "id": "vminus_pplus__active_cegis__seed10",
+      "condition": "vminus_pplus",
+      "method": "active_cegis",
+      "seed": 10,
+      "boundary": 3,
+      "source": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed10.json",
+      "initial": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_10.json",
+      "journals": [
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed10/call_0.json",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed10/call_1.json"
+      ],
+      "hashes": {
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed10.json": "71c487534ba72e7a41449527e0f12c3dc54b34708710f57b0ecf6880d498424e",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_10.json": "752c00b8cf37f93bf49947ab575c54c7b682217e6cafbdccf1f7663157ce1618",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed10/call_0.json": "aa32bb94c9e6434201df916c0e31446e06356ff24c7c20bef235e273b4a3af07",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed10/call_1.json": "b7ab0ec2eaa720ff9dd5be06e52d51e6221707b0e3c0bb62d5a9cb9e2044641c",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed10/call_2.json": "034e2c863baf9aa359edf5f5fba35b199d7020cecab1d15e80fbd87aebde16cd"
+      },
+      "blocked_journal": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed10/call_2.json",
+      "blocked_before_sha256": "5caecdf44bfa7b52454bc9b6d104331430ffbc89b59cd0b6eef41ff450de1948",
+      "blocked_identity": "f2c2d28e30b1e0a9db79808d6f6636f838463c799eeccd3a6a4ac384180f80cf"
+    },
+    {
+      "id": "vminus_pplus__active_cegis__seed11",
+      "condition": "vminus_pplus",
+      "method": "active_cegis",
+      "seed": 11,
+      "boundary": 3,
+      "source": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed11.json",
+      "initial": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_11.json",
+      "journals": [
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed11/call_0.json",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed11/call_1.json"
+      ],
+      "hashes": {
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed11.json": "4e299799ac7fe2aff97089130c29f577912267685fc40dc42e85afd7a99d2918",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_11.json": "0b5f6673cd3f43fe1c587caf10f831ccdaf2316e65501a6efe54d50109b0a5fc",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed11/call_0.json": "03bf377c661be50600000f2e82871061463e173f53ce596528dda79d4b2076c1",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed11/call_1.json": "ca08513f6b6fe5ddf506012a4c865b730540d4e8f414a4b8b52c479f9a2bab93",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed11/call_2.json": "95843360a8bcd4ebe9252f4722ff36c7fc6fc400f6fe472cca9278b21bc4cc53"
+      },
+      "blocked_journal": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed11/call_2.json",
+      "blocked_before_sha256": "e274152e294b5967295384ffb1e9a4ea63bc1d7f9f7ae714bd934188d1951673",
+      "blocked_identity": "29e0132a593f921c1e6de0449f6d6d961ebce245b08ac66b1688bdc3bd699573"
+    },
+    {
+      "id": "vminus_pplus__active_cegis__seed19",
+      "condition": "vminus_pplus",
+      "method": "active_cegis",
+      "seed": 19,
+      "boundary": 3,
+      "source": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed19.json",
+      "initial": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_19.json",
+      "journals": [
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed19/call_0.json",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed19/call_1.json"
+      ],
+      "hashes": {
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/active_cegis__seed19.json": "9cdbd23158306d2f51deef4649bad72b9ec63cf9afc1a4e5e92ee9635e70bbca",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/initial/trial_19.json": "a12e50d91260c3d74e4b7c4784c10ef43764e97e00364e1de779816da27bbc8f",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed19/call_0.json": "931795f05116e014918aca72efe5a4e2ac9d5c0e9476666d2868873ba19f16ad",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed19/call_1.json": "f7ba3628161bf60045ddc70045ef55c8eee28d2fc20c26cb694243250152ddf4",
+        "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed19/call_2.json": "b31361920c36bef6e5a0e6c4efde5ce9147871a7c8fb960bce34de1b279e4c8c"
+      },
+      "blocked_journal": "results/rebuttal_retail_info_20261113_v1/vminus_pplus/.checkpoint/calls/active_cegis__seed19/call_2.json",
+      "blocked_before_sha256": "6c585fe21222a9d841537a1cf6de36948fed8ba5fe0a48597960e94923cb0164",
+      "blocked_identity": "10bd8daa10fe6dc51fa17cebe52c484bf0cdd4a09f11f9fcb64b63b530bce9e6"
+    }
+  ],
+  "preflight": {
+    "vplus_pplus__active_cegis__seed0": {
+      "messages_sha256": "669b2fca7706b4310bbcad067e20ffc64684285f69833a4fe0316272e1f73dfc",
+      "prompt_tokens": 3619,
+      "effective_max_tokens": 2048,
+      "blocked_before_sha256": "fd09c0cc310a199d9d3149094533996116660351ef70d7b9c2d175c3daf0fe91"
+    },
+    "vplus_pplus__active_cegis__seed10": {
+      "messages_sha256": "07e20e09a50c9a2053e50ddff2fde4b7d9c4d6f1b0fba560694491e12f5be896",
+      "prompt_tokens": 3704,
+      "effective_max_tokens": 2048,
+      "blocked_before_sha256": "47dcc332548ac291386de3f73f7c5d5d362731cd4a2495f80145d1a9d8cf03c3"
+    },
+    "vminus_pplus__active_cegis__seed0": {
+      "messages_sha256": "741824ab7f55391a838c6e67fe1a4d4b18904b7c2c42be9bcd00e235976dbc6b",
+      "prompt_tokens": 3619,
+      "effective_max_tokens": 2048,
+      "blocked_before_sha256": "d01508a59af4ee4c7994b22694561261f3bf8a80f893e66293f2fd7c784cc32a"
+    },
+    "vminus_pplus__active_cegis__seed6": {
+      "messages_sha256": "e3882f597ab95346f63e370d4741db3e856bcf8cadd14e19638a8f74d6a4df62",
+      "prompt_tokens": 3622,
+      "effective_max_tokens": 2048,
+      "blocked_before_sha256": "d6d9979838599808616b50b128239da9f3916a9f8faf09c5f5e0f3702e662e41"
+    },
+    "vminus_pplus__active_cegis__seed10": {
+      "messages_sha256": "046e9b4d9c1ce271966a8b569df4e25e35c1f08d94767a2ebeeecc76b05c0454",
+      "prompt_tokens": 3704,
+      "effective_max_tokens": 2048,
+      "blocked_before_sha256": "5caecdf44bfa7b52454bc9b6d104331430ffbc89b59cd0b6eef41ff450de1948"
+    },
+    "vminus_pplus__active_cegis__seed11": {
+      "messages_sha256": "e7c94236f389556baa3eea554677c73fe03a2d7d3be06280086d127f181fd468",
+      "prompt_tokens": 3622,
+      "effective_max_tokens": 2048,
+      "blocked_before_sha256": "e274152e294b5967295384ffb1e9a4ea63bc1d7f9f7ae714bd934188d1951673"
+    },
+    "vminus_pplus__active_cegis__seed19": {
+      "messages_sha256": "2a9d2a9146765a1407c2379a453c9298963371dd264c1ef71c0356caa4c99ca1",
+      "prompt_tokens": 3622,
+      "effective_max_tokens": 2048,
+      "blocked_before_sha256": "6c585fe21222a9d841537a1cf6de36948fed8ba5fe0a48597960e94923cb0164"
+    }
+  },
+  "serving": {
+    "pid": 2500162,
+    "gpu": 1,
+    "gpu_uuid": "GPU-e319493c-f08d-e581-6099-4ef3c8a139ce",
+    "dtype": "bfloat16",
+    "vllm_version": "0.19.1",
+    "metadata_sha256": {
+      "config.json": "e967dd38bc5cfd38bd09a995a7bf4a754075df2b46aba68f7fbb5a791e6d8dd1",
+      "generation_config.json": "d4226bbe3117d2d253ba4609720ba82c6c4ce4627a9a6ae05387c78983ac03de",
+      "tokenizer_config.json": "9f4fec4b1dc6ecddf8f4a92e9caea5971c0e67d81309f3f9066a2bee8c362633",
+      "tokenizer.json": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+      "chat_template.jinja": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+      "model.safetensors.index.json": "d4aff3b976d69c123a29d1c085d7ba4de1ac3f4ca1726a7f81e1b11462a64ea2"
+    },
+    "weight_checksum_verified": false,
+    "launch_sha256": "e67cef1029127e9c9514fcf5d50ce6d98acb906ac5b5e628466d37e0585baf34",
+    "checked_at": "2026-11-13T23:09:37.789122+09:00",
+    "tensor_parallel_size": 1,
+    "structured_output_style": "response_format",
+    "request_concurrency": 1,
+    "max_model_len": 16384,
+    "client_context_limit": 8192
+  },
+  "source_sha256": {
+    "taubench_retail/__init__.py": "6716572cf494ea98d4b0163e52be1be4a1bde21b0e0bdb8aaa02c8616e9d35e9",
+    "taubench_retail/audit.py": "5c68085f9156d55504ffe8292332f5bbd7cb4701a5de093f9b7557c301a3c92a",
+    "taubench_retail/checkpoint.py": "7e515dca91a0dc1aee6db209800f3789115a440c74d7b597d60694beac8bf65d",
+    "taubench_retail/config.py": "cb5104f3cabf73ca95f81239f0dfa6efae7140453515b168192766f4bd01efa0",
+    "taubench_retail/contracts.py": "8bd960222cd0147081e1bc68f14f0a1ac510ae93a0a40893ae553e79de291b18",
+    "taubench_retail/dsl.py": "7f1c7836bafab747b739041555c49f3338aa830251a4de43a82a60c2091eb38c",
+    "taubench_retail/enumeration.py": "1acec6fa5593e5c9821c04e45fd0ba492647b150f518164b03bcc0b9089143de",
+    "taubench_retail/env.py": "f2b3c290b8517d1c88e35125d2ebeedb5d31e95e40ef6d9f229ab9b402acaf60",
+    "taubench_retail/fixtures.py": "3e0b2c61f745982bb1199b7694e2d7b98735391e4da55c8bb51b38faf6dec80d",
+    "taubench_retail/ground_truth.py": "331919be6000e03df4a6bbf54c9f6220f27cf0f20b0b9099bcbb01287ed300a5",
+    "taubench_retail/info_driver.py": "bec631ab7673131242466ab7601002a9d32dece232042183c34d037c2e888253",
+    "taubench_retail/information_policy.py": "23c308beaf8f320ed16c8769a186bcfa3ce38550c44d62fc6a05a866a1dfeb61",
+    "taubench_retail/model_runner.py": "55fbd476def0da673daf2f08d905d09b497125d7f610c27eafff35a308c08857",
+    "taubench_retail/prompts.py": "a71522d133a2ce88b6bc4bcc802dedea8829ac5d64f150eb44e75d8b846298a8",
+    "taubench_retail/runner.py": "9e1f817f494c08e11c2fd2f8d4797b385b699b196475c85a9976b9b03462bb68",
+    "taubench_retail/state.py": "b62c66c5e023f0406f0efa8be820d8b2dba1ba1b831e497f7af81403803127cf",
+    "taubench_retail/vendor/tau_bench/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "taubench_retail/vendor/tau_bench/envs/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "taubench_retail/vendor/tau_bench/envs/retail/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "taubench_retail/vendor/tau_bench/envs/retail/tools/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "taubench_retail/vendor/tau_bench/envs/retail/tools/cancel_pending_order.py": "c33151a896b62ac87ed1bcbcbd62dabcd47c8c1eaf47bbb5e2f15f8b6283b19d",
+    "taubench_retail/vendor/tau_bench/envs/retail/tools/exchange_delivered_order_items.py": "d547d44b28e97513d4a15714d4bd2bbca13f76827bfe06b71e1b51a742f44489",
+    "taubench_retail/vendor/tau_bench/envs/retail/tools/modify_pending_order_payment.py": "6c2d4c329fae0d66d50bd48cb6ae9520167137f8b20d3385fa407aa5b03d2fe5",
+    "taubench_retail/vendor/tau_bench/envs/retail/tools/return_delivered_order_items.py": "7d92e8962c17e5fa9c8e3240d21e31fc1adf5e68100c92bb0f67e0a67ea5b7bf",
+    "taubench_retail/vendor/tau_bench/envs/tool.py": "0a158be298092fc64862ae8843f35f57cfba139aa02c2ee8fbe87b1e4a1de0fc",
+    "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+    "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+    "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+    "modeling/g2_runtime.py": "a35d6d02c8d83cf84d1c1d3e5c97dc43a71835732c5c1dadbaf8a731fe7d4a4a",
+    "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b",
+    "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+    "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26"
+  },
+  "files": {
+    "analysis/rebuttal_20261106/retail_budget7_20261113/suite.py": "960aa69f95c385a31d35ff8bb83f4c92e0e87480f392eff53025427b8519c184",
+    "analysis/rebuttal_20261106/retail_budget7_20261113/test_suite.py": "2d5ed3908ad13a0c0dc75dfe010d2dd0d35520203bfd9c07387b712789db9def",
+    "analysis/rebuttal_20261106/retail_budget7_20261113/checks.json": "6a3d325e5d7787954868bccb9da97411b57dba2553b45f6ae2e02018a4b9206c",
+    "analysis/rebuttal_20261106/retail_budget7_20261113/lifecycle.py": "c8a2b7c3dbda6a04695b6a6b6b7c54c134a164f90a86747af92b5bc25f67370f",
+    "analysis/rebuttal_20261106/retail_budget7_20261113/remote_start.py": "6ebf4e590c4405ffc5fcb971a5c94f499302bb1eb47acb9d70efde540da023a2",
+    "analysis/rebuttal_20261106/retail_budget7_20261113/server_launch.json": "e67cef1029127e9c9514fcf5d50ce6d98acb906ac5b5e628466d37e0585baf34",
+    "analysis/rebuttal_20261106/retail_retry_20261113/suite.py": "bb58a681427a9f241139a639fbfd71a39c1ed9328365e752f586a7f37e5cbcfb"
+  },
+  "output": "results/rebuttal_retail_budget7_20261113_v1",
+  "policy": {
+    "total_tokens": 32768,
+    "max_tokens": 2048,
+    "state_budget": 48,
+    "query_budget": 4,
+    "max_new_calls": 7,
+    "concurrency": 1,
+    "automatic_retry": false,
+    "selection": "seven_non_length_unsent_fourth_requests",
+    "reuse_prefix_calls": 3
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "frozen source/input/output hashes",
+    "exact packet replay",
+    "deterministic learner replay",
+    "independent decimal IoU/CFR",
+    "fault denominators",
+    "unique complete seed sets"
+  ],
+  "denominator_per_cell": 20,
+  "input_runs": 40,
+  "new_model_calls": 0,
+  "passed": true,
+  "replayed_observation_boundaries": 139,
+  "scored_contracts": 80,
+  "summary_sha256": "0b67056f3df486156a5288c8de6651c542cc460db5fca0076aff7ed7e84e79d5",
+  "verifier_sha256": "2aceb3418ee0355a294c4b64d094a20e2662972ba7fb2d4949c56d1b8c0b83ff"
+}

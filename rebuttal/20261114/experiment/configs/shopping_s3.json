@@ -1,0 +1,24 @@
+{
+  "description": "S3: three items, cart capacity 3 (largest multiset axis).",
+  "seed": 20260901,
+  "items": [
+    "book",
+    "pen",
+    "mug"
+  ],
+  "max_stock": 2,
+  "cart_capacity": 3,
+  "valid_payment_methods": [
+    "card",
+    "voucher"
+  ],
+  "rejected_payment_methods": [
+    "expired_card"
+  ],
+  "valid_addresses": [
+    "home"
+  ],
+  "rejected_addresses": [
+    "po_box"
+  ]
+}

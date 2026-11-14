@@ -1,0 +1,51 @@
+{
+  "items": [
+    "book",
+    "gift"
+  ],
+  "item_prices": {
+    "book": 2400,
+    "gift": 2500
+  },
+  "opening_stock": {
+    "book": 2,
+    "gift": 1
+  },
+  "cart_capacity": 2,
+  "payment_methods": [
+    "card",
+    "wallet",
+    "expired_card"
+  ],
+  "accepted_payment_methods": [
+    "card",
+    "wallet"
+  ],
+  "addresses": [
+    "home",
+    "remote",
+    "po_box"
+  ],
+  "serviceable_addresses": [
+    "home",
+    "remote"
+  ],
+  "coupon_codes": [
+    "save500"
+  ],
+  "accepted_coupon_codes": [
+    "save500"
+  ],
+  "coupon_min_subtotal": 3000,
+  "coupon_discount": 500,
+  "coupon_excluded_items": [
+    "gift"
+  ],
+  "free_shipping_threshold": 4000,
+  "shipping_fee": 600,
+  "remote_shipping_surcharge": 400,
+  "initial_wallet_balance": 4300,
+  "card_limit": 5000,
+  "terminal_after_order": true,
+  "allow_post_order_cart_add": true
+}

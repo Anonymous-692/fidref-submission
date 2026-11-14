@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "tests": 2,
+  "selected_prefixes": 36,
+  "remote_model_calls": 0,
+  "adapter_sha256": "d95130b2c125443405321d6a84a446cf3f932dfbdc6ef848f84f3eb0786a977f",
+  "test_sha256": "f8c22b9e86d5ce9da2fc85337fe246d4ca079b36b2761ad47470e87206b568e9",
+  "selection_sha256": "bd6cda2f4425dd26f198f488257e152d746a569f5d402c4d440190a98c6616c9"
+}

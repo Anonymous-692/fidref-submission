@@ -1,0 +1,67 @@
+{
+  "at": "2026-11-13T13:36:51.381033+09:00",
+  "passed": true,
+  "n": 15,
+  "files": [
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__sampled_cegis_fixed__seed0/result.json",
+      "sha256": "738fcda0dbb7cad169372d5e13a19642c704bc9adc51824e833ec5c8ef43a4ea"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__sampled_cegis_fixed__seed16/result.json",
+      "sha256": "150a3db02074faeb0435a6cd61f59816b1186428122dd090c8a9c93d69658c71"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed1/result.json",
+      "sha256": "d25e2cd624df2b3d922704a0ad78a4f99afab6aad73a9b5fca245e2a83f3d04d"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed2/result.json",
+      "sha256": "8e72a5e909feb83e2b9555a6897ae90027a1932b323a0c355b3c331267b8d77d"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed3/result.json",
+      "sha256": "f7263997e7f27492f979ee7a6e6a8ebf5438c2c1e07a6657ca0b0724c2a4b78d"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed5/result.json",
+      "sha256": "51e03ce9631d97a84da900b6569bf4366a05fac60c0d007d2ea95a972ae51d36"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed6/result.json",
+      "sha256": "b67dd5f0ea2774faee010b510b0dac957ff7382d58edb68b8d69d359fa86e1ec"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed8/result.json",
+      "sha256": "9f7fc843a2704a646448bc780ecdbc52b4dc15be5bd0a1ca09e254dbb519688b"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed9/result.json",
+      "sha256": "add4ee9e3b0edb2a9b3bf8570d526e75171615c04d638037aac72949b0934028"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed12/result.json",
+      "sha256": "d5ab971412945f256877b7782826c14dd4ec7cf18c091a4a26f9a8c1d96568be"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed17/result.json",
+      "sha256": "225fe72d20b9ffdf589ce2b8525525c6dd22c462d08eb36f251084a2be97ad1a"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vplus_pplus__active_cegis__seed18/result.json",
+      "sha256": "d5c817ce4c698a7154a664a7eccd41e22df170e1ebf3c737a72e06782eb0c3f2"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vminus_pplus__sampled_cegis_fixed__seed0/result.json",
+      "sha256": "72dcae1de91a75625dab7993e62688c982f26aaa8b8c1a6daef0b4362fda0364"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vminus_pplus__sampled_cegis_fixed__seed16/result.json",
+      "sha256": "dafe3d7273b29232508e7e20def69856e34e14992f314b47d46a118d6bf9b50d"
+    },
+    {
+      "path": "results/rebuttal_retail_length_retry_20261113_v1/vminus_pplus__active_cegis__seed16/result.json",
+      "sha256": "9a19bfe004814aec29e7af716ca433eb3c22e997b1eea072e9585f1217146d3f"
+    }
+  ]
+}

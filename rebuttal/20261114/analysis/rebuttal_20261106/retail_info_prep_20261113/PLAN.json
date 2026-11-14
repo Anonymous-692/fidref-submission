@@ -1,0 +1,70 @@
+{
+  "status": "durable_driver_cpu_verified_live_preflight_pending",
+  "domain": "taubench_retail",
+  "fixture": "source/experiment/configs/taubench_retail_default.json",
+  "vocabulary_protocol": "w1_semantic_fields_v1",
+  "conditions": [
+    "vplus_pplus",
+    "vminus_pplus"
+  ],
+  "methods": [
+    "direct",
+    "sampled_cegis_fixed",
+    "active_cegis"
+  ],
+  "planned_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "planned_model": "gemma-4-31b-it",
+  "planned_runs": 120,
+  "budgets": {
+    "state_budget": 48,
+    "query_budget": 4,
+    "token_budget": 16000
+  },
+  "decoding": {
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "max_tokens": 2048
+  },
+  "chat_template_kwargs": {
+    "enable_thinking": false
+  },
+  "structured_output_style": "response_format",
+  "guided_json": true,
+  "context_token_limit": 8192,
+  "context_margin": 256,
+  "compact_context": true,
+  "refinement_protocol": "self_contained_v3",
+  "counterexample_limit": 3,
+  "vacuity_revision_limit": 1,
+  "active_batch_size": 8,
+  "active_termination": "stop_on_satisfied_observed_sample",
+  "initial_sharing": "one_record_per_condition_and_seed_shared_across_three_methods",
+  "result_namespace_template": "results/rebuttal_retail_info_<launch_date>_v1/<condition>/<method>__seed<seed>.json",
+  "launch_enabled": false,
+  "remaining_gates": [
+    "independent_code_review",
+    "live_model_serving_identity_and_structured_output_smoke",
+    "final_source_config_statistical_family_and_output_manifest_freeze"
+  ]
+}

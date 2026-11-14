@@ -1,0 +1,664 @@
+{
+  "payload": {
+    "schema_version": 2,
+    "run": "sampled_cegis__seed19",
+    "created_at": "2026-11-12T20:51:18.722985+00:00",
+    "method": "sampled_cegis",
+    "model": "gemma-4-31b-it",
+    "endpoint": "[endpoint-redacted]",
+    "seed": 19,
+    "decoding": {
+      "temperature": 0.2,
+      "top_p": 0.95,
+      "max_tokens": 2048,
+      "seed": 19
+    },
+    "budgets": {
+      "state_budget": 48,
+      "query_budget": 4,
+      "token_budget": 16000
+    },
+    "sandbox": {
+      "domain": "deployment",
+      "config_path": "experiment/configs/deployment_default.json",
+      "config": {
+        "seed": 20260902,
+        "resource_types": [
+          "cpu",
+          "ram"
+        ],
+        "max_quota": 2,
+        "max_allocation_limit": 2,
+        "valid_regions": [
+          "europe-west",
+          "us-central"
+        ],
+        "rejected_regions": [
+          "unsupported-edge"
+        ],
+        "valid_cluster_tiers": [
+          "premium",
+          "standard"
+        ],
+        "rejected_cluster_tiers": [
+          "deprecated-v0"
+        ]
+      },
+      "max_depth": 20,
+      "max_states": 15000,
+      "enumeration": {
+        "states": 11712,
+        "transitions": 128968,
+        "truncated": false,
+        "max_depth": 20,
+        "max_states": 15000,
+        "deepest_level": 20
+      },
+      "evaluation_states": 11712,
+      "oracle_contract": "ground_truth.deploy_service",
+      "information_policy": {
+        "version": "deployment_information_v1",
+        "track": "pattern_only",
+        "reveal_valid_sets": true,
+        "reveal_postcondition_patterns": false
+      },
+      "information_protocol": {
+        "information_policy": {
+          "version": "deployment_information_v1",
+          "track": "pattern_only",
+          "reveal_valid_sets": true,
+          "reveal_postcondition_patterns": false
+        },
+        "parser_config_sets": [
+          "region_options",
+          "resource_types",
+          "tier_options",
+          "rejected_regions",
+          "rejected_cluster_tiers",
+          "valid_regions",
+          "valid_cluster_tiers"
+        ],
+        "sources": {
+          "deployment/runner.py": "e7fafd293b364821be4ccf8ac4d1a4003c69d174372efd2e5e31c6b8cd9f8c5b",
+          "deployment/model_runner.py": "e4cd33d71db4776f1fe8c35f8c0029804a5b4812e8812f0c42ff0f31248e8410",
+          "deployment/initial_candidate.py": "cb7e82e3dbbd8619c1c6141f1410f9d5b000fde74ed59af9c4f74f2c25b15d26",
+          "deployment/checkpoint.py": "85840093ebcb7f1abe6004b0228159bc1126ca168dba501634d3fc879b43db8a",
+          "deployment/information_policy.py": "7265493e032d81520ceffe223394b9654769c82fc9f9d34c8bd0ff471c8bacc0",
+          "deployment/prompts.py": "d5f79f1bd9c3e4eb69989ac38a20d0b80bfa6bba28dbdbe7812418ca837182b9",
+          "deployment/dsl.py": "c5998b65ce9e569260bd5d5d3bb79a6cd6c80614c48ec24ce5b493704d8bd07b",
+          "deployment/config.py": "fc2fdb372820906aa0cc1459e82fc06f069d339820bc86fdd63e2a00c0cd7431",
+          "deployment/state.py": "78f288c3a3aaf88bed7ea602be5ee73e1229113e27daf996fd7fdae69249b8f4",
+          "deployment/enumeration.py": "580f57f28d78e0684bfebed2e33eaa6a11e4d0dc1b262cb2279f9f75f7c817bc",
+          "deployment/env.py": "7deb7b06cc9ee9b706053520e87c64c8014cad281fef1bf8fccdaa86cc825f86",
+          "deployment/contracts.py": "0f9ab6fd62ffedc01277135f5c2e25fa421f03ba575e6f1bb6b790376d5b29da",
+          "deployment/ground_truth.py": "9ab12d82238ac235e16df08c4c18559f3d80eb856f0515952e16b42bd73798f3",
+          "modeling/client.py": "8d993f1e63d183a5fa0f68c3a76b1c48536f521af1df7a72635d9dde554050d5",
+          "modeling/artifacts.py": "5423ef1788411ea9718e94dbb3c4f20a4299a6b866b43adcd9dd2106148fdf38",
+          "modeling/runner.py": "f87469dac87c278ca6a3f483466dcd4ea78a2ecd1ba9f314ca908cf5fcfa21bd",
+          "counterexamples.py": "654ecfb59204d84e6adca7a9ca0732fb188d64adc583422fc3416ccfeca4f84b"
+        },
+        "initial_candidate_policy": "shared_condition_trial_v1",
+        "token_accounting": "prompt_reservation_actual_usage_guard_v1",
+        "selector_rng": "legacy_fingerprint",
+        "fixed_pool_repair": "parse_failure_note_plus_direct_in_both_context_modes",
+        "pattern_only_retains_other_effect_hints": true
+      }
+    },
+    "serving": {
+      "model": "gemma-4-31b-it",
+      "endpoint": "[endpoint-redacted]",
+      "vllm_version": "0.19.1",
+      "structured_output_style": "response_format",
+      "max_model_len": 8192,
+      "reasoning_request": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "request_concurrency": 2
+    },
+    "hashes": {
+      "sandbox_config_sha256": "ba537bd3b8a6db88bb06323862b785dd37577e4d68a31f574fa81abbea3b7b25",
+      "decoding_sha256": "61fa61b1f306b30bc812333b259dabad7cbf487caf6964e93688eb8c95c7b733",
+      "budgets_sha256": "a226cbdc29a384e2524cd88ae62f8c02d60cef8c0e3140c1c81a5d96041126f2",
+      "protocol_sha256": "6df81201ac6a2de9e063d3a239275f2737f369912f2afffdb57ba03f1637f93d",
+      "reasoning_sha256": "ddfbc286defff8c075c38c443580598c0e76fb5cd1264b7e6b0c03e72393b3ab",
+      "initial_context_sha256": "0cbf38fed1435070044cd7eecbe425ad72d8d0f59690e0cfc5497b8b1604e143",
+      "initial_candidate_sha256": "2880abfb7b27bd232c40ba7df7b52eb33dfd1095eac1caa45492bb6728503191",
+      "information_policy_sha256": "23a6e5349a9e3e0249ba8030cea75ddbf9a5b4051ec91bc862afd9ed15af1e8d"
+    },
+    "interactions": [
+      {
+        "index": 0,
+        "role": "propose",
+        "messages": [
+          {
+            "content": "You are an expert formal verification engineer specializing in cloud deployment contracts.\nYour task is to write declarative contracts in JSON for the `deploy_service` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `active_deployment` (multiset)\n- `active_size` (number)\n- `allocated_resources` (multiset)\n- `allocation_size` (number)\n- `authenticated` (bool)\n- `available_quota` (multiset)\n- `cluster_tier` (option)\n- `deployment_status` (text)\n- `quota_size` (number)\n- `target_region` (option)\n\nDeployment status values: 'idle', 'deployed', 'stopped', 'rolledback'\nConfiguration sets: 'region_options', 'resource_types', 'tier_options', 'rejected_regions', 'rejected_cluster_tiers', 'valid_regions', 'valid_cluster_tiers'\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — a resource multiset has no units.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set.\n- `covers`: {\"op\": \"covers\", \"available\": t, \"required\": t} — multiset covers.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, null, or multiset.\n- `difference`: {\"op\": \"difference\", \"left\": t, \"right\": t} — multiset difference.\n- `union`: {\"op\": \"union\", \"left\": t, \"right\": t} — multiset sum.\n- `get`: {\"op\": \"get\", \"multiset\": t, \"resource\": \"<resource>\"} — resource count.\n- `total`: {\"op\": \"total\", \"multiset\": t} — total units in a multiset.\n\nRules (violating any of these makes the answer unparseable):\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is thrown away.\n- There is NO numeric arithmetic in this grammar. `add`, `sub`, `plus`, `minus`, `sum`, `mul` and `div` over numbers are forbidden. `add` is tolerated only as a spelling of `union` when BOTH operands are multisets; prefer `union` and never write `add` over numbers.\n- `total` and `get` take a multiset. `allocation_size`, `quota_size` and `active_size` are ALREADY numbers, so never wrap them in `total` or `get` — compare them directly with eq/ne/lt/le/gt/ge.\n- Derived variable totals (`allocation_size`, `quota_size`, `active_size`) are numbers. Do NOT write arithmetic on them. Express state transitions directly on the underlying multisets (`allocated_resources`, `available_quota`, `active_deployment`) using `difference` or `union`.\n- `union` and `difference` take two multisets and return a multiset; they may not be applied to numbers, strings or booleans.\n- `unchanged` is valid only inside the postcondition, and only over the state variable names listed above.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- Comparisons must join two terms of the same kind: number with number, multiset with multiset, text/option with text/option. Wrap literal values in term objects like `{\"const\": \"deployed\"}` or `{\"const\": 0}`, never raw scalar values.\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact so it is never truncated.\n\nThe object below is a COMPLETE, VALID example of the required JSON shape. It exists only to show the syntax: it is deliberately incomplete and is NOT the correct contract for `deploy_service`. Copy its structure, not its clauses.\n\n```json\n{\n  \"skill\": \"deploy_service\",\n  \"notes\": \"JSON envelope demonstration only - not a candidate contract\",\n  \"precondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  },\n  \"postcondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  }\n}\n```",
+            "role": "system"
+          },
+          {
+            "content": "Synthesize the complete formal contract for `deploy_service` under the configuration:\n- Resource types: ['cpu', 'ram']\n- Valid regions: ['europe-west', 'us-central']\n- Rejected regions: ['unsupported-edge']\n- Valid cluster tiers: ['premium', 'standard']\n- Rejected cluster tiers: ['deprecated-v0']\n- Max quota: 2\n- Max allocation limit: 2\n\nThe two maxima above only bound generated sandbox states. Do NOT copy them into the contract as allocation_size or quota_size threshold clauses unless the observations independently require such a clause.\n\nOutput ONLY the JSON object with keys skill (deploy_service), precondition, and postcondition.\nKeep it compact and remember the operator rules: no numeric arithmetic, and never apply `total` or `get` to allocation_size, quota_size or active_size.",
+            "role": "user"
+          }
+        ],
+        "prompt_sha256": "9fbccfc50990507e71117f288c6d9878e1dba83a2f025c5cd937ed792371673e",
+        "response_sha256": "0c1007c0c14647a8273046c8e193e64082562fc14347118285d556df1d6ecdd4",
+        "request": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          },
+          "max_tokens": 2048,
+          "messages": [
+            {
+              "content": "You are an expert formal verification engineer specializing in cloud deployment contracts.\nYour task is to write declarative contracts in JSON for the `deploy_service` operation.\nYou must output valid JSON matching the specified grammar, without surrounding prose.\n\nState variables:\n- `active_deployment` (multiset)\n- `active_size` (number)\n- `allocated_resources` (multiset)\n- `allocation_size` (number)\n- `authenticated` (bool)\n- `available_quota` (multiset)\n- `cluster_tier` (option)\n- `deployment_status` (text)\n- `quota_size` (number)\n- `target_region` (option)\n\nDeployment status values: 'idle', 'deployed', 'stopped', 'rolledback'\nConfiguration sets: 'region_options', 'resource_types', 'tier_options', 'rejected_regions', 'rejected_cluster_tiers', 'valid_regions', 'valid_cluster_tiers'\n\nFormula operators:\n- `const`: {\"op\": \"const\", \"value\": true} — a literal truth value.\n- `and`: {\"op\": \"and\", \"args\": [f, ...]} — every listed formula holds.\n- `or`: {\"op\": \"or\", \"args\": [f, ...]} — at least one listed formula holds.\n- `not`: {\"op\": \"not\", \"arg\": f} — the formula does not hold.\n- `is_true`: {\"op\": \"is_true\", \"arg\": t} — a boolean term is true.\n- `is_null`: {\"op\": \"is_null\", \"arg\": t} — an optional term is unset (null).\n- `is_empty`: {\"op\": \"is_empty\", \"arg\": t} — a resource multiset has no units.\n- `eq`: {\"op\": \"eq\", \"left\": t, \"right\": t} — two terms of the same kind are equal.\n- `ne`: {\"op\": \"ne\", \"left\": t, \"right\": t} — two terms of the same kind differ.\n- `lt`: {\"op\": \"lt\", \"left\": t, \"right\": t} — a number is strictly smaller.\n- `le`: {\"op\": \"le\", \"left\": t, \"right\": t} — a number is smaller or equal.\n- `gt`: {\"op\": \"gt\", \"left\": t, \"right\": t} — a number is strictly greater.\n- `ge`: {\"op\": \"ge\", \"left\": t, \"right\": t} — a number is greater or equal.\n- `in_set`: {\"op\": \"in_set\", \"value\": t, \"set\": \"<config set>\"} — member of set.\n- `covers`: {\"op\": \"covers\", \"available\": t, \"required\": t} — multiset covers.\n- `unchanged`: {\"op\": \"unchanged\", \"vars\": [\"...\"]} — postcondition variables unchanged.\n\nTerm operators:\n- `var`: {\"var\": \"<name>\", \"when\": \"before\"|\"after\"} — read a state variable.\n- `const`: {\"const\": ...} — literal number, string, null, or multiset.\n- `difference`: {\"op\": \"difference\", \"left\": t, \"right\": t} — multiset difference.\n- `union`: {\"op\": \"union\", \"left\": t, \"right\": t} — multiset sum.\n- `get`: {\"op\": \"get\", \"multiset\": t, \"resource\": \"<resource>\"} — resource count.\n- `total`: {\"op\": \"total\", \"multiset\": t} — total units in a multiset.\n\nRules (violating any of these makes the answer unparseable):\n- Use ONLY the formula and term operators listed above. Any other operator name is a parse error and the whole answer is thrown away.\n- There is NO numeric arithmetic in this grammar. `add`, `sub`, `plus`, `minus`, `sum`, `mul` and `div` over numbers are forbidden. `add` is tolerated only as a spelling of `union` when BOTH operands are multisets; prefer `union` and never write `add` over numbers.\n- `total` and `get` take a multiset. `allocation_size`, `quota_size` and `active_size` are ALREADY numbers, so never wrap them in `total` or `get` — compare them directly with eq/ne/lt/le/gt/ge.\n- Derived variable totals (`allocation_size`, `quota_size`, `active_size`) are numbers. Do NOT write arithmetic on them. Express state transitions directly on the underlying multisets (`allocated_resources`, `available_quota`, `active_deployment`) using `difference` or `union`.\n- `union` and `difference` take two multisets and return a multiset; they may not be applied to numbers, strings or booleans.\n- `unchanged` is valid only inside the postcondition, and only over the state variable names listed above.\n- `when: \"after\"` is valid only inside the postcondition; the precondition may only read `when: \"before\"`.\n- Comparisons must join two terms of the same kind: number with number, multiset with multiset, text/option with text/option. Wrap literal values in term objects like `{\"const\": \"deployed\"}` or `{\"const\": 0}`, never raw scalar values.\n- Output ONE JSON object and nothing else: no markdown fences, no comments, no explanation before or after. Keep the contract compact so it is never truncated.\n\nThe object below is a COMPLETE, VALID example of the required JSON shape. It exists only to show the syntax: it is deliberately incomplete and is NOT the correct contract for `deploy_service`. Copy its structure, not its clauses.\n\n```json\n{\n  \"skill\": \"deploy_service\",\n  \"notes\": \"JSON envelope demonstration only - not a candidate contract\",\n  \"precondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  },\n  \"postcondition\": {\n    \"op\": \"const\",\n    \"value\": true\n  }\n}\n```",
+              "role": "system"
+            },
+            {
+              "content": "Synthesize the complete formal contract for `deploy_service` under the configuration:\n- Resource types: ['cpu', 'ram']\n- Valid regions: ['europe-west', 'us-central']\n- Rejected regions: ['unsupported-edge']\n- Valid cluster tiers: ['premium', 'standard']\n- Rejected cluster tiers: ['deprecated-v0']\n- Max quota: 2\n- Max allocation limit: 2\n\nThe two maxima above only bound generated sandbox states. Do NOT copy them into the contract as allocation_size or quota_size threshold clauses unless the observations independently require such a clause.\n\nOutput ONLY the JSON object with keys skill (deploy_service), precondition, and postcondition.\nKeep it compact and remember the operator rules: no numeric arithmetic, and never apply `total` or `get` to allocation_size, quota_size or active_size.",
+              "role": "user"
+            }
+          ],
+          "model": "gemma-4-31b-it",
+          "response_format": {
+            "json_schema": {
+              "name": "contract",
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "notes": {
+                    "type": "string"
+                  },
+                  "postcondition": {
+                    "type": "object"
+                  },
+                  "precondition": {
+                    "type": "object"
+                  },
+                  "skill": {
+                    "enum": [
+                      "deploy_service"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "precondition",
+                  "postcondition"
+                ],
+                "type": "object"
+              },
+              "strict": true
+            },
+            "type": "json_schema"
+          },
+          "seed": 19,
+          "stream": false,
+          "temperature": 0.2,
+          "top_p": 0.95
+        },
+        "response_text": "{\n  \"skill\": \"deploy_service\",\n  \"notes\": \"Formal contract for deploying a service ensuring authentication, quota availability, and region/tier validity.\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"authenticated\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"deployment_status\",\n          \"when\": \"before\"\n        },\n        \"right\": {\n          \"const\": \"idle\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_null\",\n          \"arg\": {\n            \"var\": \"target_region\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"target_region\",\n          \"when\": \"before\"\n        },\n        \"set\": \"valid_regions\"\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"in_set\",\n          \"value\": {\n            \"var\": \"target_region\",\n            \"when\": \"before\"\n          },\n          \"set\": \"rejected_regions\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_null\",\n          \"arg\": {\n            \"var\": \"cluster_tier\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"cluster_tier\",\n          \"when\": \"before\"\n        },\n        \"set\": \"valid_cluster_tiers\"\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"in_set\",\n          \"value\": {\n            \"var\": \"cluster_tier\",\n            \"when\": \"before\"\n          },\n          \"set\": \"rejected_cluster_tiers\"\n        }\n      },\n      {\n        \"op\": \"covers\",\n        \"available\": {\n          \"var\": \"available_quota\",\n          \"when\": \"before\"\n        },\n        \"required\": {\n          \"var\": \"allocated_resources\",\n          \"when\": \"before\"\n        }\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"deployment_status\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"const\": \"deployed\"\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"active_deployment\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"op\": \"union\",\n          \"left\": {\n            \"var\": \"active_deployment\",\n            \"when\": \"before\"\n          },\n          \"right\": {\n            \"var\": \"allocated_resources\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"available_quota\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"op\": \"difference\",\n          \"left\": {\n            \"var\": \"available_quota\",\n            \"when\": \"before\"\n          },\n          \"right\": {\n            \"var\": \"allocated_resources\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"authenticated\",\n          \"target_region\",\n          \"cluster_tier\"\n        ]\n      }\n    ]\n  }\n}",
+        "raw_response": {
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "logprobs": null,
+              "message": {
+                "annotations": null,
+                "audio": null,
+                "content": "{\n  \"skill\": \"deploy_service\",\n  \"notes\": \"Formal contract for deploying a service ensuring authentication, quota availability, and region/tier validity.\",\n  \"precondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"is_true\",\n        \"arg\": {\n          \"var\": \"authenticated\",\n          \"when\": \"before\"\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"deployment_status\",\n          \"when\": \"before\"\n        },\n        \"right\": {\n          \"const\": \"idle\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_null\",\n          \"arg\": {\n            \"var\": \"target_region\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"target_region\",\n          \"when\": \"before\"\n        },\n        \"set\": \"valid_regions\"\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"in_set\",\n          \"value\": {\n            \"var\": \"target_region\",\n            \"when\": \"before\"\n          },\n          \"set\": \"rejected_regions\"\n        }\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"is_null\",\n          \"arg\": {\n            \"var\": \"cluster_tier\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"in_set\",\n        \"value\": {\n          \"var\": \"cluster_tier\",\n          \"when\": \"before\"\n        },\n        \"set\": \"valid_cluster_tiers\"\n      },\n      {\n        \"op\": \"not\",\n        \"arg\": {\n          \"op\": \"in_set\",\n          \"value\": {\n            \"var\": \"cluster_tier\",\n            \"when\": \"before\"\n          },\n          \"set\": \"rejected_cluster_tiers\"\n        }\n      },\n      {\n        \"op\": \"covers\",\n        \"available\": {\n          \"var\": \"available_quota\",\n          \"when\": \"before\"\n        },\n        \"required\": {\n          \"var\": \"allocated_resources\",\n          \"when\": \"before\"\n        }\n      }\n    ]\n  },\n  \"postcondition\": {\n    \"op\": \"and\",\n    \"args\": [\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"deployment_status\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"const\": \"deployed\"\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"active_deployment\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"op\": \"union\",\n          \"left\": {\n            \"var\": \"active_deployment\",\n            \"when\": \"before\"\n          },\n          \"right\": {\n            \"var\": \"allocated_resources\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"eq\",\n        \"left\": {\n          \"var\": \"available_quota\",\n          \"when\": \"after\"\n        },\n        \"right\": {\n          \"op\": \"difference\",\n          \"left\": {\n            \"var\": \"available_quota\",\n            \"when\": \"before\"\n          },\n          \"right\": {\n            \"var\": \"allocated_resources\",\n            \"when\": \"before\"\n          }\n        }\n      },\n      {\n        \"op\": \"unchanged\",\n        \"vars\": [\n          \"authenticated\",\n          \"target_region\",\n          \"cluster_tier\"\n        ]\n      }\n    ]\n  }\n}",
+                "function_call": null,
+                "reasoning": null,
+                "refusal": null,
+                "role": "assistant",
+                "tool_calls": []
+              },
+              "stop_reason": null,
+              "token_ids": null
+            }
+          ],
+          "created": 1794516507,
+          "id": "chatcmpl-9bf4dddbea18ef78",
+          "kv_transfer_params": null,
+          "model": "gemma-4-31b-it",
+          "object": "chat.completion",
+          "prompt_logprobs": null,
+          "prompt_token_ids": null,
+          "service_tier": null,
+          "system_fingerprint": null,
+          "usage": {
+            "completion_tokens": 954,
+            "prompt_tokens": 1566,
+            "prompt_tokens_details": null,
+            "total_tokens": 2520
+          }
+        },
+        "usage": {
+          "completion_tokens": 954,
+          "prompt_tokens": 1566,
+          "total_tokens": 2520
+        },
+        "latency_s": 40.822412794455886,
+        "finish_reason": "stop",
+        "error": null,
+        "prompt_tokens": 1566,
+        "requested_max_tokens": 2048,
+        "effective_max_tokens": 2048,
+        "clamp_reason": "none",
+        "context_window": 8192,
+        "safety_margin": 256
+      }
+    ],
+    "rounds": [
+      {
+        "round": 0,
+        "role": "propose",
+        "adaptation": "sampled_cegis",
+        "evidence_policy": "fixed_budget_sampled_equivalence_oracle",
+        "contract_status": "parsed",
+        "sampled_metrics": {
+          "contract": "model.sampled_cegis",
+          "states_checked": 48,
+          "successes": 0,
+          "failures": 48,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "postcondition_violations": 0,
+          "symptoms": [],
+          "exact": true,
+          "sound": true,
+          "complete": true
+        },
+        "counterexamples": [],
+        "sampled_oracle_size": 48
+      }
+    ],
+    "contract": {
+      "status": "parsed",
+      "source": "{\"notes\": \"Formal contract for deploying a service ensuring authentication, quota availability, and region/tier validity.\", \"postcondition\": {\"args\": [{\"left\": {\"var\": \"deployment_status\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"const\": \"deployed\"}}, {\"left\": {\"var\": \"active_deployment\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"left\": {\"var\": \"active_deployment\", \"when\": \"before\"}, \"op\": \"union\", \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}}, {\"left\": {\"var\": \"available_quota\", \"when\": \"after\"}, \"op\": \"eq\", \"right\": {\"left\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"op\": \"difference\", \"right\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}}, {\"op\": \"unchanged\", \"vars\": [\"authenticated\", \"target_region\", \"cluster_tier\"]}], \"op\": \"and\"}, \"precondition\": {\"args\": [{\"arg\": {\"var\": \"authenticated\", \"when\": \"before\"}, \"op\": \"is_true\"}, {\"left\": {\"var\": \"deployment_status\", \"when\": \"before\"}, \"op\": \"eq\", \"right\": {\"const\": \"idle\"}}, {\"arg\": {\"arg\": {\"var\": \"target_region\", \"when\": \"before\"}, \"op\": \"is_null\"}, \"op\": \"not\"}, {\"op\": \"in_set\", \"set\": \"valid_regions\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}}, {\"arg\": {\"op\": \"in_set\", \"set\": \"rejected_regions\", \"value\": {\"var\": \"target_region\", \"when\": \"before\"}}, \"op\": \"not\"}, {\"arg\": {\"arg\": {\"var\": \"cluster_tier\", \"when\": \"before\"}, \"op\": \"is_null\"}, \"op\": \"not\"}, {\"op\": \"in_set\", \"set\": \"valid_cluster_tiers\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}}, {\"arg\": {\"op\": \"in_set\", \"set\": \"rejected_cluster_tiers\", \"value\": {\"var\": \"cluster_tier\", \"when\": \"before\"}}, \"op\": \"not\"}, {\"available\": {\"var\": \"available_quota\", \"when\": \"before\"}, \"op\": \"covers\", \"required\": {\"var\": \"allocated_resources\", \"when\": \"before\"}}], \"op\": \"and\"}, \"skill\": \"deploy_service\"}",
+      "spec": {
+        "skill": "deploy_service",
+        "notes": "Formal contract for deploying a service ensuring authentication, quota availability, and region/tier validity.",
+        "precondition": {
+          "op": "and",
+          "args": [
+            {
+              "op": "is_true",
+              "arg": {
+                "var": "authenticated",
+                "when": "before"
+              }
+            },
+            {
+              "op": "eq",
+              "left": {
+                "var": "deployment_status",
+                "when": "before"
+              },
+              "right": {
+                "const": "idle"
+              }
+            },
+            {
+              "op": "not",
+              "arg": {
+                "op": "is_null",
+                "arg": {
+                  "var": "target_region",
+                  "when": "before"
+                }
+              }
+            },
+            {
+              "op": "in_set",
+              "value": {
+                "var": "target_region",
+                "when": "before"
+              },
+              "set": "valid_regions"
+            },
+            {
+              "op": "not",
+              "arg": {
+                "op": "in_set",
+                "value": {
+                  "var": "target_region",
+                  "when": "before"
+                },
+                "set": "rejected_regions"
+              }
+            },
+            {
+              "op": "not",
+              "arg": {
+                "op": "is_null",
+                "arg": {
+                  "var": "cluster_tier",
+                  "when": "before"
+                }
+              }
+            },
+            {
+              "op": "in_set",
+              "value": {
+                "var": "cluster_tier",
+                "when": "before"
+              },
+              "set": "valid_cluster_tiers"
+            },
+            {
+              "op": "not",
+              "arg": {
+                "op": "in_set",
+                "value": {
+                  "var": "cluster_tier",
+                  "when": "before"
+                },
+                "set": "rejected_cluster_tiers"
+              }
+            },
+            {
+              "op": "covers",
+              "available": {
+                "var": "available_quota",
+                "when": "before"
+              },
+              "required": {
+                "var": "allocated_resources",
+                "when": "before"
+              }
+            }
+          ]
+        },
+        "postcondition": {
+          "op": "and",
+          "args": [
+            {
+              "op": "eq",
+              "left": {
+                "var": "deployment_status",
+                "when": "after"
+              },
+              "right": {
+                "const": "deployed"
+              }
+            },
+            {
+              "op": "eq",
+              "left": {
+                "var": "active_deployment",
+                "when": "after"
+              },
+              "right": {
+                "op": "union",
+                "left": {
+                  "var": "active_deployment",
+                  "when": "before"
+                },
+                "right": {
+                  "var": "allocated_resources",
+                  "when": "before"
+                }
+              }
+            },
+            {
+              "op": "eq",
+              "left": {
+                "var": "available_quota",
+                "when": "after"
+              },
+              "right": {
+                "op": "difference",
+                "left": {
+                  "var": "available_quota",
+                  "when": "before"
+                },
+                "right": {
+                  "var": "allocated_resources",
+                  "when": "before"
+                }
+              }
+            },
+            {
+              "op": "unchanged",
+              "vars": [
+                "authenticated",
+                "target_region",
+                "cluster_tier"
+              ]
+            }
+          ]
+        }
+      },
+      "node_count": 40,
+      "error": null,
+      "interaction_index": 0
+    },
+    "usage": {
+      "prompt_tokens": 1566,
+      "completion_tokens": 954,
+      "total_tokens": 2520,
+      "calls": 1
+    },
+    "latency": {
+      "total_s": 40.822412794455886,
+      "per_call_s": [
+        40.822412794455886
+      ],
+      "initial_latency_allocated_s": 40.822412794455886,
+      "live_total_s": 0.0,
+      "checkpoint_replayed_s": 0.0
+    },
+    "spend": {
+      "model_calls": 1,
+      "states_observed": 48,
+      "oracle_feedback_queries": 0,
+      "sampled_feedback_queries": 1,
+      "sampled_states_checked": 48,
+      "remaining_calls": 3,
+      "remaining_tokens": 13480,
+      "remaining_states": 0,
+      "parse_failures": 0,
+      "initial_generation_calls_allocated": 1,
+      "initial_generation_tokens_allocated": 2520,
+      "initial_generation_reused": true,
+      "live_model_calls": 0,
+      "checkpoint_replayed_model_calls": 0,
+      "checkpoint_replayed_tokens": 0
+    },
+    "evaluation": {
+      "metrics": {
+        "contract": "model.sampled_cegis",
+        "states_checked": 11712,
+        "successes": 88,
+        "failures": 11624,
+        "false_accepts": 36,
+        "false_rejects": 0,
+        "postcondition_violations": 0,
+        "symptoms": [
+          "false_accept"
+        ],
+        "exact": false,
+        "sound": false,
+        "complete": true
+      },
+      "counterexamples": [
+        {
+          "symptom": "false_accept",
+          "state": "auth=y alloc=- quota=cpux2,ramx2 region=europe-west tier=premium status=idle",
+          "state_fields": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 2,
+              "ram": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "premium",
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "before_state": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 2,
+              "ram": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "premium",
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "after_state": null,
+          "action_succeeded": false,
+          "changed_fields": {},
+          "unchanged_fields": [],
+          "detail": "contract admits the state but the sandbox refused: no resources allocated for deployment"
+        },
+        {
+          "symptom": "false_accept",
+          "state": "auth=y alloc=- quota=cpux2,ramx2 region=europe-west tier=standard status=idle",
+          "state_fields": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 2,
+              "ram": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "standard",
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "before_state": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 2,
+              "ram": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "standard",
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "after_state": null,
+          "action_succeeded": false,
+          "changed_fields": {},
+          "unchanged_fields": [],
+          "detail": "contract admits the state but the sandbox refused: no resources allocated for deployment"
+        },
+        {
+          "symptom": "false_accept",
+          "state": "auth=y alloc=- quota=cpux2,ramx2 region=us-central tier=premium status=idle",
+          "state_fields": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 2,
+              "ram": 2
+            },
+            "target_region": "us-central",
+            "cluster_tier": "premium",
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "before_state": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 2,
+              "ram": 2
+            },
+            "target_region": "us-central",
+            "cluster_tier": "premium",
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "after_state": null,
+          "action_succeeded": false,
+          "changed_fields": {},
+          "unchanged_fields": [],
+          "detail": "contract admits the state but the sandbox refused: no resources allocated for deployment"
+        },
+        {
+          "symptom": "false_accept",
+          "state": "auth=y alloc=- quota=cpux2,ramx2 region=us-central tier=standard status=idle",
+          "state_fields": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 2,
+              "ram": 2
+            },
+            "target_region": "us-central",
+            "cluster_tier": "standard",
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "before_state": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 2,
+              "ram": 2
+            },
+            "target_region": "us-central",
+            "cluster_tier": "standard",
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "after_state": null,
+          "action_succeeded": false,
+          "changed_fields": {},
+          "unchanged_fields": [],
+          "detail": "contract admits the state but the sandbox refused: no resources allocated for deployment"
+        },
+        {
+          "symptom": "false_accept",
+          "state": "auth=y alloc=- quota=cpux1,ramx2 region=europe-west tier=premium status=idle",
+          "state_fields": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 1,
+              "ram": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "premium",
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "before_state": {
+            "authenticated": true,
+            "allocated_resources": {},
+            "available_quota": {
+              "cpu": 1,
+              "ram": 2
+            },
+            "target_region": "europe-west",
+            "cluster_tier": "premium",
+            "deployment_status": "idle",
+            "active_deployment": {}
+          },
+          "after_state": null,
+          "action_succeeded": false,
+          "changed_fields": {},
+          "unchanged_fields": [],
+          "detail": "contract admits the state but the sandbox refused: no resources allocated for deployment"
+        }
+      ],
+      "exact": false,
+      "truncated": false,
+      "deepest_level": 20,
+      "state_count": 11712
+    },
+    "outcome": "inexact",
+    "stopped_because": "sampled_oracle_satisfied"
+  },
+  "sha256": "7a0664f35c72cbf7c088bd7c16ccb79e8b0fde5544bd9cc2c0acafce6948cfa1"
+}

@@ -1,0 +1,24 @@
+{
+  "description": "Neutral surface names for Deployment information ablations; evaluator-only policy labels.",
+  "seed": 20260902,
+  "resource_types": [
+    "cpu",
+    "ram"
+  ],
+  "max_quota": 2,
+  "max_allocation_limit": 2,
+  "valid_regions": [
+    "region_a",
+    "region_c"
+  ],
+  "rejected_regions": [
+    "region_b"
+  ],
+  "valid_cluster_tiers": [
+    "tier_b",
+    "tier_c"
+  ],
+  "rejected_cluster_tiers": [
+    "tier_a"
+  ]
+}

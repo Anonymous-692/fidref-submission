@@ -1,0 +1,139 @@
+{
+  "id": "sampled_cegis__seed6",
+  "learner_cost": {
+    "all_boundary_seconds": 0.07341392431408167,
+    "final": {
+      "counts": {
+        "atom_evaluations": 824,
+        "atoms": 206,
+        "expansions": 9,
+        "negatives": 3,
+        "observations": 4,
+        "positives": 1,
+        "post_evaluations": 111,
+        "rhs_terms": 111,
+        "steps": 48
+      },
+      "dsl_nodes": 29,
+      "elapsed_seconds": 0.020365755073726177,
+      "limits": {
+        "max_clauses": 12,
+        "max_expansions": 100000,
+        "max_steps": 1000000,
+        "seconds": 30.0
+      },
+      "post_identified_from_success": true,
+      "status": "consistent"
+    }
+  },
+  "learning_result_sha256": "4c138a788c9a875d3b2afb323f323d214947f1c118cf1275a57f29e342d2bf40",
+  "llm": {
+    "cfr": 0.0,
+    "exact": false,
+    "iou": 44.44444444444444,
+    "metrics": {
+      "contract": "model.deploy_service",
+      "exact": false,
+      "failures": 11624,
+      "false_accepts": 110,
+      "false_rejects": 0,
+      "postcondition_violations": 88,
+      "states_checked": 11712,
+      "successes": 88,
+      "symptoms": [
+        "false_accept",
+        "postcondition_violation"
+      ]
+    },
+    "observation_errors": {
+      "n": 4,
+      "post": 1,
+      "pre": 1
+    },
+    "post_audit": {
+      "conditional_fault_n": 2464,
+      "conditional_fault_rate": 100.0,
+      "conditional_fault_rejected": 2464,
+      "conditional_normal_accepted": 0,
+      "conditional_normal_n": 88,
+      "conditional_normal_rate": 0.0,
+      "fault_n": 2464,
+      "fault_rate": 100.0,
+      "fault_rejected": 2464,
+      "normal_accepted": 0,
+      "normal_n": 88,
+      "normal_rate": 0.0
+    },
+    "valid": true
+  },
+  "method": "sampled_cegis",
+  "positive_observations": 1,
+  "seed": 6,
+  "source": "results/rebuttal_info_20261113_v2/restricted_vp/vminus_pminus/sampled_cegis__seed6.json",
+  "source_sha256": "c8bc1899c85b9c571fef272479201426f9985e4da8f72180833b2ec9b0f3806b",
+  "source_spend": {
+    "checkpoint_replayed_model_calls": 0,
+    "checkpoint_replayed_tokens": 0,
+    "initial_generation_calls_allocated": 1,
+    "initial_generation_reused": true,
+    "initial_generation_tokens_allocated": 2349,
+    "live_model_calls": 2,
+    "model_calls": 3,
+    "oracle_feedback_queries": 0,
+    "parse_failures": 0,
+    "remaining_calls": 1,
+    "remaining_states": 0,
+    "remaining_tokens": 2506,
+    "sampled_feedback_queries": 3,
+    "sampled_states_checked": 144,
+    "states_observed": 48
+  },
+  "source_usage": {
+    "calls": 3,
+    "completion_tokens": 2876,
+    "prompt_tokens": 10618,
+    "total_tokens": 13494
+  },
+  "symbolic": {
+    "cfr": 0.12077294685990338,
+    "exact": false,
+    "iou": 1.7713365539452497,
+    "metrics": {
+      "contract": "model.deploy_service",
+      "exact": false,
+      "failures": 11624,
+      "false_accepts": 2396,
+      "false_rejects": 44,
+      "postcondition_violations": 41,
+      "states_checked": 11712,
+      "successes": 88,
+      "symptoms": [
+        "false_accept",
+        "false_reject",
+        "postcondition_violation"
+      ]
+    },
+    "observation_errors": {
+      "n": 4,
+      "post": 0,
+      "pre": 0
+    },
+    "post_audit": {
+      "conditional_fault_n": 1232,
+      "conditional_fault_rate": 98.21428571428571,
+      "conditional_fault_rejected": 1210,
+      "conditional_normal_accepted": 3,
+      "conditional_normal_n": 44,
+      "conditional_normal_rate": 6.818181818181818,
+      "fault_n": 2464,
+      "fault_rate": 98.9853896103896,
+      "fault_rejected": 2439,
+      "normal_accepted": 3,
+      "normal_n": 88,
+      "normal_rate": 3.409090909090909
+    },
+    "valid": true
+  },
+  "symbolic_status": "consistent",
+  "unique_observations": 4
+}

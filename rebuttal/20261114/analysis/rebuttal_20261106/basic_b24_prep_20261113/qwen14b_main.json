@@ -1,0 +1,41 @@
+{
+  "description": "B24 sampled Active; separate rebuttal cohort, not oracle-assisted Table 9.",
+  "sandbox_config": "experiment/configs/default.json",
+  "model": "qwen2.5-14b-instruct",
+  "base_url": "[endpoint-redacted]",
+  "methods": [
+    "active_cegis"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "temperature": 0.2,
+  "top_p": 0.95,
+  "max_tokens": 1024,
+  "state_budget": 24,
+  "query_budget": 4,
+  "token_budget": 16000,
+  "max_depth": 20,
+  "max_states": 6000,
+  "timeout": 600.0,
+  "workers": 1
+}

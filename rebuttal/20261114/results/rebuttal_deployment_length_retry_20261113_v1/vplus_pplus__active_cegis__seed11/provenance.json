@@ -1,0 +1,14 @@
+{
+  "source": "results/rebuttal_info_20261113_v2/restricted_vp/vplus_pplus/active_cegis__seed11.json",
+  "source_sha256": "e449da6e956a3e25adaed2cf2f15f1f1691dd5ab4b076d0ed295203466dfa1aa",
+  "original_initial_sha256": "a4f8dc6109d8e75ebeaa53b8c0f6316d3c09353c86d5f2413a94a29ad28a34bb",
+  "followup_initial_sha256": "85e6d0e47107b2c20852ecdc7728d0c80a55f199e6993ff2508843bb9dbdd210",
+  "prefix_interactions": 2,
+  "first_new_interaction_index": 2,
+  "original_prefix_journal_sha256": "b9ce52a9f83d8e633707c9aa77b76fdfe38a23e2e271db21064c90e432b1078d",
+  "logical_prefix_calls": 2,
+  "logical_prefix_tokens": 8151,
+  "reuse_policy": "saved initial plus successful first revision; no prior truncated response replay",
+  "retry_adapter_sha256": "d95130b2c125443405321d6a84a446cf3f932dfbdc6ef848f84f3eb0786a977f",
+  "launch_manifest_sha256": "29c53a2d866fca090ef6c3c2a8f60c77785dd753756d576478e7e3e19db7c176"
+}
